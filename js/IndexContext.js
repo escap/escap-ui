@@ -1,10 +1,10 @@
 
-define(["start"], function( Starter ) {
+define(["host"], function( Host ) {
 
-    var starter;
+    var host;
 
     function IndexContext(){
-        starter = new Starter;
+        host = new Host;
     };
 
     IndexContext.prototype.init = function() {

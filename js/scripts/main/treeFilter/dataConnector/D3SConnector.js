@@ -1,8 +1,11 @@
-define(['jquery', 'underscore'], function ($) {
+define(['jquery', 'underscore'], function ($, _) {
 
     'use strict'
 
     const D3S_CODELIST_URL = "http://fenix.fao.org/d3s_fenix/msd/codes/filter";
+
+    var FAKE_CHILDREN = [{id:'*', title:'*'}];
+
 
     function D3SConnector(language, services) {
         this.o = {
@@ -16,7 +19,7 @@ define(['jquery', 'underscore'], function ($) {
         var payload = {
             uid: this.o.services.uid,
             version: this.o.services.version,
-            levels: 1,
+            levels: 2,
             level:1
         }
 
@@ -28,8 +31,33 @@ define(['jquery', 'underscore'], function ($) {
             dataType: 'json',
             data: JSON.stringify(payload)
         }).done(function (data) {
-            _.bind(successCallback(data), self);
+           successCallback(data);
         });
+    }
+
+    D3SConnector.prototype.takeOnlyFirstLevelData2 = function() {
+
+        var result;
+
+        var payload = {
+            uid: this.o.services.uid,
+            version: this.o.services.version,
+            levels: 2,
+            level:1
+        }
+
+        var self = this;
+        $.ajax({
+            async:false,
+            url: D3S_CODELIST_URL,
+            type: 'POST',
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify(payload)
+        }).done(function(data){
+            result = data;
+        })
+        return result;
     }
 
 
@@ -53,8 +81,14 @@ define(['jquery', 'underscore'], function ($) {
     }
 
 
-    D3SConnector.prototype.expandBranchWithLazyLoading = function(codeId, successCallback) {
-        var payload = {uid: "HS", version: "1996", "code":"0210"}
+    D3SConnector.prototype.expandBranchWithLazyLoading = function(codeId,depth, successCallback) {
+        var payload = {
+            uid: this.o.services.uid,
+            version: this.o.services.version,
+            codes: [codeId],
+            levels: 2,
+            level:depth-1
+        }
 
         var self = this;
         $.ajax({
@@ -64,12 +98,42 @@ define(['jquery', 'underscore'], function ($) {
             dataType: 'json',
             data: JSON.stringify(payload)
         }).done(function (data) {
-           successCallback(data, self);
-/*
-            self.initController(data, self);
-*/
+
+            var dataParsed = self.parseData(data);
+            debugger;
+
+            _.bind(successCallback(codeId,dataParsed ), self);
         });
     }
+
+    D3SConnector.prototype.expandBranchWithLazyLoading2 = function(codeId,depth) {
+
+
+        debugger;
+        var result;
+        var payload = {
+            uid: this.o.services.uid,
+            version: this.o.services.version,
+            codes: [codeId],
+            levels: depth,
+            level:depth
+        }
+
+        var self = this;
+        $.ajax({
+            async:false,
+            url: D3S_CODELIST_URL,
+            type: 'POST',
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify(payload)
+        }).done(function (data) {
+            result  = data;
+        });
+        return result;
+    }
+
+
 
 
     D3SConnector.prototype.parseData = function (D3SData) {
@@ -91,8 +155,9 @@ define(['jquery', 'underscore'], function ($) {
     }
 
     D3SConnector.prototype.handleRecursive = function (childObject) {
+
         if (this.isNodeALeaf(childObject.children)) {
-            return false;
+            return true;
         } else {
             return this.parseData(childObject.children);
         }
@@ -102,23 +167,6 @@ define(['jquery', 'underscore'], function ($) {
         return typeof arrayObject === 'undefined' || arrayObject === null || arrayObject.length === 0
     }
 
-    D3SConnector.prototype.getNodesFromId = function (idNode) {
-
-        var exampleUrl = './js/scripts/main/data/fenixCODELIST/'+idNode+'.json';
-
-        var result;
-        $.ajax({
-            async: false,
-            url: exampleUrl,
-            type: 'GET',
-            contentType: "application/json",
-            dataType: 'json'
-        }).done(function (data) {
-            result =  data.children;
-        });
-
-        return result;
-    }
 
     return D3SConnector;
 

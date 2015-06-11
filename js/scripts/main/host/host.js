@@ -5,7 +5,7 @@ define(['jquery','fx-tree-starter', 'jstree', 'sinon'], function ($, Starter) {
     'use strict'
     // var urlHS = http://fenix.fao.org/d3s_fenix/msd/resources/HS/2012?full=true&dsd=true
 
-    function Start() {
+    function Host() {
         var starter = new Starter();
         starter.init({
             "config":{
@@ -21,31 +21,9 @@ define(['jquery','fx-tree-starter', 'jstree', 'sinon'], function ($, Starter) {
                 "version":"1996"
             }
         })
-    }
+    };
 
-
-
-    Start.prototype.makeRequest = function (listId, callback) {
-
-        var result;
-        $.ajax({
-            url: "/todo/" + listId + "/items",
-            success: function (data) {
-                // Node-style CPS: callback(err, data)
-                callback(null, data);
-                result = data;
-                console.log(data);
-
-            }
-        });
-        console.log(result);
-        return result;
-    }
-
-
-
-
-    return Start;
+    return Host;
 })
 
 
