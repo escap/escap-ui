@@ -1,4 +1,4 @@
-define(['jquery', 'data','fx-tree-starter', 'jstree', 'sinon'], function ($, DATA, Starter) {
+define(['jquery','fx-tree-starter', 'jstree', 'sinon'], function ($, Starter) {
 
     //   var PLUGINS_CONF = PLUGINS_MAP;
 
@@ -14,88 +14,15 @@ define(['jquery', 'data','fx-tree-starter', 'jstree', 'sinon'], function ($, DAT
                     "tree" : "#jstreeID"
                 }
             },
-            "data":DATA,
-            "services":{}
+            "data": [],
+            "services":{
+                "lazyLoading": true,
+                "uid": "HS",
+                "version":"1996"
+            }
         })
     }
 
-    Start.prototype.init = function () {
-
-
-
-        $('#jstreeID').jstree({
-            "plugins" : ["wholerow", "checkbox"],
-            'core':{
-                'data':DATA.data
-            },
-            "checkbox" : {
-                "two_state" : true,
-                "keep_selected_style" : false
-            }
-        })/*.on('before_open.jstree', function(e, node){
-            console.log(e);
-            console.log(node);
-        });*/
-
-/*
-        $('#tree').jstree({
-            'core': {
-                'data': {
-                    'url': function (node) {
-                        return node.id === '#' ?
-                            'ajax_roots.json' :
-                            'ajax_children.json';
-                    },
-                    'data': function (node) {
-                        return {'id': node.id};
-                    }
-                }
-            }
-        });
-
-
-        var server = sinon.fakeServer.create();
-
-
-        var server;
-
-        server = sinon.fakeServer.create();
-
-        var success = sinon.spy(),
-            error = sinon.spy();
-
-        getTodos(42, success);
-        var ppop = success.args;
-        console.log(ppop)
-
-
-        server.requests[0].respond(
-            200,
-            {"Content-Type": "application/json"},
-            JSON.stringify([{id: 1, text: "Provide examples", done: true}])
-        );
-        console.log(success.args);
-        debugger;
-
-        // This is part of the FakeXMLHttpRequest API
-
-
-        function getTodos(listId, callback) {
-
-            var object;
-            $.ajax({
-                url: "/todo/" + listId + "/items",
-                success: function (data) {
-
-                    callback(data, null);
-                    object = success.args;
-                },
-                error: error
-            });
-
-            return object
-        }*/
-    }
 
 
     Start.prototype.makeRequest = function (listId, callback) {
@@ -116,7 +43,6 @@ define(['jquery', 'data','fx-tree-starter', 'jstree', 'sinon'], function ($, DAT
     }
 
 
-    Start.prototype.adapteObjectTo
 
 
     return Start;

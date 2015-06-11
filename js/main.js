@@ -4,6 +4,7 @@ requirejs.config({
     "paths": {
         jquery              :  "jquery",
         jstree              :  "//fenixapps.fao.org/repository/js/jstree/3.0.8/dist/jstree.min",
+        underscore          :  "//fenixapps.fao.org/repository/js/underscore/1.7.0/underscore.min",
         start               :  "../main/start/start",
         data                :  "../main/data/fenixCODELIST/data_big",
         "fx-tree-starter"   :  "../main/treeFilter/Starter",

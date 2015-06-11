@@ -1,4 +1,4 @@
-define(["fx-tree-adapter", "fx-tree-dataConn"], function(Adapter, DataConnector) {
+define(["jquery","fx-tree-adapter", "fx-tree-dataConn"], function($,Adapter, DataConnector) {
 
     'use strict'
 
@@ -8,17 +8,45 @@ define(["fx-tree-adapter", "fx-tree-dataConn"], function(Adapter, DataConnector)
         this.o ={}
     }
 
-    TreeController.prototype.init=function(config) {
-        
-        dataConnector = new DataConnector(config.config.lang);
+    TreeController.prototype.init = function(config) {
 
-        adapter = new Adapter(config.config.container.tree);
+        this.initializeVariables(config);
 
-        var dataModel = dataConnector.parseData(config.data.data, config.config.lang)
+        this.chooseAndStartLoading();
 
-        // pass id of the tree
-        adapter.initTree(dataModel);
+    }
 
+    TreeController.prototype.chooseAndStartLoading = function() {
+        if (this.o.isLazyLoaded) {
+            dataConnector.takeOnlyFirstLevelData(this.startTree)
+        } else {
+            dataConnector.takeAllCodelist(this.startTree);
+            this.bindEvents();
+        }
+    }
+
+    TreeController.prototype.bindEvents = function() {
+
+        this.o.container.on("before_open.jstree", function(event, node){
+            debugger;
+            var childrenData = dataConnector.getNodesFromId(node.node.id);
+            adapter.expandNode (node.node.id, childrenData)
+        });
+
+    }
+
+    TreeController.prototype.initializeVariables = function(config) {
+        this.o = {
+            container : $(config.config.container.tree),
+            isLazyLoaded : config.services.lazyLoading
+        }
+
+        adapter = new Adapter(this.o.container);
+        dataConnector = new DataConnector(config.config.lang, config.services);
+    }
+
+    TreeController.prototype.startTree = function(d3sData) {
+        adapter.initTree(dataConnector.parseData(d3sData));
     }
 
     return TreeController;

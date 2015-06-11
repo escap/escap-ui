@@ -1,0 +1,274 @@
+{
+  "level": 1,
+  "leaf": false,
+  "title": {
+    "EN": "Live animals"
+  },
+  "children": [
+    {
+      "level": 2,
+      "leaf": false,
+      "title": {
+        "EN": "Live poultry, that is to say, fowls of the species Gallus domesticus, ducks, geese, turkeys and guinea fowls."
+      },
+      "children": [
+        {
+          "level": 3,
+          "leaf": false,
+          "title": {
+            "EN": "- Other :"
+          },
+          "children": [
+            {
+              "level": 4,
+              "leaf": true,
+              "title": {
+                "EN": "- - Other"
+              },
+              "code": "010599",
+              "rid": "64_54379"
+            },
+            {
+              "level": 4,
+              "leaf": true,
+              "title": {
+                "EN": "- - Fowls of the species Gallus domesticus, weighing more than 2,000 g"
+              },
+              "code": "010593",
+              "rid": "64_54380"
+            },
+            {
+              "level": 4,
+              "leaf": true,
+              "title": {
+                "EN": "- - Fowls of the species Gallus domesticus, weighing not more than 2,000 g"
+              },
+              "code": "010592",
+              "rid": "64_54381"
+            }
+          ],
+          "code": "01059",
+          "rid": "64_54374"
+        },
+        {
+          "level": 3,
+          "leaf": false,
+          "title": {
+            "EN": "- Weighing not more than 185 g :"
+          },
+          "children": [
+            {
+              "level": 4,
+              "leaf": true,
+              "title": {
+                "EN": "- - Turkeys"
+              },
+              "code": "010512",
+              "rid": "64_54376"
+            },
+            {
+              "level": 4,
+              "leaf": true,
+              "title": {
+                "EN": "- - Fowls of the species Gallus domesticus"
+              },
+              "code": "010511",
+              "rid": "64_54377"
+            },
+            {
+              "level": 4,
+              "leaf": true,
+              "title": {
+                "EN": "- - Other"
+              },
+              "code": "010519",
+              "rid": "64_54378"
+            }
+          ],
+          "code": "01051",
+          "rid": "64_54375"
+        }
+      ],
+      "code": "0105",
+      "rid": "64_54354"
+    },
+    {
+      "level": 2,
+      "leaf": false,
+      "title": {
+        "EN": "Other live animals."
+      },
+      "children": [
+        {
+          "level": 3,
+          "leaf": true,
+          "title": {
+            "EN": "Other live animals"
+          },
+          "code": "010600",
+          "rid": "64_54357"
+        }
+      ],
+      "code": "0106",
+      "rid": "64_54356"
+    },
+    {
+      "level": 2,
+      "leaf": false,
+      "title": {
+        "EN": "Live swine."
+      },
+      "children": [
+        {
+          "level": 3,
+          "leaf": false,
+          "title": {
+            "EN": "- Other :"
+          },
+          "children": [
+            {
+              "level": 4,
+              "leaf": true,
+              "title": {
+                "EN": "- - Weighing 50 kg or more"
+              },
+              "code": "010392",
+              "rid": "64_54360"
+            },
+            {
+              "level": 4,
+              "leaf": true,
+              "title": {
+                "EN": "- - Weighing less than 50 kg"
+              },
+              "code": "010391",
+              "rid": "64_54361"
+            }
+          ],
+          "code": "01039",
+          "rid": "64_54359"
+        },
+        {
+          "level": 3,
+          "leaf": true,
+          "title": {
+            "EN": "- Pure-bred breeding animals"
+          },
+          "code": "010310",
+          "rid": "64_54362"
+        }
+      ],
+      "code": "0103",
+      "rid": "64_54358"
+    },
+    {
+      "level": 2,
+      "leaf": false,
+      "title": {
+        "EN": "Live sheep and goats."
+      },
+      "children": [
+        {
+          "level": 3,
+          "leaf": true,
+          "title": {
+            "EN": "- Sheep"
+          },
+          "code": "010410",
+          "rid": "64_54364"
+        },
+        {
+          "level": 3,
+          "leaf": true,
+          "title": {
+            "EN": "- Goats"
+          },
+          "code": "010420",
+          "rid": "64_54365"
+        }
+      ],
+      "code": "0104",
+      "rid": "64_54363"
+    },
+    {
+      "level": 2,
+      "leaf": false,
+      "title": {
+        "EN": "Live horses, asses, mules and hinnies."
+      },
+      "children": [
+        {
+          "level": 3,
+          "leaf": false,
+          "title": {
+            "EN": "- Horses :"
+          },
+          "children": [
+            {
+              "level": 4,
+              "leaf": true,
+              "title": {
+                "EN": "- - Pure-bred breeding animals"
+              },
+              "code": "010111",
+              "rid": "64_54368"
+            },
+            {
+              "level": 4,
+              "leaf": true,
+              "title": {
+                "EN": "- - Other"
+              },
+              "code": "010119",
+              "rid": "64_54369"
+            }
+          ],
+          "code": "01011",
+          "rid": "64_54367"
+        },
+        {
+          "level": 3,
+          "leaf": true,
+          "title": {
+            "EN": "- Asses, mules and hinnies"
+          },
+          "code": "010120",
+          "rid": "64_54370"
+        }
+      ],
+      "code": "0101",
+      "rid": "64_54366"
+    },
+    {
+      "level": 2,
+      "leaf": false,
+      "title": {
+        "EN": "Live bovine animals."
+      },
+      "children": [
+        {
+          "level": 3,
+          "leaf": true,
+          "title": {
+            "EN": "- Other"
+          },
+          "code": "010290",
+          "rid": "64_54372"
+        },
+        {
+          "level": 3,
+          "leaf": true,
+          "title": {
+            "EN": "- Pure-bred breeding animals"
+          },
+          "code": "010210",
+          "rid": "64_54373"
+        }
+      ],
+      "code": "0102",
+      "rid": "64_54371"
+    }
+  ],
+  "code": "01",
+  "rid": "64_54355"
+}
