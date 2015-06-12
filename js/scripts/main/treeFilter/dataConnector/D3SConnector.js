@@ -4,64 +4,78 @@ define(['jquery', 'underscore'], function ($, _) {
 
     const D3S_CODELIST_URL = "http://fenix.fao.org/d3s_fenix/msd/codes/filter";
 
-    var FAKE_CHILDREN = [{id:'*', title:'*'}];
+    var self;
 
 
-    function D3SConnector(language, services) {
-        this.o = {
-            "lang": language,
-            "services": services
-        }
-
+    function D3SConnector() {
+        this.o = {}
+        self = this;
     }
 
-    D3SConnector.prototype.takeOnlyFirstLevelData = function(successCallback) {
+
+    D3SConnector.prototype.initialize = function (language, services) {
+        this.o.language = language;
+        this.o.uid = services.uid;
+        this.o.version = services.version;
+    }
+
+    D3SConnector.prototype.getFirstLevelData = function (cbJSTree) {
+
         var payload = {
-            uid: this.o.services.uid,
-            version: this.o.services.version,
-            levels: 2,
-            level:1
+            uid: self.o.uid,
+            version: self.o.version,
+            levels: 1,
+            level: 1
         }
 
-        var self = this;
         $.ajax({
             url: D3S_CODELIST_URL,
             type: 'POST',
             contentType: "application/json",
             dataType: 'json',
             data: JSON.stringify(payload)
-        }).done(function (data) {
-           successCallback(data);
+        }).success(function (data) {
+            if (data) {
+                var dataParsed = self.parseDataOnLoading(data);
+                cbJSTree(dataParsed);
+            } else {
+                alert('Fx_ui_tree error: no data available')
+                throw new Error('pleas, change uid and version of the codelist')
+            }
+        }).error(function () {
+            alert("Fx_ui_tree error: impossible to load codelist");
+        });
+    };
+
+
+    D3SConnector.prototype.getChildrenData = function (node, cbJSTree) {
+        var payload = {
+            uid: self.o.uid,
+            version: self.o.version,
+            levels: 2,
+            level: node.parents.length,
+            codes: [node.id]
+        }
+
+        $.ajax({
+            url: D3S_CODELIST_URL,
+            type: 'POST',
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify(payload)
+        }).success(function (data) {
+            if (data) {
+                cbJSTree(self.parseDataOnLoading(data[0].children || []));
+            } else {
+                cbJSTree([]);
+            }
+        }).error(function () {
+            alert("Fx_ui_tree error error: impossible to load codelist");
         });
     }
 
-    D3SConnector.prototype.takeOnlyFirstLevelData2 = function() {
 
-        var result;
-
-        var payload = {
-            uid: this.o.services.uid,
-            version: this.o.services.version,
-            levels: 2,
-            level:1
-        }
-
-        var self = this;
-        $.ajax({
-            async:false,
-            url: D3S_CODELIST_URL,
-            type: 'POST',
-            contentType: "application/json",
-            dataType: 'json',
-            data: JSON.stringify(payload)
-        }).done(function(data){
-            result = data;
-        })
-        return result;
-    }
-
-
-    D3SConnector.prototype.takeAllCodelist = function(successCallback) {
+    D3SConnector.prototype.takeAllCodelist = function (cbJSTree) {
 
         var payload = {
             uid: this.o.services.uid,
@@ -75,68 +89,19 @@ define(['jquery', 'underscore'], function ($, _) {
             contentType: "application/json",
             dataType: 'json',
             data: JSON.stringify(payload)
-        }).done(function (data) {
-            _.bind(successCallback(data), self);
+        }).success(function (data) {
+            if (data) {
+                cbJSTree(self.parseAllData(data || []));
+            } else {
+                cbJSTree([]);
+            }
+        }).error(function () {
+            alert("Fx_ui_tree error error: impossible to load codelist");
         });
     }
 
 
-    D3SConnector.prototype.expandBranchWithLazyLoading = function(codeId,depth, successCallback) {
-        var payload = {
-            uid: this.o.services.uid,
-            version: this.o.services.version,
-            codes: [codeId],
-            levels: 2,
-            level:depth-1
-        }
-
-        var self = this;
-        $.ajax({
-            url: D3S_CODELIST_URL,
-            type: 'POST',
-            contentType: "application/json",
-            dataType: 'json',
-            data: JSON.stringify(payload)
-        }).done(function (data) {
-
-            var dataParsed = self.parseData(data);
-            debugger;
-
-            _.bind(successCallback(codeId,dataParsed ), self);
-        });
-    }
-
-    D3SConnector.prototype.expandBranchWithLazyLoading2 = function(codeId,depth) {
-
-
-        debugger;
-        var result;
-        var payload = {
-            uid: this.o.services.uid,
-            version: this.o.services.version,
-            codes: [codeId],
-            levels: depth,
-            level:depth
-        }
-
-        var self = this;
-        $.ajax({
-            async:false,
-            url: D3S_CODELIST_URL,
-            type: 'POST',
-            contentType: "application/json",
-            dataType: 'json',
-            data: JSON.stringify(payload)
-        }).done(function (data) {
-            result  = data;
-        });
-        return result;
-    }
-
-
-
-
-    D3SConnector.prototype.parseData = function (D3SData) {
+    D3SConnector.prototype.parseAllData = function (D3SData) {
 
         var result = [];
 
@@ -144,20 +109,18 @@ define(['jquery', 'underscore'], function ($, _) {
             var self = this;
             var tmp = {
                 'id': D3SData[i].code,
-                'text': D3SData[i].title[this.o.lang],
+                'text': D3SData[i].title[this.o.language],
                 'children': self.handleRecursive(D3SData[i])
             };
             result.push(tmp);
         }
-
         return result;
-
     }
 
     D3SConnector.prototype.handleRecursive = function (childObject) {
 
         if (this.isNodeALeaf(childObject.children)) {
-            return true;
+            return [];
         } else {
             return this.parseData(childObject.children);
         }
@@ -167,6 +130,15 @@ define(['jquery', 'underscore'], function ($, _) {
         return typeof arrayObject === 'undefined' || arrayObject === null || arrayObject.length === 0
     }
 
+
+    D3SConnector.prototype.parseDataOnLoading = function (data) {
+        var r = [];
+        for (var i = 0, length = data.length; i < length; i++) {
+            r.push({"text": data[i].title.EN, "id": data[i].code, "children": true});
+        }
+        return r;
+
+    }
 
     return D3SConnector;
 
