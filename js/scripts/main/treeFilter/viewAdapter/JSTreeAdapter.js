@@ -17,6 +17,7 @@ define(['jquery', 'jstree'], function ($) {
 
         var callbackGetFirstLevel = options.callbackFirstCall;
         var callbackGetChildrenLevels = options.callbackGetChildren;
+        var callbackGetLevelsWithSearch = options.callbackSearch;
 
         var self = this;
 
@@ -25,7 +26,6 @@ define(['jquery', 'jstree'], function ($) {
                 worker: false,
 
                 'data': function (node, cb) {
-                    debugger;
                     if (node.id === "#") {
                         callbackGetFirstLevel(cb);
                     }
@@ -39,7 +39,10 @@ define(['jquery', 'jstree'], function ($) {
             },
             "plugins": ["checkbox", "wholerow", "search"],
             "search": {
-                show_only_matches: true
+                show_only_matches: true,
+                ajax: function(searchParameter,cb){
+                    callbackGetLevelsWithSearch(searchParameter, cb)
+                }
             }
         });
 
@@ -109,6 +112,69 @@ define(['jquery', 'jstree'], function ($) {
         });
     }
 
+
+    JSTreeAdapter.prototype.startTreeWholeCodelist = function (options) {
+
+        this.o.container = options.container;
+        this.o.searchForm = options.searchForm;
+
+        var callbackWholeCodelist = options.callbackCodelist;
+
+
+        var self = this;
+
+        this.o.container.jstree({
+            'core': {
+                worker: false,
+
+                'data': function (node, cb) {
+                    if (node.id === "#") {
+                        callbackWholeCodelist(cb);
+                    }
+                },
+                "multiple": true,
+                "animation": 0,
+                "themes": {"stripes": true}
+            },
+            "plugins": ["checkbox", "wholerow", "search"],
+            "search": {
+                show_only_matches: true
+            }
+        });
+
+
+        var to = false;
+        this.o.searchForm.find('#q').keyup(function () {
+            if (to) {
+                clearTimeout(to);
+            }
+            to = setTimeout(function () {
+                var v = self.o.searchForm.find('#q').val();
+                self.o.container.jstree(true).search(v);
+            }, 250);
+        });
+
+        this.o.container.on("changed.jstree", function (e, data) {
+
+            var i, j, r = [];
+            for (i = 0, j = data.selected.length; i < j; i++) {
+                r.push({
+                    label: data.instance.get_node(data.selected[i]).text,
+                    value: data.instance.get_node(data.selected[i])
+                });
+            }
+
+            /* amplify.publish(E.MODULE_READY,
+             {
+             value: r,
+             id: o.module.id,
+             label :  o.module.label.EN
+             });*/
+
+
+        });
+    }
+
     JSTreeAdapter.prototype.initTree = function (data, callback) {
 
         this.o.container.jstree({
@@ -156,6 +222,10 @@ define(['jquery', 'jstree'], function ($) {
         /*
          self.o.container.jstree('draw_children', arrayVertexWithChildrenData[0]);
          */
+    }
+
+    JSTreeAdapter.prototype.getSelectedNodes = function(){
+        return self.o.container.jstree().get_selected(true);
     }
 
 

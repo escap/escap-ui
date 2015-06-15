@@ -5,12 +5,9 @@ define(["jquery",
         'promises'],
     function ($, Adapter, DataConnector, _) {
 
-
         'use strict'
 
-
         var adapter, dataConnector, self;
-
 
         function TreeController() {
             self = this;
@@ -21,6 +18,13 @@ define(["jquery",
         TreeController.prototype.init = function (config) {
 
             this.initializeVariables(config);
+
+
+            $('#sel').on('click', function() {
+                var codes =
+                console.log(codes);
+                debugger;
+            })
 
             if (this.o.isLazyLoaded) {
                 this.startLazyLoading()
@@ -35,7 +39,8 @@ define(["jquery",
                 container: this.$treeContainer,
                 searchForm: this.$searchForm,
                 callbackFirstCall: dataConnector.getFirstLevelData,
-                callbackGetChildren: dataConnector.getChildrenData
+                callbackGetChildren: dataConnector.getChildrenData,
+                callbackSearch: dataConnector.getNodesBySearch
             }
             adapter.startTreeWithCallback(lazyOpts)
         }
@@ -50,21 +55,10 @@ define(["jquery",
                 options['data'] = dataConnector.parseAllData(config.data)
                 adapter.startTreeWithDataLoaded(options)
             } else {
-                options['callBackCodelist'] = dataConnector.takeAllCodelist
-                adapter.startTreeWithCallback(options)
+                options['callbackCodelist'] = dataConnector.takeAllCodelist
+                adapter.startTreeWholeCodelist(options)
             }
         };
-
-
-        TreeController.prototype.bindEvents = function () {
-
-            this.o.container.on("before_open.jstree", function (event, node) {
-                if (self.isAFakeChildren(node.node)) {
-                    dataConnector.expandBranchWithLazyLoading(node.node.id, node.node.parents.length + 1, adapter.expandNode);
-                }
-            });
-
-        }
 
 
         TreeController.prototype.initializeVariables = function (config) {
@@ -84,11 +78,13 @@ define(["jquery",
                 language: "EN"
             }
 
+            debugger;
             dataConnector.initialize(this.o.language, config.services);
         };
 
 
         TreeController.prototype._isLazyLoading = function (config) {
+            debugger;
             var result =
                 (!config.data || config.data === null || config.data.length === 0) &&
                 (typeof config.services.lazyLoading === 'undefined' ||
@@ -105,6 +101,12 @@ define(["jquery",
         }
 
 
-        return TreeController;
+        TreeController.prototype.getSelectedItems = function(onlyCodes){
 
+            for(var i=0;length = on)
+            return adapter.getSelectedNodes();
+        }
+
+
+        return TreeController;
     });

@@ -14,9 +14,9 @@ define(['jquery', 'underscore'], function ($, _) {
 
 
     D3SConnector.prototype.initialize = function (language, services) {
-        this.o.language = language;
-        this.o.uid = services.uid;
-        this.o.version = services.version;
+        self.o.language = language;
+        self.o.uid = services.uid;
+        self.o.version = services.version;
     }
 
     D3SConnector.prototype.getFirstLevelData = function (cbJSTree) {
@@ -65,6 +65,7 @@ define(['jquery', 'underscore'], function ($, _) {
             data: JSON.stringify(payload)
         }).success(function (data) {
             if (data) {
+                debugger;
                 cbJSTree(self.parseDataOnLoading(data[0].children || []));
             } else {
                 cbJSTree([]);
@@ -76,13 +77,13 @@ define(['jquery', 'underscore'], function ($, _) {
 
 
     D3SConnector.prototype.takeAllCodelist = function (cbJSTree) {
+        debugger;
 
         var payload = {
-            uid: this.o.services.uid,
-            version: this.o.services.version
+            uid: self.o.uid,
+            version: self.o.version
         };
 
-        var self = this;
         $.ajax({
             url: D3S_CODELIST_URL,
             type: 'POST',
@@ -122,7 +123,7 @@ define(['jquery', 'underscore'], function ($, _) {
         if (this.isNodeALeaf(childObject.children)) {
             return [];
         } else {
-            return this.parseData(childObject.children);
+            return self.parseAllData(childObject.children);
         }
     }
 
@@ -139,6 +140,17 @@ define(['jquery', 'underscore'], function ($, _) {
         return r;
 
     }
+
+
+    D3SConnector.prototype.getNodesBySearch = function(searchString, cbJSTree) {
+
+        var arrayRes  =['122','1622']
+
+        cbJSTree(arrayRes);
+    }
+
+
+
 
     return D3SConnector;
 
