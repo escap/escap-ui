@@ -21,11 +21,11 @@ define(['jquery', 'fx-tree-controller'], function($, Controller) {
 
 
     Starter.prototype.getSelectedCodes = function() {
-
-    }
+        return controller.getSelectedItems(true);
+    };
 
     Starter.prototype.getSelectedLabels = function() {
-
+        return controller.getSelectedItems(false);
     }
 
     Starter.prototype.destroy = function() {

@@ -101,10 +101,20 @@ define(["jquery",
         }
 
 
-        TreeController.prototype.getSelectedItems = function(onlyCodes){
+        TreeController.prototype.getSelectedItems = function(isOnlyCodes){
 
-            for(var i=0;length = on)
-            return adapter.getSelectedNodes();
+            var data =  adapter.getSelectedNodes();
+            var result = [];
+            if(isOnlyCodes) {
+                for (var i = 0, length = data.length; i < length; i++) {
+                    result.push(data[i].id);
+                }
+            }else{
+                for (var i = 0, length = data.length; i < length; i++) {
+                    result.push(data[i].text);
+                }
+            }
+            return result;
         }
 
 
