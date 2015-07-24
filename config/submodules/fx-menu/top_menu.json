@@ -26,6 +26,36 @@
       "label": {
         "EN": "About"
       }
+    },
+    {
+      "attrs":{
+        "id":"statistics"
+      },
+      "type": "dropdown",
+
+      "label":{
+        "EN":"Statistics"
+      } ,
+      "children" : [
+        {
+          "attrs":{
+            "id":"microdata"
+          },
+          "target":"#statistics/microdata",
+          "label":{
+            "EN":"Download microdata"
+          }
+        },
+        {
+          "attrs":{
+            "id":"analysis"
+          },
+          "target":"#statistics/analysis",
+          "label":{
+            "EN":"Customised statistics"
+          }
+        }
+      ]
     }
   ],
   "rightItems": [

@@ -9,6 +9,8 @@ define(function () {
         match('home', 'home#show');
         match('protected', 'protected#show');
         match('about', 'about#show');
+        match('statistics/microdata', 'statistics-microdata#show');
+        match('statistics/analysis', 'statistics-analysis#show');
         match('*anything', '404#show');
     };
 });
