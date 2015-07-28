@@ -1,5 +1,5 @@
 /*global define*/
 define({
-    "title": "Protected",
+    "title": "Data input",
     "text" : "Change me in 118n/root/protected.js"
 });
