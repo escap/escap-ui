@@ -3,10 +3,12 @@
 require([
     './submodules/fenix-ui-common/js/Compiler',
     './submodules/fenix-ui-common/js/paths',
-    './submodules/fenix-ui-menu/js/paths'
-], function (Compiler, Common, Menu) {
+    './submodules/fenix-ui-menu/js/paths',
+    './submodules/fenix-ui-filter/src/js/paths'
+], function (Compiler, Common, Menu, Filter) {
 
     'use strict';
+    console.log(Filter);
 
     var submodules_path = '../../submodules/';
 
@@ -14,9 +16,13 @@ require([
     commonConfig.baseUrl = submodules_path + 'fenix-ui-common/js';
 
     var menuConfig = Menu;
-    menuConfig.baseUrl = submodules_path + '/fenix-ui-menu/js';
+    menuConfig.baseUrl = submodules_path + 'fenix-ui-menu/js';
 
-    Compiler.resolve([commonConfig, Menu],
+    var filterConfig = Filter;
+    filterConfig.baseUrl = submodules_path + 'fenix-ui-filter';
+
+
+    Compiler.resolve([commonConfig, menuConfig, filterConfig],
         {
             placeholders: {"FENIX_CDN": "//fenixrepo.fao.org/cdn"},
 

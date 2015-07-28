@@ -9,6 +9,7 @@ define([
 
     'use strict';
 
+    console.log(FC)
     var AnalysisView = View.extend({
 
         // Automatically render after initialize
@@ -32,7 +33,9 @@ define([
             //update State
             amplify.publish(E.STATE_CHANGE, {menu: 'microdata'});
 
+
         }
+
     });
 
     return AnalysisView;
