@@ -19,7 +19,7 @@ require([
     menuConfig.baseUrl = submodules_path + 'fenix-ui-menu/js';
 
     var filterConfig = Filter;
-    filterConfig.baseUrl = submodules_path + 'fenix-ui-filter';
+    filterConfig.baseUrl = submodules_path + 'fenix-ui-filter/';
 
 
     Compiler.resolve([commonConfig, menuConfig, filterConfig],
