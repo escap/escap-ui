@@ -4,8 +4,11 @@ require([
     './submodules/fenix-ui-common/js/Compiler',
     './submodules/fenix-ui-common/js/paths',
     './submodules/fenix-ui-menu/js/paths',
-    './submodules/fenix-ui-filter/src/js/paths'
-], function (Compiler, Common, Menu, Filter) {
+    './submodules/fenix-ui-filter/src/js/paths',
+    './submodules/fenix-ui-analysis/js/paths',
+    './submodules/fenix-ui-catalog/js/paths'
+
+], function (Compiler, Common, Menu, Filter, Analysis, Catalog) {
 
     'use strict';
     console.log(Filter);
@@ -21,8 +24,15 @@ require([
     var filterConfig = Filter;
     filterConfig.baseUrl = submodules_path + 'fenix-ui-filter/';
 
+    var analysisConfig = Analysis;
+    analysisConfig.baseUrl = submodules_path +'fenix-ui-analysis/js/';
 
-    Compiler.resolve([commonConfig, menuConfig, filterConfig],
+    var catalogConfig = Catalog;
+    catalogConfig.baseUrl = submodules_path +'fenix-ui-catalog/js/';
+
+
+
+    Compiler.resolve([commonConfig, menuConfig, filterConfig, analysisConfig,catalogConfig],
         {
             placeholders: {"FENIX_CDN": "//fenixrepo.fao.org/cdn"},
 

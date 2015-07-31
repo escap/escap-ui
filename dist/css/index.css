@@ -4919,7 +4919,6 @@ button_new_2:before {
 /* Roboto */
 /* Roboto Import */
 /* Roboto Regular */
-
 @font-face {
   font-family: 'Roboto';
   src: url("http://fenixrepo.fao.org/cdn/css/fenix-ui-common/css/fonts/roboto/sources/roboto-reg/roboto_regular/Roboto-Regular-webfont.eot");
@@ -4956,9 +4955,7 @@ button_new_2:before {
   src: url("http://fenixrepo.fao.org/cdn/css/fenix-ui-common/css/fonts/roboto/sources/roboto-reg/roboto_black/Roboto-Black-webfont.eot?#iefix") format("embedded-opentype"), url("http://fenixrepo.fao.org/cdn/css/fenix-ui-common/css/fonts/roboto/sources/roboto-reg/roboto_black/Roboto-Black-webfont.woff") format("woff"), url("http://fenixrepo.fao.org/cdn/css/fenix-ui-common/css/fonts/roboto/sources/roboto-reg/roboto_black/Roboto-Black-webfont.ttf") format("truetype"), url("http://fenixrepo.fao.org/cdn/css/fenix-ui-common/css/fonts/roboto/sources/roboto-reg/roboto_black/Roboto-Black-webfont.svg#RobotoBold") format("svg");
   font-weight: 900;
   font-style: normal; }
-
 /* Roboto Condensed */
-
 @font-face {
   font-family: 'Roboto Condensed';
   src: url("http://fenixrepo.fao.org/cdn/css/fenix-ui-common/css/fonts/roboto/sources/roboto-condensed/roboto_condensed/RobotoCondensed-Regular-webfont.eot");
@@ -7393,5 +7390,10 @@ ul[role="group"] {
 /* Homepage */
 [data-page='home'] .breadcrumb {
   opacity: 0; }
+
+.fx-catalog-modular-form-content {
+  height: 240px !important; }
+  .fx-catalog-modular-form-content .jstree-holder {
+    height: 187px; }
 
 /*# sourceMappingURL=index.css.map */

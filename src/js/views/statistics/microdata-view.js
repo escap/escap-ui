@@ -4,9 +4,15 @@ define([
     'text!templates/statistics/microdata.hbs',
     'i18n!nls/statistics-microdata',
     'fx-filter/start',
+    'config/submodules/fx-filter/Config',
+    'config/Config',
     'config/Events',
-    'amplify'
-], function (View, template, i18nLabels,Filter, E) {
+    'text!templates/filter/surveyComponent.hbs',
+    'text!templates/filter/geoComponent.hbs',
+    'text!templates/filter/populationComponent.hbs',
+    'text!templates/filter/foodComponent.hbs'
+], function (View, template, i18nLabels, Filter, CF, C, E,
+             SurveyTemplate, GeoTemplate, PopulationTemplate, FoodTemplate) {
 
     'use strict';
 
@@ -38,68 +44,106 @@ define([
         },
 
 
-        _test: function() {
+        _test: function () {
 
             var filter;
-            $("#jqxButton").on('click', function () {
+            $("#getValues").on('click', function () {
 //        var ris = fc.getValues([{name: "FirstComponent3"}]);
-              console.log(filter.getValues());
+                console.log(filter.getValues());
             });
 
-            var FILTER_CONTAINER= 'filterContainer';
+            $('#addComponent').on('click', function () {
+                var modd = [{
+                    "containerType": "fluidGridBaseContainer",
+                    "title": "List Test Period",
+                    "components": [
+                        {
+                            "componentType": "timeList-FENIX",
+                            "lang": "EN",
+                            "title": {
+                                "EN": "Time List For Fenix",
+                                "ES": "Time List For Fenix",
+                                "DE": "Time List For Fenix",
+                                "FR": "Time List For Fenix"
+                            },
+                            "name": "periodForFenix",
+                            "component": {
+                                "sourceType": "period",
+                                "defaultsource": [{"from": 1983, "to": 1994}, {"from": 1996, "to": 1998}, {
+                                    "from": 2002,
+                                    "to": 2005
+                                }, {"from": 2007, "to": 2011}]
+                            }
+                        }
+                    ]
+                }];
+                debugger;
+                filter.add(modd);
+
+            })
+
+            var FILTER_CONTAINER = 'fx-analysis-container';
 
 
             var filter = new Filter();
             filter.init({
+
+                component_plugin_dir: "src/js/component_plugin/gift/",
+
                 container: FILTER_CONTAINER,
-                plugin_prefix: '../../../submodules/fenix-ui-filter/',
+                plugin_prefix: CF.PLUGIN_FILTER_COMPONENT_DIRECTORY || CF.PLUGIN_FILTER_COMPONENT_DIRECTORY,
                 layout: 'fluidGrid'
                 //  plugin_subdir: 'FENIX-plugin'
             });
 
-            var modules =[
+            var modules = [
                 {
-                    "containerType":"fluidGridBaseContainer",
-                    "title":"List Test Timelist",
-                    "components":[
+                    "containerType": "fluidGridBaseContainer",
+                    "title": "SURVEY",
+                    "components": [
                         {
-                            "componentType":"timeList-FENIX",
-                            "lang":"EN",
-                            "title":{"EN": "Time List For Fenix",
-                                "ES": "Time List For Fenix",
-                                "DE": "Time List For Fenix",
-                                "FR": "Time List For Fenix"},
-                            "name":"timeListForFenix",
+                            "componentType": "survey-GIFT",
+                            "lang": "EN",
+                            "title": {
+                                "EN": "Survey selectors for GIFT",
+                                "ES": "Survey selectors for GIFT",
+                                "DE": "Survey selectors for GIFT",
+                                "FR": "Survey selectors for GIFT"
+                            },
+                            "name": "surveyGIFT",
+                            "template": {
+                                "overallStructure": SurveyTemplate,
+                                "descriptions": C.FILTER_CONFIG
+                            },
                             "component": {
-                                "source": {
-                                    "uid": "GAUL_ReferenceArea",
-                                    "version": "1.0"
-                                },
-                                "sourceType": "timeList",
-                                "defaultsource":[1986, 2015, 1997, 2000, 2002, 2003, 2005, 2007, 2010]
+                                years: {
+                                    "sourceType": "period",
+                                    "defaultsource": {"from": 1983, "to": 2014}
+                                }
                             }
                         }
-                    ]
-                },
-                {
-                    "containerType":"fluidGridBaseContainer",
-                    "title":"List Test Period",
-                    "components":[
-                        {
-                            "componentType":"timeList-FENIX",
-                            "lang":"EN",
-                            "title":{"EN": "Time List For Fenix",
-                                "ES": "Time List For Fenix",
-                                "DE": "Time List For Fenix",
-                                "FR": "Time List For Fenix"},
-                            "name":"periodForFenix",
-                            "component": {
-                                "sourceType": "period",
-                                "defaultsource":[{"from": 1983, "to": 1994},{"from": 1996, "to": 1998},{"from": 2002, "to": 2005},{"from": 2007, "to": 2011}]
-                            }
-                        }
+
                     ]
                 }
+                /*{
+                 "containerType":"fluidGridBaseContainer",
+                 "title":"List Test Period",
+                 "components":[
+                 {
+                 "componentType":"timeList-FENIX",
+                 "lang":"EN",
+                 "title":{"EN": "Time List For Fenix",
+                 "ES": "Time List For Fenix",
+                 "DE": "Time List For Fenix",
+                 "FR": "Time List For Fenix"},
+                 "name":"periodForFenix",
+                 "component": {
+                 "sourceType": "period",
+                 "defaultsource":[{"from": 1983, "to": 1994},{"from": 1996, "to": 1998},{"from": 2002, "to": 2005},{"from": 2007, "to": 2011}]
+                 }
+                 }
+                 ]
+                 }*/
             ];
 
 

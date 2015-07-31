@@ -9,7 +9,6 @@ define([
 
     'use strict';
 
-    console.log(FC)
     var AnalysisView = View.extend({
 
         // Automatically render after initialize

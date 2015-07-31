@@ -31,7 +31,18 @@ define(function () {
 
             SOCIAL_LINK_FACEBOOK : "https://facebook.com",
             SOCIAL_LINK_TWITTER : "https://twitter.com",
-            SOCIAL_LINK_YOUTUBE : "https://youtube.com"
+            SOCIAL_LINK_YOUTUBE : "https://youtube.com",
+
+            // Filter configuration
+            FILTER_CONFIG: {
+                SURVEY:{
+                    YEARS:"#survey-timerange-container",
+                    ADD_CHARS:"addCharsRadio"
+                },
+                POPULATION:{},
+                GEO:{},
+                FOOD:{}
+            }
 
         };
     });
