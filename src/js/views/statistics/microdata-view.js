@@ -77,9 +77,7 @@ define([
                         }
                     ]
                 }];
-                debugger;
                 filter.add(modd);
-
             })
 
             var FILTER_CONTAINER = 'fx-analysis-container';
@@ -113,7 +111,7 @@ define([
                             "name": "surveyGIFT",
                             "template": {
                                 "overallStructure": SurveyTemplate,
-                                "descriptions": C.FILTER_CONFIG
+                                "descriptions": CF.FILTER_CONFIG
                             },
                             "component": {
                                 years: {
@@ -124,7 +122,39 @@ define([
                         }
 
                     ]
+                },
+                {
+                    "containerType": "fluidGridBaseContainer",
+                    "title": "POPULATION",
+                    "components": [
+                        {
+                            "componentType": "population-GIFT",
+                            "lang": "EN",
+                            "title": {
+                                "EN": "Population selectors for GIFT",
+                                "ES": "Population selectors for GIFT",
+                                "DE": "Population selectors for GIFT",
+                                "FR": "Population selectors for GIFT"
+                            },
+                            "name": "populationGIFT",
+                            "template": {
+                                "overallStructure": PopulationTemplate,
+                                "descriptions": CF.FILTER_CONFIG
+                            },
+                            "component": {
+                                years: {
+                                    "sourceType": "period",
+                                    "defaultsource": {
+                                        YEARS: {from: 0, to: 70},
+                                        MONTHS:{ from:0, to: 840}
+                                    }
+                                }
+                            }
+                        }
+
+                    ]
                 }
+
                 /*{
                  "containerType":"fluidGridBaseContainer",
                  "title":"List Test Period",
