@@ -46,6 +46,10 @@ define([
 
         _test: function () {
 
+            var o = {
+                population_chars_enabled : true
+            }
+
             var filter;
             $("#getValues").on('click', function () {
 //        var ris = fc.getValues([{name: "FirstComponent3"}]);
@@ -142,17 +146,19 @@ define([
                                 "descriptions": CF.FILTER_CONFIG
                             },
                             "component": {
-                                years: {
+                                ageRange: {
                                     "sourceType": "period",
                                     "defaultsource": {
                                         YEARS: {from: 0, to: 70},
                                         MONTHS:{ from:0, to: 840}
                                     }
                                 }
-                            }
+                            },
+                            "events":CF.events
                         }
 
                     ]
+
                 }
 
                 /*{
@@ -176,8 +182,13 @@ define([
                  }*/
             ];
 
-
             filter.add(modules);
+
+
+            amplify.subscribe(CF.events.MODIFY, function(args){
+                console.log('subscribed', args);
+
+            })
         }
 
     });

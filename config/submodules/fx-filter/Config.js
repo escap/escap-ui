@@ -15,7 +15,7 @@ define(function () {
 
             POPULATION:{
                 GENDERS_RADIO_NAME: "popGendersRadio",
-                AGERANGE_TYPE_RADIO_NAME: "popGendersRadio",
+                AGERANGE_TYPE_RADIO_NAME: "popAgeRangeRadio",
                 AGERANGE: "#population-ageRange",
                 CHARACTERISTICS_RADIO_NAME:"popCharsRadio"
             },
@@ -23,6 +23,9 @@ define(function () {
             GEO:{},
 
             FOOD:{}
+        },
+        events:{
+            MODIFY: "fx.filter.gift.population.changed"
         }
 
     };
