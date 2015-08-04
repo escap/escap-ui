@@ -160,26 +160,6 @@ define([
                     ]
 
                 }
-
-                /*{
-                 "containerType":"fluidGridBaseContainer",
-                 "title":"List Test Period",
-                 "components":[
-                 {
-                 "componentType":"timeList-FENIX",
-                 "lang":"EN",
-                 "title":{"EN": "Time List For Fenix",
-                 "ES": "Time List For Fenix",
-                 "DE": "Time List For Fenix",
-                 "FR": "Time List For Fenix"},
-                 "name":"periodForFenix",
-                 "component": {
-                 "sourceType": "period",
-                 "defaultsource":[{"from": 1983, "to": 1994},{"from": 1996, "to": 1998},{"from": 2002, "to": 2005},{"from": 2007, "to": 2011}]
-                 }
-                 }
-                 ]
-                 }*/
             ];
 
             filter.add(modules);
@@ -187,7 +167,24 @@ define([
 
             amplify.subscribe(CF.events.MODIFY, function(args){
                 console.log('subscribed', args);
-
+                var values = filter.getValues().populationGIFT;
+                if(o.population_chars_enabled === false && values.gender === 'female' && (
+                            (values.ageRangeType === 'YEARS' && values.ageRange.period.from >15 )
+                        ||  (values.ageRangeType === 'MONTHS' && values.ageRange.period.from >180 ))){
+                    var radioButtons = $('input[name="' + CF.FILTER_CONFIG.POPULATION.CHARACTERISTICS_RADIO_NAME + '"]:radio');
+                    for(var i= 0,length = radioButtons.length; i<length; i++) {
+                        radioButtons[i].removeAttribute("disabled");
+                    }
+                }
+                else if(o.population_chars_enabled === true && values.gender === 'male' || (
+                    (values.ageRangeType === 'YEARS' && values.ageRange.period.from <15 )
+                    ||  (values.ageRangeType === 'MONTHS' && values.ageRange.period.from <180 ))){
+                    var radioButtons = $('input[name="' +  CF.FILTER_CONFIG.POPULATION.CHARACTERISTICS_RADIO_NAME + '"]:radio');
+                    for(var i= 0,length = radioButtons.length; i<length; i++) {
+                        radioButtons[i].setAttribute('disabled', true);
+                    }
+                    o.population_chars_enabled = false;
+                }
             })
         }
 
