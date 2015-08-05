@@ -8,23 +8,25 @@ define(function () {
         PLUGIN_FILTER_COMPONENT_DIRECTORY: "../../../submodules/fenix-ui-filter/",
         FILTER_CONFIG: {
 
-            SURVEY:{
-                YEARS:"#survey-timerange-container",
-                ADD_CHARS_RADIO_NAME:"addCharsRadio"
+            SURVEY: {
+                YEARS: "#survey-timerange-container",
+                ADD_CHARS_RADIO_NAME: "addCharsRadio"
             },
 
-            POPULATION:{
+            POPULATION: {
                 GENDERS_RADIO_NAME: "popGendersRadio",
                 AGERANGE_TYPE_RADIO_NAME: "popAgeRangeRadio",
                 AGERANGE: "#population-ageRange",
-                CHARACTERISTICS_RADIO_NAME:"popCharsRadio"
+                CHARACTERISTICS_RADIO_NAME: "popCharsRadio"
             },
 
-            GEO:{},
+            GEO: {
+                MAP_ID: "map-filter"
+            },
 
-            FOOD:{}
+            FOOD: {}
         },
-        events:{
+        events: {
             MODIFY: "fx.filter.gift.population.changed"
         }
 

@@ -57,6 +57,15 @@ require([
                     i18n: "{FENIX_CDN}/js/requirejs/plugins/i18n/2.0.4/i18n",
                     text: '{FENIX_CDN}/js/requirejs/plugins/text/2.0.12/text',
                     rsvp: '{FENIX_CDN}/js/rsvp/3.0.17/rsvp',
+                    leaflet:          "{FENIX_CDN}/js/leaflet/0.7.3/leaflet",
+                    test_geo_json :"../../tests/resources/geo_json",
+/*
+                    leaflet_encoded:  "{FENIX_CDN}/js/leaflet/plugins/leaflet.encoded/0.0.5/Polyline.encoded",
+*/
+/*
+                    geojson_decoder:  "{FENIX_CDN}/js/leaflet/plugins/geojson_decode",
+*/
+                    geojson_selector: "{FENIX_CDN}/js/leaflet/plugins/leaflet-geojson-selector/0.2.0/dist/leaflet-geojson-selector.min",
 
                     amplify: '{FENIX_CDN}/js/amplify/1.1.2/amplify.min',
 
@@ -82,7 +91,9 @@ require([
                     },
                     handlebars: {
                         exports: 'Handlebars'
-                    }
+                    },
+                    'geojson_selector': ['leaflet']
+
                 }
                 // For easier development, disable browser caching
                 // Of course, this should be removed in a production environment
