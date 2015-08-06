@@ -57,7 +57,8 @@ define([
             });
 
             $('#addComponent').on('click', function () {
-                var modd = [{
+                var modd = [
+                    {
                     "containerType": "fluidGridBaseContainer",
                     "title": "List Test Period",
                     "components": [
@@ -99,6 +100,38 @@ define([
             });
 
             var modules = [
+                {
+                    "containerType": "fluidGridBaseContainer",
+                    "title": "GEOGRAPHIC",
+                    "components": [
+                        {
+                            "componentType": "geo-GIFT",
+                            "lang": "EN",
+                            "title": {
+                                "EN": "GEO selectors for GIFT",
+                                "ES": "GEO selectors for GIFT",
+                                "DE": "GEO selectors for GIFT",
+                                "FR": "GEO selectors for GIFT"
+                            },
+                            "name": "GEOGift",
+                            "template": {
+                                "overallStructure": GeoTemplate,
+                                "descriptions": CF.FILTER_CONFIG
+                            },
+                            "component": {
+                                ageRange: {
+                                    "sourceType": "period",
+                                    "defaultsource": {
+                                        geoTree: {from: 0, to: 70}
+                                    }
+                                }
+                            },
+                            "events":CF.events
+                        }
+
+                    ]
+
+                },
                 {
                     "containerType": "fluidGridBaseContainer",
                     "title": "SURVEY",
@@ -160,38 +193,7 @@ define([
                     ]
 
                 },
-                {
-                    "containerType": "fluidGridBaseContainer",
-                    "title": "GEOGRAPHIC",
-                    "components": [
-                        {
-                            "componentType": "geo-GIFT",
-                            "lang": "EN",
-                            "title": {
-                                "EN": "GEO selectors for GIFT",
-                                "ES": "GEO selectors for GIFT",
-                                "DE": "GEO selectors for GIFT",
-                                "FR": "GEO selectors for GIFT"
-                            },
-                            "name": "GEOGift",
-                            "template": {
-                                "overallStructure": GeoTemplate,
-                                "descriptions": CF.FILTER_CONFIG
-                            },
-                            "component": {
-                                ageRange: {
-                                    "sourceType": "period",
-                                    "defaultsource": {
-                                        geoTree: {from: 0, to: 70}
-                                    }
-                                }
-                            },
-                            "events":CF.events
-                        }
 
-                    ]
-
-                }
             ];
 
             filter.add(modules);

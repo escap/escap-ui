@@ -59,13 +59,17 @@ require([
                     rsvp: '{FENIX_CDN}/js/rsvp/3.0.17/rsvp',
                     leaflet:          "{FENIX_CDN}/js/leaflet/0.7.3/leaflet",
                     test_geo_json :"../../tests/resources/geo_json",
+                    list_filter: "lib/list.min",
 /*
                     leaflet_encoded:  "{FENIX_CDN}/js/leaflet/plugins/leaflet.encoded/0.0.5/Polyline.encoded",
 */
 /*
                     geojson_decoder:  "{FENIX_CDN}/js/leaflet/plugins/geojson_decode",
 */
+/*
                     geojson_selector: "{FENIX_CDN}/js/leaflet/plugins/leaflet-geojson-selector/0.2.0/dist/leaflet-geojson-selector.min",
+*/
+                    geojson_selector : "lib/provaSelector",
 
                     amplify: '{FENIX_CDN}/js/amplify/1.1.2/amplify.min',
 
