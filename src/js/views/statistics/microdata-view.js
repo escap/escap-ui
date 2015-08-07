@@ -220,6 +220,17 @@ define([
                     o.population_chars_enabled = false;
                 }
             })
+        },
+
+        unbindEventListeners: function () {
+
+        },
+
+        dispose: function () {
+
+            this.unbindEventListeners();
+
+            View.prototype.dispose.call(this, arguments);
         }
 
     });

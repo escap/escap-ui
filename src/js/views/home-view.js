@@ -4,16 +4,26 @@ define([
     'config/Config',
     'config/Queries',
     'config/Events',
-    'text!templates/home/home.hbs',
     'i18n!nls/home',
+    'text!templates/home/home.hbs',
+    'text!templates/home/database_update_item.hbs',
+    'text!templates/home/document_item.hbs',
+    'text!json/home/database_updates.json',
+    'text!json/home/documents.json',
     'handlebars',
     'fx-common/WDSClient',
     'amplify'
-], function (View, C, Q, E, template, i18nLabels, Handlebars, WDSClient) {
+], function (View, C, Q, E, i18nLabels, template,
+             dbUpdatesTemplate, documentTemplate,
+             dbUpdatesModels, documentsModels,
+             Handlebars, WDSClient) {
 
     'use strict';
 
-    var s = { };
+    var s = {
+        DB_UPDATES_LIST: '#db-updates-list',
+        DOCUMENTS_LIST: '#documents-list'
+    };
 
     var HomeView = View.extend({
 
@@ -43,16 +53,46 @@ define([
             this.configurePage();
         },
 
-        initVariables: function () { },
+        initVariables: function () {
+            this.$dbUpdatesList = this.$el.find(s.DB_UPDATES_LIST);
+
+            //document list
+            this.$documentsList = this.$el.find(s.DOCUMENTS_LIST);
+
+        },
 
         initComponents: function () {
 
-            this.WDSClient = new WDSClient({
-                serviceUrl: C.WDS_URL,
-                datasource: C.DB_NAME,
-                outputType : C.WDS_OUTPUT_TYPE
-            });
+            this._initDatabaseUpdatesList();
+            this._initDocumentsLinkList();
+
+            /*   this.WDSClient = new WDSClient({
+             serviceUrl: C.WDS_URL,
+             datasource: C.DB_NAME,
+             outputType : C.WDS_OUTPUT_TYPE
+             });*/
         },
+        //Page section initialization
+        _initDatabaseUpdatesList: function() {
+            _.each(JSON.parse(dbUpdatesModels), _.bind(this.printDatabaseUpdate, this));
+
+        },
+
+        printDatabaseUpdate: function (u) {
+
+            var template = Handlebars.compile(dbUpdatesTemplate);
+            this.$dbUpdatesList.append(template(u));
+        },
+
+        _initDocumentsLinkList: function () {
+            _.each(JSON.parse(documentsModels), _.bind(this.printDocuments, this));
+        },
+
+        printDocuments: function (d) {
+            var template = Handlebars.compile(documentTemplate);
+            this.$documentsList.append(template(d));
+        },
+
 
         configurePage: function () {
 

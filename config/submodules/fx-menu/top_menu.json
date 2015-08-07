@@ -11,15 +11,6 @@
     },
     {
       "attrs": {
-        "id": "protected"
-      },
-      "target": "#protected",
-      "label": {
-        "EN": "Protected"
-      }
-    },
-    {
-      "attrs": {
         "id": "about"
       },
       "target": "#about",
@@ -56,7 +47,18 @@
           }
         }
       ]
+    },
+
+    {
+      "attrs": {
+        "id": "protected"
+      },
+      "target": "#protected",
+      "label": {
+        "EN": "Protected"
+      }
     }
+
   ],
   "rightItems": [
     {

@@ -48,6 +48,7 @@ require([
 
                 // Specify the paths of vendor libraries
                 paths: {
+                    // utility libraries
                     bootstrap: "{FENIX_CDN}/js/bootstrap/3.3.4/js/bootstrap.min",
                     underscore: "{FENIX_CDN}/js/underscore/1.7.0/underscore.min",
                     backbone: "{FENIX_CDN}/js/backbone/1.1.2/backbone.min",
@@ -55,22 +56,17 @@ require([
                     chaplin: "{FENIX_CDN}/js/chaplin/1.0.1/chaplin.min",
                     domReady: "{FENIX_CDN}/js/requirejs/plugins/domready/2.0.1/domReady",
                     i18n: "{FENIX_CDN}/js/requirejs/plugins/i18n/2.0.4/i18n",
+                    amplify: '{FENIX_CDN}/js/amplify/1.1.2/amplify.min',
                     text: '{FENIX_CDN}/js/requirejs/plugins/text/2.0.12/text',
                     rsvp: '{FENIX_CDN}/js/rsvp/3.0.17/rsvp',
+                    swiper: "{FENIX_CDN}/js/swiper/2.7.5/dist/idangerous.swiper.min",
+
+                    // map libraries
                     leaflet:          "{FENIX_CDN}/js/leaflet/0.7.3/leaflet",
                     test_geo_json :"../../tests/resources/geo_json",
-/*
-                    leaflet_encoded:  "{FENIX_CDN}/js/leaflet/plugins/leaflet.encoded/0.0.5/Polyline.encoded",
-*/
-/*
-                    geojson_decoder:  "{FENIX_CDN}/js/leaflet/plugins/geojson_decode",
-*/
-
                     geojson_selector: "{FENIX_CDN}/js/leaflet/plugins/leaflet-geojson-selector/0.2.0/dist/leaflet-geojson-selector.min",
 
-
-                    amplify: '{FENIX_CDN}/js/amplify/1.1.2/amplify.min',
-
+                    // conf path
                     nls: "../../i18n",
                     config: "../../config",
                     json: "../../json",
@@ -94,6 +90,7 @@ require([
                     handlebars: {
                         exports: 'Handlebars'
                     },
+
                     'geojson_selector': ['leaflet']
 
                 }

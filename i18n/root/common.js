@@ -1,7 +1,7 @@
 /*global define*/
 define({
 
-    "project_name" : "FENIX",
+    "project_name" : "FAO | WHO GIFT",
 
     // Btn and search
     "btn_go": "View Data",

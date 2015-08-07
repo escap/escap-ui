@@ -32,6 +32,17 @@ define([
             //update State
             amplify.publish(E.STATE_CHANGE, {menu: 'about'});
 
+        },
+
+        unbindEventListeners: function () {
+
+        },
+
+        dispose: function () {
+
+            this.unbindEventListeners();
+
+            View.prototype.dispose.call(this, arguments);
         }
     });
 

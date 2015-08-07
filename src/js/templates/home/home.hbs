@@ -1,7 +1,89 @@
+<h1>{{home_welcome_title}}</h1>
+<hr>
 <div class="row">
-    <div class="col-sm-4">
-        <h1> {{ home_welcome_title }}</h1>
-        <p> {{ text }}</p>
-        <p> {{ authentication_credentials }}</p>
+
+    <!-- Slider section-->
+    <div class="col-xs-6">
+        <section class="slider-container gift-containers-home">
+            <div class="slider-header gift-headers-home"><h2 class="slider-header title">{{slider_title}}</h2></div>
+            <div class="slider-holder gift-holders-home"></div>
+            <div class="slider-footer gift-footer-home"></div>
+        </section>
+    </div>
+
+    <!-- Fast link section-->
+    <div class="col-xs-6">
+        <section class="fast-link-container gift-containers-home">
+            <div class="fast-link-header gift-headers-home"><h2 class="slider-header title">{{fast_link_title}}</h2>
+            </div>
+            <div class="fast-link-holder gift-holders-home">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="{{  link_food_consumption }}"
+                           target="_blank"><span> {{  title_food_consumption }}</span></a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="{{  link_food_safety }}"
+                           target="_blank"><span> {{  title_food_safety }}</span></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="{{  link_food_nutrition }}"
+                           target="_blank"><span> {{  title_food_nutrition }}</span></a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="{{  link_food_environment }}"
+                           target="_blank"><span> {{  title_food_environment }}</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="fast-link-footer gift-footer-home"></div>
+        </section>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-xs-6">
+        <!-- Db updates section -->
+        <section class="db-updates-container gift-containers-home">
+            <div class="db-updates-header gift-headers-home">
+                <h2 class="db-updates-header title">{{database_update_title}}</h2>
+            </div>
+            <div class="db-updates-list-holder gift-holders-home">
+                <ul id="db-updates-list" class="db-updates-list"></ul>
+            </div>
+            <div class="db-updates-list-footer gift-footer-home"></div>
+        </section>
+    </div>
+
+    <div class="col-xs-6">
+        <!-- Contacts section -->
+        <section class="contacts-info-container gift-containers-home">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="contacts-collaborations-container">
+                        <div class="contacts-collaborations-header">
+                            <h2 class="contacts-collaborations-header title">{{contacts_collaborations_title}}</h2>
+
+                        </div>
+                        <div class="contacts-collaborations-holder"></div>
+                        <div class="contacts-collaborations-footer"></div>
+                    </div>
+                </div>
+
+                <div class="col-xs-6">
+                    <div class="contacts-people-container">
+                        <div class="contacts-people-header">
+                            <h2 class="contacts-people-header title">{{contacts_people_title}}</h2>
+                        </div>
+                        <div class="contacts-people-holder"></div>
+                        <div class="contacts-people-footer"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+

@@ -7455,9 +7455,45 @@ ul[role="group"] {
 [data-page='home'] .breadcrumb {
   opacity: 0; }
 
+.db-updates-list-holder {
+  height: 400px;
+  overflow-y: scroll; }
+
+.db-updates-list {
+  list-style: none;
+  padding-left: 0;
+  padding-right: 15px; }
+  .db-updates-list li {
+    position: relative;
+    padding: 15px 0 15px 70px;
+    border-bottom: 1px solid #cccccc; }
+    .db-updates-list li:last-child {
+      border-bottom-color: transparent; }
+    .db-updates-list li h3 {
+      margin: 0;
+      color: #666666; }
+    .db-updates-list li .db-update-ico {
+      position: absolute;
+      left: 0;
+      width: 60px;
+      text-align: center;
+      font-size: 45px; }
+    .db-updates-list li .db-update-country {
+      font: normal normal 300 11px/normal "Roboto";
+      color: #999999; }
+    .db-updates-list li .db-update-date {
+      font: normal normal 300 11px/normal "Roboto";
+      color: #2395ab; }
+    .db-updates-list li .db-update-link {
+      font: normal normal 300 11px/normal "Roboto";
+      color: #666666; }
+
 .fx-catalog-modular-form-content {
   height: 240px !important; }
   .fx-catalog-modular-form-content .jstree-holder {
     height: 187px; }
+  .fx-catalog-modular-form-content #db-updates-list {
+    height: 400px;
+    overflow-y: scroll; }
 
 /*# sourceMappingURL=index.css.map */

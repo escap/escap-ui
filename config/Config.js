@@ -25,7 +25,7 @@ define(function () {
             TOP_MENU_SHOW_BREADCRUMB_HOME : true,
             TOP_MENU_SHOW_FOOTER: true,
             TOP_MENU_AUTH_MODE_HIDDEN_ITEMS: ['login'],
-            TOP_MENU_PUBLIC_MODE_HIDDEN_ITEMS :['protected', 'logout'],
+            TOP_MENU_PUBLIC_MODE_HIDDEN_ITEMS :['protected','statistics','microdata','analysis', 'logout'],
 
             SECURITY_NOT_AUTHORIZED_REDIRECTION_LINK : "home",
 

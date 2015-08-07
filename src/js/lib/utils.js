@@ -36,7 +36,11 @@ define([
 
         var lang = requirejs.s.contexts._.config.i18n.locale;
 
-        return keyword[lang.toUpperCase()];
+        if(keyword && keyword[lang.toUpperCase()]){
+            return keyword[lang.toUpperCase()];
+        }else{
+            return "";
+        }
     });
 
     utils.getLabel = function (obj) {

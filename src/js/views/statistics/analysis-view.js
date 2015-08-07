@@ -30,9 +30,21 @@ define([
             View.prototype.attach.call(this, arguments);
 
             //update State
-            amplify.publish(E.STATE_CHANGE, {menu: 'microdata'});
+            amplify.publish(E.STATE_CHANGE, {menu: 'analysis'});
 
 
+        },
+
+
+        unbindEventListeners: function () {
+
+        },
+
+        dispose: function () {
+
+            this.unbindEventListeners();
+
+            View.prototype.dispose.call(this, arguments);
         }
 
     });
