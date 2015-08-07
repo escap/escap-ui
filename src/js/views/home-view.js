@@ -12,7 +12,7 @@ define([
     'text!json/home/documents.json',
     'handlebars',
     'fx-common/WDSClient',
-    'amplify'
+    'amplify','swiper'
 ], function (View, C, Q, E, i18nLabels, template,
              dbUpdatesTemplate, documentTemplate,
              dbUpdatesModels, documentsModels,
@@ -51,6 +51,27 @@ define([
             this.bindEventListeners();
 
             this.configurePage();
+
+            var swiperHigh = $('#afo-high-wrapper').swiper({
+                loop: true,
+                simulateTouch: false,
+                onSwiperCreated: updateMainSwiperIndex,
+                onSlideChangeEnd: updateMainSwiperIndex,
+                autoplay: 5000
+            });
+            $('.swipe-high-prev').on('click', function(e) {
+                e.preventDefault();
+                swiperHigh.swipePrev();
+            });
+            $('.swipe-high-next').on('click', function(e) {
+                e.preventDefault();
+                swiperHigh.swipeNext();
+            });
+
+            function updateMainSwiperIndex(swiper) {
+                var s = swiper || swiperHigh;
+                $('.hp-main-swiper-index').html('<span class="swiper-index"><span class="swiper-index-active">'+ (s.activeLoopIndex + 1)+'</span><span class="swiper-index-total"> | '+ (s.slides.length - (s.loopedSlides*2) )+'</span></span>' );
+            }
         },
 
         initVariables: function () {
