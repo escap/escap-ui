@@ -21,7 +21,12 @@ define(function () {
             },
 
             GEO: {
-                MAP_ID: "map-filter"
+                MAP_ID: "map-container-donwload-microdata",
+                SEARCH_INPUT_CLASS:"search",
+                LIST_COUNTRIES_CLASS:"list-countries",
+                ITEM_LIST_CLASS:"list-item",
+                GEOJSON_LIST_GROUP_CLASS:"geojson-list-group",
+                SELECTOR_LIST_FILTER_CLASS:"list-countries-container"
             },
 
             FOOD: {}
