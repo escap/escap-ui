@@ -23,7 +23,7 @@ define([
     var s = {
         DB_UPDATES_LIST: '#db-updates-list',
         DOCUMENTS_LIST: '#documents-list',
-        news_ID : '#gift-news'
+        NEWS_ID : '#gift-news'
     };
 
     var HomeView = View.extend({
@@ -52,6 +52,8 @@ define([
             this.bindEventListeners();
 
             this.configurePage();
+
+            console.log(s.NEWS_ID)
             var bannerSwiper = new Swiper(s.NEWS_ID,{
                 keyboardControl: false,
                 autoplay: 5000,
