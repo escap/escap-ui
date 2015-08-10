@@ -103,6 +103,59 @@ define([
             var modules = [
                 {
                     "containerType": "fluidGridBaseContainer",
+                    "title": "FOOD",
+                    "components": [
+                        {
+                            "componentType": "food-GIFT",
+                            "lang": "EN",
+                            "title": {
+                                "EN": "By single food categories",
+                                "ES": "FOOD selectors for GIFT",
+                                "DE": "FOOD selectors for GIFT",
+                                "FR": "GEO selectors for GIFT"
+                            },
+                            "name": "FOODGift",
+                            "template": {
+                                "overallStructure": FoodTemplate,
+                                "descriptions": CF.FILTER_CONFIG,
+                            },
+                            "component": {
+                             source:{
+                                 uid: "GAUL",
+                                 version: 2014
+                             }
+                            },
+                            "events":CF.events
+                        },
+                        {
+                            "componentType": "food-GIFT",
+                            "lang": "EN",
+                            "title": {
+                                "EN": "By aggregated food categories",
+                                "ES": "FOOD selectors for GIFT",
+                                "DE": "FOOD selectors for GIFT",
+                                "FR": "GEO selectors for GIFT"
+                            },
+                            "name": "FOODGift",
+                            "template": {
+                                "overallStructure": FoodTemplate,
+                                "descriptions": CF.FILTER_CONFIG,
+                            },
+                            "component": {
+                                source:{
+                                    uid: "GAUL",
+                                    version: 2014
+                                }
+                            },
+                            "events":CF.events
+                        }
+
+
+                    ]
+
+                },
+                {
+                    "containerType": "fluidGridBaseContainer",
                     "title": "GEOGRAPHIC",
                     "components": [
                         {
