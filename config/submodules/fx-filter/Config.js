@@ -26,6 +26,7 @@ define(function () {
                 LIST_COUNTRIES_CLASS:"list-countries",
                 ITEM_LIST_CLASS:"list-item",
                 GEOJSON_LIST_GROUP_CLASS:"geojson-list-group",
+                GEOJSON_LIST_ITEM_CLASS:"geojson-list-item",
                 SELECTOR_LIST_FILTER_CLASS:"list-countries-container"
             },
 
