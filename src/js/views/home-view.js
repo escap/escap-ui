@@ -51,8 +51,8 @@ define([
             this.bindEventListeners();
 
             this.configurePage();
-
-            var swiperHigh = $('#afo-high-wrapper').swiper({
+/*
+            var swiperHigh = $('#gift-high-wrapper').swiper({
                 loop: true,
                 simulateTouch: false,
                 onSwiperCreated: updateMainSwiperIndex,
@@ -71,7 +71,7 @@ define([
             function updateMainSwiperIndex(swiper) {
                 var s = swiper || swiperHigh;
                 $('.hp-main-swiper-index').html('<span class="swiper-index"><span class="swiper-index-active">'+ (s.activeLoopIndex + 1)+'</span><span class="swiper-index-total"> | '+ (s.slides.length - (s.loopedSlides*2) )+'</span></span>' );
-            }
+            }*/
         },
 
         initVariables: function () {
