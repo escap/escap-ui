@@ -10,9 +10,10 @@ define([
     'text!templates/filter/surveyComponent.hbs',
     'text!templates/filter/geoComponent.hbs',
     'text!templates/filter/populationComponent.hbs',
-    'text!templates/filter/foodComponent.hbs'
+    'text!templates/filter/foodComponent.hbs',
+    'text!json/filter/geoSelector_leafletStyle.json'
 ], function (View, template, i18nLabels, Filter, CF, C, E,
-             SurveyTemplate, GeoTemplate, PopulationTemplate, FoodTemplate) {
+             SurveyTemplate, GeoTemplate, PopulationTemplate, FoodTemplate, GEOJSONStyle) {
 
     'use strict';
 
@@ -116,7 +117,8 @@ define([
                             "name": "GEOGift",
                             "template": {
                                 "overallStructure": GeoTemplate,
-                                "descriptions": CF.FILTER_CONFIG
+                                "descriptions": CF.FILTER_CONFIG,
+                                "style" : JSON.parse(GEOJSONStyle)
                             },
                             "component": {
                                 ageRange: {
