@@ -11,9 +11,10 @@ define([
     'text!templates/filter/geoComponent.hbs',
     'text!templates/filter/populationComponent.hbs',
     'text!templates/filter/foodComponent.hbs',
-    'text!json/filter/geoSelector_leafletStyle.json'
+    'text!json/filter/geoSelector_leafletStyle.json',
+    'handlebars'
 ], function (View, template, i18nLabels, Filter, CF, C, E,
-             SurveyTemplate, GeoTemplate, PopulationTemplate, FoodTemplate, GEOJSONStyle) {
+             SurveyTemplate, GeoTemplate, PopulationTemplate, FoodTemplate, GEOJSONStyle,HandleBars) {
 
     'use strict';
 
@@ -88,6 +89,8 @@ define([
 
             var FILTER_CONTAINER = 'fx-analysis-container';
 
+            var self = this;
+
 
             var filter = new Filter();
             filter.init({
@@ -116,8 +119,8 @@ define([
                             },
                             "name": "FOODGift",
                             "template": {
-                                "overallStructure": FoodTemplate,
-                                "descriptions": CF.FILTER_CONFIG,
+                                "overallStructure": self._compileTemplate(),
+                                "descriptions": CF.FILTER_CONFIG
                             },
                             "component": {
                              source:{
@@ -286,6 +289,10 @@ define([
             this.unbindEventListeners();
 
             View.prototype.dispose.call(this, arguments);
+        },
+
+        _compileTemplate: function (u, template) {
+           return Handlebars.compile(template);
         }
 
     });

@@ -11,7 +11,6 @@ require([
 ], function (Compiler, Common, Menu, Filter, Analysis, Catalog) {
 
     'use strict';
-    console.log(Filter);
 
     var submodules_path = '../../submodules/';
 

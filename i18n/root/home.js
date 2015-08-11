@@ -23,21 +23,25 @@ define([
         database_update_title : "Database updates",
 
         contacts_collaborations_title: "In collaboration with",
-        contacts_people_title :"Contact us",
+
 
         // slider news
-        title_header_news:"News",
-        title_slider_news:"News for gift",
-        subtitle_slider_news:"These are the news",
+        home_news_header : "News 1",
+        home_news_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pretium ligula ut eros condimentum malesuada.",
+        home_news_link_url:"http://www.google.com",
+        home_news_link_label :"LEARN MORE",
 
-        title_header_news_1:"News 1",
-        title_slider_news_1:"News for gift 1",
-        subtitle_slider_news_1:"These are the news 1",
-
-        title_header_news_2:"News 2",
-        title_slider_news_2:"News for gift 2",
-        subtitle_slider_news_2:"hese are the news 2"
-
+        // contacts
+        contacts_people_title :"Contact us",
+        contacts_title: "FAO NUTRITION DIVISION",
+        contacts_street_place : "Headquarters",
+        contacts_street_first :"Viale delle Terme di Caracalla",
+        contacts_street_second: "00153 Rome, Italy",
+        contacts_street_phone :"Tel:(+39) 06 57051",
+        contacts_street_mail :"e-mail：FAO-HQ@fao.org",
+        contacts_street_general_media_title :"General media inquiries",
+        contacts_street_general_media_phone :"Tel: (+39) 06 570 53625",
+        contacts_street_general_media_mail :"e-mail: FAO-Newsroom@fao.org"
 
     });
 
