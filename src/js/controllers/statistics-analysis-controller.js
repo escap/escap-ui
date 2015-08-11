@@ -5,7 +5,6 @@ define([
     'config/Events',
     'controllers/base/controller',
     'views/statistics/analysis-view',
-    'views/statistics/microdata-view',
     'globals/AuthManager',
     'rsvp'
 ], function (Chaplin, _, E, Controller, View, AuthManager, RSVP) {

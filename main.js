@@ -59,7 +59,7 @@ require([
                     amplify: '{FENIX_CDN}/js/amplify/1.1.2/amplify.min',
                     text: '{FENIX_CDN}/js/requirejs/plugins/text/2.0.12/text',
                     rsvp: '{FENIX_CDN}/js/rsvp/3.0.17/rsvp',
-                    swiper: "{FENIX_CDN}/js/swiper/2.7.5/dist/idangerous.swiper.min",
+                    swiper: "{FENIX_CDN}/js/swiper/3.0.7/dist/js/swiper.min",
 
                     // map libraries
                     leaflet:          "{FENIX_CDN}/js/leaflet/0.7.3/leaflet",
