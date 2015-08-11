@@ -15,18 +15,18 @@ $standard-text : normal normal 300 $standard-text-size/normal 'Roboto';
 $standard-text-bold : normal normal 500 14px/normal 'Roboto';
 $standard-text-big : normal normal 300 16px/normal 'Roboto';
 
-$fx-text-h1: normal normal 300 18px/normal 'Roboto';
-$fx-text-h2: normal normal 300 14px/normal 'Roboto';
-$fx-text-h3: normal normal 500 12px/normal 'Roboto';
+$fx-text-h1: normal normal 100 26px/normal 'Roboto';
+$fx-text-h2: normal normal 100 21px/normal 'Roboto';
+$fx-text-h3: normal normal 300 13px/normal 'Roboto';
 $fx-text-h4: normal normal 300 11px/normal 'Roboto';
-
 
 $fx-text-smalltitle-normal: normal normal 400 10px/normal 'Roboto';
 $fx-text-smalltitle-bold: normal normal 700 10px/normal 'Roboto';
 
 // Fenix Colors
 $fenix-standard-blue: rgba(53, 166, 220, 1);
-$fx-cool-blue: #2395ab;
+$fx-cool-blue: #e2c942;
+$fx-cool-blue-alt: #2f9a8f;
 
 
 $fx-secondary-color: desaturate( $fx-cool-blue, 50% );
@@ -37,7 +37,7 @@ $fx-main-color-darker: darken($fx-cool-blue, 20%); // Ideal for hovers
 
 
 
-$fenix-text: #666666;
+$fenix-text: #333;
 $fenix-secondary-text: #999999;
 
 $fenix-light-gray: #dddddd;
@@ -48,7 +48,7 @@ $light-purple: #EEEEFF;
 $light-brown: #f3efe0;
 
 $box-bg: #ededed;
-$superlight-gray: #f2f2f2;
+$superlight-gray: #ececec;
 
 $buttons: #2ab896;
 

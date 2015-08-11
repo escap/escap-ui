@@ -1,30 +1,24 @@
 <h1>{{home_welcome_title}}</h1>
-<hr>
+
 <div class="row">
 
     <!-- Slider section-->
     <div class="col-sm-6">
-        <section class="slider-container gift-containers-home">
-            <div class="slider-header gift-headers-home"><h2 class="slider-header title">{{slider_title}}</h2></div>
-            <div class="slider-holder gift-holders-home">
+        <section class="gift-containers-home">
+            <!--<div class="slider-header gift-headers-home"><h2 class="slider-header title">{{slider_title}}</h2></div>-->
 
-                <div class="swiper-header-container">
-                    <!--<div class="events-info">-->
-                        <!--<p>10/08/2015</p>-->
-                        <!--<h2>FAO/WHO Global Individual Foodconsumption</h2>-->
-                        <!--<span>This is the news</span><br>-->
-                        <!--<a class="btn btn-default" href="#" role="button">View details »</a>-->
+            <div class="home-news-container">
 
-                    <!--</div>-->
-
-                    <div id='gift-news' class="swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide home-event red-slide"><img src="src/images/slider-home-1.jpg" class="img-responsive"></div>
-                            <div class="swiper-slide home-event red-slide"><img src="src/images/slider-home-2.jpg" class="img-responsive"></div>
-                            <div class="swiper-slide home-event red-slide"><img src="src/images/slider-home-3.jpg" class="img-responsive"></div>
-                        </div>
-                    </div>
+                <div class="home-news-header">
+                    <h1>NEWS 1</h1>
                 </div>
+                <div class="home-news-holder">
+                    <p class="truncate-multi">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pretium ligula ut eros condimentum malesuada.</p>
+                </div>
+                <div class="home-news-footer">
+                    <a href="#">LEARN MORE</a>
+                </div>
+
 
 
 
@@ -36,27 +30,27 @@
     <!-- Fast link section-->
     <div class="col-sm-6">
         <section class="fast-link-container gift-containers-home">
-            <div class="fast-link-header gift-headers-home"><h2 class="slider-header title">{{fast_link_title}}</h2>
+            <div class="fast-link-header gift-headers-home"><h3 class="slider-header title"><span class="icojam_flash2"></span> {{fast_link_title}}</h3>
             </div>
             <div class="fast-link-holder gift-holders-home">
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-sm-6 home-tiles food-cons">
                         <a href="{{  link_food_consumption }}"
-                           target="_blank"><span> {{  title_food_consumption }}</span></a>
+                           target="_blank"><h2> <span class="icojam_plate_1"> </span><br> {{  title_food_consumption }}</h2></a>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-sm-6  home-tiles food-safe">
                         <a href="{{  link_food_safety }}"
-                           target="_blank"><span> {{  title_food_safety }}</span></a>
+                           target="_blank"><h2> <span class="icojam_drugs"></span> <br> {{  title_food_safety }}</h2></a>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-sm-6  home-tiles food-nutr">
                         <a href="{{  link_food_nutrition }}"
-                           target="_blank"><span> {{  title_food_nutrition }}</span></a>
+                           target="_blank"><h2><span class="icojam_lips"></span> <br> {{  title_food_nutrition }}</h2></a>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-sm-6  home-tiles food-envi ">
                         <a href="{{  link_food_environment }}"
-                           target="_blank"><span> {{  title_food_environment }}</span></a>
+                           target="_blank" class="coming"><h2> <span class="icojam_geography_globe"></span> <br> {{  title_food_environment }}</h2></a>
                     </div>
                 </div>
             </div>
@@ -65,12 +59,14 @@
     </div>
 </div>
 
+<hr>
+
 <div class="row">
-    <div class="col-xs-6">
+    <div class="col-sm-6">
         <!-- Db updates section -->
         <section class="db-updates-container gift-containers-home">
             <div class="db-updates-header gift-headers-home">
-                <h2 class="db-updates-header title">{{database_update_title}}</h2>
+                <h3 class="title">{{database_update_title}}</h3>
             </div>
             <div class="db-updates-list-holder gift-holders-home">
                 <ul id="db-updates-list" class="db-updates-list"></ul>
@@ -79,27 +75,70 @@
         </section>
     </div>
 
-    <div class="col-xs-6">
+    <div class="col-sm-6">
         <!-- Contacts section -->
         <section class="contacts-info-container gift-containers-home">
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-sm-6">
                     <div class="contacts-collaborations-container">
                         <div class="contacts-collaborations-header">
-                            <h2 class="contacts-collaborations-header title">{{contacts_collaborations_title}}</h2>
+                            <h3 class="contacts-collaborations-header title">{{contacts_collaborations_title}}</h3>
 
                         </div>
-                        <div class="contacts-collaborations-holder"></div>
+                        <div class="contacts-collaborations-holder">
+                            <div class="slider-holder gift-holders-home">
+
+                                <div class="swiper-header-container">
+                                    <!--<div class="events-info">-->
+                                    <!--<p>10/08/2015</p>-->
+                                    <!--<h2>FAO/WHO Global Individual Foodconsumption</h2>-->
+                                    <!--<span>This is the news</span><br>-->
+                                    <!--<a class="btn btn-default" href="#" role="button">View details »</a>-->
+
+                                    <!--</div>-->
+
+                                    <div id='gift-news' class="swiper-container">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide home-event red-slide"><img src="src/images/efsa.jpg" ></div>
+                                            <div class="swiper-slide home-event red-slide"><img src="src/images/efsa.jpg" ></div>
+                                            <div class="swiper-slide home-event red-slide"><img src="src/images/efsa.jpg" ></div>
+                                        </div>
+                                        <!--&lt;!&ndash; Add Pagination &ndash;&gt;-->
+                                        <!--<div class="swiper-pagination"></div>-->
+                                        <!--&lt;!&ndash; Add Arrows &ndash;&gt;-->
+                                        <!--<div class="swiper-button-next"></div>-->
+                                        <!--<div class="swiper-button-prev"></div>-->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                         <div class="contacts-collaborations-footer"></div>
                     </div>
                 </div>
 
-                <div class="col-xs-6">
+                <div class="col-sm-6">
                     <div class="contacts-people-container">
                         <div class="contacts-people-header">
-                            <h2 class="contacts-people-header title">{{contacts_people_title}}</h2>
+                            <h3 class="contacts-people-header title">{{contacts_people_title}}</h3>
                         </div>
-                        <div class="contacts-people-holder"></div>
+                        <div class="contacts-people-holder">
+                            <h3>FAO NUTRITION DIVISION</h3>
+                            <p>Viale delle Terme di Caracalla<br>
+                            00153 Rome, Italy</p>
+
+
+                            <p>Headquarters<br>
+                            Viale delle Terme di Caracalla<br>
+                            00153 Rome, Italy<br>
+                            Tel:(+39) 06 57051<br>
+                            e-mail：FAO-HQ@fao.org</p>
+
+                            <p>General media inquiries<br>
+                            Tel: (+39) 06 570 53625<br>
+                            e-mail: FAO-Newsroom@fao.org</p>
+
+                        </div>
                         <div class="contacts-people-footer"></div>
                     </div>
                 </div>
@@ -107,5 +146,4 @@
         </section>
     </div>
 </div>
-
-
+<br><br><br><br>

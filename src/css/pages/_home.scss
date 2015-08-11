@@ -6,10 +6,28 @@
   }
 }
 
-.db-updates-list-holder {
-  height: 400px;
-  overflow-y: scroll;
+.db-updates-container{
+  border: 1px solid $fenix-light-hr;
+
+  .db-updates-header{
+    padding: 5px 10px;
+    background-color: $superlight-gray;
+  }
+
+  .title{
+    margin: 0;
+
+  }
+
+  .db-updates-list-holder {
+    height: 300px; /* Just to be similar to the news height (including the db header) */
+    overflow-y: scroll;
+
+  }
+
 }
+
+
 
 .db-updates-list {
   list-style: none;
@@ -45,7 +63,7 @@
 
     .db-update-date {
       font: $fx-text-h4;
-      color: $fx-cool-blue;
+      color: $fx-cool-blue-alt;
     }
 
     .db-update-link {
@@ -57,73 +75,152 @@
 
 }
 
-/* Highlights */
-#gift-high-swiper-container-wrapper {
-  width: 100%;
-  height: 389px;
-  position: relative; }
-#gift-high-swiper-container-wrapper .swiper-slide {
-  width: 100%;
-  height: 340px; }
-#gift-high-swiper-container-wrapper .gift-slider-content {
-  height: 100%;
-  min-width: 250px;
-  width: 35%;
-  padding: 35px;
-  background-color: rgba(55, 53, 53, 0.7); }
-#gift-high-swiper-container-wrapper .gift-swiper-caption {
-  position: relative;
-  top: 50%;
-  -ms-transform: translateY(-55%);
-  -webkit-transform: translateY(-55%);
-  transform: translateY(-55%); }
-#gift-high-swiper-container-wrapper .gift-slider-title {
-  color: white;
-  margin-top: 10px;
-  font: normal normal 100 24px/normal "Roboto"; }
-#gift-high-swiper-container-wrapper .gift-slider-subtitle {
-  color: white;
-  font-weight: 500;
-  font-size: 10px;
-  text-transform: uppercase; }
-/*#gift-high-swiper-container-wrapper .arrow-left {
-  float: left;
-  background: url(img/gift-arrow-left-on.svg) no-repeat;
-  width: 48px;
-  height: 48px;
-  display: inline-block;
-  border-right: 1px solid #e4e4e4; }
-#gift-high-swiper-container-wrapper .arrow-left.arrow-disabled {
-  background: url(img/gift-arrow-left-off.svg) no-repeat; }
-#gift-high-swiper-container-wrapper .arrow-right {
-  float: left;
-  background: url(img/gift-arrow-right-on.svg) no-repeat;
-  width: 48px;
-  height: 48px;
-  display: inline-block;
-  border-right: 1px solid #e4e4e4; }
-#gift-high-swiper-container-wrapper .arrow-right.arrow-disabled {
-  background: url(img/gift-arrow-right-off.svg) no-repeat; }*/
-
-.gift-slider-1 {
-  background: url(../../src/images/slider-home-1.jpg) no-repeat;
+.home-news-container {
+  height: 320px;
+  background-image: url(../../src/images/home-news.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
   background-size: cover;
-  background-position: 50% 50%; }
+  padding: 20% 50px 15px 15px;
 
-.gift-slider-2 {
-  background: url(../../src/images/slider-home-2.jpg) no-repeat;
-  background-size: cover;
-  background-position: 50% 50%; }
+  .home-news-header {
+    background-color: $fx-cool-blue;
+    display: inline-block;
+    padding: 10px;
+    h1 {
+      margin: 0
+    }
+  }
 
-.gift-slider-3 {
-  background: url(../../src/images/slider-home-3.jpg) no-repeat;
-  background-size: cover;
-  background-position: 50% 50%; }
+  .home-news-holder {
+    background-color: white;
+    padding: 10px 10px 5px 10px;
+  }
+
+  .home-news-footer {
+    background-color: white;
+    padding: 5px 10px 10px 10px;
+    a {
+      color: $fenix-text;
+    }
+  }
+
+}
+
+.contacts-collaborations-holder {
+
+  .swiper-wrapper {
+    min-height: 300px;
+
+    .swiper-slide {
+      text-align: center;
+    }
+
+  }
+}
+
+/* Fast Links */
+
+.fast-link-container {
+
+  .fast-link-header {
+    height: 25px;
+    border-bottom: 1px solid $fenix-light-hr;
+    margin-bottom: 15px;
+
+    h3 {
+      margin-top: 0;
+    }
+
+  }
+
+}
+
+.home-tiles {
+  height: 140px;
+  h2{
+    color: white;
+    margin: 0;
+
+    span{
+      font-size: 40px;
+    }
+  }
+
+  a{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 25px;
 
 
+  }
+
+  a:link,
+  a:visited,
+  a:hover,
+  a:focus,
+  a:active{
+    text-decoration: none;
+  }
+
+  &.food-cons{
+    padding: 0 15px 15px 15px;
+    a{background-color: #2f879a;}
+
+  }
+
+  &.food-safe{
+    padding: 0 15px 15px 15px;
+    a{background-color: #2f9a8f; span{position: relative; left: -6px;}}
+  }
+
+  &.food-nutr{
+    padding: 15px 15px 0 15px;
+    a{background-color: #2f699a;}
+  }
+
+  &.food-envi{
+    padding: 15px 15px 0 15px;
+    a{background-color: #e2e3e3; span{position: relative; left: -6px;}}
+  }
 
 
+}
+
+.coming{
+
+  &:before{
+    content: 'COMING SOON';
+    display: inline-block;
+    background-color: #8e9292;
+    color: white;
+    font-size: 10px;
+    padding: 5px 9px;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+  }
+
+}
 
 
+/* Contacts */
 
+.contacts-collaborations-header, .contacts-people-header{
+  h3{
+    margin: 0;
+  }
 
+  height: 30px;
+  border-bottom: 1px solid $fenix-light-hr;
+
+}
+
+.contacts-people-holder{
+  h3{
+    color: $fx-cool-blue-alt;
+  }
+}

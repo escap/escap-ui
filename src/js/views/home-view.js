@@ -59,6 +59,11 @@ define([
                 autoplay: 5000,
                 loop: true,
                 autoplayDisableOnInteraction: false,
+                //pagination: '.swiper-pagination',
+                //paginationClickable: true,
+                //nextButton: '.swiper-button-next',
+                //prevButton: '.swiper-button-prev',
+                //spaceBetween: 30
 
             })
 /*
