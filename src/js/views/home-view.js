@@ -12,11 +12,12 @@ define([
     'text!json/home/documents.json',
     'handlebars',
     'fx-common/WDSClient',
-    'amplify','swiper'
+    'swiper',
+    'amplify'
 ], function (View, C, Q, E, i18nLabels, template,
              dbUpdatesTemplate, documentTemplate,
              dbUpdatesModels, documentsModels,
-             Handlebars, WDSClient) {
+             Handlebars, WDSClient, Swiper) {
 
     'use strict';
 
@@ -40,6 +41,8 @@ define([
 
         attach: function () {
 
+            console.log(Swiper)
+
             View.prototype.attach.call(this, arguments);
 
             //update State
@@ -59,12 +62,11 @@ define([
                 autoplay: 5000,
                 loop: true,
                 autoplayDisableOnInteraction: false,
-                //pagination: '.swiper-pagination',
-                //paginationClickable: true,
-                //nextButton: '.swiper-button-next',
-                //prevButton: '.swiper-button-prev',
-                //spaceBetween: 30
-
+                pagination: '.swiper-pagination',
+                paginationClickable: true,
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                spaceBetween: 30
             })
 /*
             var swiperHigh = $('#gift-high-wrapper').swiper({
