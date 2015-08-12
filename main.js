@@ -70,7 +70,13 @@ require([
                     config: "../../config",
                     json: "../../json",
 
-                    'fx-common/config/auth_users' : '../../config/auth_users.json'
+                    // ===============================
+                    /* Override: */
+                    // Authentication
+                    'fx-common/config/auth_users' : '../../config/auth_users.json',
+
+                    // Catalog
+                    'fx-cat-br/config/config': '../../config/submodules/fx-catalog/Config'
                 },
 
                 // Underscore and Backbone are not AMD-capable per default,

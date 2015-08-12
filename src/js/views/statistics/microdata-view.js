@@ -80,7 +80,7 @@ define([
                     }
                 }
 
-            }).init();
+            }).init({        PLUGIN_FOLDER_PATH : "fx-cat-br/utils/fx-ui-w/"});
         },
         _test: function () {
 
