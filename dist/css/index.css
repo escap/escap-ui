@@ -7482,6 +7482,40 @@ ul[role="group"] {
 
 /* Third parties */
 /* Pages */
+/* About */
+.sidebar-box {
+  background-color: #ededed;
+  margin-bottom: 30px; }
+  .sidebar-box > h3 {
+    margin-top: 0;
+    background-color: #e2c942;
+    padding: 5px 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px; }
+  .sidebar-box .sidebar-box-content {
+    padding: 15px; }
+    .sidebar-box .sidebar-box-content h3 {
+      margin-top: 0; }
+
+.user-container {
+  padding-left: 90px; }
+  .user-container h3 {
+    margin-bottom: 0;
+    color: #2f9a8f; }
+  .user-container p {
+    margin-bottom: 5px; }
+  .user-container .division {
+    font-weight: 500; }
+
+.profile {
+  background-image: url(../../src/css/img/profile.svg);
+  background-size: contain;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 15px; }
+
 /* Homepage */
 [data-page='home'] .breadcrumb {
   opacity: 0; }
