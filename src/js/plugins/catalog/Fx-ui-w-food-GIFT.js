@@ -5,9 +5,11 @@ define([
     "fx-filter/config/config",
     "fx-filter/config/config-default",
     "fx-filter/config/events",
+    'config/submodules/fx-catalog/Config_Template',
+
     "jstree",
     "amplify"
-], function ($, C, DC, E) {
+], function ($, C, DC,CT, E) {
 
     'use strict';
 

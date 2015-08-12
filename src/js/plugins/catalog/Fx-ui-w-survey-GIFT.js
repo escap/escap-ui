@@ -1,12 +1,15 @@
 /*global define, amplify, alert*/
 define([
     "jquery",
+    'config/submodules/fx-catalog/Config_Template',
+
     "fx-filter/config/config",
     "fx-filter/config/config-default",
     "fx-filter/config/events",
+
     "jQAllRangeSliders",
     "amplify"
-], function ($, C, DC, E) {
+], function ($,CT, C, DC, E) {
 
     'use strict';
 
@@ -56,9 +59,9 @@ define([
 
     Fx_ui_survey_component.prototype._initialize = function(e) {
 
-        this.$surveyTimerange = $(e.template.descriptions.SURVEY.YEARS)
+        this.$surveyTimerange = $(CT.FILTER_CONFIG.SURVEY.YEARS)
 
-        this.$surveyaddCharsName = e.template.descriptions.SURVEY.ADD_CHARS_RADIO_NAME
+        this.$surveyaddCharsName = CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_NAME
 
         this.$surveyAddCharsSelector = $('input[name="' + this.$surveyaddCharsName + '"]:radio');
 
@@ -67,7 +70,6 @@ define([
     };
 
     Fx_ui_survey_component.prototype.render = function (e, container) {
-        debugger;
 
         var self = this;
 

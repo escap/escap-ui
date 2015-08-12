@@ -4,9 +4,11 @@ define([
     "fx-filter/config/config",
     "fx-filter/config/config-default",
     "fx-filter/config/events",
+    'config/submodules/fx-catalog/Config_Template',
+
     "jQAllRangeSliders",
     "amplify"
-], function ($, C, DC, E) {
+], function ($, C, DC, E, CT) {
 
     'use strict';
 
@@ -57,19 +59,19 @@ define([
     FX_ui_population_component.prototype._initialize = function(e) {
 
         // gender
-        this.$populationGenderName = e.template.descriptions.POPULATION.GENDERS_RADIO_NAME
+        this.$populationGenderName = CT.FILTER_CONFIG.POPULATION.GENDERS_RADIO_NAME
         this.$populationGenderSelector = $('input[name="' + this.$populationGenderName + '"]:radio')
 
         // agerange Type
-        this.$populationAgeRangeTypeName = e.template.descriptions.POPULATION.AGERANGE_TYPE_RADIO_NAME
+        this.$populationAgeRangeTypeName = CT.FILTER_CONFIG.POPULATION.AGERANGE_TYPE_RADIO_NAME
         this.$populationAgeRangeTypeSelector = $('input[name="' + this.$populationAgeRangeTypeName + '"]:radio')
 
 
         // agerange
-        this.$populationAgerange = $(e.template.descriptions.POPULATION.AGERANGE)
+        this.$populationAgerange = $(CT.FILTER_CONFIG.POPULATION.AGERANGE)
 
         // characteristics
-        this.$populationCharsName = e.template.descriptions.POPULATION.CHARACTERISTICS_RADIO_NAME;
+        this.$populationCharsName = CT.FILTER_CONFIG.POPULATION.CHARACTERISTICS_RADIO_NAME;
         this.$populationCharsSelector = $('input[name="' + this.$populationCharsName + '"]:radio')
 
 

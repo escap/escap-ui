@@ -5,6 +5,6 @@ define(function () {
 
     return {
 
-        PLUGIN_FOLDER_PATH: "prova/"
+        PLUGIN_FOLDER_PATH: "plugins/catalog/"
     };
 });

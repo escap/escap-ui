@@ -74,7 +74,6 @@ define([
         };
 
         FX_ui_geographic_component.prototype.render = function (e, container) {
-            debugger;
 
             var self = this;
 

@@ -33,15 +33,16 @@ define([
                         "className": "form-control"
                     }
                 },
-                 ageRange: {
+                ageRange: {
                     "sourceType": "period",
                     "defaultsource": {
-                        geoTree: {from: 0, to: 70}
+                        YEARS: {from: 0, to: 70},
+                        MONTHS:{ from:0, to: 840}
                     }
                 }
             },
             "template": {
-                "overallStructure": SurveyTemplate,
+                "overallStructure": PopulationTemplate
             }
         },
 
@@ -80,13 +81,17 @@ define([
                 "FR": "Survey"
             },
             "component": {
-                "source": {
+                years: {
+                    "sourceType": "period",
+                    "defaultsource": {"from": 1983, "to": 2014}
+                }
+              /*  "source": {
                     "uid": "GAUL_ReferenceArea",
                     "version": "1.0"
-                }
+                }*/
             },
             "template": {
-                "overallStructure": SurveyTemplate,
+                "overallStructure": SurveyTemplate
             }
         }
     };
