@@ -67,6 +67,7 @@ define([
     };
 
     Fx_ui_survey_component.prototype.render = function (e, container) {
+        debugger;
 
         var self = this;
 

@@ -2,12 +2,14 @@
 define([
         "jquery",
         "geojson_selector",
+        'config/submodules/fx-catalog/Config_Template',
+
         "fx-filter/config/config",
         "fx-filter/config/config-default",
         "fx-filter/config/events",
         "text!test_geo_json/world-countries.json",
         "leaflet",  "amplify"],
-    function ($, GeoSelector, C, DC, E, GEOJSON, L) {
+    function ($, GeoSelector,CT, C, DC, E, GEOJSON, L) {
 
         'use strict';
 
@@ -63,7 +65,7 @@ define([
         FX_ui_geographic_component.prototype._initialize = function (e) {
 
 
-            this.$geoConfiguration = e.template.descriptions.GEO
+            this.$geoConfiguration = CT.FILTER_CONFIG.GEO
 
             this.$componentStructure = e.template.overallStructure;
 
@@ -72,6 +74,7 @@ define([
         };
 
         FX_ui_geographic_component.prototype.render = function (e, container) {
+            debugger;
 
             var self = this;
 

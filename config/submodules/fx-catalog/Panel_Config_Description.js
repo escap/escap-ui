@@ -38,10 +38,10 @@ define([
                     "defaultsource": {
                         geoTree: {from: 0, to: 70}
                     }
-                },
-                "template": {
-                    "overallStructure": SurveyTemplate,
                 }
+            },
+            "template": {
+                "overallStructure": SurveyTemplate,
             }
         },
 
@@ -60,6 +60,13 @@ define([
 
                     "uid": "RepresentationType"
                 }
+            },
+            "template": {
+                "overallStructure": GeoTemplate,
+/*
+                "descriptions": CF.FILTER_CONFIG,
+*/
+                "style" : JSON.parse(GEOJSONStyle)
             }
         },
 
@@ -77,6 +84,9 @@ define([
                     "uid": "GAUL_ReferenceArea",
                     "version": "1.0"
                 }
+            },
+            "template": {
+                "overallStructure": SurveyTemplate,
             }
         }
     };
