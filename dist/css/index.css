@@ -7170,12 +7170,20 @@ footer.fao-footer {
   footer.fao-footer .device-image {
     padding-right: 10px;
     float: left; }
+  footer.fao-footer .fao-social-holder {
+    display: inline-block;
+    width: 19%;
+    padding: 3px 2px; }
 
 /*//////////////////////////////////////////// Navbar Media queries */
 /* Ipad */
 @media (min-width: 768px) and (max-width: 990px) {
   footer.fao-footer .device-image {
-    margin-bottom: 10px; } }
+    margin-bottom: 10px; }
+  footer.fao-footer .fao-social-holder {
+    display: inline-block;
+    width: 20%;
+    padding: 3px 2px; } }
 /* Iphone */
 @media (max-width: 767px) {
   footer.fao-footer {
@@ -7183,6 +7191,10 @@ footer.fao-footer {
     footer.fao-footer .device-image {
       margin-bottom: 10px;
       float: none; }
+    footer.fao-footer .fao-social-holder {
+      display: inline-block;
+      width: 15%;
+      margin: 3px; }
 
   /* End of the iPhone media query*/ }
 /* FAO Like Top Menu */
@@ -7604,6 +7616,38 @@ ul[role="group"] {
   top: 0; }
 
 /* Contacts */
+.swiper-button-next, .swiper-button-prev {
+  top: 90%; }
+
+.swiper-pagination {
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 88%; }
+
+.swiper-pagination-bullet {
+  opacity: 1;
+  margin: 3px;
+  background-color: white;
+  border: 1px solid #cccccc; }
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: #cccccc; }
+
+.swiper-button-next {
+  background-image: url(../../src/css/img/arrow-right-off.svg);
+  -moz-background-size: auto;
+  -webkit-background-size: auto;
+  background-size: auto;
+  right: 20%; }
+
+.swiper-button-prev {
+  background-image: url(../../src/css/img/arrow-left-off.svg);
+  -moz-background-size: auto;
+  -webkit-background-size: auto;
+  background-size: auto;
+  left: 20%; }
+
 .contacts-collaborations-header, .contacts-people-header {
   height: 30px;
   border-bottom: 1px solid #cccccc; }
@@ -7613,6 +7657,21 @@ ul[role="group"] {
 .contacts-people-holder h3 {
   color: #2f9a8f; }
 
+/*//////////////////////////////////////////// Navbar Media queries */
+/* Ipad */
+@media (min-width: 768px) and (max-width: 990px) {
+  .home-tiles {
+    height: 140px; }
+    .home-tiles h2 {
+      color: white;
+      margin: 0;
+      font-size: 16px; } }
+/* Iphone */
+@media (max-width: 767px) {
+  .swiper-slide img {
+    display: inline; }
+
+  /* End of the iPhone media query*/ }
 .fx-catalog-modular-form-content {
   height: 240px !important; }
   .fx-catalog-modular-form-content .jstree-holder {

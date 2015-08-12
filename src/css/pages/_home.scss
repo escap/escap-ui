@@ -209,6 +209,49 @@
 
 /* Contacts */
 
+
+.swiper-button-next, .swiper-button-prev{
+  top:90%;
+}
+
+.swiper-pagination{
+  left: 50%;
+  @include fx-transfor-me(translateX(-50%));
+  top: 88%;
+}
+
+.swiper-pagination-bullet{
+  opacity: 1;
+  margin: 3px;
+
+  background-color: white;
+  border: 1px solid $fenix-light-hr;
+
+  &.swiper-pagination-bullet-active{
+    background-color: $fenix-light-hr;
+  }
+
+}
+
+
+.swiper-button-next{
+  background-image: url(../../src/css/img/arrow-right-off.svg);
+  -moz-background-size: auto;
+  -webkit-background-size: auto;
+  background-size: auto;
+  right: 20%;
+
+}
+
+.swiper-button-prev{
+  background-image: url(../../src/css/img/arrow-left-off.svg);
+  -moz-background-size: auto;
+  -webkit-background-size: auto;
+  background-size: auto;
+  left: 20%;
+}
+
+
 .contacts-collaborations-header, .contacts-people-header{
   h3{
     margin: 0;
@@ -223,4 +266,41 @@
   h3{
     color: $fx-cool-blue-alt;
   }
+}
+
+
+
+
+
+/*//////////////////////////////////////////// Navbar Media queries */
+
+/* Ipad */
+@media (min-width: 768px) and (max-width: 990px) {
+
+  .home-tiles {
+    height: 140px;
+    h2 {
+      color: white;
+      margin: 0;
+
+      font-size: 16px;
+
+    }
+  }
+
+}
+
+/* Iphone */
+
+@media (max-width: 767px) {
+
+.swiper-slide{
+
+  img{
+    display: inline;
+  }
+}
+
+  /* End of the iPhone media query*/
+
 }
