@@ -295,8 +295,10 @@
 @media (max-width: 767px) {
 
 .swiper-slide{
-  display: inline;
 
+  img{
+    display: inline;
+  }
 }
 
   /* End of the iPhone media query*/

@@ -7668,7 +7668,7 @@ ul[role="group"] {
       font-size: 16px; } }
 /* Iphone */
 @media (max-width: 767px) {
-  .swiper-slide {
+  .swiper-slide img {
     display: inline; }
 
   /* End of the iPhone media query*/ }
