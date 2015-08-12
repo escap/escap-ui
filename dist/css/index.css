@@ -7668,6 +7668,9 @@ ul[role="group"] {
       font-size: 16px; } }
 /* Iphone */
 @media (max-width: 767px) {
+  .swiper-slide {
+    display: inline; }
+
   /* End of the iPhone media query*/ }
 .fx-catalog-modular-form-content {
   height: 240px !important; }
