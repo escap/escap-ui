@@ -7639,14 +7639,14 @@ ul[role="group"] {
   -moz-background-size: auto;
   -webkit-background-size: auto;
   background-size: auto;
-  right: 60px; }
+  right: 20%; }
 
 .swiper-button-prev {
   background-image: url(../../src/css/img/arrow-left-off.svg);
   -moz-background-size: auto;
   -webkit-background-size: auto;
   background-size: auto;
-  left: 60px; }
+  left: 20%; }
 
 .contacts-collaborations-header, .contacts-people-header {
   height: 30px;
