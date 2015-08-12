@@ -7472,7 +7472,47 @@ ul[role="group"] {
 [data-page='home'] .breadcrumb {
   opacity: 0; }
 
-/* Home news */
+.db-updates-container {
+  border: 1px solid #cccccc; }
+  .db-updates-container .db-updates-header {
+    padding: 5px 10px;
+    background-color: #ececec; }
+  .db-updates-container .title {
+    margin: 0; }
+  .db-updates-container .db-updates-list-holder {
+    height: 300px;
+    /* Just to be similar to the news height (including the db header) */
+    overflow-y: scroll; }
+
+.db-updates-list {
+  list-style: none;
+  padding-left: 0;
+  padding-right: 15px; }
+  .db-updates-list li {
+    position: relative;
+    padding: 15px 0 15px 70px;
+    border-bottom: 1px solid #cccccc; }
+    .db-updates-list li:last-child {
+      border-bottom-color: transparent; }
+    .db-updates-list li h3 {
+      margin: 0;
+      color: #333333; }
+    .db-updates-list li .db-update-ico {
+      position: absolute;
+      left: 0;
+      width: 60px;
+      text-align: center;
+      font-size: 45px; }
+    .db-updates-list li .db-update-country {
+      font: normal normal 300 11px/normal "Roboto";
+      color: #999999; }
+    .db-updates-list li .db-update-date {
+      font: normal normal 300 11px/normal "Roboto";
+      color: #2f9a8f; }
+    .db-updates-list li .db-update-link {
+      font: normal normal 300 11px/normal "Roboto";
+      color: #333333; }
+
 .home-news-container {
   height: 320px;
   background-image: url(../../src/images/home-news.jpg);
@@ -7494,6 +7534,11 @@ ul[role="group"] {
     padding: 5px 10px 10px 10px; }
     .home-news-container .home-news-footer a {
       color: #333; }
+
+.contacts-collaborations-holder .swiper-wrapper {
+  min-height: 300px; }
+  .contacts-collaborations-holder .swiper-wrapper .swiper-slide {
+    text-align: center; }
 
 /* Fast Links */
 .fast-link-container .fast-link-header {
@@ -7555,12 +7600,6 @@ ul[role="group"] {
   position: absolute;
   right: 0;
   top: 0; }
-
-/* Partners Swiper */
-.contacts-collaborations-holder .swiper-wrapper {
-  min-height: 300px; }
-  .contacts-collaborations-holder .swiper-wrapper .swiper-slide {
-    text-align: center; }
 
 /* Contacts */
 .contacts-collaborations-header, .contacts-people-header {

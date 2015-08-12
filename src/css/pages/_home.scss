@@ -6,188 +6,15 @@
   }
 }
 
-/* Home news */
-
-.home-news-container {
-  height: 320px;
-  background-image: url(../../src/images/home-news.jpg);
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: cover;
-  padding: 20% 50px 15px 15px;
-
-  .home-news-header {
-    background-color: $fx-cool-blue;
-    display: inline-block;
-    padding: 10px;
-    h1 {
-      margin: 0
-    }
-  }
-
-  .home-news-holder {
-    background-color: white;
-    padding: 10px 10px 5px 10px;
-  }
-
-  .home-news-footer {
-    background-color: white;
-    padding: 5px 10px 10px 10px;
-    a {
-      color: $fenix-text;
-    }
-  }
-
-}
-
-/* Fast Links */
-
-.fast-link-container {
-
-  .fast-link-header {
-    height: 25px;
-    border-bottom: 1px solid $fenix-light-hr;
-    margin-bottom: 15px;
-
-    h3 {
-      margin-top: 0;
-    }
-
-  }
-
-}
-
-.home-tiles {
-  height: 140px;
-  h2 {
-    color: white;
-    margin: 0;
-
-    span {
-      font-size: 40px;
-    }
-  }
-
-  a {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding: 25px;
-
-  }
-
-  a:link,
-  a:visited,
-  a:hover,
-  a:focus,
-  a:active {
-    text-decoration: none;
-  }
-
-  &.food-cons {
-    padding: 0 15px 15px 15px;
-    a {
-      background-color: #2f879a;
-    }
-
-  }
-
-  &.food-safe {
-    padding: 0 15px 15px 15px;
-    a {
-      background-color: #2f9a8f;
-      span {
-        position: relative;
-        left: -6px;
-      }
-    }
-  }
-
-  &.food-nutr {
-    padding: 15px 15px 0 15px;
-    a {
-      background-color: #2f699a;
-    }
-  }
-
-  &.food-envi {
-    padding: 15px 15px 0 15px;
-    a {
-      background-color: #e2e3e3;
-      span {
-        position: relative;
-        left: -6px;
-      }
-    }
-  }
-
-}
-
-.coming {
-
-  &:before {
-    content: 'COMING SOON';
-    display: inline-block;
-    background-color: #8e9292;
-    color: white;
-    font-size: 10px;
-    padding: 5px 9px;
-    position: absolute;
-    right: 0;
-    top: 0;
-
-  }
-
-}
-
-/* Partners Swiper */
-
-.contacts-collaborations-holder {
-
-  .swiper-wrapper {
-    min-height: 300px;
-
-    .swiper-slide {
-      text-align: center;
-    }
-
-  }
-}
-
-.swiper-button-prev {
-
-}
-
-/* Contacts */
-
-.contacts-collaborations-header, .contacts-people-header {
-  h3 {
-    margin: 0;
-  }
-
-  height: 30px;
-  border-bottom: 1px solid $fenix-light-hr;
-
-}
-
-.contacts-people-holder {
-  h3 {
-    color: $fx-cool-blue-alt;
-  }
-}
-
-/* DB updates */
-.db-updates-container {
-  /* Home news */
+.db-updates-container{
   border: 1px solid $fenix-light-hr;
 
-  .db-updates-header {
+  .db-updates-header{
     padding: 5px 10px;
     background-color: $superlight-gray;
   }
 
-  .title {
+  .title{
     margin: 0;
 
   }
@@ -199,6 +26,8 @@
   }
 
 }
+
+
 
 .db-updates-list {
   list-style: none;
@@ -244,4 +73,154 @@
 
   }
 
+}
+
+.home-news-container {
+  height: 320px;
+  background-image: url(../../src/images/home-news.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  padding: 20% 50px 15px 15px;
+
+  .home-news-header {
+    background-color: $fx-cool-blue;
+    display: inline-block;
+    padding: 10px;
+    h1 {
+      margin: 0
+    }
+  }
+
+  .home-news-holder {
+    background-color: white;
+    padding: 10px 10px 5px 10px;
+  }
+
+  .home-news-footer {
+    background-color: white;
+    padding: 5px 10px 10px 10px;
+    a {
+      color: $fenix-text;
+    }
+  }
+
+}
+
+.contacts-collaborations-holder {
+
+  .swiper-wrapper {
+    min-height: 300px;
+
+    .swiper-slide {
+      text-align: center;
+    }
+
+  }
+}
+
+/* Fast Links */
+
+.fast-link-container {
+
+  .fast-link-header {
+    height: 25px;
+    border-bottom: 1px solid $fenix-light-hr;
+    margin-bottom: 15px;
+
+    h3 {
+      margin-top: 0;
+    }
+
+  }
+
+}
+
+.home-tiles {
+  height: 140px;
+  h2{
+    color: white;
+    margin: 0;
+
+    span{
+      font-size: 40px;
+    }
+  }
+
+  a{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+
+
+  }
+
+  a:link,
+  a:visited,
+  a:hover,
+  a:focus,
+  a:active{
+    text-decoration: none;
+  }
+
+  &.food-cons{
+    padding: 0 15px 15px 15px;
+    a{background-color: #2f879a;}
+
+  }
+
+  &.food-safe{
+    padding: 0 15px 15px 15px;
+    a{background-color: #2f9a8f; span{position: relative; left: -6px;}}
+  }
+
+  &.food-nutr{
+    padding: 15px 15px 0 15px;
+    a{background-color: #2f699a;}
+  }
+
+  &.food-envi{
+    padding: 15px 15px 0 15px;
+    a{background-color: #e2e3e3; span{position: relative; left: -6px;}}
+  }
+
+
+}
+
+.coming{
+
+  &:before{
+    content: 'COMING SOON';
+    display: inline-block;
+    background-color: #8e9292;
+    color: white;
+    font-size: 10px;
+    padding: 5px 9px;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+  }
+
+}
+
+
+/* Contacts */
+
+.contacts-collaborations-header, .contacts-people-header{
+  h3{
+    margin: 0;
+  }
+
+  height: 30px;
+  border-bottom: 1px solid $fenix-light-hr;
+
+}
+
+.contacts-people-holder{
+  h3{
+    color: $fx-cool-blue-alt;
+  }
 }
