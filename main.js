@@ -76,7 +76,10 @@ require([
                     'fx-common/config/auth_users' : '../../config/auth_users.json',
 
                     // Catalog
-                    'fx-cat-br/config/config': '../../config/submodules/fx-catalog/Config'
+                    'fx-cat-br/config/config': '../../config/submodules/fx-catalog/Config',
+                    'fx-cat-br/config/fx-catalog-collapsible-menu-config' : '../../config/submodules/fx-catalog/Panel_Config',
+                    'fx-cat-br/config/fx-catalog-modular-form-config' : '../../config/submodules/fx-catalog/Panel_Config_Description'
+
                 },
 
                 // Underscore and Backbone are not AMD-capable per default,
