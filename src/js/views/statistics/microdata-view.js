@@ -3,10 +3,10 @@ define([
     'views/base/view',
     'text!templates/statistics/microdata.hbs',
     'i18n!nls/statistics-microdata',
- 'fx-filter/start',
 /*
-    'fx-cat-br/start',
+ 'fx-filter/start',
 */
+    'fx-cat-br/start',
     'config/submodules/fx-filter/Config',
     'config/Config',
     'config/Events',
@@ -16,7 +16,7 @@ define([
     'text!templates/filter/foodComponent.hbs',
     'text!json/filter/geoSelector_leafletStyle.json',
     'handlebars'
-], function (View, template, i18nLabels, Filter,/*Catalog,*/ CF, C, E,
+], function (View, template, i18nLabels,/* Filter,*/Catalog, CF, C, E,
              SurveyTemplate, GeoTemplate, PopulationTemplate, FoodTemplate, GEOJSONStyle,HandleBars) {
 
     'use strict';
@@ -50,11 +50,11 @@ define([
             amplify.publish(E.STATE_CHANGE, {menu: 'microdata'});
 
 
-            this._test();
-
 /*
-            this._testCatalog();
+            this._test();
 */
+
+            this._testCatalog();
 
         },
 
