@@ -33,7 +33,7 @@ require([
 
     Compiler.resolve([commonConfig, menuConfig, filterConfig, analysisConfig,catalogConfig],
         {
-            placeholders: {"FENIX_CDN": "//fenixapps.fao.org/repository"},
+            placeholders: {"FENIX_CDN": "//fenixrepo.fao.org/cdn"},
 
             config: {
 

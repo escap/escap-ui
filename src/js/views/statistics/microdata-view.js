@@ -48,6 +48,7 @@ define([
 
         _test: function () {
 
+
             var o = {
                 population_chars_enabled : true
             }
@@ -85,7 +86,8 @@ define([
                     ]
                 }];
                 filter.add(modd);
-            })
+            });
+
 
             var FILTER_CONTAINER = 'fx-analysis-container';
 
@@ -104,6 +106,7 @@ define([
             });
 
             var modules = [
+/*
                 {
                     "containerType": "fluidGridBaseContainer",
                     "title": "FOOD",
@@ -119,7 +122,7 @@ define([
                             },
                             "name": "FOODGift",
                             "template": {
-                                "overallStructure": self._compileTemplate(),
+                                "overallStructure": FoodTemplate,
                                 "descriptions": CF.FILTER_CONFIG
                             },
                             "component": {
@@ -142,7 +145,7 @@ define([
                             "name": "FOODGift",
                             "template": {
                                 "overallStructure": FoodTemplate,
-                                "descriptions": CF.FILTER_CONFIG,
+                                "descriptions": CF.FILTER_CONFIG
                             },
                             "component": {
                                 source:{
@@ -157,6 +160,7 @@ define([
                     ]
 
                 },
+*/
                 {
                     "containerType": "fluidGridBaseContainer",
                     "title": "GEOGRAPHIC",
@@ -289,11 +293,9 @@ define([
             this.unbindEventListeners();
 
             View.prototype.dispose.call(this, arguments);
-        },
-
-        _compileTemplate: function (u, template) {
-           return Handlebars.compile(template);
         }
+
+
 
     });
 

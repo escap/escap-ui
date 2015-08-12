@@ -40,8 +40,6 @@
 
 }
 
-
-
 /* Fast Links */
 
 .fast-link-container {
@@ -61,22 +59,21 @@
 
 .home-tiles {
   height: 140px;
-  h2{
+  h2 {
     color: white;
     margin: 0;
 
-    span{
+    span {
       font-size: 40px;
     }
   }
 
-  a{
+  a {
     position: relative;
     display: block;
     width: 100%;
     height: 100%;
     padding: 25px;
-
 
   }
 
@@ -84,37 +81,52 @@
   a:visited,
   a:hover,
   a:focus,
-  a:active{
+  a:active {
     text-decoration: none;
   }
 
-  &.food-cons{
+  &.food-cons {
     padding: 0 15px 15px 15px;
-    a{background-color: #2f879a;}
+    a {
+      background-color: #2f879a;
+    }
 
   }
 
-  &.food-safe{
+  &.food-safe {
     padding: 0 15px 15px 15px;
-    a{background-color: #2f9a8f; span{position: relative; left: -6px;}}
+    a {
+      background-color: #2f9a8f;
+      span {
+        position: relative;
+        left: -6px;
+      }
+    }
   }
 
-  &.food-nutr{
+  &.food-nutr {
     padding: 15px 15px 0 15px;
-    a{background-color: #2f699a;}
+    a {
+      background-color: #2f699a;
+    }
   }
 
-  &.food-envi{
+  &.food-envi {
     padding: 15px 15px 0 15px;
-    a{background-color: #e2e3e3; span{position: relative; left: -6px;}}
+    a {
+      background-color: #e2e3e3;
+      span {
+        position: relative;
+        left: -6px;
+      }
+    }
   }
-
 
 }
 
-.coming{
+.coming {
 
-  &:before{
+  &:before {
     content: 'COMING SOON';
     display: inline-block;
     background-color: #8e9292;
@@ -128,8 +140,6 @@
   }
 
 }
-
-
 
 /* Partners Swiper */
 
@@ -145,16 +155,14 @@
   }
 }
 
-.swiper-button-prev{
+.swiper-button-prev {
 
 }
 
-
-
 /* Contacts */
 
-.contacts-collaborations-header, .contacts-people-header{
-  h3{
+.contacts-collaborations-header, .contacts-people-header {
+  h3 {
     margin: 0;
   }
 
@@ -163,8 +171,77 @@
 
 }
 
-.contacts-people-holder{
-  h3{
+.contacts-people-holder {
+  h3 {
     color: $fx-cool-blue-alt;
   }
+}
+
+/* DB updates */
+.db-updates-container {
+  /* Home news */
+  border: 1px solid $fenix-light-hr;
+
+  .db-updates-header {
+    padding: 5px 10px;
+    background-color: $superlight-gray;
+  }
+
+  .title {
+    margin: 0;
+
+  }
+
+  .db-updates-list-holder {
+    height: 300px; /* Just to be similar to the news height (including the db header) */
+    overflow-y: scroll;
+
+  }
+
+}
+
+.db-updates-list {
+  list-style: none;
+  padding-left: 0;
+  padding-right: 15px;
+
+  li {
+    position: relative;
+    padding: 15px 0 15px 70px;
+    border-bottom: 1px solid $fenix-light-hr;
+
+    &:last-child {
+      border-bottom-color: transparent;
+    }
+
+    h3 {
+      margin: 0;
+      color: $fenix-text;
+    }
+
+    .db-update-ico {
+      position: absolute;
+      left: 0;
+      width: 60px;
+      text-align: center;
+      font-size: 45px;
+    }
+
+    .db-update-country {
+      font: $fx-text-h4;
+      color: $fenix-secondary-text;
+    }
+
+    .db-update-date {
+      font: $fx-text-h4;
+      color: $fx-cool-blue-alt;
+    }
+
+    .db-update-link {
+      font: $fx-text-h4;
+      color: $fenix-text;
+    }
+
+  }
+
 }
