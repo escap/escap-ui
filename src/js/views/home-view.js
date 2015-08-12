@@ -41,7 +41,6 @@ define([
 
         attach: function () {
 
-            console.log(Swiper)
 
             View.prototype.attach.call(this, arguments);
 

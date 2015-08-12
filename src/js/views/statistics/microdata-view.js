@@ -3,7 +3,8 @@ define([
     'views/base/view',
     'text!templates/statistics/microdata.hbs',
     'i18n!nls/statistics-microdata',
-    'fx-filter/start',
+/*  'fx-filter/start', */
+    'fx-cat-br/start',
     'config/submodules/fx-filter/Config',
     'config/Config',
     'config/Events',
@@ -13,10 +14,15 @@ define([
     'text!templates/filter/foodComponent.hbs',
     'text!json/filter/geoSelector_leafletStyle.json',
     'handlebars'
-], function (View, template, i18nLabels, Filter, CF, C, E,
+], function (View, template, i18nLabels, /*Filter,*/Catalog, CF, C, E,
              SurveyTemplate, GeoTemplate, PopulationTemplate, FoodTemplate, GEOJSONStyle,HandleBars) {
 
     'use strict';
+
+    var s = {
+        CATALOG_CONTAINER: '#fx-catalog-container'
+
+    }
 
     var MicrodataView = View.extend({
 
@@ -41,11 +47,37 @@ define([
             //update State
             amplify.publish(E.STATE_CHANGE, {menu: 'microdata'});
 
+/*
             this._test();
+*/
+            this._testCatalog();
 
         },
 
 
+        _testCatalog: function() {
+            this.catalog = new Catalog({
+
+                container: document.querySelector(s.CATALOG_CONTAINER),
+
+                catalog: {
+                    BLANK_FILTER: C.CATALOG_BLANK_FILTER
+                },
+
+                results: {
+                    actions: {
+                        SELECT_RESOURCE: {
+                            event: 'select',
+                            labels: {
+                                EN: 'Select Resource'
+                            }
+
+                        }
+                    }
+                }
+
+            }).init();
+        },
         _test: function () {
 
 
