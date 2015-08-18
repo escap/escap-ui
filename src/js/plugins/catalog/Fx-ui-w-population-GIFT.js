@@ -59,12 +59,13 @@ define([
     FX_ui_population_component.prototype._initialize = function(e) {
 
         // gender
-        this.$populationGenderName = CT.FILTER_CONFIG.POPULATION.GENDERS_RADIO_NAME
-        this.$populationGenderSelector = $('input[name="' + this.$populationGenderName + '"]:radio')
+        this.$populationGenderName = CT.FILTER_CONFIG.POPULATION.GENDERS_RADIO_NAME;
+        this.$populationGenderSelector = $('input[name="' + this.$populationGenderName + '"]:radio');
+
 
         // agerange Type
-        this.$populationAgeRangeTypeName = CT.FILTER_CONFIG.POPULATION.AGERANGE_TYPE_RADIO_NAME
-        this.$populationAgeRangeTypeSelector = $('input[name="' + this.$populationAgeRangeTypeName + '"]:radio')
+        this.$populationAgeRangeTypeName = CT.FILTER_CONFIG.POPULATION.AGERANGE_TYPE_RADIO_NAME;
+        this.$populationAgeRangeTypeSelector = $('input[name="' + this.$populationAgeRangeTypeName + '"]:radio');
 
 
         // agerange
@@ -72,7 +73,8 @@ define([
 
         // characteristics
         this.$populationCharsName = CT.FILTER_CONFIG.POPULATION.CHARACTERISTICS_RADIO_NAME;
-        this.$populationCharsSelector = $('input[name="' + this.$populationCharsName + '"]:radio')
+        this.$populationCharsSelector = $('input[name="' + this.$populationCharsName + '"]:radio');
+        this.$popCharseElements = document.getElementsByName("popCharsRadio");
 
 
         // initialization data timerange
@@ -80,6 +82,14 @@ define([
            yearsRange : e.component.ageRange.defaultsource.YEARS,
            monthsRange: e.component.ageRange.defaultsource.MONTHS
            };
+
+
+        // initialization of default values
+        this._rangeYearSelected = {min: this.$dataTimeRange.yearsRange.from + 5, max: this.$dataTimeRange.yearsRange.to - 5};
+        this._isFemaleSelected = true;
+        this._isYearSelected = true;
+        this._popCharsSelected=  'none';
+
     };
 
     FX_ui_population_component.prototype.render = function (e, container) {
@@ -107,6 +117,7 @@ define([
             bounds: {min:  this.$dataTimeRange.yearsRange.from, max: this.$dataTimeRange.yearsRange.to},
             step: 1, defaultValues: {min: this.$dataTimeRange.yearsRange.from + 5, max: this.$dataTimeRange.yearsRange.to - 5}
         });
+
 
         this.bindEventListeners();
 
@@ -164,6 +175,18 @@ define([
         return r;
     };
 
+    FX_ui_population_component.prototype._checkAndSetPopCharacteristics = function() {
+        if(this._isFemaleSelected && (
+                (this._isYearSelected && this._rangeYearSelected.min >= 15) ||
+                !this._isYearSelected && this._rangeYearSelected.min >= 180)){
+            for(var i= 0, length = this.$popCharseElements.length; i<length; i++)
+                this.$popCharseElements[i].disabled  =false;
+        }else{
+            for(var i= 0, length = this.$popCharseElements.length; i<length; i++)
+                this.$popCharseElements[i].disabled  =true;;
+        }
+    }
+
     FX_ui_population_component.prototype.bindEventListeners = function () {
 
         var self = this;
@@ -171,8 +194,11 @@ define([
 
         // on change gender
         this.$populationGenderSelector.on('change', function (e, data) {
-            e.preventDefault();
 
+            e.preventDefault();
+            self._isFemaleSelected =  !self._isFemaleSelected;
+
+            self._checkAndSetPopCharacteristics();
             console.log(self.options.events.MODIFY)
             amplify.publish(self.options.events.MODIFY)
         });
@@ -200,6 +226,8 @@ define([
 
         this.$populationAgerange.bind("valuesChanged", function(e, data){
             e.preventDefault;
+            self._rangeYearSelected = data.values;
+            // data.values =  {min:yy, max:xx}
             amplify.publish(self.options.events.MODIFY)
         });
 
