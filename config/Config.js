@@ -23,7 +23,7 @@ define(function () {
             TOP_MENU_TEMPLATE: 'fx-menu/templates/blank-fluid.html',
             TOP_MENU_SHOW_BREADCRUMB : true,
             TOP_MENU_SHOW_BREADCRUMB_HOME : true,
-            TOP_MENU_SHOW_FOOTER: true,
+            TOP_MENU_SHOW_FOOTER: false,
             TOP_MENU_AUTH_MODE_HIDDEN_ITEMS: ['login'],
             TOP_MENU_PUBLIC_MODE_HIDDEN_ITEMS :['protected','statistics','microdata','analysis', 'logout'],
 

@@ -73,7 +73,7 @@ define([
 
         // characteristics
         this.$populationCharsName = CT.FILTER_CONFIG.POPULATION.CHARACTERISTICS_RADIO_NAME;
-        this.$populationCharsSelector = $('input[name="' + this.$populationCharsName + '"]:radio');
+        this.$populationCharsSelector = $('input[name="' + this.$populationCharsName + '"]:checkbox');
         this.$popCharseElements = document.getElementsByName("popCharsRadio");
 
 
@@ -208,6 +208,8 @@ define([
         this.$populationAgeRangeTypeSelector.on('change', function (e, data) {
             e.preventDefault();
             var kindOfAgeRange =$(e.target).val();
+            self._checkAndSetPopCharacteristics();
+
             // change in months
             if(self.$isYearTypeSelected=== true && kindOfAgeRange === 'MONTHS'){
                 self.$isYearTypeSelected = false;
@@ -227,6 +229,8 @@ define([
         this.$populationAgerange.bind("valuesChanged", function(e, data){
             e.preventDefault;
             self._rangeYearSelected = data.values;
+            self._checkAndSetPopCharacteristics();
+
             // data.values =  {min:yy, max:xx}
             amplify.publish(self.options.events.MODIFY)
         });
@@ -277,7 +281,7 @@ define([
 
             gender: $('input[name="' + this.$populationGenderName + '"]:radio:checked').val(),
 
-            characteristics: $('input[name="' + this.$populationCharsName + '"]:radio:checked').val()
+            characteristics: $('input[name="' + this.$populationCharsName + '"]:checkbox:checked').val()
 
         };
     };

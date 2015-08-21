@@ -1,6 +1,6 @@
 {
   "guest@fenix" : {
       "name" : "Guest",
-      "password" : "Gift"
+      "password" : "guest"
   }
 }

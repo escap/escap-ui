@@ -79,8 +79,6 @@
       }
     }
   ],
-  "type": "static-top",
-  "brand": {
-    "target": "#"
-  }
+  "type": "static-top"
+
 }

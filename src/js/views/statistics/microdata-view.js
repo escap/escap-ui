@@ -1,29 +1,27 @@
 /*global define, amplify*/
 define([
+    'jquery',
+    'underscore',
     'views/base/view',
     'text!templates/statistics/microdata.hbs',
     'i18n!nls/statistics-microdata',
-/*
- 'fx-filter/start',
-*/
     'fx-cat-br/start',
+    'fx-ana/start',
     'config/submodules/fx-filter/Config',
     'config/Config',
-    'config/Events',
-    'text!templates/filter/surveyComponent.hbs',
-    'text!templates/filter/geoComponent.hbs',
-    'text!templates/filter/populationComponent.hbs',
-    'text!templates/filter/foodComponent.hbs',
-    'text!json/filter/geoSelector_leafletStyle.json',
-    'handlebars'
-], function (View, template, i18nLabels,/* Filter,*/Catalog, CF, C, E,
-             SurveyTemplate, GeoTemplate, PopulationTemplate, FoodTemplate, GEOJSONStyle,HandleBars) {
+    'config/Events'
+], function ($, _ , View, template, i18nLabels,/* Filter,*/Catalog, Analysis, CF, C, E) {
 
     'use strict';
 
     var s = {
-        CATALOG_CONTAINER: '#fx-catalog-container'
-
+        ANALYSIS_CONTAINER: '#fx-analysis-container',
+        CATALOG_CONTAINER: '#fx-catalog-container',
+        MODULES_STACK_CONTAINER: '#fx-modules-stack-container',
+        OVERLAY: "#overlay",
+        OVERLAY_CONTENT: '.overlay-content',
+        OVERLAY_OPEN: '.open-overlay',
+        OVERLAY_CLOSE: '.close-overlay'
     };
 
     var MicrodataView = View.extend({
@@ -31,7 +29,7 @@ define([
         // Automatically render after initialize
         autoRender: true,
 
-        className: 'modules',
+        className: 'microdata',
 
         // Save the template string in a prototype property.
         // This is overwritten with the compiled template function.
@@ -46,20 +44,13 @@ define([
 
             View.prototype.attach.call(this, arguments);
 
+            //Init
+            $(s.OVERLAY_CONTENT).hide();
+            $(s.OVERLAY).hide();
+
             //update State
             amplify.publish(E.STATE_CHANGE, {menu: 'microdata'});
 
-
-/*
-            this._test();
-*/
-
-            this._testCatalog();
-
-        },
-
-
-        _testCatalog: function() {
             this.catalog = new Catalog({
 
                 container: document.querySelector(s.CATALOG_CONTAINER),
@@ -81,191 +72,53 @@ define([
                 }
 
             }).init();
-        },
-        _test: function () {
 
+            /* this.analysis = new Analysis({
+             container: document.querySelector(s.ANALYSIS_CONTAINER),
+             listenToCatalog: {
+             active: true,
+             event: 'fx.widget.catalog.select'
+             },
+             stack: {
+             active: true,
+             container: document.querySelector(s.MODULES_STACK_CONTAINER)
+             },
+             session: {
+             active: false
+             }
+             }).init();*/
 
-            var o = {
-                population_chars_enabled : true
-            };
+            this._bindEventListener();
 
-            var filter;
-            $("#getValues").on('click', function () {
-//        var ris = fc.getValues([{name: "FirstComponent3"}]);
-                console.log(filter.getValues());
-            });
-
-            $('#addComponent').on('click', function () {
-                var modd = [
-                    {
-                    "containerType": "fluidGridBaseContainer",
-                    "title": "List Test Period",
-                    "components": [
-                        {
-                            "componentType": "timeList-FENIX",
-                            "lang": "EN",
-                            "title": {
-                                "EN": "Time List For Fenix",
-                                "ES": "Time List For Fenix",
-                                "DE": "Time List For Fenix",
-                                "FR": "Time List For Fenix"
-                            },
-                            "name": "periodForFenix",
-                            "component": {
-                                "sourceType": "period",
-                                "defaultsource": [{"from": 1983, "to": 1994}, {"from": 1996, "to": 1998}, {
-                                    "from": 2002,
-                                    "to": 2005
-                                }, {"from": 2007, "to": 2011}]
-                            }
-                        }
-                    ]
-                }];
-                filter.add(modd);
-            });
-
-
-            var FILTER_CONTAINER = 'fx-analysis-container';
-
-            var self = this;
-
-
-            var filter = new Filter();
-            filter.init({
-
-                component_plugin_dir: "src/js/component_plugin/gift/",
-
-                container: FILTER_CONTAINER,
-                plugin_prefix: CF.PLUGIN_FILTER_COMPONENT_DIRECTORY || CF.PLUGIN_FILTER_COMPONENT_DIRECTORY,
-                layout: 'fluidGrid'
-                //  plugin_subdir: 'FENIX-plugin'
-            });
-
-            var modules = [
-                {
-                    "containerType": "fluidGridBaseContainer",
-                    "title": "GEOGRAPHIC",
-                    "components": [
-                        {
-                            "componentType": "geo-GIFT",
-                            "lang": "EN",
-                            "title": {
-                                "EN": "GEO selectors for GIFT",
-                                "ES": "GEO selectors for GIFT",
-                                "DE": "GEO selectors for GIFT",
-                                "FR": "GEO selectors for GIFT"
-                            },
-                            "name": "GEOGift",
-                            "template": {
-                                "overallStructure": GeoTemplate,
-                                "descriptions": CF.FILTER_CONFIG,
-                                "style" : JSON.parse(GEOJSONStyle)
-                            },
-                            "component": {
-                                ageRange: {
-                                    "sourceType": "period",
-                                    "defaultsource": {
-                                        geoTree: {from: 0, to: 70}
-                                    }
-                                }
-                            },
-                            "events":CF.events
-                        }
-
-                    ]
-
-                },
-                {
-                    "containerType": "fluidGridBaseContainer",
-                    "title": "SURVEY",
-                    "components": [
-                        {
-                            "componentType": "survey-GIFT",
-                            "lang": "EN",
-                            "title": {
-                                "EN": "Survey selectors for GIFT",
-                                "ES": "Survey selectors for GIFT",
-                                "DE": "Survey selectors for GIFT",
-                                "FR": "Survey selectors for GIFT"
-                            },
-                            "name": "surveyGIFT",
-                            "template": {
-                                "overallStructure": SurveyTemplate,
-                                "descriptions": CF.FILTER_CONFIG
-                            },
-                            "component": {
-                                years: {
-                                    "sourceType": "period",
-                                    "defaultsource": {"from": 1983, "to": 2014}
-                                }
-                            }
-                        }
-
-                    ]
-                },
-                {
-                    "containerType": "fluidGridBaseContainer",
-                    "title": "POPULATION",
-                    "components": [
-                        {
-                            "componentType": "population-GIFT",
-                            "lang": "EN",
-                            "title": {
-                                "EN": "Population selectors for GIFT",
-                                "ES": "Population selectors for GIFT",
-                                "DE": "Population selectors for GIFT",
-                                "FR": "Population selectors for GIFT"
-                            },
-                            "name": "populationGIFT",
-                            "template": {
-                                "overallStructure": PopulationTemplate,
-                                "descriptions": CF.FILTER_CONFIG
-                            },
-                            "component": {
-                                ageRange: {
-                                    "sourceType": "period",
-                                    "defaultsource": {
-                                        YEARS: {from: 0, to: 70},
-                                        MONTHS:{ from:0, to: 840}
-                                    }
-                                }
-                            },
-                            "events":CF.events
-                        }
-
-                    ]
-
-                },
-
-            ];
-
-            filter.add(modules);
-
-
-            amplify.subscribe(CF.events.MODIFY, function(args){
-                console.log('subscribed', args);
-                var values = filter.getValues().populationGIFT;
-                if(o.population_chars_enabled === false && values.gender === 'female' && (
-                            (values.ageRangeType === 'YEARS' && values.ageRange.period.from >15 )
-                        ||  (values.ageRangeType === 'MONTHS' && values.ageRange.period.from >180 ))){
-                    var radioButtons = $('input[name="' + CF.FILTER_CONFIG.POPULATION.CHARACTERISTICS_RADIO_NAME + '"]:radio');
-                    for(var i= 0,length = radioButtons.length; i<length; i++) {
-                        radioButtons[i].removeAttribute("disabled");
-                    }
-                }
-                else if(o.population_chars_enabled === true && values.gender === 'male' || (
-                    (values.ageRangeType === 'YEARS' && values.ageRange.period.from <15 )
-                    ||  (values.ageRangeType === 'MONTHS' && values.ageRange.period.from <180 ))){
-                    var radioButtons = $('input[name="' +  CF.FILTER_CONFIG.POPULATION.CHARACTERISTICS_RADIO_NAME + '"]:radio');
-                    for(var i= 0,length = radioButtons.length; i<length; i++) {
-                        radioButtons[i].setAttribute('disabled', true);
-                    }
-                    o.population_chars_enabled = false;
-                }
-            })
         },
 
-        unbindEventListeners: function () {
+        _bindEventListener : function() {
+
+            $(s.OVERLAY_OPEN).on('click', _.bind(this.openOverly, this));
+            $(s.OVERLAY_CLOSE).on('click', _.bind(this.closeOverly, this));
+
+            amplify.subscribe('fx.widget.catalog.select', _.bind(this.closeOverly, this));
+        },
+
+        openOverly: function () {
+
+            this.overlayStatus = 'opened';
+
+            $(s.OVERLAY).show();
+            $(s.OVERLAY).css({
+                height : '100%',
+                width : '100%'
+            });
+            $(s.OVERLAY_CONTENT).fadeIn('fast');
+
+        },
+        closeOverly: function () {
+            this.overlayStatus = 'closed';
+
+            $(s.OVERLAY_CONTENT).fadeOut("fast", function () {
+                $(s.OVERLAY_CONTENT).hide();
+                $(s.OVERLAY).hide();
+            });
 
         },
 
@@ -274,6 +127,12 @@ define([
             this.unbindEventListeners();
 
             View.prototype.dispose.call(this, arguments);
+        },
+
+
+
+        unbindEventListeners: function () {
+
         }
 
 

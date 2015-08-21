@@ -64,9 +64,6 @@ define([
             },
             "template": {
                 "overallStructure": GeoTemplate,
-/*
-                "descriptions": CF.FILTER_CONFIG,
-*/
                 "style" : JSON.parse(GEOJSONStyle)
             }
         },
