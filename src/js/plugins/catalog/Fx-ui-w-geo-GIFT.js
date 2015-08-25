@@ -203,7 +203,7 @@ define([
 
 
             this.$geoList.on('item-active', function (e) {
-                $('#' + self.$geoConfiguration.MAP_ID).prev('label').text(e.layer.feature.properties.name)
+                $('#' + self.$geoConfiguration.MAP_ID).prev('label').text(e.layers[0].feature.properties.name)
             });
 
             this.$leafletMap.whenReady(function (e) {

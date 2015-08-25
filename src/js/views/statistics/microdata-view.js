@@ -124,6 +124,8 @@ define([
 
         dispose: function () {
 
+            this.catalog.destroy();
+
             this.unbindEventListeners();
 
             View.prototype.dispose.call(this, arguments);

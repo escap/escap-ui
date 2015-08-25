@@ -63,7 +63,7 @@ require([
                     // map libraries
                     leaflet:          "{FENIX_CDN}/js/leaflet/0.7.3/leaflet",
                     test_geo_json :"../../tests/resources/geo_json",
-                    geojson_selector: "{FENIX_CDN}/js/leaflet/plugins/leaflet-geojson-selector/0.2.1/dist/leaflet-geojson-selector.min",
+                    geojson_selector: "{FENIX_CDN}/js/leaflet/plugins/leaflet-geojson-selector/0.2.2/dist/leaflet-geojson-selector.min",
 
                     // conf path
                     nls: "../../i18n",

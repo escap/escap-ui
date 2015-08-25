@@ -7850,4 +7850,7 @@ ul[role="group"] {
     height: 400px;
     overflow-y: scroll; }
 
+.search-geojson-list {
+  width: 100%; }
+
 /*# sourceMappingURL=index.css.map */
