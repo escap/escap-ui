@@ -11,6 +11,9 @@ define([
     'use strict';
 
     return {
+        /**
+         * Configuration for the filters of the catalog, what the need to display and the templates
+         */
 
         "population-GIFT": {
             "id": "population-GIFT",

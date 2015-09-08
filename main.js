@@ -6,9 +6,24 @@ require([
     './submodules/fenix-ui-menu/js/paths',
     './submodules/fenix-ui-filter/src/js/paths',
     './submodules/fenix-ui-analysis/js/paths',
-    './submodules/fenix-ui-catalog/js/paths'
+    './submodules/fenix-ui-catalog/js/paths',
+    './submodules/fenix-ui-DataEditor/js/paths',
+    './submodules/fenix-ui-DSDEditor/js/paths',
+    /*
+     './submodules/fenix-ui-dataUpload/js/paths',
+     */
+    './submodules/fenix-ui-metadata-editor/js/paths',
+    './submodules/fenix-ui-metadata-viewer/js/paths',
+    './submodules/fenix-ui-metadata-viewer/submodules/json-editor-faostat-theme/js/paths',
+    './submodules/fenix-ui-map-creator/src/js/paths',
+    './submodules/fenix-ui-chart-creator/src/js/paths',
+    './submodules/fenix-ui-table-creator/src/js/paths',
+    './submodules/fenix-ui-reports/src/js/paths',
+    './submodules/fenix-ui-dashboard/src/js/paths'
 
-], function (Compiler, Common, Menu, Filter, Analysis, Catalog) {
+], function (Compiler, Common, Menu,Filter, Analysis, Catalog,
+             DataEditor, DSDEditor, /*DataUpload,*/MetadataEditor, MetadataViewer,FAOSTAT_THEME,
+             MapCreator,ChartCreator, TableCreator, FenixReport, Dashboard) {
 
     'use strict';
 
@@ -18,10 +33,7 @@ require([
     commonConfig.baseUrl = submodules_path + 'fenix-ui-common/js';
 
     var menuConfig = Menu;
-    menuConfig.baseUrl = submodules_path + 'fenix-ui-menu/js';
-
-    var filterConfig = Filter;
-    filterConfig.baseUrl = submodules_path + 'fenix-ui-filter/';
+    menuConfig.baseUrl = submodules_path + '/fenix-ui-menu/js';
 
     var analysisConfig = Analysis;
     analysisConfig.baseUrl = submodules_path +'fenix-ui-analysis/js/';
@@ -29,9 +41,45 @@ require([
     var catalogConfig = Catalog;
     catalogConfig.baseUrl = submodules_path +'fenix-ui-catalog/js/';
 
+    var dataEditorConfig = DataEditor;
+    dataEditorConfig.baseUrl = submodules_path +'fenix-ui-DataEditor/js/';
 
+    var dsdEditorConfig = DSDEditor;
+    dsdEditorConfig.baseUrl = submodules_path +'fenix-ui-DSDEditor/js/';
+    /*
+     var dataUploadConfig = DataUpload;
+     dataUploadConfig.baseUrl = submodules_path + 'fenix-ui-dataUpload/js/';*/
 
-    Compiler.resolve([commonConfig, menuConfig, filterConfig, analysisConfig,catalogConfig],
+    var metadataEditorConfig = MetadataEditor;
+    metadataEditorConfig.baseUrl = submodules_path +'fenix-ui-metadata-editor/js/';
+
+    var metadataViewerConfig = MetadataViewer;
+    metadataViewerConfig.baseUrl= submodules_path +'fenix-ui-metadata-viewer/js/';
+
+    var faostatThemeConfig = FAOSTAT_THEME;
+    faostatThemeConfig.baseUrl = submodules_path + '/fenix-ui-metadata-viewer/submodules/json-editor-faostat-theme/js';
+
+    var mapCreatorConfig = MapCreator;
+    mapCreatorConfig.baseUrl= submodules_path +'fenix-ui-map-creator/src/js/';
+
+    var chartCreatorConfig = ChartCreator;
+    chartCreatorConfig.baseUrl= submodules_path +'fenix-ui-chart-creator/src/js/';
+
+    var tableCreatorConfig = TableCreator;
+    tableCreatorConfig.baseUrl= submodules_path +'fenix-ui-table-creator/src/js/';
+
+    var fenixReportConfig = FenixReport;
+    fenixReportConfig.baseUrl= submodules_path +'fenix-ui-reports/src/js/';
+
+    var dashboardConfig = Dashboard;
+    dashboardConfig.baseUrl= submodules_path +'fenix-ui-dashboard/src/js/';
+
+    var filterConfig = Filter;
+    filterConfig.baseUrl =  submodules_path +'fenix-ui-filter/';
+
+    Compiler.resolve([commonConfig, menuConfig, analysisConfig,catalogConfig,
+            dataEditorConfig,dsdEditorConfig,/*dataUploadConfig,*/metadataEditorConfig,metadataViewerConfig,faostatThemeConfig,
+            mapCreatorConfig,chartCreatorConfig,tableCreatorConfig,fenixReportConfig,filterConfig, dashboardConfig],
         {
             placeholders: {"FENIX_CDN": "//fenixrepo.fao.org/cdn"},
 
@@ -77,8 +125,13 @@ require([
 
                     // Catalog
                     'fx-cat-br/config/config': '../../config/submodules/fx-catalog/Config',
+                    "fx-cat-br/config/fx-catalog-blank-filter": '../../config/submodules/fx-catalog/blankfilter',
+
                     'fx-cat-br/config/fx-catalog-collapsible-menu-config' : '../../config/submodules/fx-catalog/Panel_Config',
-                    'fx-cat-br/config/fx-catalog-modular-form-config' : '../../config/submodules/fx-catalog/Panel_Config_Description'
+                    'fx-cat-br/config/fx-catalog-modular-form-config' : '../../config/submodules/fx-catalog/Panel_Config_Description',
+
+                    // Analysis
+                    'fx-ana/config/services' : '../../config/submodules/fx-analysis/Config'
 
                 },
 

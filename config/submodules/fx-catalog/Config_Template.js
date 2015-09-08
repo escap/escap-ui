@@ -4,7 +4,9 @@ define(function () {
     'use strict';
 
     return {
-
+        /**
+         * File for the template configuration of the filter
+         */
         PLUGIN_FILTER_COMPONENT_DIRECTORY: "../../../submodules/fenix-ui-filter/",
         FILTER_CONFIG: {
 

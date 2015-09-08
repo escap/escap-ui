@@ -10,7 +10,7 @@ define([
     'config/submodules/fx-filter/Config',
     'config/Config',
     'config/Events'
-], function ($, _ , View, template, i18nLabels,/* Filter,*/Catalog, Analysis, CF, C, E) {
+], function ($, _ , View, template, i18nLabels,Catalog, Analysis, CF, C, E) {
 
     'use strict';
 
@@ -73,23 +73,23 @@ define([
 
             }).init();
 
-            /* this.analysis = new Analysis({
-             container: document.querySelector(s.ANALYSIS_CONTAINER),
-             listenToCatalog: {
-             active: true,
-             event: 'fx.widget.catalog.select'
-             },
-             stack: {
-             active: true,
-             container: document.querySelector(s.MODULES_STACK_CONTAINER)
-             },
-             session: {
-             active: false
-             }
-             }).init();*/
+
+            this.analysis = new Analysis({
+                container: document.querySelector(s.ANALYSIS_CONTAINER),
+                listenToCatalog: {
+                    active: true,
+                    event: 'fx.widget.catalog.select'
+                },
+                stack: {
+                    active: true,
+                    container: document.querySelector(s.MODULES_STACK_CONTAINER)
+                },
+                session: {
+                    active: false
+                }
+            }).init();
 
             this._bindEventListener();
-
         },
 
         _bindEventListener : function() {
@@ -102,8 +102,6 @@ define([
 
         openOverly: function () {
 
-            this.overlayStatus = 'opened';
-
             $(s.OVERLAY).show();
             $(s.OVERLAY).css({
                 height : '100%',
@@ -113,7 +111,6 @@ define([
 
         },
         closeOverly: function () {
-            this.overlayStatus = 'closed';
 
             $(s.OVERLAY_CONTENT).fadeOut("fast", function () {
                 $(s.OVERLAY_CONTENT).hide();
@@ -134,7 +131,8 @@ define([
 
 
         unbindEventListeners: function () {
-
+            $(s.OVERLAY_OPEN).off();
+            $(s.OVERLAY_CLOSE).off();
         }
 
 

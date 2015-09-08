@@ -5,6 +5,9 @@ define(function () {
     'use strict';
 
     return {
+        /**
+         * Configuration for the left panel of the catalog
+         */
         "panels": [
             {
                 "title": {
