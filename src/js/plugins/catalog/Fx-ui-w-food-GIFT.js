@@ -6,10 +6,9 @@ define([
     "fx-filter/config/config-default",
     "fx-filter/config/events",
     'config/submodules/fx-catalog/Config_Template',
-
     "jstree",
     "amplify"
-], function ($, C, DC,CT, E) {
+], function ($, C, DC, E,CT) {
 
     'use strict';
 
@@ -52,6 +51,83 @@ define([
         });
 
         return r;
+    };
+
+
+    Fx_ui_w_foodComponent.prototype.render = function (e, container) {
+
+        var self = this;
+
+        self.options.container = container;
+        self.options.module = e;
+
+        $.extend(self.options.events, e.events); // extend events passed from the host
+
+
+        this._initialize(e);
+
+
+
+        this.$treeContainer.jstree({
+            'core': {
+                'data': function (node, cb) {
+                    if (node.id === "#") {
+                        self.getFirstCall(e, cb);
+                    }
+                    else {
+                        self.getChildren(e, node, cb);
+                    }
+                },
+                "multiple": true,
+                "animation": 0,
+                "themes": {"stripes": true}
+            },
+            /* themes: {
+             icons: false
+             },*/
+            "plugins": ["checkbox", "wholerow", "search"],
+            "search": {
+                show_only_matches: true
+            }
+        });
+
+        var to = false;
+        this.$searchForm.find('#q').keyup(function () {
+            if (to) {
+                clearTimeout(to);
+            }
+            to = setTimeout(function () {
+                var v = self.$searchForm.find('#q').val();
+                self.$treeContainer.jstree(true).search(v);
+            }, 250);
+        });
+
+
+        this.bindEventListeners();
+
+        if((e.adapter!=null)&&(typeof e.adapter!="undefined")){
+            self.options.adapter = e.adapter;
+        }
+
+        self.options.name = e.name;
+        self.options.componentid = $(container).attr("id");
+        //Raise an event to show that the component has been rendered
+        $(container).trigger(self.options.events.READY, {name: e.name});
+
+    };
+
+
+    Fx_ui_w_foodComponent.prototype._initialize = function(e){
+        this.$componentStructure = e.template.overallStructure;
+        this.$foodConfiguration = CT.FILTER_CONFIG.FOOD
+
+
+        this.$treeContainer = $('<div class="jstree-holder"></div>');
+        this.$searchForm = $('<form id="s"><input type="search" id="q" class="form-control" /></form>');
+
+        this.$container = $(this.options.container);
+        this.$container.append(this.$searchForm);
+        this.$container.append(this.$treeContainer);
     };
 
     Fx_ui_w_foodComponent.prototype.getFirstCall = function (o, cb) {
@@ -118,54 +194,11 @@ define([
         });
     };
 
-    Fx_ui_w_foodComponent.prototype.render = function (e, container) {
+
+    Fx_ui_w_foodComponent.prototype.bindEventListeners = function () {
 
         var self = this;
 
-        self.options.container = container;
-        self.options.module = e;
-
-        this.$treeContainer = $('<div class="jstree-holder"></div>');
-        this.$searchForm = $('<form id="s"><input type="search" id="q" class="form-control" /></form>');
-
-        this.$container = $(container);
-        this.$container.append(this.$searchForm);
-        this.$container.append(this.$treeContainer);
-
-        this.$treeContainer.jstree({
-
-            'core': {
-                'data': function (node, cb) {
-                    if (node.id === "#") {
-                        self.getFirstCall(e, cb);
-                    }
-                    else {
-                        self.getChildren(e, node, cb);
-                    }
-                },
-                "multiple": true,
-                "animation": 0,
-                "themes": {"stripes": true}
-            },
-            /* themes: {
-             icons: false
-             },*/
-            "plugins": ["checkbox", "wholerow", "search"],
-            "search": {
-                show_only_matches: true
-            }
-        });
-
-        var to = false;
-        this.$searchForm.find('#q').keyup(function () {
-            if (to) {
-                clearTimeout(to);
-            }
-            to = setTimeout(function () {
-                var v = self.$searchForm.find('#q').val();
-                self.$treeContainer.jstree(true).search(v);
-            }, 250);
-        });
 
         this.$treeContainer.on("changed.jstree", function (e, data) {
 
@@ -192,25 +225,9 @@ define([
             self.$treeContainer.jstree(true).deselect_all();
         });
 
-        this.bindEventListeners();
 
-        if((e.adapter!=null)&&(typeof e.adapter!="undefined")){
-            self.options.adapter = e.adapter;
-        }
-
-        self.options.name = e.name;
-        self.options.componentid = $(container).attr("id");
-        //Raise an event to show that the component has been rendered
-        $(container).trigger(self.options.events.READY, {name: e.name});
-
-    };
-
-    Fx_ui_w_foodComponent.prototype.bindEventListeners = function () {
-
-        var that = this;
-
-        amplify.subscribe(E.MODULE_DESELECT + '.' + that.options.module.name, function (e) {
-            that.deselectValue(e);
+        amplify.subscribe(E.MODULE_DESELECT + '.' + self.options.module.name, function (e) {
+            self.deselectValue(e);
         });
 
     };

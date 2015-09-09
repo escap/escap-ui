@@ -3,7 +3,6 @@ define([
         "jquery",
         "geojson_selector",
         'config/submodules/fx-catalog/Config_Template',
-
         "fx-filter/config/config",
         "fx-filter/config/config-default",
         "fx-filter/config/events",

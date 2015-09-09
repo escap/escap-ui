@@ -2,13 +2,12 @@
 define([
     "jquery",
     'config/submodules/fx-catalog/Config_Template',
-
     "fx-filter/config/config",
     "fx-filter/config/config-default",
     "fx-filter/config/events",
-
     "jQAllRangeSliders",
     "amplify"
+
 ], function ($,CT, C, DC, E) {
 
     'use strict';
@@ -59,11 +58,15 @@ define([
 
     Fx_ui_survey_component.prototype._initialize = function(e) {
 
-        this.$surveyTimerange = $(CT.FILTER_CONFIG.SURVEY.YEARS)
+        this.$surveyTimerange = $(CT.FILTER_CONFIG.SURVEY.YEARS);
 
-        this.$surveyaddCharsName = CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_NAME
+        this.$surveyaddCharsNational = CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_NATIONAL;
 
-        this.$surveyAddCharsSelector = $('input[name="' + this.$surveyaddCharsName + '"]:radio');
+        this.$surveyaddCharsUrban = CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_URBAN;
+
+        this.$surveyAddCharsSelectorNational = $('input[name="' + this.$surveyaddCharsNational + '"]:radio');
+
+        this.$surveyAddCharsSelectorUrban = $('input[name="' + this.$surveyaddCharsUrban + '"]:radio');
 
         this.$sourceTimerange = e.component.years.defaultsource;
 
@@ -147,13 +150,17 @@ define([
 
     Fx_ui_survey_component.prototype.bindEventListeners = function () {
 
-
         var self = this;
 
-        this.$surveyAddCharsSelector.on('change', function (e, data) {
+        this.$surveyAddCharsSelectorUrban.on('change', function (e, data) {
             e.preventDefault();
             console.log($(e.target).val());
+        });
 
+        this.$surveyAddCharsSelectorNational.on('change', function (e, data) {
+            e.preventDefault();
+            console.log($(e.target).val());
+            console.log(self.$surveyTimerange.rangeSlider('values'));
         });
 
         $( this.options.css_classes.RESIZE).on('click', function () {
@@ -164,8 +171,16 @@ define([
 
             self.deselectValue(e);
         });
-
     };
+
+
+    Fx_ui_survey_component.prototype.unbindEventListeners = function () {
+        this.$surveyAddCharsSelectorUrban.off();
+        this.$surveyAddCharsSelectorNational.off();
+        $( this.options.css_classes.RESIZE).off();
+
+    }
+
 
     Fx_ui_survey_component.prototype.deselectValue = function (obj) {
 
@@ -197,7 +212,8 @@ define([
                     to: timeData.max
                 }
             },
-            addChars: $('input[name="' + this.$surveyaddCharsName + '"]:radio:checked').val()
+            addCharsNational: this.$surveyAddCharsSelectorNational.val(),
+            addCharsUrban: this.$surveyAddCharsSelectorUrban.val()
         };
     };
 

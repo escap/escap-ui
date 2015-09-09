@@ -27,7 +27,7 @@ define(function () {
                         "label": {
                             "EN": "Geo Selector"
                         },
-                        "icon": "fa fa-database fa-lg fa-fw"
+                        "icon": "fa fa-globe fa-lg fa-fw"
                     },
                 ]
             },
@@ -54,6 +54,7 @@ define(function () {
 
                 ]
             },
+
             {
                 "title": {
                     "EN": "POPULATION"
@@ -75,7 +76,29 @@ define(function () {
                         "icon": "fa fa-globe fa-lg fa-fw"
                     }
                 ]
-            }
+            },
+            {
+                "title": {
+                    "EN": "FOOD"
+                },
+                "popover": {
+                    "data-container": "body",
+                    "data-toggle": "popover",
+                    "data-placement": "left",
+                    "data-content": "Vivamus sagittis lacus vel augue laoreet rutrum faucibus.",
+                    "data-trigger": "hover"
+
+                },
+                "modules": [
+                    {
+                        "module": "food-GIFT",
+                        "label": {
+                            "EN": "Food Selector"
+                        },
+                        "icon": "fa fa-globe fa-lg fa-fw"
+                    }
+                ]
+            },
         ]
     };
 

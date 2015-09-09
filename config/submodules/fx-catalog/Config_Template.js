@@ -12,7 +12,8 @@ define(function () {
 
             SURVEY: {
                 YEARS: "#survey-timerange-container",
-                ADD_CHARS_RADIO_NAME: "addCharsRadio"
+                ADD_CHARS_RADIO_NATIONAL: "addCharsNational",
+                ADD_CHARS_RADIO_URBAN : "addCharsUrban"
             },
 
             POPULATION: {
@@ -32,7 +33,9 @@ define(function () {
                 SELECTOR_LIST_FILTER_CLASS:"list-countries-container"
             },
 
-            FOOD: {}
+            FOOD: {
+                TREE_CONTAINER: "#food-countries-container"
+            }
         },
         events: {
             MODIFY: "fx.filter.gift.population.changed"

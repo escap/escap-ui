@@ -6,7 +6,7 @@ define([
     'text!templates/filter/populationComponent.hbs',
     'text!templates/filter/foodComponent.hbs',
     'text!json/filter/geoSelector_leafletStyle.json'
-], function ( SurveyTemplate, GeoTemplate, PopulationTemplate, FoodTemplate,GEOJSONStyle) {
+], function (SurveyTemplate, GeoTemplate, PopulationTemplate, FoodTemplate, GEOJSONStyle) {
 
     'use strict';
 
@@ -40,7 +40,7 @@ define([
                     "sourceType": "period",
                     "defaultsource": {
                         YEARS: {from: 0, to: 70},
-                        MONTHS:{ from:0, to: 840}
+                        MONTHS: {from: 0, to: 840}
                     }
                 }
             },
@@ -67,7 +67,7 @@ define([
             },
             "template": {
                 "overallStructure": GeoTemplate,
-                "style" : JSON.parse(GEOJSONStyle)
+                "style": JSON.parse(GEOJSONStyle)
             }
         },
 
@@ -83,15 +83,33 @@ define([
             "component": {
                 years: {
                     "sourceType": "period",
-                    "defaultsource": {"from": 1983, "to": 2014}
+                    "defaultsource": {"from": 1983, "to": 2015}
                 }
-              /*  "source": {
-                    "uid": "GAUL_ReferenceArea",
-                    "version": "1.0"
-                }*/
+                /*  "source": {
+                 "uid": "GAUL_ReferenceArea",
+                 "version": "1.0"
+                 }*/
             },
             "template": {
                 "overallStructure": SurveyTemplate
+            }
+        },
+        "food-GIFT": {
+            "id": "food-GIFT",
+            "type": "codes",
+            "label": {
+                "EN": "Food",
+                "ES": "Food",
+                "DE": "Food",
+                "FR": "Food"
+            },
+            "component": {
+                "source": {
+                    "uid": "GIFT_Foods"
+                }
+            },
+            "template": {
+                "overallStructure": FoodTemplate
             }
         }
     };
