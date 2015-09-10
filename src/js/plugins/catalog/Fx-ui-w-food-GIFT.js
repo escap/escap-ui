@@ -2,36 +2,40 @@
 
 define([
     "jquery",
-    "fx-filter/config/config",
-    "fx-filter/config/config-default",
-    "fx-filter/config/events",
+    "fx-cat-br/config/config",
+    "fx-cat-br/config/config-default",
+    "fx-cat-br/config/events",
     'config/submodules/fx-catalog/Config_Template',
+    "q",
     "jstree",
-    "amplify"
-], function ($, C, DC, E,CT) {
+    "amplify",
+], function ($, C, DC, E, CT, Q) {
 
     'use strict';
 
     var o = {
         lang: 'EN',
         //For filter logic .... start
-        componentType : '',
-        componentid : '',
-        name : '',
-        title : '',
-        grid : '',
-        source :'',
-        adapter : null,
+        componentType: '',
+        componentid: '',
+        name: '',
+        title: '',
+        grid: '',
+        source: '',
+        adapter: null,
 
         events: {
             REMOVE_MODULE: "fx.filter.module.remove",
-            READY : "fx.filter.component.ready",
+            READY: "fx.filter.component.ready",
             DESELECT: 'fx.filter.module.deselect.'
         }
-    } ;
+    };
+
 
     function Fx_ui_w_foodComponent(optionsDefault) {
-        if (this.options === undefined) {this.options = {}; }
+        if (this.options === undefined) {
+            this.options = {};
+        }
 
         $.extend(true, this.options, o, optionsDefault);
     }
@@ -41,15 +45,12 @@ define([
         return true;
     };
 
-    Fx_ui_w_foodComponent.prototype.processData = function (data) {
+    Fx_ui_w_foodComponent.prototype.processData = function (data ,isChildren) {
 
         var r = [];
-
-        $(data).each(function (index, item) {
-
-            r.push({"text": item.title.EN, "id": item.code, "children": true});
-        });
-
+        for (var i = 0, length = data.length; i < length; i++) {
+            r.push({"text": data[i].title.EN, "id": data[i].code, "children": true});
+        }
         return r;
     };
 
@@ -63,19 +64,17 @@ define([
 
         $.extend(self.options.events, e.events); // extend events passed from the host
 
-
         this._initialize(e);
-
-
 
         this.$treeContainer.jstree({
             'core': {
+                worker: false,
                 'data': function (node, cb) {
                     if (node.id === "#") {
-                        self.getFirstCall(e, cb);
+                        self.getFirstCall( cb);
                     }
                     else {
-                        self.getChildren(e, node, cb);
+                        self.getChildren( node, cb)
                     }
                 },
                 "multiple": true,
@@ -87,7 +86,10 @@ define([
              },*/
             "plugins": ["checkbox", "wholerow", "search"],
             "search": {
-                show_only_matches: true
+                show_only_matches: true,
+                ajax: function(searchParameter,cb){
+                    self._searchOnLazyLoading(searchParameter, cb)
+                }
             }
         });
 
@@ -105,7 +107,7 @@ define([
 
         this.bindEventListeners();
 
-        if((e.adapter!=null)&&(typeof e.adapter!="undefined")){
+        if ((e.adapter != null) && (typeof e.adapter != "undefined")) {
             self.options.adapter = e.adapter;
         }
 
@@ -117,7 +119,7 @@ define([
     };
 
 
-    Fx_ui_w_foodComponent.prototype._initialize = function(e){
+    Fx_ui_w_foodComponent.prototype._initialize = function (e) {
         this.$componentStructure = e.template.overallStructure;
         this.$foodConfiguration = CT.FILTER_CONFIG.FOOD
 
@@ -130,28 +132,29 @@ define([
         this.$container.append(this.$treeContainer);
     };
 
-    Fx_ui_w_foodComponent.prototype.getFirstCall = function (o, cb) {
+    Fx_ui_w_foodComponent.prototype.getFirstCall = function ( cb) {
 
-        var self = this,
-            body = {
-                uid: o.component.source.uid,
-                level: 1,
+        var self = this;
+        var payload = {};
+            payload = {
+                uid: self.options.module.component.source.uid,
+                level: 2,
                 levels: 1
             };
 
-        if (o.component.source.version) {
-            body.version= o.component.source.version;
+        if (self.options.module.component.source.version) {
+            payload.version = self.options.module.component.source.version;
         }
 
         $.ajax({
             type: "POST",
             contentType: "application/json",
             url: (C.SERVICE_BASE_ADDRESS || DC.SERVICE_BASE_ADDRESS) + "/codes/filter",
-            data: JSON.stringify(body),
+            data: JSON.stringify(payload),
             dataType: "json",
             success: function (data) {
-                if (data){
-                    cb(self.processData(data));
+                if (data) {
+                    cb(self.processData(data, true));
                 }
             },
             error: function () {
@@ -160,38 +163,46 @@ define([
         });
     };
 
-    Fx_ui_w_foodComponent.prototype.getChildren = function (o, node, cb) {
+    Fx_ui_w_foodComponent.prototype.getChildren = function ( node, cb) {
 
-        var self = this,
-            body = {
-                uid: o.component.source.uid,
-                level: 1,
-                levels: 2,
-                codes: [node.id]
-            };
+        var self = this;
+        var payload = {};
+        payload = {
+            uid: self.options.module.component.source.uid,
+            level: node.parents.length+1,
+            levels: 2,
+            codes: [node.id]
+        };
 
-        if (o.component.source.version) {
-            body.version = o.component.source.version;
+        if (self.options.module.component.source.version) {
+            payload.version = self.options.module.component.source.version;
         }
 
-        $.ajax({
-            type: "POST",
-            contentType: "application/json",
-            url: (C.SERVICE_BASE_ADDRESS || DC.SERVICE_BASE_ADDRESS) + "/codes/filter",
-            data: JSON.stringify(body),
-            dataType: "json",
-            success: function (data) {
-                if (data){
-                    cb(self.processData(data[0].children|| []));
-                } else {
-                    cb([]);
-                }
+        console.log('getChildren!')
 
-            },
-            error: function () {
-                alert("Fx_ui_w_foodComponent error: impossible to load codelist");
+        $.ajax({
+            url: (C.SERVICE_BASE_ADDRESS || DC.SERVICE_BASE_ADDRESS) + "/codes/filter",
+            type: 'POST',
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify(payload)
+        }).success(function (data) {
+            if (data) {
+                cb(self.processData(data[0].children || []));
+            } else {
+                cb([]);
             }
+        }).error(function () {
+            alert("Fx_ui_tree error error: impossible to load codelist");
         });
+    };
+
+    Fx_ui_w_foodComponent.prototype._searchOnLazyLoading = function(searchString, cbSearch) {
+
+        var arrayRes  =['122','1622'];
+        debugger;
+
+        cbSearch(arrayRes);
     };
 
 
@@ -200,22 +211,29 @@ define([
         var self = this;
 
 
-        this.$treeContainer.on("changed.jstree", function (e, data) {
+ /*       this.$treeContainer.on("changed.jstree", function (e, data) {
 
             var i, j, r = [];
             for (i = 0, j = data.selected.length; i < j; i++) {
-                r.push({label: data.instance.get_node(data.selected[i]).text, value: data.instance.get_node(data.selected[i])});
+                r.push({
+                    label: data.instance.get_node(data.selected[i]).text,
+                    value: data.instance.get_node(data.selected[i])
+                });*/
+/*
             }
+*/
+            /*
+             amplify.publish(E.MODULE_READY,
+             {
+             value: r,
+             id: self.options.module.name,
+             label :  self.options.module.title.EN
+             });*/
 
-            amplify.publish(E.MODULE_READY,
-                {
-                    value: r,
-                    id: self.options.module.name,
-                    label :  self.options.module.title.EN
-                });
 
-
+/*
         });
+*/
 
         this.$searchForm.find('.sel_all').on('click', function () {
             self.$treeContainer.jstree(true).select_all();
@@ -234,16 +252,16 @@ define([
 
     Fx_ui_w_foodComponent.prototype.deselectValue = function (obj) {
 
-        this.$treeContainer.jstree('deselect_node', [ obj.value]);
-        this.$treeContainer.jstree(true).deselect_node([ obj.value]);
+        this.$treeContainer.jstree('deselect_node', [obj.value]);
+        this.$treeContainer.jstree(true).deselect_node([obj.value]);
     };
 
     //For filter logic .... start
-    Fx_ui_w_foodComponent.prototype.getName = function() {
+    Fx_ui_w_foodComponent.prototype.getName = function () {
         return this.options.name;
     };
 
-    Fx_ui_w_foodComponent.prototype.getAdapter = function() {
+    Fx_ui_w_foodComponent.prototype.getAdapter = function () {
         return this.options.adapter;
     };
     //For filter logic .... end
@@ -254,7 +272,7 @@ define([
             uid = this.options.module.component.source.uid,
             version = this.options.module.component.source.version;
 
-        if(codes.length<=0){
+        if (codes.length <= 0) {
             return null;
         }
 

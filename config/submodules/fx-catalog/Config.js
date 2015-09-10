@@ -9,7 +9,7 @@ define(function () {
          */
 
         PLUGIN_FOLDER_PATH: "plugins/catalog/",
-        SERVICE_BASE_ADDRESS: "http://fenixservices.fao.org/d3s/msd",
+        SERVICE_BASE_ADDRESS: "http://fenix.fao.org/d3s/msd",
         CATALOG_BLANK_FILTER : 'config/submodules/fx-catalog/blank-filter.json'
     };
 });

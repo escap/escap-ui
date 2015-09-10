@@ -107,6 +107,7 @@ require([
                     text: '{FENIX_CDN}/js/requirejs/plugins/text/2.0.12/text',
                     rsvp: '{FENIX_CDN}/js/rsvp/3.0.17/rsvp',
                     swiper: "{FENIX_CDN}/js/swiper/3.0.7/dist/js/swiper.min",
+                    jstree: "{FENIX_CDN}/js/jstree/3.0.8/dist/jstree",
 
                     // map libraries
                     leaflet:          "{FENIX_CDN}/js/leaflet/0.7.3/leaflet",
@@ -133,6 +134,9 @@ require([
                     // Analysis
                     'fx-ana/config/services' : '../../config/submodules/fx-analysis/Config'
 
+/*
+                    'fx-filter/config/config':'../../config/submodules/fx-filter/Config'
+*/
                 },
 
                 // Underscore and Backbone are not AMD-capable per default,

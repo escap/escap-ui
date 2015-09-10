@@ -4,7 +4,7 @@ define(function () {
     'use strict';
 
     return {
-        SERVICES_BASE_ADDRESS : 'http://fenixservices.fao.org/d3s',
+        SERVICES_BASE_ADDRESS : 'http://fenix.fao.org/d3s',
 
         PLUGIN_FILTER_COMPONENT_DIRECTORY: "../../../submodules/fenix-ui-filter/",
         FILTER_CONFIG: {
