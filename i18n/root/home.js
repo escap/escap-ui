@@ -11,7 +11,7 @@ define([
         // titles
         home_welcome_title : "Welcome to " + Common["project_name"],
         slider_title: "News",
-        fast_link_title : "Fast links",
+        fast_link_title : "Ready to use",
         link_food_consumption : "http://google.com",
         title_food_consumption:"Food consumption",
         link_food_safety:"http://google.com",
