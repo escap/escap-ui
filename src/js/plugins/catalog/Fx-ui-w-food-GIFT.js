@@ -48,6 +48,9 @@ define([
     Fx_ui_w_foodComponent.prototype.processData = function (data ,isChildren) {
 
         var r = [];
+        data.sort(function(a,b){
+            return (a.title.EN).toString().localeCompare( (b.title.EN).toString())
+        })
         for (var i = 0, length = data.length; i < length; i++) {
             r.push({"text": data[i].title.EN, "id": data[i].code, "children": true});
         }
