@@ -20,6 +20,15 @@
       }
     },
     {
+      "attrs": {
+        "id": "ready"
+      },
+      "target": "#ready",
+      "label": {
+        "EN": "Ready to use"
+      }
+    },
+    {
       "attrs":{
         "id":"statistics"
       },

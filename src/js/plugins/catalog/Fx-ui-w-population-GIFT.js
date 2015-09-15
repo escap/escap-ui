@@ -124,6 +124,8 @@ define([
             defaultValues: {min: this.$dataTimeRange.yearsRange.from + 5, max: this.$dataTimeRange.yearsRange.to - 5}
         });
 
+        this.$populationAgerange.rangeSlider('resize');
+
 
         this.bindEventListeners();
 

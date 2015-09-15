@@ -87,13 +87,13 @@ define([
             /* themes: {
              icons: false
              },*/
-            "plugins": ["checkbox", "wholerow", "search"],
-            "search": {
+            "plugins": ["checkbox", "wholerow"/*, "search"*/],
+          /*  "search": {
                 show_only_matches: true,
                 ajax: function(searchParameter,cb){
                     self._searchOnLazyLoading(searchParameter, cb)
                 }
-            }
+            }*/
         });
 
         var to = false;
@@ -131,7 +131,9 @@ define([
         this.$searchForm = $('<form id="s"><input type="search" id="q" class="form-control" /></form>');
 
         this.$container = $(this.options.container);
+/*
         this.$container.append(this.$searchForm);
+*/
         this.$container.append(this.$treeContainer);
     };
 

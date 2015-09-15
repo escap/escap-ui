@@ -1,0 +1,21 @@
+<div class="row">
+    <h1>Ready to use</h1>
+</div>
+
+<div class="row">
+    <div class="col-xs-3">
+        <ul class="ready-to-use-list">
+            {{#each views}}
+            <li>
+                <a href="{{ isI18n link }}"><span> {{ isI18n title }}</span></a>
+            {{/each}}
+        </li>
+        </ul>
+    </div>
+
+
+    <div class="col-xs-9">
+      <div id="ready-container"></div>
+    </div>
+
+</div>
