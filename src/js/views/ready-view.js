@@ -12,7 +12,7 @@ define([
     'handlebars',
     'amplify',
     'jstree'
-], function ($, View, template, templConsumpt, templEnv, templSft, templNut,i18nLabels,E, Handlebars) {
+], function ($, View, template, templConsumpt, templEnv, templSft, templNut, i18nLabels, E, Handlebars) {
 
     'use strict';
 
@@ -30,10 +30,6 @@ define([
 
 
         initialize: function (params) {
-            console.log(params);
-            console.log(i18nLabels);
-
-            this.readyToUseParams = params;
 
             View.prototype.initialize.call(this, arguments);
 
@@ -65,20 +61,20 @@ define([
 
         },
 
-        initVariables: function() {
+        initVariables: function () {
 
             this.$readyContainer = this.$el.find(s.READY_CONTAINER);
 
         },
 
-        _configurePage: function() {
+        _configurePage: function () {
 
             if (this.id !== undefined) {
                 this._onStartingSelected(this.id);
             }
         },
 
-        _onStartingSelected : function(id) {
+        _onStartingSelected: function (id) {
 
             switch (id) {
                 case s.OPTIONS.NUTRITION:
