@@ -28,6 +28,25 @@
 }
 
 
+#main-container{
+  overflow: hidden; //Very strange bug occurred in chrome OSX
+}
+
+.gift-containers-home{
+  height: 320px;
+}
+
+.home-gallery-item{
+  height: 320px;
+  background-size: cover;
+  background-position: 50% 50%;
+  overflow: hidden;
+
+}
+
+//.item{
+//  opacity: 0;
+//}
 
 .db-updates-list {
   list-style: none;

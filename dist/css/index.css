@@ -7668,6 +7668,18 @@ ul[role="group"] {
     /* Just to be similar to the news height (including the db header) */
     overflow-y: scroll; }
 
+#main-container {
+  overflow: hidden; }
+
+.gift-containers-home {
+  height: 320px; }
+
+.home-gallery-item {
+  height: 320px;
+  background-size: cover;
+  background-position: 50% 50%;
+  overflow: hidden; }
+
 .db-updates-list {
   list-style: none;
   padding-left: 0;
