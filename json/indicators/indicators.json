@@ -10,10 +10,11 @@
         "images": [
           {"src": "src/images/home_pictures/1.jpg"},
           {"src": "src/images/home_pictures/2.jpg"}
-        ],
-        "comments": "The macronutrients share of usual energy intakes is in line with the WHO population goals with a rather low content of fat in the diet, and a very high contribution of carbohydrates."
+        ]
       }
-    ]
+    ],
+    "comments": "The macronutrients share of usual energy intakes is in line with the WHO population goals with a rather low content of fat in the diet, and a very high contribution of carbohydrates."
+
   },
   "safety": {},
   "environment": {},
