@@ -123,13 +123,11 @@
 
                                     <div id='gift-contributors' class="swiper-container">
                                         <div class="swiper-wrapper">
+                                        {{#each slides}}
                                             <div class="swiper-slide home-event red-slide"><img
-                                                    src="src/images/efsa.jpg" class="img-responsive"></div>
-                                            <div class="swiper-slide home-event red-slide"><img
-                                                    src="src/images/efsa.jpg" class="img-responsive"></div>
-                                            <div class="swiper-slide home-event red-slide"><img
-                                                    src="src/images/efsa.jpg" class="img-responsive"></div>
-                                        </div>
+                                                    src={{isI18n src}} alt="..." class="img-responsive"></div>
+                                        {{/each}}
+
 
                                     </div>
                                     <!-- Add Pagination -->

@@ -42,6 +42,9 @@ define([
             REMOVE_MODULE: "fx.filter.module.remove",
             READY: "fx.filter.component.ready",
             DESELECT: 'fx.filter.module.deselect.'
+        },
+        options: {
+            YEARS_LABEL : 'YEARS'
         }
         //For filter logic .... end
     };
@@ -229,7 +232,9 @@ define([
             self._isFemaleSelected = ($(e.target).val() == 'female');
 
             self._checkAndSetPopCharacteristics();
+/*
             console.log(self.options.events.MODIFY)
+*/
         });
 
 
@@ -245,23 +250,30 @@ define([
                 self.$populationAgerange.rangeSlider('bounds', self.$dataTimeRange.monthsRange.from, self.$dataTimeRange.monthsRange.to);
                 self.$populationAgerange.rangeSlider('values', self.$dataTimeRange.monthsRange.from + 48, self.$dataTimeRange.monthsRange.to - 240)
 
-            } else if (self.$isYearTypeSelected === false && kindOfAgeRange === 'YEARS') {
+            } else if (self.$isYearTypeSelected === false && kindOfAgeRange === self.options.YEARS_LABEL) {
                 self.$isYearTypeSelected = true;
                 self.$populationAgerange.rangeSlider('bounds', self.$dataTimeRange.yearsRange.from, self.$dataTimeRange.yearsRange.to);
                 self.$populationAgerange.rangeSlider('values', self.$dataTimeRange.yearsRange.from + 5, self.$dataTimeRange.yearsRange.to - 5)
             }
 
+            debugger;
+/*
             amplify.publish(self.options.events.MODIFY)
+*/
+
+            console.log(self.getValues());
         });
 
 
         this.$populationAgerange.bind("valuesChanged", function (e, data) {
-            e.preventDefault;
+            e.preventDefault();
             self._rangeYearSelected = data.values;
             self._checkAndSetPopCharacteristics();
 
             // data.values =  {min:yy, max:xx}
+/*
             amplify.publish(self.options.events.MODIFY)
+*/
         });
 
 
@@ -285,19 +297,25 @@ define([
     //For filter logic .... end
     FX_ui_population_component.prototype.getValues = function (e) {
 
+        var self = this;
+
         var ageRangeSelected = this.$populationAgerange.rangeSlider('values');
 
-        return {
-            ageRangeType: $('input[name="' + this.$populationAgeRangeTypeName + '"]:radio:checked').val(),
-            ageRange: {
-                "period": {
-                    from: ageRangeSelected.min,
-                    to: ageRangeSelected.max
-                }
-            },
-            gender: $('input[name="' + this.$populationGenderName + '"]:radio:checked').val(),
-            characteristics: $('input[name="' + this.$populationCharsName + '"]:checkbox:checked').val()
+        var ageRange = {
+            "period":{
+                from: ageRangeSelected.min,
+                to: ageRangeSelected.max
+            }
         };
+        var result= {};
+
+       $('input[name="' + this.$populationAgeRangeTypeName + '"]:radio:checked').val() ===this.options.YEARS_LABEL?
+           result['age_year'] = ageRange:  result['age_month'] = ageRange;
+
+        result['gender'] = $('input[name="' + this.$populationGenderName + '"]:radio:checked').val();
+        result['characteristics'] = $('input[name="' + this.$populationCharsName + '"]:checkbox:checked').val();
+
+        return result;
     };
 
 
