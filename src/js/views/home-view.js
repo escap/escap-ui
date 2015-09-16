@@ -41,7 +41,6 @@ define([
 
         attach: function () {
 
-
             View.prototype.attach.call(this, arguments);
 
             //update State
@@ -55,7 +54,6 @@ define([
 
             this.configurePage();
 
-            console.log(s.NEWS_ID)
             var bannerSwiper = new Swiper(s.CONTRIBUTORS_ID,{
                 keyboardControl: false,
                 autoplay: 5000,
@@ -81,7 +79,6 @@ define([
 
             this._initDatabaseUpdatesList();
             this._initDocumentsLinkList();
-
         },
 
         //Page section initialization
@@ -104,7 +101,6 @@ define([
             var template = Handlebars.compile(documentTemplate);
             this.$documentsList.append(template(d));
         },
-
 
         configurePage: function () {
 

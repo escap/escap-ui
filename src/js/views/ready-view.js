@@ -3,16 +3,14 @@ define([
     'jquery',
     'views/base/view',
     'text!templates/ready/ready.hbs',
-    'text!templates/ready/consumption.hbs',
-    'text!templates/ready/environment.hbs',
-    'text!templates/ready/safety.hbs',
-    'text!templates/ready/nutrition.hbs',
+    'text!templates/ready/generic_indicator.hbs',
+    'text!json/indicators/indicators.json',
     'i18n!nls/ready',
     'config/Events',
     'handlebars',
     'amplify',
     'jstree'
-], function ($, View, template, templConsumpt, templEnv, templSft, templNut, i18nLabels, E, Handlebars) {
+], function ($, View, template, templateGen, indicatorsDoc, i18nLabels, E, Handlebars) {
 
     'use strict';
 
@@ -65,6 +63,8 @@ define([
 
             this.$readyContainer = this.$el.find(s.READY_CONTAINER);
 
+            this.$documents = JSON.parse(indicatorsDoc);
+
         },
 
         _configurePage: function () {
@@ -76,24 +76,14 @@ define([
 
         _onStartingSelected: function (id) {
 
-            switch (id) {
-                case s.OPTIONS.NUTRITION:
-                    this.$content = templNut;
-                    break;
+            var model, templateToAdd, $compiled;
 
-                case s.OPTIONS.SAFETY:
-                    this.$content = templSft;
-                    break;
+            model = this.$documents[id];
 
-                case s.OPTIONS.ENVIRONMENT:
-                    this.$content = templEnv;
-                    break;
+            templateToAdd = Handlebars.compile(templateGen);
+            $compiled = templateToAdd(model);
 
-                case s.OPTIONS.CONSUMPTION:
-                    this.$content = templConsumpt;
-                    break;
-            }
-            this.$readyContainer.append(this.$content);
+            this.$readyContainer.append($compiled);
         },
 
         unbindEventListeners: function () {
