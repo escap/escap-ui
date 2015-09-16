@@ -7887,3 +7887,29 @@ ul[role="group"] {
 
 .search-geojson-list {
   width: 100%; }
+
+/* Download Section */
+.leaflet-container {
+  font-family: Roboto; }
+
+.selected-country {
+  margin-bottom: 7px;
+  margin-right: 3px;
+  display: inline-block; }
+
+.map-selected-country {
+  font-weight: 500;
+  color: #2f9a8f; }
+
+.checkbox label, .radio label {
+  padding-left: 0; }
+
+input[type="radio"] + label:before {
+  position: absolute;
+  top: 2px;
+  left: -12px; }
+
+.timerange-box {
+  border: 1px solid #dddddd;
+  margin-top: 5px;
+  padding-bottom: 10px; }

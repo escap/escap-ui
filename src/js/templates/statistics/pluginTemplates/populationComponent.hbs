@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-6"><!-- Gender -->
+        <div class="col-xs-12"><!-- Gender -->
             <div class="gift-container population-gender-container">
                 <div class="gift-header population-gender-header">
                     <div class="gift-label population-gender-header-label">Gender</div>
@@ -28,10 +28,36 @@
                 </div>
             </div>
         </div>
+        <div class="col-xs-12"><!-- Radio button characteristics -->
+            <div class="gift-container population-characteristics-container">
+                <div class="gift-header population-characteristics-header">
+                    <div class="gift-label population-characteristics-header-label">Population Characteristics</div>
+                </div>
+                <div class="gift-holder population-characteristics-holder">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="radio">
+                                <input id="population-characteristics-pregnant" type="checkbox" name="popCharsRadio"
+                                       value="2"disabled ><label for="population-characteristics-pregnant">Only Pregnant</label>
+                            </div>
+                            <div class="radio">
+                                <input id="population-characteristics-lactating" type="checkbox" name="popCharsRadio"
+                                       value="3" disabled><label for="population-characteristics-lactating">Only Lactating</label>
+                            </div>
+                            <div class="radio">
+                                <input id="population-characteristics-nolactating-nopregnant" type="checkbox"
+                                       name="popCharsRadio" value="none" checked disabled><label for="population-characteristics-nolactating-nopregnant">
+                                None</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row">
-        <div class="col-xs-6"> <!-- Age range -->
+        <div class="col-xs-12"> <!-- Age range -->
             <div class="gift-container population-age-range-container">
                 <div class="gift-header population-age-range-header">
                     <div class="gift-label population-age-range-header-label">Refined Age Range</div>
@@ -59,31 +85,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-6"><!-- Radio button characteristics -->
-            <div class="gift-container population-characteristics-container">
-                <div class="gift-header population-characteristics-header">
-                    <div class="gift-label population-characteristics-header-label">Population Characteristics</div>
-                </div>
-                <div class="gift-holder population-characteristics-holder">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="radio">
-                                <input id="population-characteristics-pregnant" type="checkbox" name="popCharsRadio"
-                                       value="2"disabled ><label for="population-characteristics-pregnant">Only Pregnant</label>
-                            </div>
-                            <div class="radio">
-                                <input id="population-characteristics-lactating" type="checkbox" name="popCharsRadio"
-                                       value="3" disabled><label for="population-characteristics-lactating">Only Lactating</label>
-                            </div>
-                            <div class="radio">
-                                <input id="population-characteristics-nolactating-nopregnant" type="checkbox"
-                                       name="popCharsRadio" value="none" checked disabled><label for="population-characteristics-nolactating-nopregnant">
-                                None</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>

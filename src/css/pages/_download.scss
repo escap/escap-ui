@@ -1,0 +1,32 @@
+/* Download Section */
+
+.leaflet-container{
+  font-family: Roboto;
+}
+
+.selected-country{
+  margin-bottom:7px;
+  margin-right:3px;
+  display: inline-block;
+}
+
+.map-selected-country{
+  font-weight: 500;
+  color: $fx-cool-blue-alt;
+}
+
+.checkbox label, .radio label{
+  padding-left: 0;
+}
+
+input[type="radio"] + label:before{
+  position: absolute;
+  top: 2px;
+  left: -12px;
+}
+
+.timerange-box{
+  border: 1px solid $fenix-light-gray;
+  margin-top: 5px;
+  padding-bottom: 10px;
+}
