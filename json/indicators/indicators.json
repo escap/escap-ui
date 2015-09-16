@@ -21,10 +21,10 @@
     "title" : "Groundnuts consumption",
     "indicators": [
       {
-        "indicator": "Macronutrient share of usual energy intakes",
+        "indicator": "Consumption of groundnuts in g/kg body weight/day over 2 days in consumers only",
         "Gender": "Female",
         "Age_range": "19-50 years",
-        "Survey": "Philippines HarvestPlus, 2008",
+        "Survey": "Burkina Faso HarvestPlus/IRD, 2010",
         "images": [
           {"src": "src/images/home_pictures/1.jpg"},
           {"src": "src/images/home_pictures/2.jpg"}
