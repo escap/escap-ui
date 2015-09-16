@@ -32,8 +32,12 @@
   overflow: hidden; //Very strange bug occurred in chrome OSX
 }
 
-.gift-containers-home{
+.gift-containers-sliders-home{
   height: 320px;
+}
+
+.gift-containers-home{
+  height: 330px;
 }
 
 .home-gallery-item{
@@ -55,7 +59,7 @@
 
   li {
     position: relative;
-    padding: 15px 0 15px 70px;
+    padding: 15px 0 15px 15px;
     border-bottom: 1px solid $fenix-light-hr;
 
     &:last-child {
@@ -92,6 +96,20 @@
 
   }
 
+}
+
+
+.home-event{
+  h2{
+    font-weight: 500;
+    color: $fx-cool-blue-alt;
+    text-transform: none;
+
+  }
+
+  p{
+    padding: 0 10px;
+  }
 }
 
 .home-news-container {

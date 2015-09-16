@@ -7634,6 +7634,19 @@ ul[role="group"] {
     .sidebar-box .sidebar-box-content h3 {
       margin-top: 0; }
 
+.collaborators-list li {
+  margin-bottom: 15px;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 10px; }
+  .collaborators-list li:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #cccccc; }
+
 .user-container {
   padding-left: 90px; }
   .user-container h3 {
@@ -7671,8 +7684,11 @@ ul[role="group"] {
 #main-container {
   overflow: hidden; }
 
-.gift-containers-home {
+.gift-containers-sliders-home {
   height: 320px; }
+
+.gift-containers-home {
+  height: 330px; }
 
 .home-gallery-item {
   height: 320px;
@@ -7686,7 +7702,7 @@ ul[role="group"] {
   padding-right: 15px; }
   .db-updates-list li {
     position: relative;
-    padding: 15px 0 15px 70px;
+    padding: 15px 0 15px 15px;
     border-bottom: 1px solid #cccccc; }
     .db-updates-list li:last-child {
       border-bottom-color: transparent; }
@@ -7708,6 +7724,13 @@ ul[role="group"] {
     .db-updates-list li .db-update-link {
       font: normal normal 300 11px/normal "Roboto";
       color: #333333; }
+
+.home-event h2 {
+  font-weight: 500;
+  color: #2f9a8f;
+  text-transform: none; }
+.home-event p {
+  padding: 0 10px; }
 
 .home-news-container {
   height: 320px;

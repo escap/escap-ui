@@ -4,14 +4,15 @@
 
     <!-- Slider section-->
     <div class="col-sm-6">
-        <section class="gift-containers-home">
+        <section class="gift-containers-sliders-home">
 
 
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     {{#each slides}}
-                        <li data-target="#carousel-example-generic" data-slide-to={{isI18n data_link}} class={{isI18n active_link}}></li>
+                        <li data-target="#carousel-example-generic"
+                            data-slide-to={{isI18n data_link}} class={{isI18n active_link}}></li>
                     {{/each}}
                 </ol>
 
@@ -21,11 +22,10 @@
                         <div class="{{{ isI18n class_item }}}">
 
 
-
                             <div style="background-image: url({{isI18n src}})" class="home-gallery-item coming"></div>
 
                             <div class="carousel-caption">
-                       
+
                             </div>
                         </div>
                     {{/each}}
@@ -49,7 +49,7 @@
 
     <!-- Fast link section-->
     <div class="col-sm-6">
-        <section class="fast-link-container gift-containers-home">
+        <section class="fast-link-container gift-containers-sliders-home">
             <div class="fast-link-header gift-headers-home"><h3 class="slider-header title"><span
                     class="icojam_flash2"></span> {{fast_link_title}}</h3>
             </div>
@@ -123,11 +123,35 @@
 
                                     <div id='gift-contributors' class="swiper-container">
                                         <div class="swiper-wrapper">
-                                        {{#each slides}}
-                                            <div class="swiper-slide home-event red-slide"><img
-                                                    src={{isI18n src}} alt="..." class="img-responsive"></div>
-                                        {{/each}}
+                                            <div class="swiper-slide home-event red-slide">
+                                                <h2>Title</h2>
 
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nisl
+                                                    ultricies, suscipit est ac, euismod neque. Duis a vulputate orci.
+                                                    Nulla mattis neque metus.
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac
+                                                    nisl ultricies, suscipit est ac, euismod neque. Duis a vulputate
+                                                    orci. Nulla mattis neque metus</p>
+                                            </div>
+                                            <div class="swiper-slide home-event red-slide">
+                                                <h2>Title</h2>
+
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nisl
+                                                    ultricies, suscipit est ac, euismod neque. Duis a vulputate orci.
+                                                    Nulla mattis neque metus.
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac
+                                                    nisl ultricies, suscipit est ac, euismod neque. Duis a vulputate
+                                                    orci. Nulla mattis neque metus</p></div>
+                                            <div class="swiper-slide home-event red-slide">
+                                                <h2>Title</h2>
+
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nisl
+                                                    ultricies, suscipit est ac, euismod neque. Duis a vulputate orci.
+                                                    Nulla mattis neque metus.
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac
+                                                    nisl ultricies, suscipit est ac, euismod neque. Duis a vulputate
+                                                    orci. Nulla mattis neque metus</p></div>
+                                        </div>
 
                                     </div>
                                     <!-- Add Pagination -->
