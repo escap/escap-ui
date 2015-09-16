@@ -20,7 +20,7 @@ define([
         title_food_nutrition: "Food nutrition",
         link_food_environment: "http://google.com",
         title_food_environment: "Food environment",
-        database_update_title: "Database updates",
+        database_update_title: "News",
 
         contacts_collaborations_title: "In collaboration with",
 

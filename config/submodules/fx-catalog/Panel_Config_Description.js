@@ -1,10 +1,10 @@
 /* global define */
 
 define([
-    'text!templates/filter/surveyComponent.hbs',
-    'text!templates/filter/geoComponent.hbs',
-    'text!templates/filter/populationComponent.hbs',
-    'text!templates/filter/foodComponent.hbs',
+    'text!templates/statistics/pluginTemplates/surveyComponent.hbs',
+    'text!templates/statistics/pluginTemplates/geoComponent.hbs',
+    'text!templates/statistics/pluginTemplates/populationComponent.hbs',
+    'text!templates/statistics/pluginTemplates/foodComponent.hbs',
     'text!json/filter/geoSelector_leafletStyle.json'
 ], function (SurveyTemplate, GeoTemplate, PopulationTemplate, FoodTemplate, GEOJSONStyle) {
 

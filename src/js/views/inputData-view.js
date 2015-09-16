@@ -1,20 +1,20 @@
 /*global define, amplify*/
 define([
     'views/base/view',
-    'text!templates/protected/protected.hbs',
-    'i18n!nls/protected',
+    'text!templates/inputData/inputData.hbs',
+    'i18n!nls/inputData',
     'config/Events',
     'amplify'
 ], function (View, template, i18nLabels, E) {
 
     'use strict';
 
-    var ProtectedView = View.extend({
+    var InputdataView = View.extend({
 
         // Automatically render after initialize
         autoRender: true,
 
-        className: 'protected',
+        className: 'inputData',
 
         // Save the template string in a prototype property.
         // This is overwritten with the compiled template function.
@@ -30,7 +30,7 @@ define([
             View.prototype.attach.call(this, arguments);
 
             //update State
-            amplify.publish(E.STATE_CHANGE, {menu: 'protected'});
+            amplify.publish(E.STATE_CHANGE, {menu: 'inputData'});
         },
 
 
@@ -46,5 +46,5 @@ define([
         }
     });
 
-    return ProtectedView;
+    return InputdataView;
 });

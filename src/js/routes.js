@@ -7,7 +7,7 @@ define(function () {
     return function (match) {
         match('', 'home#show');
         match('home', 'home#show');
-        match('protected', 'protected#show');
+        match('inputData', 'inputData#show');
         match('about', 'about#show');
         match('statistics/microdata', 'statistics-microdata#show');
         match('statistics/analysis', 'statistics-analysis#show');

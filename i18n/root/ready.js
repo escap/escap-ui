@@ -1,5 +1,6 @@
 /*global define*/
 define({
+    title: 'Ready to use',
     views:[
         {   link: "#ready/consumption", title:"Consumption"    },
         {   link: "#ready/safety", title:"Safety"    },

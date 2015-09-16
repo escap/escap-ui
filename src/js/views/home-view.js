@@ -24,7 +24,7 @@ define([
     var s = {
         DB_UPDATES_LIST: '#db-updates-list',
         DOCUMENTS_LIST: '#documents-list',
-        NEWS_ID : '#gift-news'
+        CONTRIBUTORS_ID : '#gift-contributors'
     };
 
     var HomeView = View.extend({
@@ -56,7 +56,7 @@ define([
             this.configurePage();
 
             console.log(s.NEWS_ID)
-            var bannerSwiper = new Swiper(s.NEWS_ID,{
+            var bannerSwiper = new Swiper(s.CONTRIBUTORS_ID,{
                 keyboardControl: false,
                 autoplay: 5000,
                 loop: true,
@@ -67,27 +67,6 @@ define([
                 prevButton: '.swiper-button-prev',
                 spaceBetween: 30
             })
-/*
-            var swiperHigh = $('#gift-high-wrapper').swiper({
-                loop: true,
-                simulateTouch: false,
-                onSwiperCreated: updateMainSwiperIndex,
-                onSlideChangeEnd: updateMainSwiperIndex,
-                autoplay: 5000
-            });
-            $('.swipe-high-prev').on('click', function(e) {
-                e.preventDefault();
-                swiperHigh.swipePrev();
-            });
-            $('.swipe-high-next').on('click', function(e) {
-                e.preventDefault();
-                swiperHigh.swipeNext();
-            });
-
-            function updateMainSwiperIndex(swiper) {
-                var s = swiper || swiperHigh;
-                $('.hp-main-swiper-index').html('<span class="swiper-index"><span class="swiper-index-active">'+ (s.activeLoopIndex + 1)+'</span><span class="swiper-index-total"> | '+ (s.slides.length - (s.loopedSlides*2) )+'</span></span>' );
-            }*/
         },
 
         initVariables: function () {
@@ -103,12 +82,8 @@ define([
             this._initDatabaseUpdatesList();
             this._initDocumentsLinkList();
 
-            /*   this.WDSClient = new WDSClient({
-             serviceUrl: C.WDS_URL,
-             datasource: C.DB_NAME,
-             outputType : C.WDS_OUTPUT_TYPE
-             });*/
         },
+
         //Page section initialization
         _initDatabaseUpdatesList: function() {
             _.each(JSON.parse(dbUpdatesModels), _.bind(this.printDatabaseUpdate, this));

@@ -4,13 +4,13 @@ define([
     'underscore',
     'config/Events',
     'controllers/base/controller',
-    'views/protected-view',
+    'views/inputData-view',
     'globals/AuthManager',
     'rsvp'
 ], function (Chaplin, _, E, Controller, View, AuthManager, RSVP) {
     'use strict';
 
-    var ProtectedController = Controller.extend({
+    var InputdataController = Controller.extend({
 
         beforeAction: function () {
             Controller.prototype.beforeAction.call(this, arguments);
@@ -47,5 +47,5 @@ define([
         }
     });
 
-    return ProtectedController;
+    return InputdataController;
 });

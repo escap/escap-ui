@@ -61,9 +61,9 @@
 
     {
       "attrs": {
-        "id": "protected"
+        "id": "inputData"
       },
-      "target": "#protected",
+      "target": "#inputData",
       "label": {
         "EN": "Input data"
       }
