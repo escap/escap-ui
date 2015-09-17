@@ -1,7 +1,9 @@
 /*global define, amplify*/
 define([
+    'require',
     'jquery',
     'views/base/view',
+    '../lib/ready-configurator',
     'text!templates/ready/ready.hbs',
     'text!templates/ready/generic_indicator.hbs',
     'text!json/indicators/indicators.json',
@@ -10,7 +12,7 @@ define([
     'handlebars',
     'amplify',
     'jstree'
-], function ($, View, template, templateGen, indicatorsDoc, i18nLabels, E, Handlebars) {
+], function (require,$, View, Configurator,template, templateGen, indicatorsDoc, i18nLabels, E, Handlebars) {
 
     'use strict';
 
@@ -21,7 +23,10 @@ define([
             SAFETY: 'safety',
             ENVIRONMENT: 'environment',
             CONSUMPTION: 'consumption'
-        }
+        },
+        CONTAINERS: [
+
+        ]
     };
 
     var ReadyView = View.extend({
@@ -63,7 +68,7 @@ define([
 
             this.$readyContainer = this.$el.find(s.READY_CONTAINER);
 
-            this.$documents = JSON.parse(indicatorsDoc);
+            this.$documents = Configurator;
 
         },
 
@@ -75,15 +80,20 @@ define([
         },
 
         _onStartingSelected: function (id) {
+            var self = this;
 
-            var model, templateToAdd, $compiled;
+            this.$topic = this.$documents[id];
+            debugger;
 
-            model = this.$documents[id];
+            require([this.$topic.template],self._onCompileTemplate, function(){ throw new Error( 'not valid template!')} )
+        },
 
-            templateToAdd = Handlebars.compile(templateGen);
-            $compiled = templateToAdd(model);
+        _onCompileTemplate : function (templateSelected) {
+            var templateToAdd = Handlebars.compile(templateSelected);
+            var $compiled = templateToAdd( this.$topic.model);
 
             this.$readyContainer.append($compiled);
+            this.$topic.onEnter();
         },
 
         unbindEventListeners: function () {
