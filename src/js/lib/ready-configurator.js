@@ -209,10 +209,9 @@ define([], function () {
                     {"macronutrient": "Mean", "percentage": 3.7},
                     {"macronutrient": "SD", "percentage": 1.1},
                     {"macronutrient": "Min", "percentage": 3},
-                    {"macronutrient": "25th", "percentage": 3},
-                    {"macronutrient": "percentile", "percentage": null},
+                    {"macronutrient": "25th percentile", "percentage": 3},
                     {"macronutrient": "Median", "percentage": 3},
-                    {"macronutrient": "75th", "percentage": 3},
+                    {"macronutrient": "75th percentile", "percentage": 3},
                     {"macronutrient": "Max", "percentage": 3},
 
                 ]
@@ -242,8 +241,8 @@ define([], function () {
                     source: dataAdapter,
                     columnsresize: true,
                     columns: [
-                        {text: 'Dietary', datafield: 'macronutrient'},
-                        {text: 'Stats', datafield: 'percentage'}
+                        {text: 'Stats', datafield: 'macronutrient'},
+                        {text: 'Value', datafield: 'percentage'}
                     ]
                 });
 
@@ -256,12 +255,6 @@ define([], function () {
                     },
                     title: {
                         text: ''
-                    },
-                    yAxis: {
-                        allowDecimals: false,
-                        title: {
-                            text: 'Units'
-                        }
                     },
                     tooltip: {
                         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -303,6 +296,12 @@ define([], function () {
                     },
                     title: {
                         text: ''
+                    },
+                    yAxis: {
+                        allowDecimals: false,
+                        title: {
+                            text: 'Units'
+                        }
                     },
                     tooltip: {
                         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -368,6 +367,9 @@ define([], function () {
                     },
                     title: {
                         text: ''
+                    },
+                    xAxis: {
+                        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
                     },
                     tooltip: {
                         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

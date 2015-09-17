@@ -16,8 +16,8 @@ define([
          */
 
         "population-GIFT": {
-            "id": "population-GIFT",
-            "type": "text",
+            "id": "population-GIFT-id",
+            "type": "population-GIFT",
             "label": {
                 "EN": "Population",
                 "DE": "Population",
@@ -50,8 +50,8 @@ define([
         },
 
         "geo-GIFT": {
-            "id": "geo-GIFT",
-            "type": "enumeration",
+            "id": "geo-GIFT-id",
+            "type": "geo-GIFT",
             "label": {
                 "EN": "Geographic",
                 "DE": "Geographic",
@@ -72,8 +72,8 @@ define([
         },
 
         "survey-GIFT": {
-            "id": "survey-GIFT",
-            "type": "codes",
+            "id": "survey-GIFT-id",
+            "type": "survey-GIFT",
             "label": {
                 "EN": "Survey",
                 "ES": "Survey",
@@ -94,9 +94,10 @@ define([
                 "overallStructure": SurveyTemplate
             }
         },
+
         "food-GIFT": {
-            "id": "food-GIFT",
-            "type": "codes",
+            "id": "food-GIFT-id",
+            "type": "food-GIFT",
             "label": {
                 "EN": "Food",
                 "ES": "Food",

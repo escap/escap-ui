@@ -295,11 +295,12 @@ define([
     };
 
     //For filter logic .... end
-    FX_ui_population_component.prototype.getValues = function (e) {
+    FX_ui_population_component.prototype.getValue = function (e) {
 
         var self = this;
 
-        var ageRangeSelected = this.$populationAgerange.rangeSlider('values');
+        var ageRangeSelected = $( CT.FILTER_CONFIG.POPULATION.AGERANGE).rangeSlider('values');
+
 
         var ageRange = {
             "period":{
@@ -309,11 +310,12 @@ define([
         };
         var result= {};
 
-       $('input[name="' + this.$populationAgeRangeTypeName + '"]:radio:checked').val() ===this.options.YEARS_LABEL?
+
+       $('input[name="' + CT.FILTER_CONFIG.POPULATION.AGERANGE_TYPE_RADIO_NAME + '"]:radio:checked').val() ==='YEARS'?
            result['age_year'] = ageRange:  result['age_month'] = ageRange;
 
-        result['gender'] = $('input[name="' + this.$populationGenderName + '"]:radio:checked').val();
-        result['characteristics'] = $('input[name="' + this.$populationCharsName + '"]:checkbox:checked').val();
+        result['gender'] = $('input[name="' + CT.FILTER_CONFIG.POPULATION.GENDERS_RADIO_NAME + '"]:radio:checked').val();
+        result['characteristics'] = $('input[name="' + CT.FILTER_CONFIG.POPULATION.CHARACTERISTICS_RADIO_NAME + '"]:checkbox:checked').val();
 
         return result;
     };

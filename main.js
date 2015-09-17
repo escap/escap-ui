@@ -127,7 +127,9 @@ require([
                     // Catalog
                     'fx-cat-br/config/config': '../../config/submodules/fx-catalog/Config',
                     "fx-cat-br/config/fx-catalog-blank-filter": '../../config/submodules/fx-catalog/blankfilter',
+                    "fx-cat-br/config/fx-catalog-filter-mapping" :  '../../config/submodules/fx-catalog/fx-catalog-filter-mapping',
 
+                    'fx-cat-br/widgets/bridge/Fx-catalog-bridge' : "./utils/GiftWdsCatalogBridge",
                     'fx-cat-br/config/fx-catalog-collapsible-menu-config' : '../../config/submodules/fx-catalog/Panel_Config',
                     'fx-cat-br/config/fx-catalog-modular-form-config' : '../../config/submodules/fx-catalog/Panel_Config_Description',
 

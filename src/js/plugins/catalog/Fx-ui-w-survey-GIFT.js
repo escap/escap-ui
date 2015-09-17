@@ -201,9 +201,9 @@ define([
     };
     //For filter logic .... end
 
-    Fx_ui_survey_component.prototype.getValues = function (e) {
+    Fx_ui_survey_component.prototype.getValue = function (e) {
 
-        var timeData = this.$surveyTimerange.rangeSlider('values');
+        var timeData = $(CT.FILTER_CONFIG.SURVEY.YEARS).rangeSlider('values');
 
         return {
             years: {
@@ -212,8 +212,8 @@ define([
                     to: timeData.max
                 }
             },
-            addCharsNational: this.$surveyAddCharsSelectorNational.val(),
-            addCharsUrban: this.$surveyAddCharsSelectorUrban.val()
+            addCharsNational: $('input[name="' + CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_NATIONAL+ '"]:radio').val(),
+            addCharsUrban: $('input[name="' + CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_URBAN + '"]:radio').val()
         };
     };
 

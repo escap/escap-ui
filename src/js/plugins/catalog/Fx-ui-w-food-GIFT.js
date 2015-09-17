@@ -271,17 +271,21 @@ define([
     };
     //For filter logic .... end
 
-    Fx_ui_w_foodComponent.prototype.getValues = function (e) {
+    Fx_ui_w_foodComponent.prototype.getValue = function (e) {
 
-        var codes = $("#" + this.options.componentid).find('.jstree-holder').jstree(true).get_selected(),
-            uid = this.options.module.component.source.uid,
-            version = this.options.module.component.source.version;
+        var codes = $("#" + e.id).find('.jstree-holder').jstree(true).get_selected(),
+            uid = e.module.component.source.uid,
+            version = e.module.component.source.version;
 
         if (codes.length <= 0) {
             return null;
         }
 
         return {
+            codes: codes
+        };
+
+        /*return {
             codes: [
                 {
                     uid: uid,
@@ -289,7 +293,7 @@ define([
                     codes: codes
                 }
             ]
-        };
+        };*/
     };
 
     return Fx_ui_w_foodComponent;

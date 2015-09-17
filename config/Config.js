@@ -5,6 +5,9 @@ define(function () {
 
         return {
 
+
+            SERVICE_BASE_ADDRESS : "http://fenix.fao.org/d3s",
+
             //Chaplin JS configuration
             CHAPLINJS_CONTROLLER_SUFFIX: '-controller',
             CHAPLINJS_PROJECT_ROOT: '/fenix/',
@@ -13,10 +16,10 @@ define(function () {
             CHAPLINJS_APPLICATION_TITLE: "FENIX Web App",
 
             //WDS configuration
-            /*DB_NAME: 'db_name',
+            DB_NAME: 'GIFT',
             WDS_URL: 'http://hqlprfenixapp2.hq.un.fao.org:10100/wds-5.2.1/rest/crud',
             WDS_OUTPUT_TYPE: 'object',
-            WDS_OLAP_OUTPUT_TYPE : 'array',*/
+            WDS_DOWNLOAD_MICRODATA_SEARCH_QUERY : "select distinct ('gift_'||survey_code) from master where 1=1",
 
             //Top Menu configuration
             TOP_MENU_CONFIG: 'config/submodules/fx-menu/top_menu.json',

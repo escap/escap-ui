@@ -106,7 +106,6 @@ define([
         FX_ui_geographic_component.prototype._renderMap = function (styleConf) {
 
             var self = this;
-            console.log(styleConf)
 
             this.$leafletMap = new L.Map(self.$geoConfiguration.MAP_ID, {
                 zoomControl: false,
@@ -202,6 +201,8 @@ define([
 
 
             this.$geoList.on('item-active', function (e) {
+                console.log(e.layers[0].feature);
+                self.$selected = e.layers[0].feature.properties.name
                 $('#' + self.$geoConfiguration.MAP_ID).prev('label').text(e.layers[0].feature.properties.name)
             });
 
@@ -252,11 +253,13 @@ define([
         };
         //For filter logic .... end
 
-        FX_ui_geographic_component.prototype.getValues = function (e) {
+        FX_ui_geographic_component.prototype.getValue = function (e) {
 
             return {
 
-                country_selected: {}
+                country_selected: {
+                    codes : ['42']
+                }
 
             };
         };
