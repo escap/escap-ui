@@ -1,0 +1,32 @@
+/* Ready to use page */
+
+.ready-to-use-list{
+
+
+  li{
+
+    a ,
+    a:link,
+    a:visited,
+    a:hover,
+    a:focus,
+    a:active {
+      text-transform: uppercase;
+      color: $fx-cool-blue-alt;
+      text-decoration: none;
+      display: inline-block;
+      width: 100%;
+      //height: 20px;
+      margin-bottom: 5px;
+      padding-left: 15px;
+      font-size: 14px;
+    }
+
+
+    a:hover{
+      background-color: $fenix-light-bg;
+    }
+
+  }
+
+}

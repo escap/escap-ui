@@ -27,6 +27,16 @@
 
 }
 
+.prototype{
+  display: inline-block;
+  margin-left: 10px;
+  color: $fx-cool-blue-alt;
+  font-weight: 400;
+}
+
+.main-title{
+  display: inline-block;
+}
 
 #main-container{
   overflow: hidden; //Very strange bug occurred in chrome OSX
@@ -79,7 +89,8 @@
 
     h3 {
       margin: 0;
-      color: $fenix-text;
+      color: $fx-cool-blue-alt;
+      font-weight: 400;
     }
 
     .db-update-ico {
