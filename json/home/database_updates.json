@@ -1,38 +1,13 @@
 [
   {
     "title": {
-      "EN": "Title 1"
+      "EN": "WEBINARS"
     },
     "body": {
-      "EN": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nisl ultricies, suscipit est ac, euismod neque. Duis a vulputate orci. Nulla mattis neque metus, eget efficitur quam rutrum vitae. Integer at leo dolor. Curabitur sapien mi, scelerisque eget lacinia id, efficitur vel neque. Integer quis dapibus ligula, id fringilla enim. Duis sed purus nec lorem gravida accumsan. Phasellus ut hendrerit risus, nec commodo dolor. "
-    },
-    "link": "link"
-  },
-  {
-    "title": {
-      "EN": "Title 2"
-    },
-    "body": {
-      "EN": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nisl ultricies, suscipit est ac, euismod neque. Duis a vulputate orci. Nulla mattis neque metus, eget efficitur quam rutrum vitae. Integer at leo dolor. Curabitur sapien mi, scelerisque eget lacinia id, efficitur vel neque. Integer quis dapibus ligula, id fringilla enim. Duis sed purus nec lorem gravida accumsan. Phasellus ut hendrerit risus, nec commodo dolor. "
-    },
-    "link": "link"
-  },
-  {
-    "title": {
-      "EN": "Title 3"
-    },
-    "body": {
-      "EN": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nisl ultricies, suscipit est ac, euismod neque. Duis a vulputate orci. Nulla mattis neque metus, eget efficitur quam rutrum vitae. Integer at leo dolor. Curabitur sapien mi, scelerisque eget lacinia id, efficitur vel neque. Integer quis dapibus ligula, id fringilla enim. Duis sed purus nec lorem gravida accumsan. Phasellus ut hendrerit risus, nec commodo dolor. "
-    },
-    "link": "link"
-  },
-  {
-    "title": {
-      "EN": "Title 4"
-    },
-    "body": {
-      "EN": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nisl ultricies, suscipit est ac, euismod neque. Duis a vulputate orci. Nulla mattis neque metus, eget efficitur quam rutrum vitae. Integer at leo dolor. Curabitur sapien mi, scelerisque eget lacinia id, efficitur vel neque. Integer quis dapibus ligula, id fringilla enim. Duis sed purus nec lorem gravida accumsan. Phasellus ut hendrerit risus, nec commodo dolor. "
+      "EN":
+              "In November 2015, several webinars will be conducted to illustrate the FAO/WHO GIFT prototype platform to potential end users with the objective of developing this tool in a participatory manner. At least one webinar will be conducted in each pilot country: Burkina Faso, Uganda, Bangladesh, and the Philippines with the sole involvement of local staff from government and local partners. In addition at least two webinars will be conducted with international staff from NGOs and international organizations located in these countries with specific expertise in the area of food safety and nutrition respectively.   "
     },
     "link": "link"
   }
+
 ]
