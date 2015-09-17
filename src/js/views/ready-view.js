@@ -2,6 +2,7 @@
 define([
     'require',
     'jquery',
+    'underscore',
     'views/base/view',
     '../lib/ready-configurator',
     'text!templates/ready/ready.hbs',
@@ -11,8 +12,9 @@ define([
     'config/Events',
     'handlebars',
     'amplify',
-    'jstree'
-], function (require,$, View, Configurator,template, templateGen, indicatorsDoc, i18nLabels, E, Handlebars) {
+    'jstree','jqwidgets', 'highcharts'
+
+], function (require,$, _,View, Configurator,template, templateGen, indicatorsDoc, i18nLabels, E, Handlebars) {
 
     'use strict';
 
@@ -83,12 +85,12 @@ define([
             var self = this;
 
             this.$topic = this.$documents[id];
-            debugger;
 
-            require([this.$topic.template],self._onCompileTemplate, function(){ throw new Error( 'not valid template!')} )
+            require(['text!'+this.$topic.template], _.bind(this._onCompileTemplate, this), function(){ throw new Error( 'not valid template!')} )
         },
 
         _onCompileTemplate : function (templateSelected) {
+            console.log('here!')
             var templateToAdd = Handlebars.compile(templateSelected);
             var $compiled = templateToAdd( this.$topic.model);
 
