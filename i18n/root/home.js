@@ -77,7 +77,7 @@ define([
 
                 "src": "src/images/home_pictures/5.jpg"
             },
-            {
+         /*   {
                 "class_item": "item",
                 "data_link" : "6",
 
@@ -94,13 +94,13 @@ define([
                 "data_link" : "8",
 
                 "src": "src/images/home_pictures/8.jpg"
-            },
-            {
+            },*/
+          /*  {
                 "class_item": "item",
                 "data_link" : "9",
 
                 "src": "src/images/home_pictures/9.jpg"
-            },
+            },*/
             {
                 "class_item": "item",
                 "data_link" : "10",
