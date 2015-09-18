@@ -133,6 +133,9 @@ define([], function () {
                     title: {
                         text: ''
                     },
+                    credits: {
+                        enabled: false
+                    },
                     tooltip: {
                         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
                     },
@@ -169,7 +172,6 @@ define([], function () {
 
 
                 var dataTab1 = [
-
                     {"macronutrient": "N", "percentage": 529},
                     {"macronutrient": "Mean", "percentage": 690},
                     {"macronutrient": "SD", "percentage": 733},
@@ -178,7 +180,6 @@ define([], function () {
                     {"macronutrient": "Median", "percentage": 397},
                     {"macronutrient": "75th percentile", "percentage": 1024},
                     {"macronutrient": "Max", "percentage": 4091},
-
                 ]
 
 
@@ -355,6 +356,9 @@ define([], function () {
                         plotBorderWidth: null,
                         plotShadow: false,
                         type: 'column'
+                    },
+                    credits: {
+                        enabled: false
                     },
                     title: {
                         text: ''
@@ -651,6 +655,9 @@ define([], function () {
                     },
                     title: {
                         text: ''
+                    },
+                    credits: {
+                        enabled: false
                     },
                     yAxis: {
                         allowDecimals: false,
@@ -960,10 +967,13 @@ define([], function () {
                     title: {
                         text: ''
                     },
+                    credits: {
+                        enabled: false
+                    },
                     yAxis: {
                         allowDecimals: false,
                         title: {
-                            text: 'Units'
+                            text: 'Percentage'
                         }
                     },
                     tooltip: {
@@ -972,7 +982,7 @@ define([], function () {
                     plotOptions: {
                         pie: {
                             allowPointSelect: true,
-                            cursor: 'pointer',
+                            cursor: 'Percentage',
                             dataLabels: {
                                 enabled: true,
                                 format: '<b>{point.name}</b>: {point.percentage:.1f} %',
@@ -983,7 +993,7 @@ define([], function () {
                         }
                     },
                     series: [{
-                        name: "",
+                        name: "Vitamin A intakes in µg RAE ",
                         colorByPoint: true,
                         data :[
                             {
@@ -1358,10 +1368,13 @@ define([], function () {
                     title: {
                         text: ''
                     },
+                    credits: {
+                        enabled: false
+                    },
                     yAxis: {
                         allowDecimals: false,
                         title: {
-                            text: 'Units'
+                            text: 'Percentage'
                         }
                     },
                     tooltip: {
@@ -1381,7 +1394,7 @@ define([], function () {
                         }
                     },
                     series: [{
-                        name: "",
+                        name: "Vitamin A intakes in µg RAE ",
                         colorByPoint: true,
                         data :[{
                             x:140,
@@ -1838,6 +1851,9 @@ define([], function () {
                     title: {
                         text: ''
                     },
+                    credits: {
+                        enabled: false
+                    },
                     tooltip: {
                         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
                     },
@@ -1878,6 +1894,9 @@ define([], function () {
                     },
                     title: {
                         text: ''
+                    },
+                    credits: {
+                        enabled: false
                     },
                     yAxis: {
                         allowDecimals: false,
@@ -1955,6 +1974,9 @@ define([], function () {
                     },
                     title: {
                         text: ''
+                    },
+                    credits: {
+                        enabled: false
                     },
                     xAxis: {
                         categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
