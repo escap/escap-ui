@@ -297,8 +297,8 @@ define([], function () {
                     source: dataAdapterTab3,
                     columnsresize: true,
                     columns: [
-                        {text: 'Macronutrient', datafield: 'macronutrient', width: '70%'},
-                        {text: '%', datafield: 'percentage', width: '30%'}
+                        {text: '', datafield: 'macronutrient', width: '70%'},
+                        {text: 'µg RAE', datafield: 'percentage', width: '30%'}
                     ]
                 });
 
@@ -342,8 +342,8 @@ define([], function () {
                     source: dataAdapterTab4,
                     columnsresize: true,
                     columns: [
-                        {text: 'Macronutrient', datafield: 'macronutrient', width: '70%'},
-                        {text: '%', datafield: 'percentage', width: '30%'}
+                        {text: '', datafield: 'macronutrient', width: '70%'},
+                        {text: 'µg RAE', datafield: 'percentage', width: '30%'}
                     ]
                 });
 
@@ -370,7 +370,7 @@ define([], function () {
                         }
                     },
                     tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        pointFormat: '{series.name}: <b>{point.y:.1f}%</b>'
                     },
                     plotOptions: {
                         pie: {
@@ -378,7 +378,7 @@ define([], function () {
                             cursor: 'pointer',
                             dataLabels: {
                                 enabled: true,
-                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                format: '<b>{point.name}</b>: {point.y:.1f} %',
                                 style: {
                                     color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                                 }
@@ -666,7 +666,7 @@ define([], function () {
                         }
                     },
                     tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        pointFormat: '{series.name}: <b>{point.y:.1f}%</b>'
                     },
                     plotOptions: {
                         pie: {
@@ -674,7 +674,7 @@ define([], function () {
                             cursor: 'pointer',
                             dataLabels: {
                                 enabled: true,
-                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                format: '<b>{point.name}</b>: {point.y:.1f} %',
                                 style: {
                                     color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                                 }
@@ -977,7 +977,7 @@ define([], function () {
                         }
                     },
                     tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        pointFormat: '{series.name}: <b>{point.y:.1f}%</b>'
                     },
                     plotOptions: {
                         pie: {
@@ -985,7 +985,7 @@ define([], function () {
                             cursor: 'Percentage',
                             dataLabels: {
                                 enabled: true,
-                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                format: '<b>{point.name}</b>: {point.y:.1f} %',
                                 style: {
                                     color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                                 }
@@ -1378,7 +1378,7 @@ define([], function () {
                         }
                     },
                     tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        pointFormat: '{series.name}: <b>{point.y:.1f}%</b>'
                     },
                     plotOptions: {
                         pie: {
@@ -1386,7 +1386,7 @@ define([], function () {
                             cursor: 'pointer',
                             dataLabels: {
                                 enabled: true,
-                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                format: '<b>{point.name}</b>: {point.y:.1f} %',
                                 style: {
                                     color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                                 }
@@ -1855,7 +1855,7 @@ define([], function () {
                         enabled: false
                     },
                     tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        pointFormat: '{series.name}: <b>{point.y:.1f}%</b>'
                     },
                     plotOptions: {
                         pie: {
@@ -1863,7 +1863,7 @@ define([], function () {
                             cursor: 'pointer',
                             dataLabels: {
                                 enabled: true,
-                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                format: '<b>{point.name}</b>: {point.y:.1f} %',
                                 style: {
                                     color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                                 }
@@ -1911,7 +1911,7 @@ define([], function () {
                         }
                     },
                     tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        pointFormat: '{series.name}: <b>{point.y:.1f}%</b>'
                     },
                     plotOptions: {
                         pie: {
@@ -1919,7 +1919,7 @@ define([], function () {
                             cursor: 'pointer',
                             dataLabels: {
                                 enabled: true,
-                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                format: '<b>{point.name}</b>: {point.y:.1f} %',
                                 style: {
                                     color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                                 }
@@ -1982,7 +1982,7 @@ define([], function () {
                         categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
                     },
                     tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        pointFormat: '{series.name}: <b>{point.y:.1f}%</b>'
                     },
                     plotOptions: {
                         pie: {
@@ -1990,7 +1990,7 @@ define([], function () {
                             cursor: 'pointer',
                             dataLabels: {
                                 enabled: true,
-                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                format: '<b>{point.name}</b>: {point.y:.1f} %',
                                 style: {
                                     color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                                 }
