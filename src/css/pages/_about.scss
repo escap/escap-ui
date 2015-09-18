@@ -61,11 +61,23 @@
 
 }
 
-.profile{
-  background-image: url(../../src/css/img/profile.svg);
-  background-size: contain;
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  left: 15px;
-}
+  #pauline-profile {
+
+    background-image: url(../../src/images/about/photo_pauline.png);
+    background-size: contain;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 15px;
+  }
+
+
+
+  #catherine-profile {
+    background-image: url(../../src/images/about/photo_catherine.jpg);
+    background-size: contain;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 15px;
+  }
