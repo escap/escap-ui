@@ -37,3 +37,23 @@
     word-wrap: break-word;
   }
 }
+
+.ready-container{
+
+  h3{
+    font-size: 16px;
+    text-transform: uppercase;
+    color: $fx-cool-blue-alt;
+    font-weight: 500;
+    margin-top: 0;
+
+  }
+
+}
+
+.dl-horizontal dt{
+  text-align: left;
+}
+.dl-horizontal dd{
+  margin-left: 120px;
+}
