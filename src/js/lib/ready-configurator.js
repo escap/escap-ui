@@ -1789,7 +1789,7 @@ define([], function () {
                             "Gender": "Female",
                             "Age_range": "19-50 years",
                             "Survey": "Bangladesh HarvestPlus, 2008",
-                            "src": "src/images/ready/image_consu.jpg"
+                            "src": "src/images/ready/image_consu_2.jpg"
                         }
                     ]
                 }],
