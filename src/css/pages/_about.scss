@@ -61,6 +61,10 @@
 
 }
 
+.profile{
+  @include fx-border-radius(100%);
+}
+
   #pauline-profile {
 
     background-image: url(../../src/images/about/photo_pauline.png);

@@ -7657,6 +7657,12 @@ ul[role="group"] {
   .user-container .division {
     font-weight: 500; }
 
+.profile {
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  border-radius: 100%; }
+
 #pauline-profile {
   background-image: url(../../src/images/about/photo_pauline.png);
   background-size: contain;
