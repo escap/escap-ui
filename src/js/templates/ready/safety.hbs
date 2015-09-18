@@ -1,7 +1,9 @@
 {{#each elements}}
 
     <h3>{{title}}</h3>
+
     {{#each indicators}}<br><br>
+
     <dl class="dl-horizontal">
         <dt class="indicator-title">Indicator</dt>
         <dd>{{indicator}}</dd>
@@ -12,8 +14,13 @@
         <dt class="indicator-title">Survey</dt>
         <dd>{{Survey}}</dd>
     </dl>
+
     <div class="row">
-        <div class="col-xs-12" ><img src={{src}}></div>
+        <div class="col-xs-12" >
+            <img src={{src}}>
+
+        </div>
+    </div>
         <br><br><br>
     {{/each}}
         <div class="row">

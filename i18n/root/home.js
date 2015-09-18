@@ -14,14 +14,13 @@ define([
         fast_link_title: "Ready to use",
         link_food_consumption: "#ready/consumption",
         title_food_consumption: "Food consumption",
-        link_food_safety: "http://google.com",
-        title_food_safety: "#ready/safety",
+        link_food_safety: "#ready/safety",
+        title_food_safety: "Food safety",
         link_food_nutrition: "#ready/nutrition",
         title_food_nutrition: "Nutrition",
         link_food_environment: "",
         title_food_environment: "Environment",
         database_update_title: "News",
-
         contacts_collaborations_title: "In collaboration with",
 
 

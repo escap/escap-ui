@@ -7931,6 +7931,10 @@ ul[role="group"] {
 .ready-to-use-list li a:hover {
   background-color: #f1f1f1; }
 
+.indicator-title p {
+  width: 900px;
+  word-wrap: break-word; }
+
 /* Download Section */
 .leaflet-container {
   font-family: Roboto; }

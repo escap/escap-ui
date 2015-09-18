@@ -118,8 +118,8 @@ define([], function () {
                     source: dataAdapterEnergy,
                     columnsresize: true,
                     columns: [
-                        {text: 'Macronutrient', datafield: 'macronutrient'},
-                        {text: '%', datafield: 'percentage'}
+                        {text: 'Macronutrient', datafield: 'macronutrient', width: '70%'},
+                        {text: '%', datafield: 'percentage', width: '30%'}
                     ]
                 });
 
@@ -153,10 +153,10 @@ define([], function () {
                         name: "",
                         colorByPoint: true,
                         data: [{
-                            name: "Carbon",
+                            name: "Protein",
                             y: 13.0693198372095
                         }, {
-                            name: "Protein",
+                            name: "Carbohydrate",
                             y: 72.9589523152147,
                             sliced: true,
                             selected: true
@@ -207,8 +207,8 @@ define([], function () {
                     source: dataAdapterTab1,
                     columnsresize: true,
                     columns: [
-                        {text: '', datafield: 'macronutrient'},
-                        {text: 'µg RAE', datafield: 'percentage'}
+                        {text: '', datafield: 'macronutrient', width: '70%'},
+                        {text: 'µg RAE', datafield: 'percentage', width: '30%'}
                     ]
                 });
 
@@ -251,8 +251,8 @@ define([], function () {
                     source: dataAdapterTab2,
                     columnsresize: true,
                     columns: [
-                        {text: '', datafield: 'macronutrient'},
-                        {text: 'µg RAE', datafield: 'percentage'}
+                        {text: '', datafield: 'macronutrient'   , width: '70%'},
+                        {text: 'µg RAE', datafield: 'percentage',width: '30%'  }
                     ]
                 });
 
@@ -296,8 +296,8 @@ define([], function () {
                     source: dataAdapterTab3,
                     columnsresize: true,
                     columns: [
-                        {text: 'Macronutrient', datafield: 'macronutrient'},
-                        {text: '%', datafield: 'percentage'}
+                        {text: 'Macronutrient', datafield: 'macronutrient', width: '70%'},
+                        {text: '%', datafield: 'percentage', width: '30%'}
                     ]
                 });
 
@@ -341,8 +341,8 @@ define([], function () {
                     source: dataAdapterTab4,
                     columnsresize: true,
                     columns: [
-                        {text: 'Macronutrient', datafield: 'macronutrient'},
-                        {text: '%', datafield: 'percentage'}
+                        {text: 'Macronutrient', datafield: 'macronutrient', width: '70%'},
+                        {text: '%', datafield: 'percentage', width: '30%'}
                     ]
                 });
 
@@ -362,7 +362,7 @@ define([], function () {
                     yAxis: {
                         allowDecimals: false,
                         title: {
-                            text: 'Units'
+                            text: 'Percentage'
                         }
                     },
                     tooltip: {
@@ -382,7 +382,7 @@ define([], function () {
                         }
                     },
                     series: [{
-                        name: "",
+                        name: "Vitamin A intakes in µg RAE ",
                         colorByPoint: true,
                         data :[
                             {
@@ -655,7 +655,7 @@ define([], function () {
                     yAxis: {
                         allowDecimals: false,
                         title: {
-                            text: 'Units'
+                            text: 'Percentage'
                         }
                     },
                     tooltip: {
@@ -675,7 +675,7 @@ define([], function () {
                         }
                     },
                     series: [{
-                        name: "",
+                        name: "Vitamin A intakes in µg RAE ",
                         colorByPoint: true,
                         data :[
                             {
@@ -1790,11 +1790,11 @@ define([], function () {
                     {"macronutrient": "N", "percentage": 422},
                     {"macronutrient": "Mean", "percentage": 3.7},
                     {"macronutrient": "SD", "percentage": 1.1},
-                    {"macronutrient": "Min", "percentage": 3},
+                    {"macronutrient": "Min", "percentage": 1},
                     {"macronutrient": "25th percentile", "percentage": 3},
-                    {"macronutrient": "Median", "percentage": 3},
-                    {"macronutrient": "75th percentile", "percentage": 3},
-                    {"macronutrient": "Max", "percentage": 3},
+                    {"macronutrient": "Median", "percentage": 4},
+                    {"macronutrient": "75th percentile", "percentage": 4},
+                    {"macronutrient": "Max", "percentage": 7}
 
                 ]
 
@@ -1858,10 +1858,10 @@ define([], function () {
                         name: "",
                         colorByPoint: true,
                         data: [{
-                            name: "<5",
+                            name: "less than 5 ",
                             y: 77
                         }, {
-                            name: ">=5",
+                            name: "greater than or equal to 5",
                             y: 23,
                             sliced: true,
                             selected: true
@@ -1882,7 +1882,13 @@ define([], function () {
                     yAxis: {
                         allowDecimals: false,
                         title: {
-                            text: 'Units'
+                            text: 'Percentage'
+                        }
+                    },
+                    xAxis: {
+                        allowDecimals: false,
+                        title: {
+                            text: ''
                         }
                     },
                     tooltip: {
@@ -1890,7 +1896,7 @@ define([], function () {
                     },
                     plotOptions: {
                         pie: {
-                            allowPointSelect: true,
+                            allowPointSelect: false,
                             cursor: 'pointer',
                             dataLabels: {
                                 enabled: true,
@@ -1902,8 +1908,8 @@ define([], function () {
                         }
                     },
                     series: [{
-                        name: "",
-                        colorByPoint: true,
+                        name: "Minimum Dietary Diversity-Women (MDD-W): Number of food groups consumed over 1 day",
+                        colorByPoint: false,
                         data: [
                             {
                                 y: 0
