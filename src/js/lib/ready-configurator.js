@@ -61,18 +61,18 @@ define([], function () {
                 "element_3" :{
                     "indicators": [
                         {
-                            "indicator": "Vitamin A intakes: Food groups providing the highest contribution to vitamin A intake among the highest tercile of the population",
-                            "Gender": "Female",
-                            "Age_range": "19-50 years",
-                            "Survey": "Uganda HarvestPlus, 2007 + Burkina Faso HarvestPlus/IRD, 2010",
-                            "src" :"src/images/ready/table.jpg"
-                        },
-                        {
                             "indicator": "Vitamin A intakes:  providing the highest contribution to vitamin A intake among the highest tercile of the population",
                             "Gender": "Female",
                             "Age_range": "19-50 years",
                             "Survey": "Uganda HarvestPlus, 2007 + Burkina Faso HarvestPlus/IRD, 2010",
                             "src" :"src/images/ready/imgNutrition.jpg"
+                        },
+                        {
+                            "indicator": "Vitamin A intakes: Food groups providing the highest contribution to vitamin A intake among the highest tercile of the population",
+                            "Gender": "Female",
+                            "Age_range": "19-50 years",
+                            "Survey": "Uganda HarvestPlus, 2007 + Burkina Faso HarvestPlus/IRD, 2010",
+                            "src" :"src/images/ready/table.jpg"
                         }
                     ]
                 },

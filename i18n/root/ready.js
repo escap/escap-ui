@@ -2,8 +2,8 @@
 define({
     title: 'Ready to use',
     views: [
-        {link: "#ready/consumption", title: "Consumption"},
-        {link: "#ready/safety", title: "Safety"},
+        {link: "#ready/consumption", title: "Food Consumption"},
+        {link: "#ready/safety", title: "Food Safety"},
         {link: "#ready/nutrition", title: "Nutrition"},
         {link: "#ready/environment", title: "Environment"}
     ],
