@@ -44,6 +44,8 @@ define([
                 period: 'period'
             },
 
+            selectedCountry_key : 'id-selected',
+
             events: {
                 REMOVE_MODULE: "fx.filter.module.remove",
                 READY: "fx.filter.component.ready",
@@ -201,8 +203,7 @@ define([
 
 
             this.$geoList.on('item-active', function (e) {
-                console.log(e.layers[0].feature);
-                self.$selected = e.layers[0].feature.properties.name
+                amplify.store(self.options.selectedCountry_key, e.layers[0].feature.id);
                 $('#' + self.$geoConfiguration.MAP_ID).prev('label').text(e.layers[0].feature.properties.name)
             });
 
@@ -254,6 +255,9 @@ define([
         //For filter logic .... end
 
         FX_ui_geographic_component.prototype.getValue = function (e) {
+
+
+            /* Real country_code: amplify.store(this.options.selectedCountry_key)) */
 
             return {
 

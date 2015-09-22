@@ -1,0 +1,29 @@
+[
+  {
+    "name":"simpleFilter",
+    "parameters":{
+      "filter":{
+        "rows":{
+          "gender":{
+            "codes":[
+              {
+                "uid":"GIFT_Gender",
+                "codes":[
+                  "2"
+                ]
+              }
+            ]
+          },
+          "foodex2_code" :{
+            "codes":[ {
+              "uid":"GIFT_Foods",
+              "codes":[
+                "A0FBT", "A0FBV", "A0FBX"
+              ]
+            }]
+          }
+        }
+      }
+    }
+  }
+]

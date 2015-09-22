@@ -45,6 +45,11 @@ define([
         },
         options: {
             YEARS_LABEL : 'YEARS'
+        },
+        gender_codes : {
+            MALE_CODE : '1',
+            FEMALE_CODE : '2',
+            UNKNOWN_CODE : '3'
         }
         //For filter logic .... end
     };
@@ -229,7 +234,7 @@ define([
         this.$populationGenderSelector.on('change', function (e, data) {
 
             e.preventDefault();
-            self._isFemaleSelected = ($(e.target).val() == 'female');
+            self._isFemaleSelected = ($(e.target).val() == self.options.gender_codes.FEMALE_CODE);
 
             self._checkAndSetPopCharacteristics();
 /*

@@ -204,28 +204,72 @@ define([
 
     GiftWdsCatalogBridge.prototype._getDatasetFromD3SSuccess = function () {
 
+        debugger;
+
         var provaFilter = [
             {
-            "name": "filter",
-            "parameters": {
-                "rows": {
-                    "gender_code": {
-                        "codes":[
-                            {
-                                "codes": [
-                                    "1"
+                "name":"simpleFilter",
+                "parameters":{
+                    "filter":{
+                        "rows":{
+                            "gender":{
+                                "codes":[
+                                    {
+                                        "uid":"GIFT_Gender",
+                                        "codes":[
+                                            "2"
+                                        ]
+                                    }
                                 ]
+                            },
+                            "foodex2_code" :{
+                                "codes":[ {
+                                    "uid":"GIFT_Foods",
+                                    "codes":[
+                                        "A0FBT", "A0FBV", "A0FBX"
+                                    ]
+                                }]
                             }
-                        ]
+                        }
                     }
-                    }
-
                 }
             }
-    ];
+        ]
 
         this.currentRequest.onExit({results : this.currentRequest.response, filter :provaFilter
         });
+
+    };
+
+
+    GiftWdsCatalogBridge.prototype._createD3PFilterRows = function () {
+
+        var result = {}
+
+        if(this.currentRequest.filter){
+
+            if(this.currentRequest.filter['geo-GIFT'] && this.currentRequest.filter['geo-GIFT'].country_selected ){
+                result['adm0_code'] =this.currentRequest.filter['geo-GIFT'].country_selected;
+            }
+            if(this.currentRequest.filter['food-GIFT']) {
+
+
+
+            }
+
+            if(this.currentRequest.filter['population-GIFT']) {
+
+
+
+            }
+
+            if(this.currentRequest.filter['survey-GIFT']) {
+
+
+
+            }
+
+        }
 
     };
 
