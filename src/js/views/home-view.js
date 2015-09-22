@@ -36,7 +36,6 @@ define([
         template: template,
 
         getTemplateData: function () {
-            debugger;
             return i18nLabels;
         },
 

@@ -25,7 +25,6 @@ define([
         if (typeof keyword === 'object') {
 
             var lang = requirejs.s.contexts._.config.i18n.locale;
-            debugger;
             return keyword[lang.toUpperCase()];
         }
         else {
