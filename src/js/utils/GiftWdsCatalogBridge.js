@@ -10,9 +10,10 @@ define([
 
     'use strict';
 
-    function GiftWdsCatalogBridge() { }
+    function GiftWdsCatalogBridge() {
+    }
 
-    GiftWdsCatalogBridge.prototype.init = function() {
+    GiftWdsCatalogBridge.prototype.init = function () {
 
         this.wdsClient = new WDSClient({
             serviceUrl: C.WDS_URL,
@@ -22,7 +23,7 @@ define([
 
     };
 
-    GiftWdsCatalogBridge.prototype.query = function(src, callback) {
+    GiftWdsCatalogBridge.prototype.query = function (src, callback) {
 
         console.log('********************************************************************************')
 
@@ -45,8 +46,8 @@ define([
         }
 
         this.currentRequest = {
-            filter : plugin.getFilter(),
-            onExit : callback
+            filter: plugin.getFilter(),
+            onExit: callback
         };
 
         this._query();
@@ -83,30 +84,30 @@ define([
             query += " adm0_code=" + this.currentRequest.filter['geo-GIFT'].country_selected.codes[0];
         }
 
-        if (this.currentRequest.filter['food-GIFT']){
+        if (this.currentRequest.filter['food-GIFT']) {
             query += " AND";
             f = this.currentRequest.filter['food-GIFT'];
             query += " foodex2_code = '" + f.codes[0];
 
         }
 
-    /*
-    * Population - gender: gender = <gender code>
-     Population - pregnant/lactating: special_condition = <condition code>
-     Population - age range - year: age_year BETWEEN <age from> AND <age to>
-     Population - age range - month: age_month BETWEEN <age from> AND <age to>
-     Food: foodex2_code = '<food code>'*/
+        /*
+         * Population - gender: gender = <gender code>
+         Population - pregnant/lactating: special_condition = <condition code>
+         Population - age range - year: age_year BETWEEN <age from> AND <age to>
+         Population - age range - month: age_month BETWEEN <age from> AND <age to>
+         Food: foodex2_code = '<food code>'*/
 
         if (this.currentRequest.filter['population-GIFT']) {
             query += " AND";
 
             f = this.currentRequest.filter['population-GIFT'];
 
-            if ( f.age_year) {
-                query += " age_year BETWEEN " + f.age_year.period.from + " AND "+ f.age_year.period.to ;
+            if (f.age_year) {
+                query += " age_year BETWEEN " + f.age_year.period.from + " AND " + f.age_year.period.to;
 
             } else {
-                query += " age_month BETWEEN " + f.age_month.period.from + " AND "+ f.age_month.period.to ;
+                query += " age_month BETWEEN " + f.age_month.period.from + " AND " + f.age_month.period.to;
 
             }
 
@@ -120,7 +121,7 @@ define([
 
         if (this.currentRequest.filter['survey-GIFT']) {
             query += " AND";
-            query += " consumption_date BETWEEN '" + this.currentRequest.filter['survey-GIFT'].years.period.from + "-01-01' AND '"+ this.currentRequest.filter['survey-GIFT'].years.period.to + "-12-31'";
+            query += " consumption_date BETWEEN '" + this.currentRequest.filter['survey-GIFT'].years.period.from + "-01-01' AND '" + this.currentRequest.filter['survey-GIFT'].years.period.to + "-12-31'";
             //query += " adm0_code=" + this.currentRequest.filter['geo-GIFT'].country_selected.codes[0];
             //query += " adm0_code=" + this.currentRequest.filter['geo-GIFT'].country_selected.codes[0];
 
@@ -135,7 +136,7 @@ define([
 
         this.wdsClient.retrieve({
             payload: {
-                query:  C.WDS_DOWNLOAD_MICRODATA_SEARCH_QUERY,
+                query: C.WDS_DOWNLOAD_MICRODATA_SEARCH_QUERY,
                 queryVars: this.currentRequest.queryVars
             },
             success: _.bind(this._getUidsFromWdsSuccess, this),
@@ -144,21 +145,21 @@ define([
 
     };
 
-    GiftWdsCatalogBridge.prototype._getUidsFromWdsSuccess = function (result ) {
+    GiftWdsCatalogBridge.prototype._getUidsFromWdsSuccess = function (result) {
 
         this.currentRequest.wdsOriginalRespose = result;
 
         this._getDatasetFromD3S();
 
     };
-    GiftWdsCatalogBridge.prototype._createD3PBody = function ( ) {
+    GiftWdsCatalogBridge.prototype._createD3PBody = function () {
 
 
         //todo add context system
 
         this.currentRequest.d3pBody = {
-            "dsd.contextSystem":{"enumeration":["gift"]},
-            "uid":{
+            "dsd.contextSystem": {"enumeration": ["gift"]},
+            "uid": {
                 "enumeration": [this.currentRequest.wdsOriginalRespose[1]["?column?"]]
             }
         }
@@ -166,15 +167,14 @@ define([
 
     };
 
-    GiftWdsCatalogBridge.prototype._getDatasetFromD3S = function (  ) {
+    GiftWdsCatalogBridge.prototype._getDatasetFromD3S = function () {
 
         this._createD3PBody();
 
 
-
         var SERVICE_PREFIX = C.SERVICE_BASE_ADDRESS,
             url = SERVICE_PREFIX + "/msd/resources/find?full=true",
-            self= this;
+            self = this;
 
         //Ask the plugin the filter, make the request and pass data to callback()
         $.ajax({
@@ -185,14 +185,14 @@ define([
             data: JSON.stringify(this.currentRequest.d3pBody),
             success: function (response, textStatus, jqXHR) {
 
-                self.currentRequest.response =response;
+                self.currentRequest.response = response;
 
                 if (jqXHR.status !== 204) {
 
                     self._getDatasetFromD3SSuccess();
 
                 } else {
-                    amplify.publish(E.SEARCH_QUERY_EMPTY_RESPONSE,  {results : [], filter: filter });
+                    amplify.publish(E.SEARCH_QUERY_EMPTY_RESPONSE, {results: [], filter: filter});
                 }
 
             },
@@ -206,37 +206,54 @@ define([
 
         debugger;
 
-        var provaFilter = [
-            {
-                "name":"simpleFilter",
-                "parameters":{
-                    "filter":{
-                        "rows":{
-                            "gender":{
-                                "codes":[
+        var provaFilter =
+            [
+                {
+                    "name": "filter",
+                    "parameters": {
+                        "rows": {
+                            "gender": {
+                                "codes": [
                                     {
-                                        "uid":"GIFT_Gender",
-                                        "codes":[
+                                        "uid": "GIFT_Gender",
+                                        "codes": [
                                             "2"
                                         ]
                                     }
                                 ]
                             },
-                            "foodex2_code" :{
-                                "codes":[ {
-                                    "uid":"GIFT_Foods",
-                                    "codes":[
-                                        "A0FBT", "A0FBV", "A0FBX"
+                            "foodex2_code": {
+                                "codes": [{
+                                    "uid": "GIFT_Foods",
+                                    "codes": [
+                                        "A0F6A"
                                     ]
                                 }]
                             }
-                        }
+                        },
+                        "columns": [
+                            "subject",
+                            "survey_day",
+                            "meal",
+                            "recipe_code",
+                            "foodex2_code",
+                            "facet_a",
+                            "facet_b",
+                            "facet_c",
+                            "facet_d",
+                            "facet_e",
+                            "facet_f",
+                            "facet_g",
+                            "item"
+                        ]
+
+
                     }
                 }
-            }
-        ]
+            ]
 
-        this.currentRequest.onExit({results : this.currentRequest.response, filter :provaFilter
+        this.currentRequest.onExit({
+            results: this.currentRequest.response, filter: provaFilter
         });
 
     };
@@ -246,25 +263,22 @@ define([
 
         var result = {}
 
-        if(this.currentRequest.filter){
+        if (this.currentRequest.filter) {
 
-            if(this.currentRequest.filter['geo-GIFT'] && this.currentRequest.filter['geo-GIFT'].country_selected ){
-                result['adm0_code'] =this.currentRequest.filter['geo-GIFT'].country_selected;
+            if (this.currentRequest.filter['geo-GIFT'] && this.currentRequest.filter['geo-GIFT'].country_selected) {
+                result['adm0_code'] = this.currentRequest.filter['geo-GIFT'].country_selected;
             }
-            if(this.currentRequest.filter['food-GIFT']) {
-
-
-
-            }
-
-            if(this.currentRequest.filter['population-GIFT']) {
-
+            if (this.currentRequest.filter['food-GIFT']) {
 
 
             }
 
-            if(this.currentRequest.filter['survey-GIFT']) {
+            if (this.currentRequest.filter['population-GIFT']) {
 
+
+            }
+
+            if (this.currentRequest.filter['survey-GIFT']) {
 
 
             }

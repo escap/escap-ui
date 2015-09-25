@@ -134,11 +134,12 @@ require([
                     'fx-cat-br/config/fx-catalog-modular-form-config' : '../../config/submodules/fx-catalog/Panel_Config_Description',
 
                     // Analysis
-                    'fx-ana/config/services' : '../../config/submodules/fx-analysis/Config'
+                    'fx-ana/config/services' : '../../config/submodules/fx-analysis/Config',
 
-/*
-                    'fx-filter/config/config':'../../config/submodules/fx-filter/Config'
-*/
+                    // FX-Report
+                    "fx-report/config/md-export/config" : '../../config/submodules/fx-report/md-export/config',
+
+                    'fx-filter/config/config':'../../config/submodules/fx-filter/config'
                 },
 
                 // Underscore and Backbone are not AMD-capable per default,

@@ -7,7 +7,7 @@ define([
     'i18n!nls/statistics-microdata',
     'fx-cat-br/start',
     'fx-ana/start',
-    'config/submodules/fx-filter/Config',
+    'config/submodules/fx-catalog/plugins/Config',
     'config/Config',
     'config/Events'
 ], function ($, _ , View, template, i18nLabels,Catalog, Analysis, CF, C, E) {
