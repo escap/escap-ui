@@ -7322,6 +7322,86 @@ input[type="checkbox"]:checked + label {
 /* Leaflet */
 /* Fenix Leaflet Import */
 /* Fenix Leaflet Zoom control 0.7.3*/
+/* Fenix Components */
+/* Fenix - Data Management */
+#main-container .container {
+  padding: 0;
+  width: 100%; }
+
+.datamng-welcome {
+  text-align: center;
+  width: 350px;
+  background-color: white;
+  padding: 25px;
+  position: relative;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px; }
+  .datamng-welcome h3 {
+    margin-top: 0;
+    font-size: 22px; }
+  .datamng-welcome .datamng-welcome-btn {
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    background-color: #dddddd;
+    border: 2px solid transparent;
+    cursor: pointer;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -ms-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    margin: 5px; }
+    .datamng-welcome .datamng-welcome-btn:hover {
+      border-color: #e2c942; }
+    .datamng-welcome .datamng-welcome-btn a {
+      display: inline-block;
+      position: relative;
+      top: 50%;
+      width: 100%;
+      -ms-transform: translateY(-40%);
+      -webkit-transform: translateY(-40%);
+      transform: translateY(-40%); }
+      .datamng-welcome .datamng-welcome-btn a span:first-child {
+        font-size: 30px;
+        color: #333; }
+      .datamng-welcome .datamng-welcome-btn a span:last-child {
+        text-transform: uppercase;
+        font-size: 12px; }
+      .datamng-welcome .datamng-welcome-btn a:hover, .datamng-welcome .datamng-welcome-btn a:active, .datamng-welcome .datamng-welcome-btn a:focus {
+        text-decoration: none; }
+
+#data-mng-menu-container .fx-menu {
+  margin-bottom: 0;
+  background-color: #dddddd;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: normal;
+  min-height: 30px; }
+  #data-mng-menu-container .fx-menu .fx-ul a {
+    padding-bottom: 5px;
+    padding-top: 5px; }
+#data-mng-menu-container .dropdown-menu {
+  border-top: 0; }
+
+.fx-datamng-holder {
+  min-height: 400px;
+  background-color: #f1f1f1;
+  padding-top: 20px; }
+  .fx-datamng-holder .metadata-view .container {
+    padding: 0;
+    width: 100%; }
+
 /* Base */
 /* Base style File */
 body {
@@ -7758,405 +7838,13 @@ ul[role="group"] {
       .dropdown .dropdown-menu > li > a:visited {
         background-color: transparent; }
 
-/* Third parties */
 /* Pages */
-/* About */
-.sidebar-box {
-  background-color: #ededed;
-  margin-bottom: 30px; }
-  .sidebar-box > h3 {
-    margin-top: 0;
-    background-color: #e2c942;
-    padding: 5px 15px;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 12px; }
-  .sidebar-box .sidebar-box-content {
-    padding: 15px; }
-    .sidebar-box .sidebar-box-content h3 {
-      margin-top: 0; }
+/* Uneca data management */
+.data-mng-secondary-menu-container .container {
+  background-color: transparent; }
 
-.collaborators-list li {
-  margin-bottom: 15px;
-  font-weight: 500;
-  position: relative;
-  padding-bottom: 10px; }
-  .collaborators-list li:before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #cccccc; }
-
-.user-container {
-  padding-left: 90px; }
-  .user-container h3 {
-    margin-bottom: 0;
-    color: #2f9a8f; }
-  .user-container p {
-    margin-bottom: 5px; }
-  .user-container .division {
-    font-weight: 500; }
-
-.profile {
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  -ms-border-radius: 100%;
-  border-radius: 100%; }
-
-#pauline-profile {
-  background-image: url(../../src/images/about/photo_pauline.png);
-  background-size: contain;
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  left: 15px; }
-
-#catherine-profile {
-  background-image: url(../../src/images/about/photo_catherine.jpg);
-  background-size: contain;
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  left: 15px; }
-
-/* Homepage */
-[data-page='home'] .breadcrumb {
-  opacity: 0; }
-
-.db-updates-container {
+#data-mng-menu-container .fx-menu {
+  background-color: transparent;
   border: 1px solid #cccccc; }
-  .db-updates-container .db-updates-header {
-    padding: 5px 10px;
-    background-color: #ececec; }
-  .db-updates-container .title {
-    margin: 0; }
-  .db-updates-container .db-updates-list-holder {
-    height: 300px;
-    /* Just to be similar to the news height (including the db header) */
-    overflow-y: scroll; }
 
-.prototype {
-  display: inline-block;
-  margin-left: 10px;
-  color: #2f9a8f;
-  font-weight: 400; }
-
-.main-title {
-  display: inline-block; }
-
-#main-container {
-  overflow: hidden; }
-
-.gift-containers-sliders-home {
-  height: 320px; }
-
-.gift-containers-home {
-  height: 330px; }
-
-.home-gallery-item {
-  height: 320px;
-  background-size: cover;
-  background-position: 50% 50%;
-  overflow: hidden; }
-
-.growing-ico {
-  height: 50px;
-  width: 45px;
-  background-image: url(../../src/images/nutrition-ico.svg);
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: contain;
-  display: block; }
-
-.db-updates-list {
-  list-style: none;
-  padding-left: 0;
-  padding-right: 15px; }
-  .db-updates-list li {
-    position: relative;
-    padding: 15px 0 15px 15px;
-    border-bottom: 1px solid #cccccc; }
-    .db-updates-list li:last-child {
-      border-bottom-color: transparent; }
-    .db-updates-list li h3 {
-      margin: 0;
-      color: #2f9a8f;
-      font-weight: 400; }
-    .db-updates-list li .db-update-ico {
-      position: absolute;
-      left: 0;
-      width: 60px;
-      text-align: center;
-      font-size: 45px; }
-    .db-updates-list li .db-update-country {
-      font: normal normal 300 11px/normal "Roboto";
-      color: #999999; }
-    .db-updates-list li .db-update-date {
-      font: normal normal 300 11px/normal "Roboto";
-      color: #2f9a8f; }
-    .db-updates-list li .db-update-link {
-      font: normal normal 300 11px/normal "Roboto";
-      color: #333; }
-
-.home-event h2 {
-  font-weight: 500;
-  color: #2f9a8f;
-  text-transform: none; }
-.home-event p {
-  padding: 0 10px; }
-
-.home-news-container {
-  height: 320px;
-  background-image: url(../../src/images/home-news.jpg);
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: cover;
-  padding: 20% 50px 15px 15px; }
-  .home-news-container .home-news-header {
-    background-color: #e2c942;
-    display: inline-block;
-    padding: 10px; }
-    .home-news-container .home-news-header h1 {
-      margin: 0; }
-  .home-news-container .home-news-holder {
-    background-color: white;
-    padding: 10px 10px 5px 10px; }
-  .home-news-container .home-news-footer {
-    background-color: white;
-    padding: 5px 10px 10px 10px; }
-    .home-news-container .home-news-footer a {
-      color: #333; }
-
-.contacts-collaborations-holder .swiper-wrapper {
-  min-height: 300px; }
-  .contacts-collaborations-holder .swiper-wrapper .swiper-slide {
-    text-align: center; }
-
-/* Fast Links */
-.fast-link-container .fast-link-header {
-  height: 25px;
-  border-bottom: 1px solid #cccccc;
-  margin-bottom: 15px; }
-  .fast-link-container .fast-link-header h3 {
-    margin-top: 0; }
-
-.home-tiles {
-  height: 140px; }
-  .home-tiles h2 {
-    color: white;
-    margin: 0; }
-    .home-tiles h2 span {
-      font-size: 40px; }
-  .home-tiles a {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding: 25px; }
-  .home-tiles a:link,
-  .home-tiles a:visited,
-  .home-tiles a:hover,
-  .home-tiles a:focus,
-  .home-tiles a:active {
-    text-decoration: none; }
-  .home-tiles.food-cons {
-    padding: 0 15px 15px 15px; }
-    .home-tiles.food-cons a {
-      background-color: #2f879a; }
-  .home-tiles.food-safe {
-    padding: 0 15px 15px 15px; }
-    .home-tiles.food-safe a {
-      background-color: #2f9a8f; }
-      .home-tiles.food-safe a span {
-        position: relative;
-        left: -6px; }
-  .home-tiles.food-nutr {
-    padding: 15px 15px 0 15px; }
-    .home-tiles.food-nutr a {
-      background-color: #2f699a; }
-  .home-tiles.food-envi {
-    padding: 15px 15px 0 15px; }
-    .home-tiles.food-envi a {
-      background-color: #e2e3e3; }
-      .home-tiles.food-envi a span {
-        position: relative;
-        left: -6px; }
-
-.coming:before {
-  content: 'COMING SOON';
-  display: inline-block;
-  background-color: #8e9292;
-  color: white;
-  font-size: 10px;
-  padding: 5px 9px;
-  position: absolute;
-  right: 0;
-  top: 0; }
-
-/* Contacts */
-.swiper-button-next, .swiper-button-prev {
-  top: 90%; }
-
-.swiper-pagination {
-  left: 50%;
-  -ms-transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  top: 88%; }
-
-.swiper-pagination-bullet {
-  opacity: 1;
-  margin: 3px;
-  background-color: white;
-  border: 1px solid #cccccc; }
-  .swiper-pagination-bullet.swiper-pagination-bullet-active {
-    background-color: #cccccc; }
-
-.swiper-button-next {
-  background-image: url(../../src/css/img/arrow-right-off.svg);
-  -moz-background-size: auto;
-  -webkit-background-size: auto;
-  background-size: auto;
-  right: 20%; }
-
-.swiper-button-prev {
-  background-image: url(../../src/css/img/arrow-left-off.svg);
-  -moz-background-size: auto;
-  -webkit-background-size: auto;
-  background-size: auto;
-  left: 20%; }
-
-.contacts-collaborations-header, .contacts-people-header {
-  height: 30px;
-  border-bottom: 1px solid #cccccc; }
-  .contacts-collaborations-header h3, .contacts-people-header h3 {
-    margin: 0; }
-
-.contacts-people-holder h3 {
-  color: #2f9a8f; }
-
-/*//////////////////////////////////////////// Navbar Media queries */
-/* Ipad */
-@media (min-width: 768px) and (max-width: 990px) {
-  .home-tiles {
-    height: 140px; }
-    .home-tiles h2 {
-      color: white;
-      margin: 0;
-      font-size: 16px; } }
-/* Iphone */
-@media (max-width: 767px) {
-  .swiper-slide img {
-    display: inline; }
-
-  /* End of the iPhone media query*/ }
-.fx-catalog-modular-form-content {
-  height: 240px !important; }
-  .fx-catalog-modular-form-content .jstree-holder {
-    height: 187px; }
-  .fx-catalog-modular-form-content #db-updates-list {
-    height: 400px;
-    overflow-y: scroll; }
-
-.search-geojson-list {
-  width: 100%; }
-
-/* Ready to use page */
-.ready-to-use-list li a,
-.ready-to-use-list li a:link,
-.ready-to-use-list li a:visited,
-.ready-to-use-list li a:hover,
-.ready-to-use-list li a:focus,
-.ready-to-use-list li a:active {
-  text-transform: uppercase;
-  color: #2f9a8f;
-  text-decoration: none;
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 5px;
-  padding-left: 15px;
-  font-size: 14px; }
-.ready-to-use-list li a:hover {
-  background-color: #f1f1f1; }
-
-.indicator-title p {
-  width: 900px;
-  word-wrap: break-word; }
-
-.ready-container h3 {
-  font-size: 16px;
-  text-transform: uppercase;
-  color: #2f9a8f;
-  font-weight: 500;
-  margin-top: 0; }
-
-.dl-horizontal dt {
-  text-align: left; }
-
-.dl-horizontal dd {
-  margin-left: 120px; }
-
-/* Download Section */
-.leaflet-container {
-  font-family: Roboto; }
-
-.selected-country {
-  margin-bottom: 7px;
-  margin-right: 3px;
-  display: inline-block; }
-
-.map-selected-country {
-  font-weight: 500;
-  color: #2f9a8f; }
-
-.checkbox label, .radio label {
-  padding-left: 0; }
-
-input[type="radio"] + label:before {
-  position: absolute;
-  top: 2px;
-  left: -12px; }
-
-input[type="checkbox"] + label:before {
-  position: absolute;
-  top: 2px;
-  left: -12px; }
-
-.timerange-box {
-  border: 1px solid #dddddd;
-  margin-top: 5px;
-  padding-bottom: 10px; }
-
-.only-label {
-  padding-left: 0;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 8px;
-  padding-top: 15px; }
-
-.label-divide {
-  position: relative; }
-  .label-divide:before {
-    content: '';
-    position: absolute;
-    height: 50%;
-    right: 0;
-    top: 25%;
-    width: 1px;
-    background-color: #cccccc; }
-
-.label-first {
-  padding-left: 25px; }
-
-.label-last {
-  padding-left: 25px; }
-
-.population-age-range-content .checkbox, .population-age-range-content .radio {
-  margin-bottom: 0; }
-.population-age-range-content .timerange-box {
-  padding-bottom: 5px;
-  padding-top: 10px; }
-
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=datamng.css.map */

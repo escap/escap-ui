@@ -5,6 +5,7 @@ define(function () {
     'use strict';
 
     return {
+
         "population-GIFT": {
             "path" : "population-GIFT"
         },
@@ -17,10 +18,6 @@ define(function () {
         "food-GIFT": {
             "path" : "food-GIFT"
         }
-
-
-
-
     };
 
 });

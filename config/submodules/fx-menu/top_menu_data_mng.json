@@ -5,7 +5,10 @@
         "id": "home",
         "class":"home-menu-item"
       },
-      "target": "#home",
+      "target": "./index.html/#home",
+      "a_attrs" : {
+        "rel" : "external"
+      },
       "label": {
         "EN": ""
       }
@@ -14,7 +17,11 @@
       "attrs": {
         "id": "about"
       },
-      "target": "#about",
+
+      "target": "./index.html/#about",
+      "a_attrs" : {
+        "rel" : "external"
+      },
       "label": {
         "EN": "About"
       }
@@ -42,7 +49,10 @@
           "attrs":{
             "id":"microdata"
           },
-          "target":"#statistics/microdata",
+          "target":"./index.html/#statistics/microdata",
+          "a_attrs" : {
+            "rel" : "external"
+          },
           "label":{
             "EN":"Download microdata"
           }
@@ -51,7 +61,10 @@
           "attrs":{
             "id":"analysis"
           },
-          "target":"#statistics/analysis",
+          "target":"./index.html/#statistics/analysis",
+          "a_attrs" : {
+            "rel" : "external"
+          },
           "label":{
             "EN":"Customised statistics"
           }
@@ -61,12 +74,11 @@
 
     {
       "attrs": {
-        "id": "input"
+        "id": "datamng"
       },
-
-      "target": "#inputData",
+      "target": "./datamng.html",
       "label": {
-        "EN": "Input Data"
+        "EN": "Metadata Management"
       }
     }
   ],

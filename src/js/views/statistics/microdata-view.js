@@ -7,10 +7,12 @@ define([
     'i18n!nls/statistics-microdata',
     'fx-cat-br/start',
     'fx-ana/start',
+    'FENIX_UI_METADATA_VIEWER',
+    'fx-report',
     'config/submodules/fx-catalog/plugins/Config',
     'config/Config',
     'config/Events'
-], function ($, _ , View, template, i18nLabels,Catalog, Analysis, CF, C, E) {
+], function ($, _, View, template, i18nLabels, Catalog, Analysis, MetadataViewer, Report, CF, C, E) {
 
     'use strict';
 
@@ -21,7 +23,13 @@ define([
         OVERLAY: "#overlay",
         OVERLAY_CONTENT: '.overlay-content',
         OVERLAY_OPEN: '.open-overlay',
-        OVERLAY_CLOSE: '.close-overlay'
+        OVERLAY_CLOSE: '.close-overlay',
+        PAGE_CONTENT: "#analysis-page-content",
+        MODAL_METADATA: '#gift-metadata-modal',
+        MODAL_METADATAVIEWER_CONTAINER: '[data-content="metadata-viewer-container"]',
+
+        BTN_EXPORT_METADATA: '.fx-md-report-btn'
+
     };
 
     var MicrodataView = View.extend({
@@ -48,6 +56,9 @@ define([
             $(s.OVERLAY_CONTENT).hide();
             $(s.OVERLAY).hide();
 
+            this.$modalMetadata = this.$el.find(s.MODAL_METADATA);
+
+
             //update State
             amplify.publish(E.STATE_CHANGE, {menu: 'microdata'});
 
@@ -61,62 +72,152 @@ define([
 
                 results: {
                     actions: {
-                        SELECT_RESOURCE: {
-                            event: 'select',
+                        ANALYSIS: {
+                            event: 'analysis',
                             labels: {
-                                EN: 'Select Resource'
+                                EN: 'Analysis'
                             }
-
+                        },
+                        DESCRIPTION: {
+                            event: 'description',
+                            labels: {
+                                EN: 'Description'
+                            }
+                        },
+                        METADATA: {
+                            event: 'metadata',
+                            labels: {
+                                EN: 'Metadata'
+                            }
+                        },
+                        DOWNLOAD: {
+                            event: 'download',
+                            labels: {
+                                EN: 'Download'
+                            }
                         }
+
                     }
                 }
 
             }).init();
 
+            this.$modalMetadata = this.$el.find(s.MODAL_METADATA);
 
-            this.analysis = new Analysis({
-                container: document.querySelector(s.ANALYSIS_CONTAINER),
-                listenToCatalog: {
-                    active: true,
-                    event: 'fx.widget.catalog.select'
-                },
-                stack: {
-                    active: true,
-                    container: document.querySelector(s.MODULES_STACK_CONTAINER)
-                },
-                session: {
-                    active: false
-                }
-            }).init();
+            this.$report = new Report();
 
             this._bindEventListener();
         },
 
-        _bindEventListener : function() {
+        _bindEventListener: function () {
 
             $(s.OVERLAY_OPEN).on('click', _.bind(this.openOverly, this));
             $(s.OVERLAY_CLOSE).on('click', _.bind(this.closeOverly, this));
 
-            amplify.subscribe('fx.widget.catalog.select', _.bind(this.closeOverly, this));
+
+           amplify.subscribe('fx.widget.catalog.analysis', _.bind(this.onAnalysisClick, this));
+
+            amplify.subscribe('fx.widget.catalog.description', _.bind(this.onDescriptionClick, this));
+
+            amplify.subscribe('fx.widget.catalog.metadata', _.bind(this.onMetadataClick, this));
+
+            amplify.subscribe('fx.widget.catalog.download', _.bind(this.onDownloadClick, this));
+
+        },
+
+        onAnalysisClick : function (model) {
+            this.closeOverly();
+            console.log(model)
+        },
+
+        onDescriptionClick: function (model) {
+            console.log("description")
+            console.log(model)
+
+
+        },
+
+        onMetadataClick: function (model) {
+            console.log("metadata")
+            console.log(model)
+
+            if(model.hasOwnProperty('actions')){
+                delete model['actions']
+            }
+
+           var self = this;
+
+            this.$modalMetadata.modal('show');
+
+            var metadata = new MetadataViewer();
+
+            self.$modalMetadata.find(s.MODAL_METADATAVIEWER_CONTAINER).empty();
+
+            metadata.init({
+                lang: 'en',
+                data: model,
+                //domain: "rlm_" + request.inputs.indicator[0],
+                placeholder: self.$modalMetadata.find(s.MODAL_METADATAVIEWER_CONTAINER)
+            });
+
+
+            self._listenToExportMetadata(model);
+
+        },
+
+        _listenToExportMetadata: function (model) {
+
+            var fileName = model.title['EN'].replace(/[^a-z0-9]/gi, '_').toLowerCase();
+
+            var self = this;
+            $(s.BTN_EXPORT_METADATA).on('click', function () {
+
+                var payload = {
+                    input: {
+                        config: {
+                            uid: model.uid
+                        }
+                    },
+                    output: {
+                        config: {
+                            lang: 'en'.toUpperCase(),
+                            fileName: fileName + '.pdf'
+                        }
+                    }
+                };
+
+                self.$report.init('metadataExport');
+                self.$report.exportData(payload, C.MD_EXPORT_URL);
+            });
+        },
+
+        onDownloadClick: function (model) {
+            console.log("download")
+            console.log(model);
+
+            window.location = C.DOWNLOAD_SOURCES[model.uid]
+
         },
 
         openOverly: function () {
 
-            $(s.OVERLAY).show();
-            $(s.OVERLAY).css({
-                height : '100%',
-                width : '100%'
-            });
-            $(s.OVERLAY_CONTENT).fadeIn('fast');
+            $(s.PAGE_CONTENT).hide();
 
+            $(s.OVERLAY).show();
+
+            /*
+             $(s.OVERLAY).css({
+             height : '100%',
+             width : '100%'
+             });
+             */
+
+            $(s.OVERLAY_CONTENT).show();
         },
         closeOverly: function () {
-
-            $(s.OVERLAY_CONTENT).fadeOut("fast", function () {
-                $(s.OVERLAY_CONTENT).hide();
-                $(s.OVERLAY).hide();
-            });
-
+            $(s.OVERLAY_CONTENT).hide();
+            $(s.OVERLAY).hide();
+            $(s.PAGE_CONTENT).show();
         },
 
         dispose: function () {
@@ -129,12 +230,10 @@ define([
         },
 
 
-
         unbindEventListeners: function () {
             $(s.OVERLAY_OPEN).off();
             $(s.OVERLAY_CLOSE).off();
         }
-
 
 
     });
