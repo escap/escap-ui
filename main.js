@@ -108,6 +108,7 @@ require([
                     rsvp: '{FENIX_CDN}/js/rsvp/3.0.17/rsvp',
                     swiper: "{FENIX_CDN}/js/swiper/3.0.7/dist/js/swiper.min",
                     jstree: "{FENIX_CDN}/js/jstree/3.0.8/dist/jstree",
+                    loglevel: "{FENIX_CDN}/js/loglevel/1.4.0/loglevel",
 
                     // map libraries
                     leaflet:          "{FENIX_CDN}/js/leaflet/0.7.3/leaflet",

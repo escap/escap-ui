@@ -25,8 +25,6 @@ define([
 
     GiftWdsCatalogBridge.prototype.query = function(src, callback) {
 
-        console.log('********************************************************************************')
-
         var plugin;
 
         if (!window.Fx_catalog_bridge_plugins || typeof window.Fx_catalog_bridge_plugins !== "object") {
@@ -61,7 +59,6 @@ define([
 
     GiftWdsCatalogBridge.prototype._createWdsQuery = function () {
 
-        console.log(this.currentRequest.filter)
         var f;
 
         var query = C.WDS_DOWNLOAD_MICRODATA_SEARCH_QUERY;

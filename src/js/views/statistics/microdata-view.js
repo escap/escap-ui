@@ -2,6 +2,7 @@
 define([
     'jquery',
     'underscore',
+    'backbone',
     'views/base/view',
     'text!templates/statistics/microdata.hbs',
     'i18n!nls/statistics-microdata',
@@ -12,7 +13,7 @@ define([
     'config/submodules/fx-catalog/plugins/Config',
     'config/Config',
     'config/Events'
-], function ($, _, View, template, i18nLabels, Catalog, Analysis, MetadataViewer, Report, CF, C, E) {
+], function ($, _, Backbone, View, template, i18nLabels, Catalog, Analysis, MetadataViewer, Report, CF, C, E) {
 
     'use strict';
 
@@ -27,9 +28,7 @@ define([
         PAGE_CONTENT: "#analysis-page-content",
         MODAL_METADATA: '#gift-metadata-modal',
         MODAL_METADATAVIEWER_CONTAINER: '[data-content="metadata-viewer-container"]',
-
         BTN_EXPORT_METADATA: '.fx-md-report-btn'
-
     };
 
     var MicrodataView = View.extend({
@@ -57,7 +56,6 @@ define([
             $(s.OVERLAY).hide();
 
             this.$modalMetadata = this.$el.find(s.MODAL_METADATA);
-
 
             //update State
             amplify.publish(E.STATE_CHANGE, {menu: 'microdata'});
@@ -106,16 +104,18 @@ define([
 
             this.$report = new Report();
 
+            this.openOverly();
+
             this._bindEventListener();
         },
 
         _bindEventListener: function () {
 
             $(s.OVERLAY_OPEN).on('click', _.bind(this.openOverly, this));
+
             $(s.OVERLAY_CLOSE).on('click', _.bind(this.closeOverly, this));
 
-
-           amplify.subscribe('fx.widget.catalog.analysis', _.bind(this.onAnalysisClick, this));
+            amplify.subscribe('fx.widget.catalog.analysis', _.bind(this.onAnalysisClick, this));
 
             amplify.subscribe('fx.widget.catalog.description', _.bind(this.onDescriptionClick, this));
 
@@ -125,27 +125,28 @@ define([
 
         },
 
-        onAnalysisClick : function (model) {
+        onAnalysisClick: function (model) {
+
             this.closeOverly();
-            console.log(model)
+
+            Backbone.history.navigate('#dashboard/' + model.uid , {trigger: false});
+
         },
 
         onDescriptionClick: function (model) {
             console.log("description")
             console.log(model)
-
-
         },
 
         onMetadataClick: function (model) {
             console.log("metadata")
             console.log(model)
 
-            if(model.hasOwnProperty('actions')){
+            if (model.hasOwnProperty('actions')) {
                 delete model['actions']
             }
 
-           var self = this;
+            var self = this;
 
             this.$modalMetadata.modal('show');
 
@@ -214,6 +215,7 @@ define([
 
             $(s.OVERLAY_CONTENT).show();
         },
+
         closeOverly: function () {
             $(s.OVERLAY_CONTENT).hide();
             $(s.OVERLAY).hide();
@@ -229,12 +231,10 @@ define([
             View.prototype.dispose.call(this, arguments);
         },
 
-
         unbindEventListeners: function () {
             $(s.OVERLAY_OPEN).off();
             $(s.OVERLAY_CLOSE).off();
         }
-
 
     });
 
