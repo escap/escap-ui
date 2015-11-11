@@ -239,8 +239,9 @@ define([
             $(s.OVERLAY_CLOSE).off();
         }
 
-    });
-
-    return MicrodataView;
 });
+
+return MicrodataView;
+})
+;
 

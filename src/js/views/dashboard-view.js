@@ -6,16 +6,19 @@ define([
     'fx-filter/start',
     'text!templates/dashboard/template.hbs',
     'text!templates/dashboard/bases.hbs',
+    'text!templates/dashboard/resume.hbs',
     'i18n!nls/dashboard',
     'config/Events',
     'text!config/dashboard/lateral_menu.json',
+    'text!json/dashboard/resume_filter.json',
     'config/dashboard/Config',
     'handlebars',
     'fx-filter/Fx-filter-configuration-creator',
+    'fx-ds/bridges/d3p',
     'loglevel',
     'amplify',
     'jstree'
-], function ($, View, Dashboard, Filter, template, basesTemplate, i18nLabels, E, LateralMenuConfig, PC, Handlebars, FilterConfCreator, log) {
+], function ($, View, Dashboard, Filter, template, basesTemplate, resumeTemplate, i18nLabels, E, LateralMenuConfig, ResumeFilter, PC, Handlebars, FilterConfCreator, D3P, log) {
 
     'use strict';
 
@@ -29,7 +32,8 @@ define([
         LATERAL_MENU: '#lateral-menu',
         MAP_CONTAINER: "#country-map-container",
         FILTER_CONTAINER: "filter-container",
-        FILTER_BTN: "#filter-submit-btn"
+        FILTER_BTN: "#filter-submit-btn",
+        RESUME_CONTAINER: "#item-1"
     };
 
     var DashboardView = View.extend({
@@ -255,8 +259,33 @@ define([
 
         _printTable: function () {
 
-        }
+            var self = this;
 
+            this.bridge = new D3P({
+                bridge: {},
+                uid : this.id
+            });
+
+            this.bridge.query(JSON.parse(ResumeFilter)).then(function (data) {
+
+                var model = {},
+                    rawData = data.data;
+
+                for (var i = 0 ; i < rawData.length; i ++) {
+                    model[rawData[i][0]] = rawData[i][1];
+                }
+
+                console.log(JSON.stringify(model))
+
+                //Inject HTML
+                var template = Handlebars.compile(resumeTemplate),
+                    html = template( model );
+
+                self.$el.find(s.RESUME_CONTAINER).html(html);
+
+            });
+
+        }
 
     });
 

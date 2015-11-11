@@ -17,6 +17,8 @@ define([
 
         beforeAction: function (params) {
 
+            console.log("befor")
+
             Controller.prototype.beforeAction.call(this, arguments);
 
             return this.performAccessControlChecks(params)
@@ -24,9 +26,14 @@ define([
 
         performAccessControlChecks: function (params) {
 
+            console.log("performAccessControlChecks")
+
             var self= this;
 
             return new Q.Promise(function (fulfilled, rejected) {
+
+
+                console.log("promi")
 
                 self.validUid = params.hasOwnProperty('uid');
 
@@ -51,6 +58,8 @@ define([
 
                 log.debug('Dataset uid: ' + conf.id );
 
+                this.view = new View(conf);
+
             } else {
 
                 log.debug('redirect user to #home/');
@@ -58,7 +67,7 @@ define([
                 Backbone.history.navigate('#home/' , {trigger: false});
             }
 
-            this.view = new View(conf);
+
         }
 
     });
