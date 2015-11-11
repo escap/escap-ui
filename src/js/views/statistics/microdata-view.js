@@ -132,7 +132,7 @@ define([
             //TODO: for now
             model.uid = 'gift_avg_000042BUR201001';
 
-            Backbone.history.navigate('#dashboard/' + model.uid , {trigger: false});
+            Backbone.history.navigate('#dashboard/' + model.uid , {trigger: true});
 
         },
 
