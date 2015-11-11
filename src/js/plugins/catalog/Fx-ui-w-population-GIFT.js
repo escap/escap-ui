@@ -132,7 +132,6 @@ define([
             defaultValues: {min: this.$dataTimeRange.yearsRange.from + 5, max: this.$dataTimeRange.yearsRange.to - 5}
         });
 
-        this.$populationAgerange.rangeSlider('resize');
 
 
         this.bindEventListeners();
@@ -145,6 +144,13 @@ define([
         self.options.componentid = $(container).attr("id");
         //Raise an event to show that the component has been rendered
         $(container).trigger(self.options.events.READY, {name: e.name});
+
+
+        setTimeout(function(){
+            self.$populationAgerange.rangeSlider('resize');
+
+        }, 300)
+
 
     };
 
@@ -248,25 +254,18 @@ define([
             e.preventDefault();
             var kindOfAgeRange = $(e.target).val();
             self._checkAndSetPopCharacteristics();
-
             // change in months
             if (self.$isYearTypeSelected === true && kindOfAgeRange === 'MONTHS') {
                 self.$isYearTypeSelected = false;
                 self.$populationAgerange.rangeSlider('bounds', self.$dataTimeRange.monthsRange.from, self.$dataTimeRange.monthsRange.to);
                 self.$populationAgerange.rangeSlider('values', self.$dataTimeRange.monthsRange.from + 48, self.$dataTimeRange.monthsRange.to - 240)
 
-            } else if (self.$isYearTypeSelected === false && kindOfAgeRange === self.options.YEARS_LABEL) {
+            } else if (self.$isYearTypeSelected === false && kindOfAgeRange === 'YEARS') {
                 self.$isYearTypeSelected = true;
                 self.$populationAgerange.rangeSlider('bounds', self.$dataTimeRange.yearsRange.from, self.$dataTimeRange.yearsRange.to);
                 self.$populationAgerange.rangeSlider('values', self.$dataTimeRange.yearsRange.from + 5, self.$dataTimeRange.yearsRange.to - 5)
             }
 
-            debugger;
-/*
-            amplify.publish(self.options.events.MODIFY)
-*/
-
-            console.log(self.getValues());
         });
 
 

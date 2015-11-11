@@ -104,6 +104,12 @@ define([
         //Raise an event to show that the component has been rendered
         $(container).trigger(self.options.events.READY, {name: e.name});
 
+        setTimeout(function(){
+            self.$surveyTimerange.rangeSlider('resize');
+
+        }, 300)
+
+
     };
 
     Fx_ui_survey_component.prototype.validate = function (e) {

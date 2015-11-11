@@ -61,7 +61,7 @@
 
     {
       "attrs": {
-        "id": "input"
+        "id": "inputData"
       },
 
       "target": "#inputData",
