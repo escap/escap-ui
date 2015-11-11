@@ -8,13 +8,13 @@
                         <th>Label</th>
                         <th>Description</th>
                     </thead>
-
                     <tbody>
-                        {{each data}}
+                        {{#each data}}
                             <tr>
-                                {{each this}}
+                                <td>{{firstindex}}</td>
+                                <td>{{secondindex}}</td>
+                                <td>{{thirdindex}}</td>
                             </tr>
-
                         {{/each}}
                     </tbody>
                 </table>

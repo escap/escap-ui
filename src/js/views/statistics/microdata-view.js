@@ -153,18 +153,19 @@ define([
 
             this.$modalDescription.find(s.MODAL_DESCRIPTION_CONTAINER).empty();
 
-            this.$modalDescription.find(s.MODAL_DESCRIPTION_CONTAINER).append(templateDesc);
 
 
             if(!this.$dataTable){
                 this.$dataTable = JSON.parse(dataTableDesc);
             }
 
+            var templateToAdd = Handlebars.compile(templateDesc);
+            var $compiled = templateToAdd( this.$dataTable);
 
-            var htmlData = this._createTableFromData();
-
+            this.$modalDescription.find(s.MODAL_DESCRIPTION_CONTAINER).append($compiled);
 
         },
+
 
 
         onMetadataClick: function (model) {

@@ -1,52 +1,249 @@
-
-[
-  ["Column","Label","Description"],
-  ["SURVEY_CODE","ID Survey","Unique survey identifier"],
-  ["SURVEY","Survey Name","Survey name given by the person submitting the data"],
-  ["ADM0_CODE","Country code","Country code from FAO standards"],
-  ["ADM0_NAME","Country","Country name"],
-  ["ADM1_CODE","Region code","Region code"],
-  ["ADM1_NAME","Region","Region Name"],
-  ["ADM2_CODE","Sub-region code","Sub-region code"],
-  ["ADM2_NAME","Subregion","Sub-region Name"],
-  ["DAY","Recall number","Number of the recall for the subject"],
-  ["ID_NO","Subject identification","Unique subject identifier"],
-  ["CONDAY","Day of consumption","Day of consumption"],
-  ["CONMONTH","Month of consumption","Month of consumption"],
-  ["CONYEAR","Year of consumption","Year of consumption"],
-  ["WEEK","Week day of consumption","Code of the week day of consumption"],
-  ["EXCEPTIONDAY","Exceptional diet the day of consumption","The subject reported to have followed a exceptional diet in the specific day because of a special event (e.g. sickness, wedding party, religious event, etc.)"],
-  ["TIMEHOUR","Time of consumption (hours)","Time of consumption (hours - from 00 to 23)"],
-  ["TIMEMINUTES","Time of consumption (minutes)","Time of consumption (minutes - from 00 to 59)"],
-  ["MEAL","Period of consumption","Period of consumption (if time is not available)"],
-  ["PLACE","Place of consumption","Place of consumption"],
-  ["EATSEQ","","Number of the eating occasion (each different food item and recipe determines a new eating occasion)"],
-  ["TYPE_FOOD","Type of the eating occasion","Type of the eating occasion"],
-  ["RECIPE_CODE","ID Recipe","Unique identifier of the recipe if applicable (code to be repeated for each ingredient belonging to the recipe)"],
-  ["RECIPE_DESCR","Recipe description","Description of the recipe"],
-  ["AMOUNTRECIPE","Amount recipe consummed (g)","Amount consumed of the total recipe or food item (g)"],
-  ["INGR","Food item or Ingredient description","Description of the food item/ingredient"],
-  ["FOODEX2_CODE","FoodEx2 code","FoodEx2 code (with facets) = code of the ingredient"],
-  ["FOODEX2_DESCR","FoodEx2 description","FoodEx2 description of the food item/ingredient"],
-  ["AMNTG_UNPROC","Amount (edible) consumed before processing (g)","Amount (edible) consumed before processing (g)"],
-  ["AMNTG_PROC","Amount (edible) consumed after processing (g)","Amount (edible) consumed after processing (g)"],
-  ["ENERGY","Energy (kcal)","Energy (kcal)"],
-  ["PROTEIN","Protein (g)","Protein (g)"],
-  ["A_PROT","Animal protein (g)","Animal protein (g)"],
-  ["V_PROT","Vegetal protein (g)","Vegetal protein (g)"],
-  ["CARBOH","Carbohydrates (g)","Carbohydrates (g)"],
-  ["FAT","Fat (g)","Fat (g)"],
-  ["SAT_FAT","Saturated fat (g)","Saturated fat (g)"],
-  ["CALC","Calcium (mg)","Calcium (mg)"],
-  ["IRON","Iron (mg)","Iron (mg)"],
-  ["ZINC","Zinc (mg)","Zinc (mg)"],
-  ["VITC","Vitamin C (mg)","Vitamin C (mg)"],
-  ["THIA","Thiamin (mg)","Thiamin (mg)"],
-  ["RIBO","Riboflavin (mg)","Riboflavin (mg)"],
-  ["NIAC","Niacin (mg)","Niacin (mg)"],
-  ["VITB6","Vitamin B6 (mg)","Vitamin B6 (mg)"],
-  ["FOLA","Folate (Âµg DFE)","Folate (Âµg DFE)"],
-  ["VITB12","Vitamin B12 (Âµg)","Vitamin B12 (Âµg)"],
-  ["VITA","Vitamin A (Âµg RAE)","Vitamin A (Âµg RAE)"],
-  ["BCAROT","Beta-carotene (Âµg)","Beta-carotene (Âµg)"]
-]
+{
+  "data": [
+    {
+      "firstindex": "Column",
+      "secondindex": "Label",
+      "thirdindex": "Description"
+    },
+    {
+      "firstindex": "SURVEY_CODE",
+      "secondindex": "ID Survey",
+      "thirdindex": "Unique survey identifier"
+    },
+    {
+      "firstindex": "SURVEY",
+      "secondindex": "Survey Name",
+      "thirdindex": "Survey name given by the person submitting the data"
+    },
+    {
+      "firstindex": "ADM0_CODE",
+      "secondindex": "Country code",
+      "thirdindex": "Country code from FAO standards"
+    },
+    {
+      "firstindex": "ADM0_NAME",
+      "secondindex": "Country",
+      "thirdindex": "Country name"
+    },
+    {
+      "firstindex": "ADM1_CODE",
+      "secondindex": "Region code",
+      "thirdindex": "Region code"
+    },
+    {
+      "firstindex": "ADM1_NAME",
+      "secondindex": "Region",
+      "thirdindex": "Region Name"
+    },
+    {
+      "firstindex": "ADM2_CODE",
+      "secondindex": "Sub-region code",
+      "thirdindex": "Sub-region code"
+    },
+    {
+      "firstindex": "ADM2_NAME",
+      "secondindex": "Subregion",
+      "thirdindex": "Sub-region Name"
+    },
+    {
+      "firstindex": "DAY",
+      "secondindex": "Recall number",
+      "thirdindex": "Number of the recall for the subject"
+    },
+    {
+      "firstindex": "ID_NO",
+      "secondindex": "Subject identification",
+      "thirdindex": "Unique subject identifier"
+    },
+    {
+      "firstindex": "CONDAY",
+      "secondindex": "Day of consumption",
+      "thirdindex": "Day of consumption"
+    },
+    {
+      "firstindex": "CONMONTH",
+      "secondindex": "Month of consumption",
+      "thirdindex": "Month of consumption"
+    },
+    {
+      "firstindex": "CONYEAR",
+      "secondindex": "Year of consumption",
+      "thirdindex": "Year of consumption"
+    },
+    {
+      "firstindex": "WEEK",
+      "secondindex": "Week day of consumption",
+      "thirdindex": "Code of the week day of consumption"
+    },
+    {
+      "firstindex": "EXCEPTIONDAY",
+      "secondindex": "Exceptional diet the day of consumption",
+      "thirdindex": "The subject reported to have followed a exceptional diet in the specific day because of a special event (e.g. sickness, wedding party, religious event, etc.)"
+    },
+    {
+      "firstindex": "TIMEHOUR",
+      "secondindex": "Time of consumption (hours)",
+      "thirdindex": "Time of consumption (hours - from 00 to 23)"
+    },
+    {
+      "firstindex": "TIMEMINUTES",
+      "secondindex": "Time of consumption (minutes)",
+      "thirdindex": "Time of consumption (minutes - from 00 to 59)"
+    },
+    {
+      "firstindex": "MEAL",
+      "secondindex": "Period of consumption",
+      "thirdindex": "Period of consumption (if time is not available)"
+    },
+    {
+      "firstindex": "PLACE",
+      "secondindex": "Place of consumption",
+      "thirdindex": "Place of consumption"
+    },
+    {
+      "firstindex": "EATSEQ",
+      "secondindex": "",
+      "thirdindex": "Number of the eating occasion (each different food item and recipe determines a new eating occasion)"
+    },
+    {
+      "firstindex": "TYPE_FOOD",
+      "secondindex": "Type of the eating occasion",
+      "thirdindex": "Type of the eating occasion"
+    },
+    {
+      "firstindex": "RECIPE_CODE",
+      "secondindex": "ID Recipe",
+      "thirdindex": "Unique identifier of the recipe if applicable (code to be repeated for each ingredient belonging to the recipe)"
+    },
+    {
+      "firstindex": "RECIPE_DESCR",
+      "secondindex": "Recipe description",
+      "thirdindex": "Description of the recipe"
+    },
+    {
+      "firstindex": "AMOUNTRECIPE",
+      "secondindex": "Amount recipe consummed (g)",
+      "thirdindex": "Amount consumed of the total recipe or food item (g)"
+    },
+    {
+      "firstindex": "INGR",
+      "secondindex": "Food item or Ingredient description",
+      "thirdindex": "Description of the food item/ingredient"
+    },
+    {
+      "firstindex": "FOODEX2_CODE",
+      "secondindex": "FoodEx2 code",
+      "thirdindex": "FoodEx2 code (with facets) = code of the ingredient"
+    },
+    {
+      "firstindex": "FOODEX2_DESCR",
+      "secondindex": "FoodEx2 description",
+      "thirdindex": "FoodEx2 description of the food item/ingredient"
+    },
+    {
+      "firstindex": "AMNTG_UNPROC",
+      "secondindex": "Amount (edible) consumed before processing (g)",
+      "thirdindex": "Amount (edible) consumed before processing (g)"
+    },
+    {
+      "firstindex": "AMNTG_PROC",
+      "secondindex": "Amount (edible) consumed after processing (g)",
+      "thirdindex": "Amount (edible) consumed after processing (g)"
+    },
+    {
+      "firstindex": "ENERGY",
+      "secondindex": "Energy (kcal)",
+      "thirdindex": "Energy (kcal)"
+    },
+    {
+      "firstindex": "PROTEIN",
+      "secondindex": "Protein (g)",
+      "thirdindex": "Protein (g)"
+    },
+    {
+      "firstindex": "A_PROT",
+      "secondindex": "Animal protein (g)",
+      "thirdindex": "Animal protein (g)"
+    },
+    {
+      "firstindex": "V_PROT",
+      "secondindex": "Vegetal protein (g)",
+      "thirdindex": "Vegetal protein (g)"
+    },
+    {
+      "firstindex": "CARBOH",
+      "secondindex": "Carbohydrates (g)",
+      "thirdindex": "Carbohydrates (g)"
+    },
+    {
+      "firstindex": "FAT",
+      "secondindex": "Fat (g)",
+      "thirdindex": "Fat (g)"
+    },
+    {
+      "firstindex": "SAT_FAT",
+      "secondindex": "Saturated fat (g)",
+      "thirdindex": "Saturated fat (g)"
+    },
+    {
+      "firstindex": "CALC",
+      "secondindex": "Calcium (mg)",
+      "thirdindex": "Calcium (mg)"
+    },
+    {
+      "firstindex": "IRON",
+      "secondindex": "Iron (mg)",
+      "thirdindex": "Iron (mg)"
+    },
+    {
+      "firstindex": "ZINC",
+      "secondindex": "Zinc (mg)",
+      "thirdindex": "Zinc (mg)"
+    },
+    {
+      "firstindex": "VITC",
+      "secondindex": "Vitamin C (mg)",
+      "thirdindex": "Vitamin C (mg)"
+    },
+    {
+      "firstindex": "THIA",
+      "secondindex": "Thiamin (mg)",
+      "thirdindex": "Thiamin (mg)"
+    },
+    {
+      "firstindex": "RIBO",
+      "secondindex": "Riboflavin (mg)",
+      "thirdindex": "Riboflavin (mg)"
+    },
+    {
+      "firstindex": "NIAC",
+      "secondindex": "Niacin (mg)",
+      "thirdindex": "Niacin (mg)"
+    },
+    {
+      "firstindex": "VITB6",
+      "secondindex": "Vitamin B6 (mg)",
+      "thirdindex": "Vitamin B6 (mg)"
+    },
+    {
+      "firstindex": "FOLA",
+      "secondindex": "Folate (Âµg DFE)",
+      "thirdindex": "Folate (Âµg DFE)"
+    },
+    {
+      "firstindex": "VITB12",
+      "secondindex": "Vitamin B12 (Âµg)",
+      "thirdindex": "Vitamin B12 (Âµg)"
+    },
+    {
+      "firstindex": "VITA",
+      "secondindex": "Vitamin A (Âµg RAE)",
+      "thirdindex": "Vitamin A (Âµg RAE)"
+    },
+    {
+      "firstindex": "BCAROT",
+      "secondindex": "Beta-carotene (Âµg)",
+      "thirdindex": "Beta-carotene (Âµg)"
+    }
+  ]
+}
