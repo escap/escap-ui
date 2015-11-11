@@ -94,6 +94,15 @@ define([
 
                 var values = [self.filter.getValues()];
 
+              /*  var secondFilter = JSON.parse(ResumeFilter);
+
+                var filteredTableFilter = self._reformatCodes(secondFilter);
+
+                var filteredPieFilter = self._reformatCodes(values);
+
+                filteredPieFilter.push(filteredTableFilter)*/
+
+
                 // TODO: funzione per distruggere dashboard e ricrearla con gli items giusti:
 
                /*  var filteredConfig = self._getFilteredConfig(values, self.$faostatDashboardConfig);
