@@ -1,83 +1,115 @@
 <table class="table">
+    <thead>
+    <tr>
+        <th>Among total population</th>
+        <th></th>
+    </tr>
+    </thead>
     <tbody>
     <tr>
-        <td>Resume</td>
+        <td>N</td>
         <td>{{ subjectsNumber }}</td>
     </tr>
     <tr>
-        <td>Thornton</td>
-        <td>{{ consumersNumber }}</td>
+        <td>Percent of consumption</td>
+        <td></td>
     </tr>
     <tr>
-        <td>the Bird</td>
-        <td>{{ totalConsumedQuantity }}</td>
-    </tr>
-    <tr>
-        <td>the Bird</td>
-        <td>{{ foodConsumedQuantity }}</td>
-    </tr>
-    <tr>
-        <td>the Bird</td>
-        <td>{{ foodConsumedPercentage }}</td>
-    </tr>
-    <tr>
-        <td>the Bird</td>
-        <td>{{ populationMinConsumption }}</td>
-    </tr>
-    <tr>
-        <td>the Bird</td>
-        <td>{{ populationMaxConsumption }}</td>
-    </tr>
-    <tr>
-        <td>the Bird</td>
+        <td>Mean consumption</td>
         <td>{{ populationMeanConsumption }}</td>
     </tr>
+
     <tr>
-        <td>the Bird</td>
+        <td>Minimum</td>
         <td>{{ consumersMinConsumption }}</td>
-    </tr>    <tr>
-        <td>the Bird</td>
-        <td>{{ consumersMaxConsumption }}</td>
-    </tr>    <tr>
-        <td>the Bird</td>
-        <td>{{  consumersMeanConsumption}}</td>
     </tr>
     <tr>
-        <td>the Bird</td>
+        <td>Maximum</td>
+        <td>{{ consumersMaxConsumption }}</td>
+    </tr>
+    <tr>
+        <td>SD</td>
         <td>{{ populationStandardDeviation }}</td>
     </tr>
     <tr>
-        <td>the Bird</td>
-        <td>{{ consumersStandardDeviation }}</td>
-    </tr>
-    <tr>
-        <td>the Bird</td>
-        <td>{{ percentilePopulation_51 }}</td>
-    </tr>
-    <tr>
-        <td>the Bird</td>
+        <td>P10</td>
         <td>{{ percentilePopulation_101 }}</td>
     </tr>
     <tr>
-        <td>the Bird</td>
-        <td>{{ percentilePopulation_201 }}</td>
-    </tr>
-    <tr>
-        <td>the Bird</td>
+        <td>P25</td>
         <td>{{ percentileConsumer_26 }}</td>
     </tr>
     <tr>
-        <td>the Bird</td>
-        <td>{{percentileConsumer_51  }}</td>
+        <td>P50</td>
+        <td>{{ percentilePopulation_51 }}</td>
+    </tr>
+    <tr>
+        <td>P75</td>
+        <td>{{ consumersMinConsumption }}</td>
     </tr>    <tr>
-        <td>the Bird</td>
-        <td>{{  percentileConsumer_101}}</td>
+        <td>P90</td>
+        <td>{{ consumersMaxConsumption }}</td>
     </tr>    <tr>
-        <td>the Bird</td>
-        <td>{{  percentileConsumer_202}}</td>
+        <td>Other percentile</td>
+        <td>{{  consumersMeanConsumption}}</td>
+    </tr>
+    <tbody>
+</table>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Among consumers</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>N</td>
+        <td>{{ subjectsNumber }}</td>
+    </tr>
+    <tr>
+        <td>Percent of consumption</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Mean consumption</td>
+        <td>{{ populationMeanConsumption }}</td>
+    </tr>
+
+    <tr>
+        <td>Minimum</td>
+        <td>{{ consumersMinConsumption }}</td>
+    </tr>
+    <tr>
+        <td>Maximum</td>
+        <td>{{ consumersMaxConsumption }}</td>
+    </tr>
+    <tr>
+        <td>SD</td>
+        <td>{{ populationStandardDeviation }}</td>
+    </tr>
+    <tr>
+        <td>P10</td>
+        <td>{{ percentilePopulation_101 }}</td>
+    </tr>
+    <tr>
+        <td>P25</td>
+        <td>{{ percentileConsumer_26 }}</td>
+    </tr>
+    <tr>
+        <td>P50</td>
+        <td>{{ percentilePopulation_51 }}</td>
+    </tr>
+    <tr>
+        <td>P75</td>
+        <td>{{ consumersMinConsumption }}</td>
     </tr>    <tr>
-        <td>the Bird</td>
-        <td>{{  percentileConsumer_227}}</td>
+        <td>P90</td>
+        <td>{{ consumersMaxConsumption }}</td>
+    </tr>    <tr>
+        <td>Other percentile</td>
+        <td>{{  consumersMeanConsumption}}</td>
     </tr>
     <tbody>
 </table>

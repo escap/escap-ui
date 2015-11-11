@@ -275,7 +275,7 @@ define([
                     model[rawData[i][0]] = rawData[i][1];
                 }
 
-                console.log(JSON.stringify(model))
+                console.log(JSON.stringify(Object.keys(model)))
 
                 //Inject HTML
                 var template = Handlebars.compile(resumeTemplate),
