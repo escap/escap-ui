@@ -43,7 +43,7 @@ define(function () {
                             "uid": "GIFT_SpecialConditions",
                             "title": {"EN": "Distinct"},
                             // name is the ID output in tehe filter getValues()
-                            "name": "gender",
+                            "name": "special_condition",
                             "config": {
                                 "defaultsource": []
                             }
@@ -410,18 +410,19 @@ define(function () {
                             }
                         },
                         // for now it takes the id, TODO: add uid as well
-                        //allowedFilter: ['indicator', 'year'],
+                        allowedFilter: ['gender', 'specialCondition','ageFrom','ageTo','ageYear'],
                         filter: [
                             {
                                 "name": "giftEnergyPercentage",
                                 "parameters": {
-                                    "gender": "2",
-                                    "specialCondition": "3",
-                                    "ageFrom": 5,
-                                    "ageTo": 40,
-                                    "ageYear": true,
-                                    "food": [ "A000Y", "A00BR", "A0F6B", "A03FQ", "A002N", "A0ETG", "A010C", "A000T", "A00JF", "A01SN", "A027J", "A00ZZ", "A01AB", "A013N", "A037A", "A00KJ", "A03NS", "A02JP", "A011P", "A00MJ" ],
-                                    "consumers" : false
+                                        "gender": "2",
+                                        "specialCondition": "3",
+                                        "ageFrom": 5,
+                                        "ageTo": 40,
+                                        "ageYear": true,
+                                        "food": ["A000Y", "A00BR", "A0F6B", "A03FQ", "A002N", "A0ETG", "A010C", "A000T", "A00JF", "A01SN", "A027J", "A00ZZ", "A01AB", "A013N", "A037A", "A00KJ", "A03NS", "A02JP", "A011P", "A00MJ"],
+                                        "consumers": false
+
                                 }
                             }
 

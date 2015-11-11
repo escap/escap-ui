@@ -1,11 +1,6 @@
 {
   "data": [
     {
-      "firstindex": "Column",
-      "secondindex": "Label",
-      "thirdindex": "Description"
-    },
-    {
       "firstindex": "SURVEY_CODE",
       "secondindex": "ID Survey",
       "thirdindex": "Unique survey identifier"

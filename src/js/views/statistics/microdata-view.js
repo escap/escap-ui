@@ -3,6 +3,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'handlebars',
     'views/base/view',
     'text!templates/statistics/microdata.hbs',
     'text!templates/statistics/description.hbs',
@@ -15,7 +16,7 @@ define([
     'config/submodules/fx-catalog/plugins/Config',
     'config/Config',
     'config/Events'
-], function ($, _, Backbone, View, template,templateDesc,dataTableDesc, i18nLabels, Catalog, Analysis, MetadataViewer, Report, CF, C, E) {
+], function ($, _, Backbone,Handlebars, View, template,templateDesc,dataTableDesc, i18nLabels, Catalog, Analysis, MetadataViewer, Report, CF, C, E) {
 
     'use strict';
 
@@ -143,16 +144,12 @@ define([
         },
 
         onDescriptionClick: function (model) {
-            console.log("description")
-            console.log(model)
 
             this.$modalMetadata.modal('hide');
 
             this.$modalDescription.modal('show');
 
-
             this.$modalDescription.find(s.MODAL_DESCRIPTION_CONTAINER).empty();
-
 
 
             if(!this.$dataTable){
@@ -169,8 +166,6 @@ define([
 
 
         onMetadataClick: function (model) {
-            console.log("metadata")
-            console.log(model)
 
             if (model.hasOwnProperty('actions')) {
                 delete model['actions']
@@ -189,7 +184,6 @@ define([
             metadata.init({
                 lang: 'en',
                 data: model,
-                //domain: "rlm_" + request.inputs.indicator[0],
                 placeholder: self.$modalMetadata.find(s.MODAL_METADATAVIEWER_CONTAINER)
             });
 
@@ -238,12 +232,6 @@ define([
 
             $(s.OVERLAY).show();
 
-            /*
-             $(s.OVERLAY).css({
-             height : '100%',
-             width : '100%'
-             });
-             */
 
             $(s.OVERLAY_CONTENT).show();
         },

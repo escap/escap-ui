@@ -42,7 +42,7 @@ define(function () {
             READY_TO_USE: ["consumption","safety","nutrition","environment"],
 
             DOWNLOAD_SOURCES: {
-                "gift_000042BUR201001" : "files/fileWatcher-143.110.zip"
+                "gift_000042BUR201001" : "files/burkina_faso.zip"
             }
 
         };

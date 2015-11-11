@@ -94,18 +94,41 @@ define([
 
                 var values = [self.filter.getValues()];
 
-                console.log(values);
                 // TODO: funzione per distruggere dashboard e ricrearla con gli items giusti:
 
                /*  var filteredConfig = self._getFilteredConfig(values, self.$faostatDashboardConfig);
                  self._renderFaostatDashboard(filteredConfig);
                  self.faostatDashboard.filter([values]);*/
 
-
                 log.debug('Filtering dashboard with values: ' + JSON.stringify(values));
 
-                self.dashboard.filter(values);
+                self.dashboard.filter(self._reformatCodes(values));
             });
+
+        },
+
+        _reformatCodes : function(values) {
+
+
+
+            var result = [];
+
+            var data = {};
+/*
+            data["ageFrom"] = values[0].hasOwnProperty("ageFrom") && values[0]["ageFrom"].hasOwnProperty("time")
+*/
+            data["ageFrom"] = values[0]["ageFrom"]["time"][0]["from"];
+            data["ageTo"] = values[0]["ageTo"]["time"][0]["to"];
+
+            data["gender"] = values[0]["gender"]["codes"][0]["codes"][0]
+            data["special_condition"] = values[0]["special_condition"]["codes"][0]["codes"][0]
+
+
+            result.push(data)
+
+
+            return result;
+
 
         },
 

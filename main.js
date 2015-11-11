@@ -145,7 +145,11 @@ require([
 
                     'fx-mdviewer/config/config': '../../config/submodules/fx-md-viewer/config',
 
-                    'fx-filter/config/config':'../../config/submodules/fx-filter/config'
+                    'fx-filter/config/config':'../../config/submodules/fx-filter/config',
+
+
+                    'fx-ds/start': './plugins/dashboard/dashboard_start',
+
                 },
 
                 // Underscore and Backbone are not AMD-capable per default,
