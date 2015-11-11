@@ -125,6 +125,8 @@ require([
                     // Authentication
                     'fx-common/config/auth_users' : '../../config/auth_users.json',
 
+                    'fx-ds/config/config': '../../config/submodules/fx-dashboard/Config',
+
                     // Catalog
                     'fx-cat-br/config/config': '../../config/submodules/fx-catalog/Config',
                     "fx-cat-br/config/fx-catalog-blank-filter": '../../config/submodules/fx-catalog/blankfilter',
