@@ -71,7 +71,6 @@ define([
             this.$readyContainer = this.$el.find(s.READY_CONTAINER);
 
             this.$documents = Configurator;
-
         },
 
         _configurePage: function () {

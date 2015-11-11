@@ -5,6 +5,8 @@ define([
     'backbone',
     'views/base/view',
     'text!templates/statistics/microdata.hbs',
+    'text!templates/statistics/description.hbs',
+    'text!json/statistics/data.json',
     'i18n!nls/statistics-microdata',
     'fx-cat-br/start',
     'fx-ana/start',
@@ -13,7 +15,7 @@ define([
     'config/submodules/fx-catalog/plugins/Config',
     'config/Config',
     'config/Events'
-], function ($, _, Backbone, View, template, i18nLabels, Catalog, Analysis, MetadataViewer, Report, CF, C, E) {
+], function ($, _, Backbone, View, template,templateDesc,dataTableDesc, i18nLabels, Catalog, Analysis, MetadataViewer, Report, CF, C, E) {
 
     'use strict';
 
@@ -27,7 +29,9 @@ define([
         OVERLAY_CLOSE: '.close-overlay',
         PAGE_CONTENT: "#analysis-page-content",
         MODAL_METADATA: '#gift-metadata-modal',
+        MODAL_DESCRIPTION: '#gift-description-modal',
         MODAL_METADATAVIEWER_CONTAINER: '[data-content="metadata-viewer-container"]',
+        MODAL_DESCRIPTION_CONTAINER: '[data-content="description-viewer-container"]',
         BTN_EXPORT_METADATA: '.fx-md-report-btn'
     };
 
@@ -56,6 +60,8 @@ define([
             $(s.OVERLAY).hide();
 
             this.$modalMetadata = this.$el.find(s.MODAL_METADATA);
+
+            this.$modalDescription = this.$el.find(s.MODAL_DESCRIPTION);
 
             //update State
             amplify.publish(E.STATE_CHANGE, {menu: 'microdata'});
@@ -139,7 +145,27 @@ define([
         onDescriptionClick: function (model) {
             console.log("description")
             console.log(model)
+
+            this.$modalMetadata.modal('hide');
+
+            this.$modalDescription.modal('show');
+
+
+            this.$modalDescription.find(s.MODAL_DESCRIPTION_CONTAINER).empty();
+
+            this.$modalDescription.find(s.MODAL_DESCRIPTION_CONTAINER).append(templateDesc);
+
+
+            if(!this.$dataTable){
+                this.$dataTable = JSON.parse(dataTableDesc);
+            }
+
+
+            var htmlData = this._createTableFromData();
+
+
         },
+
 
         onMetadataClick: function (model) {
             console.log("metadata")
@@ -150,6 +176,8 @@ define([
             }
 
             var self = this;
+
+            this.$modalDescription.modal('hide');
 
             this.$modalMetadata.modal('show');
 
