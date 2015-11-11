@@ -146,6 +146,7 @@ define([
 
     GiftWdsCatalogBridge.prototype._getUidsFromWdsSuccess = function (result ) {
 
+
         this.currentRequest.wdsOriginalRespose = result;
 
         this._getDatasetFromD3S();

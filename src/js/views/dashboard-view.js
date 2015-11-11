@@ -89,12 +89,14 @@ define([
             this.$filterBtn.on('click', function (e, data) {
 
                 var values = [self.filter.getValues()];
+
+                console.log(values);
                 // TODO: funzione per distruggere dashboard e ricrearla con gli items giusti:
 
-                /*                 var filteredConfig = self._getFilteredConfig(values, self.$faostatDashboardConfig);
+               /*  var filteredConfig = self._getFilteredConfig(values, self.$faostatDashboardConfig);
                  self._renderFaostatDashboard(filteredConfig);
-                 self.faostatDashboard.filter([values]);
-                 */
+                 self.faostatDashboard.filter([values]);*/
+
 
                 log.debug('Filtering dashboard with values: ' + JSON.stringify(values));
 
@@ -176,6 +178,7 @@ define([
         },
 
         _onChangeDashboard: function (item) {
+            console.log('on change dahsboiard')
 
             this._printDashboard(item);
 
@@ -210,6 +213,9 @@ define([
 
                 this.dashboard.destroy();
             }
+
+            console.log('on _renderDashboard dahsboiard')
+
 
             this.dashboard = new Dashboard({
                 layout: "injected"

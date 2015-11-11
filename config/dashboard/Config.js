@@ -54,13 +54,13 @@ define(function () {
                 {
                     "type": "static",
                     "containerType": "baseContainer",
-                    "title": "Year",
+                    "title": "Age From",
                     "components": [
                         {
                             "type": "time",
                             "componentType": "dropDownList-FENIX",
                             "lang": "EN",
-                            "title": {"EN": "Year From"},
+                            "title": {"EN": "Age From"},
                             "name": "ageFrom",
                             config: {
                                 "defaultsource": [
@@ -191,13 +191,13 @@ define(function () {
                 {
                     "type": "static",
                     "containerType": "baseContainer",
-                    "title": "Year",
+                    "title": "Age To",
                     "components": [
                         {
                             "type": "time",
                             "componentType": "dropDownList-FENIX",
                             "lang": "EN",
-                            "title": {"EN": "Year To"},
+                            "title": {"EN": "Age To"},
                             "name": "ageTo",
                             config: {
                                 "defaultsource": [
@@ -325,6 +325,29 @@ define(function () {
                         }
                     ]
                 }
+                /*
+                 {
+                 "type": "codelist",
+                 "containerType": "baseContainer",
+                 "title": "Food Group",
+                 "defaultCodes": [],
+                 "components": [
+                 {
+                 "type": "codelist",
+                 "componentType": "dropDownList-FENIX",
+                 "lang": "EN",
+                 "uid": "TODO",
+                 "title": {"EN": "Distinct"},
+                 // name is the ID output in tehe filter getValues()
+                 "name": "TODO",
+                 "config": {
+                 "defaultsource": []
+                 }
+
+                 }
+                 ]
+                 },
+                 */
             ],
 
             dashboard: {
@@ -404,6 +427,7 @@ define(function () {
 
                         ]
                     },
+/*
                     {
                         id: 'item-4',
                         type: 'chart',
@@ -463,6 +487,7 @@ define(function () {
                             }
                         ]
                     }
+*/
 
                     /*
                      {
