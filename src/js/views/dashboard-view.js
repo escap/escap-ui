@@ -364,7 +364,7 @@ define([
                     rawData = data.data;
 
                 for (var i = 0; i < rawData.length; i++) {
-                    model[rawData[i][0]] = rawData[i][1];
+                    model[rawData[i][0]] = rawData[i][1].toFixed(1);
                 }
 
                 console.log(JSON.stringify(Object.keys(model)))
