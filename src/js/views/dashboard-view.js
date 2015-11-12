@@ -94,44 +94,97 @@ define([
 
                 var values = [self.filter.getValues()];
 
-              /*  var secondFilter = JSON.parse(ResumeFilter);
+                /*  var secondFilter = JSON.parse(ResumeFilter);
 
-                var filteredTableFilter = self._reformatCodes(secondFilter);
+                 var filteredTableFilter = self._reformatCodes(secondFilter);
 
-                var filteredPieFilter = self._reformatCodes(values);
+                 var filteredPieFilter = self._reformatCodes(values);
 
-                filteredPieFilter.push(filteredTableFilter)*/
+                 filteredPieFilter.push(filteredTableFilter)*/
 
 
                 // TODO: funzione per distruggere dashboard e ricrearla con gli items giusti:
 
-               /*  var filteredConfig = self._getFilteredConfig(values, self.$faostatDashboardConfig);
+                /*  var filteredConfig = self._getFilteredConfig(values, self.$faostatDashboardConfig);
                  self._renderFaostatDashboard(filteredConfig);
                  self.faostatDashboard.filter([values]);*/
 
                 log.debug('Filtering dashboard with values: ' + JSON.stringify(values));
 
-                self.dashboard.filter(self._reformatCodes(values));
+
+                var newFilter = self._reformatCodes(values);
+
+                self.dashboard.filter(newFilter);
+
+                self.$el.find(s.RESUME_CONTAINER).empty();
+
+                var oldFilter = JSON.parse(ResumeFilter);
+                var filterResume = self._reformatFilter(oldFilter,newFilter);
+
+                self._updateResume(filterResume);
+
             });
 
         },
 
-        _reformatCodes : function(values) {
+        _reformatFilter: function (oldFilter, newFilter) {
+            var valueSpecialCondition =   newFilter[0]['special_condition'];
+            delete newFilter[0]['special_condition'];
+            newFilter[0]['specialCondition'] = valueSpecialCondition;
+            for (var attr in newFilter[0]) {
 
+                if (newFilter[0][attr].hasOwnProperty("removeFilter")) {
+                    delete newFilter[0][attr];
+                }
+            }
+
+            newFilter[0]["ageYear"]= true;
+            newFilter[0]["food"]= [
+                "A000Y",
+                "A00BR",
+                "A0F6B",
+                "A03FQ",
+                "A002N",
+                "A0ETG",
+                "A010C",
+                "A000T",
+                "A00JF",
+                "A01SN",
+                "A027J",
+                "A00ZZ",
+                "A01AB",
+                "A013N",
+                "A037A",
+                "A00KJ",
+                "A03NS",
+                "A02JP",
+                "A011P",
+                "A00MJ"
+            ];
+
+            oldFilter[0].parameters = newFilter[0];
+
+            console.log(oldFilter);
+            return oldFilter;
+        },
+
+        _reformatCodes: function (values) {
 
 
             var result = [];
 
             var data = {};
-/*
-            data["ageFrom"] = values[0].hasOwnProperty("ageFrom") && values[0]["ageFrom"].hasOwnProperty("time")
-*/
-            data["ageFrom"] = values[0]["ageFrom"]["time"][0]["from"];
-            data["ageTo"] = values[0]["ageTo"]["time"][0]["to"];
+            /*
+             data["ageFrom"] = values[0].hasOwnProperty("ageFrom") && values[0]["ageFrom"].hasOwnProperty("time")
+             */
+            data["ageFrom"] = (values[0]["ageFrom"]["time"]) ? values[0]["ageFrom"]["time"][0]["from"] : {"removeFilter": true}
+            data["ageTo"] = (values[0]["ageTo"]["time"]) ? values[0]["ageTo"]["time"][0]["to"] : {"removeFilter": true};
 
-            data["gender"] = values[0]["gender"]["codes"][0]["codes"][0]
-            data["special_condition"] = values[0]["special_condition"]["codes"][0]["codes"][0]
+            data["gender"] = (values[0]["gender"]["codes"]) ? values[0]["gender"]["codes"][0]["codes"][0] : {"removeFilter": true};
+            data["special_condition"] = (values[0]["special_condition"]["codes"]) ? values[0]["special_condition"]["codes"][0]["codes"][0] : {"removeFilter": true};
 
+
+            data['ageYear'] = true;
 
             result.push(data)
 
@@ -295,15 +348,22 @@ define([
 
             this.bridge = new D3P({
                 bridge: {},
-                uid : this.id
+                uid: this.id
             });
 
-            this.bridge.query(JSON.parse(ResumeFilter)).then(function (data) {
+            this._updateResume(JSON.parse(ResumeFilter));
+        },
+
+        _updateResume: function (filter) {
+
+
+            var self = this;
+            this.bridge.query(filter).then(function (data) {
 
                 var model = {},
                     rawData = data.data;
 
-                for (var i = 0 ; i < rawData.length; i ++) {
+                for (var i = 0; i < rawData.length; i++) {
                     model[rawData[i][0]] = rawData[i][1];
                 }
 
@@ -311,14 +371,12 @@ define([
 
                 //Inject HTML
                 var template = Handlebars.compile(resumeTemplate),
-                    html = template( model );
+                    html = template(model);
 
                 self.$el.find(s.RESUME_CONTAINER).html(html);
 
             });
-
         }
-
     });
 
     return DashboardView;
