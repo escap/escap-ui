@@ -7,8 +7,8 @@ define(function () {
     return {
 
 
-        "gift_000042BUR201001":{
-            'resume':{
+        "gift_000042BUR201001": {
+            'resume': {
                 "data": [
                     {
                         "firstindex": "SURVEY_CODE",
@@ -251,7 +251,7 @@ define(function () {
                         "thirdindex": "Beta-carotene (Âµg)"
                     }
                 ],
-                'onRender': function() {
+                'onRender': function () {
 
                     $("#item-description-1").highcharts({
                         chart: {
@@ -272,7 +272,7 @@ define(function () {
                                 text: 'N'
                             }
                         },
-                        xAxis:{
+                        xAxis: {
                             type: 'category',
                         },
                         tooltip: {
@@ -288,20 +288,21 @@ define(function () {
                                     style: {
                                         color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                                     }
-                                }
+                                },
+                                showInLegend: true
                             }
                         },
                         series: [{
-                            name: "Distribution by gender",
+                            name: "Age range",
                             colorByPoint: true,
-                            data :[
-                                ['[15-20[',60],
-                                ['[20-25[',80],
-                                ['[25-30[',130],
-                                ['[30-35[',160],
-                                ['[35-40[',150],
-                                ['[45-50[',100],
-                                ['[45-55[',40]
+                            data: [
+                                ['[15-20[', 60],
+                                ['[20-25[', 80],
+                                ['[25-30[', 130],
+                                ['[30-35[', 160],
+                                ['[35-40[', 150],
+                                ['[45-50[', 100],
+                                ['[45-55[', 40]
                             ]
                         }]
                     });
@@ -333,20 +334,21 @@ define(function () {
                                     style: {
                                         color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                                     }
-                                }
+                                },
+                                showInLegend: true
+
                             }
                         },
                         series: [{
-                            name: "Distribution by special condition",
+                            name: "Genders",
                             colorByPoint: true,
                             data: [{
                                 name: "Male",
                                 y: 58
                             }, {
                                 name: "Female",
-                                y: 42,
-                                sliced: true,
-                                selected: true
+                                y: 42
+
                             }]
                         }]
                     });
@@ -378,11 +380,12 @@ define(function () {
                                     style: {
                                         color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                                     }
-                                }
+                                },
+                                showInLegend: true
                             }
                         },
                         series: [{
-                            name: "Distribution by special condition",
+                            name: "Special conditions",
                             colorByPoint: true,
                             data: [{
                                 name: "Pregnant",
@@ -392,14 +395,12 @@ define(function () {
                                 y: 24,
                                 sliced: true,
                                 selected: true
-                            },
-                                {
-                                    name: "Non pregnant and non lactating",
-                                    y: 48
-                                }]
+                            }, {
+                                name: "Non pregnant and non lactating",
+                                y: 48
+                            }]
                         }]
                     });
-
 
 
                 }
