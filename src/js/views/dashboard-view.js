@@ -85,7 +85,6 @@ define([
             this.$content = this.$el.find(s.CONTENT);
 
             this.$filterBtn = this.$el.find(s.FILTER_BTN);
-
         },
 
         _bindEventListeners: function () {
@@ -366,7 +365,7 @@ define([
                     rawData = data.data;
 
                 for (var i = 0; i < rawData.length; i++) {
-                    model[rawData[i][0]] = rawData[i][1].toFixed(1);
+                    model[rawData[i][0]] = (rawData[i][1] && rawData[i][1]!== null)? rawData[i][1].toFixed(1):rawData[i][1];
                 }
 
                 console.log(JSON.stringify(Object.keys(model)))

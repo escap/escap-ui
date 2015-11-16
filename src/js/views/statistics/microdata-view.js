@@ -53,17 +53,28 @@ define([
             return i18nLabels;
         },
 
+        _initVariables : function() {
+
+            $(s.OVERLAY_CONTENT).hide();
+            $(s.OVERLAY).hide();
+
+            if(!this.$modalMetadata) {
+                this.$modalMetadata = this.$el.find(s.MODAL_METADATA);
+            }
+
+            if(!this.$modalDescription) {
+                this.$modalDescription = this.$el.find(s.MODAL_DESCRIPTION);
+            }
+
+            this.$dataTable = JSON.parse(dataTableDesc);
+
+        },
+
         attach: function () {
 
             View.prototype.attach.call(this, arguments);
 
-            //Init
-            $(s.OVERLAY_CONTENT).hide();
-            $(s.OVERLAY).hide();
-
-            this.$modalMetadata = this.$el.find(s.MODAL_METADATA);
-
-            this.$modalDescription = this.$el.find(s.MODAL_DESCRIPTION);
+            this._initVariables();
 
             //update State
             amplify.publish(E.STATE_CHANGE, {menu: 'microdata'});
@@ -148,10 +159,11 @@ define([
 
             this.$modalMetadata.modal('hide');
 
+            $('.modal-backdrop').remove();
+
             this.$modalDescription.modal('show');
 
             this.$modalDescription.find(s.MODAL_DESCRIPTION_CONTAINER).empty();
-
 
             if(!this.$dataTable){
                 this.$dataTable = JSON.parse(dataTableDesc);
@@ -173,6 +185,8 @@ define([
             var self = this;
 
             this.$modalDescription.modal('hide');
+
+            $('.modal-backdrop').remove();
 
             this.$modalMetadata.modal('show');
 
@@ -218,11 +232,7 @@ define([
         },
 
         onDownloadClick: function (model) {
-            console.log("download")
-            console.log(model);
-
             window.location = C.DOWNLOAD_SOURCES[model.uid]
-
         },
 
         openOverly: function () {

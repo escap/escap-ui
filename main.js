@@ -191,7 +191,9 @@ require([
         'config/Config',
         'domReady!'
     ], function (log,Application, routes, C) {
+/*
         log.setLevel('trace');
+*/
 
         var app = new Application({
             routes: routes,
