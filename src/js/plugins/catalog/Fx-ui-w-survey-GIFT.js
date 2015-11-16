@@ -174,7 +174,6 @@ define([
         })
 
         amplify.subscribe(E.MODULE_DESELECT + '.' + self.options.module.name, function (e) {
-
             self.deselectValue(e);
         });
     };

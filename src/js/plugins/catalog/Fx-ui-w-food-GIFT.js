@@ -205,8 +205,6 @@ define([
     Fx_ui_w_foodComponent.prototype._searchOnLazyLoading = function(searchString, cbSearch) {
 
         var arrayRes  =['122','1622'];
-        debugger;
-
         cbSearch(arrayRes);
     };
 

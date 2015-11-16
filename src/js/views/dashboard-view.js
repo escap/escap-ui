@@ -40,6 +40,8 @@ define([
 
         initialize: function (params) {
 
+            console.log('INITIALIZE')
+
             log.trace('initialize params ' + JSON.stringify(params));
 
             View.prototype.initialize.call(this, arguments);

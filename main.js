@@ -109,6 +109,7 @@ require([
                     swiper: "{FENIX_CDN}/js/swiper/3.0.7/dist/js/swiper.min",
                     jstree: "{FENIX_CDN}/js/jstree/3.0.8/dist/jstree",
                     loglevel: "{FENIX_CDN}/js/loglevel/1.4.0/loglevel",
+                    'jQAllRangeSliders': '{FENIX_CDN}/js/jquery.rangeslider/5.7.0/jQRangeSlider-min',
 
                     // map libraries
                     leaflet:          "{FENIX_CDN}/js/leaflet/0.7.3/leaflet",
@@ -169,6 +170,10 @@ require([
                         exports: 'Handlebars'
                     },
 
+                    jQAllRangeSliders: {
+                        deps: ['jquery', 'jqueryui']
+                    },
+
                     'geojson_selector': ['leaflet']
 
                 }
@@ -180,11 +185,13 @@ require([
 
     // Bootstrap the application
     require([
+        'loglevel',
         'application',
         'routes',
         'config/Config',
         'domReady!'
-    ], function (Application, routes, C) {
+    ], function (log,Application, routes, C) {
+        log.setLevel('trace');
 
         var app = new Application({
             routes: routes,

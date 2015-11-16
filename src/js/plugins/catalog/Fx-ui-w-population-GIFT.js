@@ -60,7 +60,6 @@ define([
         if (this.options === undefined) {
             this.options = {};
         }
-
         $.extend(true, this.options, o, optionsDefault);
     };
 
@@ -132,8 +131,6 @@ define([
             defaultValues: {min: this.$dataTimeRange.yearsRange.from + 5, max: this.$dataTimeRange.yearsRange.to - 5}
         });
 
-
-
         this.bindEventListeners();
 
         if ((e.adapter != null) && (typeof e.adapter != "undefined")) {
@@ -148,7 +145,6 @@ define([
 
         setTimeout(function(){
             self.$populationAgerange.rangeSlider('resize');
-
         }, 300)
 
 

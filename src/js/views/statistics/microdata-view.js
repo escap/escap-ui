@@ -3,6 +3,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'chaplin',
     'handlebars',
     'views/base/view',
     'text!templates/statistics/microdata.hbs',
@@ -16,7 +17,7 @@ define([
     'config/submodules/fx-catalog/plugins/Config',
     'config/Config',
     'config/Events'
-], function ($, _, Backbone,Handlebars, View, template,templateDesc,dataTableDesc, i18nLabels, Catalog, Analysis, MetadataViewer, Report, CF, C, E) {
+], function ($, _, Backbone,Chaplin,Handlebars, View, template,templateDesc,dataTableDesc, i18nLabels, Catalog, Analysis, MetadataViewer, Report, CF, C, E) {
 
     'use strict';
 
@@ -139,7 +140,7 @@ define([
             //TODO: for now
             model.uid = 'gift_avg_000042BUR201001';
 
-            Backbone.history.navigate('#dashboard/' + model.uid , {trigger: true});
+            Backbone.history.navigate('#dashboard/' + model.uid ,  {'trigger': true});
 
         },
 
@@ -160,9 +161,7 @@ define([
             var $compiled = templateToAdd( this.$dataTable);
 
             this.$modalDescription.find(s.MODAL_DESCRIPTION_CONTAINER).append($compiled);
-
         },
-
 
 
         onMetadataClick: function (model) {
