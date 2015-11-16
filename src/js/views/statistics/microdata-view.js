@@ -6,6 +6,7 @@ define([
     'chaplin',
     'handlebars',
     'views/base/view',
+    'config/dashboard/config-description',
     'text!templates/statistics/microdata.hbs',
     'text!templates/statistics/description.hbs',
     'text!json/statistics/data.json',
@@ -16,8 +17,9 @@ define([
     'fx-report',
     'config/submodules/fx-catalog/plugins/Config',
     'config/Config',
-    'config/Events'
-], function ($, _, Backbone,Chaplin,Handlebars, View, template,templateDesc,dataTableDesc, i18nLabels, Catalog, Analysis, MetadataViewer, Report, CF, C, E) {
+    'config/Events',
+    'highcharts'
+], function ($, _, Backbone,Chaplin,Handlebars,View, descriptionConfig,template,templateDesc,dataTableDesc, i18nLabels, Catalog, Analysis, MetadataViewer, Report, CF, C, E) {
 
     'use strict';
 
@@ -169,10 +171,13 @@ define([
                 this.$dataTable = JSON.parse(dataTableDesc);
             }
 
+
             var templateToAdd = Handlebars.compile(templateDesc);
-            var $compiled = templateToAdd( this.$dataTable);
+            var $compiled = templateToAdd(descriptionConfig[model.uid].resume);
 
             this.$modalDescription.find(s.MODAL_DESCRIPTION_CONTAINER).append($compiled);
+
+            descriptionConfig[model.uid].resume.onRender();
         },
 
 
