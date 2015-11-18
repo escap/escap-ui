@@ -3,7 +3,7 @@
     "name": "giftSurveySummary",
     "parameters": {
       "gender": "2",
-      "specialCondition": "3",
+      "specialCondition": "1",
       "ageFrom": 5,
       "ageTo": 40,
       "ageYear": true,

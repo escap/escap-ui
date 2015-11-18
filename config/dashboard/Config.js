@@ -34,7 +34,7 @@ define(function () {
                     "type": "codelist",
                     "containerType": "baseContainer",
                     "title": "Special Condition",
-                    "defaultCodes": ["3"],
+                    "defaultCodes": ["1"],
                     "components": [
                         {
                             "type": "codelist",
@@ -43,7 +43,7 @@ define(function () {
                             "uid": "GIFT_SpecialConditions",
                             "title": {"EN": "Distinct"},
                             // name is the ID output in tehe filter getValues()
-                            "name": "special_condition",
+                            "name": "specialCondition",
                             "config": {
                                 "defaultsource": []
                             }
@@ -456,7 +456,7 @@ define(function () {
                                 "name": "giftEnergyPercentage",
                                 "parameters": {
                                     "gender": "2",
-                                    "specialCondition": "3",
+                                    "specialCondition": "1",
                                     "ageFrom": 5,
                                     "ageTo": 40,
                                     "ageYear": true,

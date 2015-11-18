@@ -112,7 +112,6 @@ define([
 
                 log.debug('Filtering dashboard with values: ' + JSON.stringify(values));
 
-
                 var newFilter = self._reformatCodes(values);
 
                 self.dashboard.filter(newFilter);
@@ -129,8 +128,8 @@ define([
         },
 
         _reformatFilter: function (oldFilter, newFilter) {
-            var valueSpecialCondition =   newFilter[0]['special_condition'];
-            delete newFilter[0]['special_condition'];
+            var valueSpecialCondition =   newFilter[0]['specialCondition'];
+            delete newFilter[0]['specialCondition'];
             newFilter[0]['specialCondition'] = valueSpecialCondition;
             for (var attr in newFilter[0]) {
 
@@ -171,7 +170,6 @@ define([
 
         _reformatCodes: function (values) {
 
-
             var result = [];
 
             var data = {};
@@ -182,16 +180,13 @@ define([
             data["ageTo"] = (values[0]["ageTo"]["time"]) ? values[0]["ageTo"]["time"][0]["to"] : {"removeFilter": true};
 
             data["gender"] = (values[0]["gender"]["codes"]) ? values[0]["gender"]["codes"][0]["codes"][0] : {"removeFilter": true};
-            data["special_condition"] = (values[0]["special_condition"]["codes"]) ? values[0]["special_condition"]["codes"][0]["codes"][0] : {"removeFilter": true};
-
+            data["specialCondition"] = (values[0]["specialCondition"]["codes"]) ? values[0]["specialCondition"]["codes"][0]["codes"][0] : {"removeFilter": true};
 
             data['ageYear'] = true;
 
             result.push(data)
 
-
             return result;
-
 
         },
 
