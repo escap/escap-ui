@@ -100,19 +100,19 @@ define([
                         DESCRIPTION: {
                             event: 'description',
                             labels: {
-                                EN: 'Description'
+                                EN: 'Dataset Content'
                             }
                         },
                         METADATA: {
                             event: 'metadata',
                             labels: {
-                                EN: 'Metadata'
+                                EN: 'Survey Description'
                             }
                         },
                         DOWNLOAD: {
                             event: 'download',
                             labels: {
-                                EN: 'Download'
+                                EN: 'Download Microdata'
                             }
                         }
 

@@ -128,6 +128,7 @@ define([
         this.$populationAgerange.rangeSlider({
             bounds: {min: this.$dataTimeRange.yearsRange.from, max: this.$dataTimeRange.yearsRange.to},
             step: 1,
+            arrows: false,
             defaultValues: {min: this.$dataTimeRange.yearsRange.from + 5, max: this.$dataTimeRange.yearsRange.to - 5}
         });
 

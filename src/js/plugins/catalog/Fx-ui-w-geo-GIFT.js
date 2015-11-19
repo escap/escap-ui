@@ -54,6 +54,7 @@ define([
             //For filter logic .... end
         };
 
+
         function FX_ui_geographic_component(optionsDefault) {
 
             if (this.options === undefined) {
@@ -62,6 +63,7 @@ define([
 
             $.extend(true, this.options, o, optionsDefault);
         };
+
 
         FX_ui_geographic_component.prototype._initialize = function (e) {
 
@@ -126,7 +128,7 @@ define([
             this.$geoList = new L.Control.GeoJSONSelector(geoLayer,styleConf);
 
             this.$leafletMap.addControl(this.$geoList);
-        }
+        };
 
         FX_ui_geographic_component.prototype._manipulateDOMToFilterCountries = function () {
 

@@ -10,7 +10,9 @@ define([
 
 ], function ($,CT, C, DC, E) {
 
+
     'use strict';
+
 
     var o = {
         lang: 'EN',
@@ -47,6 +49,7 @@ define([
         //For filter logic .... end
     };
 
+
     function Fx_ui_survey_component(optionsDefault) {
 
         if (this.options === undefined) {
@@ -55,6 +58,7 @@ define([
 
         $.extend(true, this.options, o, optionsDefault);
     };
+
 
     Fx_ui_survey_component.prototype._initialize = function(e) {
 
@@ -71,6 +75,7 @@ define([
         this.$sourceTimerange = e.component.years.defaultsource;
 
     };
+
 
     Fx_ui_survey_component.prototype.render = function (e, container) {
 
@@ -89,6 +94,7 @@ define([
         this._initialize(e);
 
         this.$surveyTimerange.rangeSlider({
+            arrows: false,
             bounds: {min: this.$sourceTimerange.from, max: this.$sourceTimerange.to},
             step: 1, defaultValues: {min: this.$sourceTimerange.from + 5, max: this.$sourceTimerange.to - 5}
         });
@@ -102,15 +108,14 @@ define([
         self.options.name = e.name;
         self.options.componentid = $(container).attr("id");
         //Raise an event to show that the component has been rendered
+
         $(container).trigger(self.options.events.READY, {name: e.name});
 
         setTimeout(function(){
             self.$surveyTimerange.rangeSlider('resize');
-
-        }, 300)
-
-
+        }, 300);
     };
+
 
     Fx_ui_survey_component.prototype.validate = function (e) {
 
@@ -118,6 +123,7 @@ define([
 
         return true;
     };
+
 
     Fx_ui_survey_component.prototype.processData = function (dataType, data) {
         // TODO
@@ -154,6 +160,7 @@ define([
         return r;
     };
 
+
     Fx_ui_survey_component.prototype.bindEventListeners = function () {
 
         var self = this;
@@ -185,7 +192,6 @@ define([
         $( this.options.css_classes.RESIZE).off();
 
     }
-
 
     Fx_ui_survey_component.prototype.deselectValue = function (obj) {
 
@@ -221,6 +227,7 @@ define([
             addCharsUrban: $('input[name="' + CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_URBAN + '"]:radio').val()
         };
     };
+
 
     return Fx_ui_survey_component;
 });

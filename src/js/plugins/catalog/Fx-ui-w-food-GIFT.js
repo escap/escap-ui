@@ -131,9 +131,7 @@ define([
         this.$searchForm = $('<form id="s"><input type="search" id="q" class="form-control" /></form>');
 
         this.$container = $(this.options.container);
-/*
-        this.$container.append(this.$searchForm);
-*/
+
         this.$container.append(this.$treeContainer);
     };
 
@@ -183,7 +181,6 @@ define([
             payload.version = self.options.module.component.source.version;
         }
 
-        console.log('getChildren!')
 
         $.ajax({
             url: (C.SERVICE_BASE_ADDRESS || DC.SERVICE_BASE_ADDRESS) + "/codes/filter",
