@@ -33,14 +33,15 @@ define([
         MAP_CONTAINER: "#country-map-container",
         FILTER_CONTAINER: "filter-container",
         FILTER_BTN: "#filter-submit-btn",
-        RESUME_CONTAINER: "#item-1"
+        RESUME_CONTAINER: "#item-1",
+        EXPORT_PROCESS: ".fx-dashboard-process"
     };
 
     var DashboardView = View.extend({
 
         initialize: function (params) {
 
-            console.log('INITIALIZE')
+            console.log('INITIALIZE');
 
             log.trace('initialize params ' + JSON.stringify(params));
 
@@ -85,6 +86,8 @@ define([
             this.$content = this.$el.find(s.CONTENT);
 
             this.$filterBtn = this.$el.find(s.FILTER_BTN);
+
+
         },
 
         _bindEventListeners: function () {
@@ -125,6 +128,16 @@ define([
 
             });
 
+            log.warn(this.$exportBtn);
+
+            this.$exportBtn.on('click', function(e,data) {
+
+                alert()
+
+                log.warn(e, e);
+                log.warn(data, data);
+            })
+
         },
 
         _reformatFilter: function (oldFilter, newFilter) {
@@ -164,7 +177,6 @@ define([
 
             oldFilter[0].parameters = newFilter[0];
 
-            console.log(oldFilter);
             return oldFilter;
         },
 
@@ -271,12 +283,27 @@ define([
 
         _printDashboardBase: function (id) {
 
+            var self= this;
+
             //Inject HTML
             var source = $(basesTemplate).find("[data-dashboard='" + id + "']"),
                 template = Handlebars.compile(source.prop('outerHTML')),
                 html = template({});
 
             this.$el.find(s.DASHBOARD_CONTENT).html(html);
+
+            this.$exportBtn = this.$el.find(s.EXPORT_PROCESS);
+
+            this.$exportBtn.on('click', function(e,data) {
+                var model = self.dashboard.getModel(this.dataset.dashboardId);
+
+                log.warn(model)
+
+                if(model && model != null) {
+                    //TODo: export
+                }
+            })
+
         },
 
         _getDashboardConfig: function (conf) {

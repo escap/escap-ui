@@ -91,6 +91,8 @@ define([
 
     DS.prototype._renderItems = function (filter) {
 
+        console.warn('renderItems')
+
         if (this.o.items && Array.isArray(this.o.items)) {
 
             _.each(this.o.items, _.bind(function (item) {
@@ -101,6 +103,9 @@ define([
 
             }, this));
         }
+
+        console.warn(this.o.items);
+
 
     };
 
@@ -182,10 +187,15 @@ define([
 
         //Destroy items
         _.each(this.items, function (item) {
+            var index_item = this.items.indexOf(item);
             if (item.destroy) {
                 item.destroy();
             }
-        });
+            if(index_item != -1) {
+                this.items.splice(index_item,1);
+            }
+
+        }, this);
 
     };
 
@@ -204,6 +214,16 @@ define([
 
         this._destroyItems();
 
+    };
+
+
+    DS.prototype.getModel = function(id) {
+        for(var i=0; i< this.items.length; i++) {
+            if(this.items[i].o.id === id){
+                return this.items[i].o.model;
+            }
+        }
+        return null;
     };
 
     return DS;
