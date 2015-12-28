@@ -13,16 +13,23 @@
         "id": "dietaryPattern",
         "text": "Dietary Pattern",
         "state": {
-          "opened": true
+          "opened": true,
+          "disabled": true
         },
         "children": [
           {
             "id": "7IYCF",
-            "text": "7 food grouops from IYCF"
+            "text": "7 food grouops from IYCF",
+            "state": {
+              "disabled": true
+            }
           },
           {
             "id": "10MDDW",
-            "text": "10 food groups from MDD-W"
+            "text": "10 food groups from MDD-W",
+            "state": {
+              "disabled": true
+            }
           }
         ]
       },
@@ -30,16 +37,24 @@
         "id": "dietaryDiversity",
         "text": "Dietary Diversity",
         "state": {
-          "opened": true
+          "opened": true,
+          "disabled": true
+
         },
         "children": [
           {
             "id": "IYCFeedingPractices",
-            "text": "Infant and Young Child Feeding practices"
+            "text": "Infant and Young Child Feeding practices",
+            "state": {
+              "disabled": true
+            }
           },
           {
             "id": "MDDWDiversity",
-            "text": "Minimum Dietary Diversity - Women"
+            "text": "Minimum Dietary Diversity - Women",
+            "state": {
+              "disabled": true
+            }
           }
         ]
       },
@@ -47,14 +62,18 @@
         "id": "MacronutrientIntakes",
         "text": "Macronutrient Intakes",
         "state": {
-          "opened": true
+          "opened": true,
+          "disabled": true
+
         }
       },
       {
         "id": "NutrientIntakes",
         "text": "Nutrient Intakes",
         "state": {
-          "opened": true
+          "opened": true,
+          "disabled": true
+
         }
       }
     ]

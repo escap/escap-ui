@@ -96,22 +96,11 @@ define([
 
             this.$filterBtn.on('click', function (e, data) {
 
+                debugger;
+
                 var values = [self.filter.getValues()];
 
-                /*  var secondFilter = JSON.parse(ResumeFilter);
-
-                 var filteredTableFilter = self._reformatCodes(secondFilter);
-
-                 var filteredPieFilter = self._reformatCodes(values);
-
-                 filteredPieFilter.push(filteredTableFilter)*/
-
-
                 // TODO: funzione per distruggere dashboard e ricrearla con gli items giusti:
-
-                /*  var filteredConfig = self._getFilteredConfig(values, self.$faostatDashboardConfig);
-                 self._renderFaostatDashboard(filteredConfig);
-                 self.faostatDashboard.filter([values]);*/
 
                 log.debug('Filtering dashboard with values: ' + JSON.stringify(values));
 
@@ -122,7 +111,7 @@ define([
                 self.$el.find(s.RESUME_CONTAINER).empty();
 
                 var oldFilter = JSON.parse(ResumeFilter);
-                var filterResume = self._reformatFilter(oldFilter,newFilter);
+                var filterResume = self._reformatFilter(oldFilter, newFilter);
 
                 self._updateResume(filterResume);
 
@@ -130,7 +119,7 @@ define([
 
             log.warn(this.$exportBtn);
 
-            this.$exportBtn.on('click', function(e,data) {
+            this.$exportBtn.on('click', function (e, data) {
 
                 alert()
 
@@ -141,9 +130,13 @@ define([
         },
 
         _reformatFilter: function (oldFilter, newFilter) {
-            var valueSpecialCondition =   newFilter[0]['specialCondition'];
+
+
+            var valueSpecialCondition = newFilter[0]['specialCondition'];
             delete newFilter[0]['specialCondition'];
             newFilter[0]['specialCondition'] = valueSpecialCondition;
+
+
             for (var attr in newFilter[0]) {
 
                 if (newFilter[0][attr].hasOwnProperty("removeFilter")) {
@@ -151,8 +144,8 @@ define([
                 }
             }
 
-            newFilter[0]["ageYear"]= true;
-            newFilter[0]["food"]= [
+            newFilter[0]["ageYear"] = true;
+            newFilter[0]["food"] = [
                 "A000Y",
                 "A00BR",
                 "A0F6B",
@@ -185,16 +178,37 @@ define([
             var result = [];
 
             var data = {};
-            /*
-             data["ageFrom"] = values[0].hasOwnProperty("ageFrom") && values[0]["ageFrom"].hasOwnProperty("time")
-             */
-            data["ageFrom"] = (values[0]["ageFrom"]["time"]) ? values[0]["ageFrom"]["time"][0]["from"] : {"removeFilter": true}
-            data["ageTo"] = (values[0]["ageTo"]["time"]) ? values[0]["ageTo"]["time"][0]["to"] : {"removeFilter": true};
 
-            data["gender"] = (values[0]["gender"]["codes"]) ? values[0]["gender"]["codes"][0]["codes"][0] : {"removeFilter": true};
-            data["specialCondition"] = (values[0]["specialCondition"]["codes"]) ? values[0]["specialCondition"]["codes"][0]["codes"][0] : {"removeFilter": true};
+            for (var attr in values[0]) {
 
-            data['ageYear'] = true;
+                var value_data_format = Object.keys(values[0][attr])[0]
+
+                switch (value_data_format) {
+                    case "time":
+
+                        if (values[0][attr][value_data_format][0]["from"]) {
+                            data[attr] = values[0][attr][value_data_format][0]["from"];
+                        } else if (values[0][attr][value_data_format][0]["to"]) {
+                            data[attr] = values[0][attr][value_data_format][0]["to"];
+                        } else {
+                            data[attr] = {"removeFilter": true};
+                        }
+                        break;
+                    case "codes":
+
+                        if (values[0][attr][value_data_format]) {
+                            data[attr] = values[0][attr][value_data_format][0]['codes'][0];
+                        } else {
+                            data[attr] = {"removeFilter": true};
+                        }
+                        break;
+
+                    default :
+                        data[attr] = {"removeFilter": true};
+
+                        break;
+                }
+            }
 
             result.push(data)
 
@@ -275,7 +289,6 @@ define([
         },
 
         _onChangeDashboard: function (item) {
-            console.log('on change dahsboiard')
 
             this._printDashboard(item);
 
@@ -283,7 +296,7 @@ define([
 
         _printDashboardBase: function (id) {
 
-            var self= this;
+            var self = this;
 
             //Inject HTML
             var source = $(basesTemplate).find("[data-dashboard='" + id + "']"),
@@ -294,12 +307,12 @@ define([
 
             this.$exportBtn = this.$el.find(s.EXPORT_PROCESS);
 
-            this.$exportBtn.on('click', function(e,data) {
+            this.$exportBtn.on('click', function (e, data) {
                 var model = self.dashboard.getModel(this.dataset.dashboardId);
 
                 log.warn(model)
 
-                if(model && model != null) {
+                if (model && model != null) {
                     //TODo: export
                 }
             })
@@ -387,10 +400,8 @@ define([
                     rawData = data.data;
 
                 for (var i = 0; i < rawData.length; i++) {
-                    model[rawData[i][0]] = (rawData[i][1] && rawData[i][1]!== null)? rawData[i][1].toFixed(1):rawData[i][1];
+                    model[rawData[i][0]] = (rawData[i][1] && rawData[i][1] !== null) ? rawData[i][1].toFixed(1) : rawData[i][1];
                 }
-
-                console.log(JSON.stringify(Object.keys(model)))
 
                 //Inject HTML
                 var template = Handlebars.compile(resumeTemplate),

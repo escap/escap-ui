@@ -246,7 +246,6 @@ define([
 
             $(s.OVERLAY).show();
 
-
             $(s.OVERLAY_CONTENT).show();
         },
 

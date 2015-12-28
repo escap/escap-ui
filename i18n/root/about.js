@@ -33,6 +33,57 @@ define({
     "conducted at national or sub-national level. This will contribute to increase the capacity of all stakeholders " +
     "to monitor food consumption.",
 
-    team_title : "3. TEAM"
+    team_title : "3. TEAM",
+
+    key_documents: {
+        "title": "KEY DOCUMENTS",
+        "document_list":[
+            {
+                "document": "Lorem ipsum dolor sit amet"
+            },
+            {
+                "document": "Cras convallis ultricies imperdie"
+            },
+            {
+                "document": "Morbi euismod, orci"
+            },
+            {
+                "document": "Pellentesque imperdiet"
+            },
+            {
+                "document": "Etiam hendrerit congue"
+            }
+        ]
+    },
+
+    "contact_us":{
+        "title":"CONTACT US",
+        "division":"FAO NUTRITION DIVISION",
+        "pauline_info":{
+            "name":"Pauline Allemand",
+            "job_desc":"International Nutrition Consultant",
+            "division":"FAO Nutrition Division (ESN)"
+        },
+        "catherine_info":{
+            "name":"Catherine Leclercq",
+            "job_desc":"FAO Nutrition Officer",
+            "division":"FAO Nutrition Division (ESN)"
+        }
+    },
+
+    "find_in":{
+
+        "address": "Viale delle Terme di Caracalla<br>00153 Rome, Italy",
+
+        "hq_address":"Headquarters<br>"+
+                        "Viale delle Terme di Caracalla<br>"+
+                        "00153 Rome, Italy<br>"+
+                        "Tel:(+39) 06 57051<br>"+
+                        "e-mail：FAO-HQ@fao.org",
+
+        "other_info":"General media inquiries<br>"+
+                        "Tel: (+39) 06 570 53625<br>"+
+                        "e-mail: FAO-Newsroom@fao.org"
+    }
 
 });

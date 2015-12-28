@@ -21,70 +21,47 @@
         <p>{{objective_body}}</p>
 
 
-       <!-- <h2>3.CONTRIBUTORS</h2>
-
-        <br>
-        <ul class="list-unstyled collaborators-list">
-
-            <li> FAO AGDF, ESN, ESS</li>
-            <li> WHO Department of Nutrition, Department of Food safety and Zoonoses</li>
-            <li> EFSA</li>
-            <li> Harvest Plus</li>
-            <li> BMGF</li>
-            <li> Tufts University</li>
-            <li> GDD</li>
-            <li> IARC    </li>
-
-        </ul>
-
-        <br><br>-->
-
     </div>
     <div class="col-sm-4">
         <div class="sidebar-box">
-            <h3>KEY DOCUMENTS</h3>
-
+            <h3>{{key_documents.title}}</h3>
             <div class="sidebar-box-content">
                 <ul>
-                    <li>Lorem ipsum dolor sit amet</li>
-                    <li>Cras convallis ultricies imperdie</li>
-                    <li>Morbi euismod, orci</li>
-                    <li>Pellentesque imperdiet</li>
-                    <li>Etiam hendrerit congue</li>
+                    {{#each key_documents.document_list}}
+                    <li>{{document}}</li>
+                    {{/each}}
                 </ul>
-
             </div>
-
         </div>
 
 
         <div class="sidebar-box">
-            <h3>CONTACT US</h3>
+            <h3>{{contact_us.title}}</h3>
 
             <div class="sidebar-box-content">
-                <h3>FAO NUTRITION DIVISION</h3>
+                <h3>{{contact_us.division}}</h3>
 
                 <br>
                 <div class="row">
                     <div class="col-sm-6 user-container">
                         <div class="user-image">
                             <div class="profile"  id="pauline-profile"></div>
-                            <h3>Pauline Allemand</h3>
+                            <h3>{{contact_us.pauline_info.name}}</h3>
 
-                            <p>International Nutrition Consultant</p>
+                            <p>{{contact_us.pauline_info.job_desc}}</p>
 
-                            <p class="division">FAO Nutrition Division (ESN)</p>
+                            <p class="division">{{contact_us.pauline_info.division}}</p>
                         </div>
                     </div>
 
                     <div class="col-sm-6 user-container">
                         <div class="user-image">
                             <div class="profile" id="catherine-profile"></div>
-                            <h3>Catherine Leclercq</h3>
+                            <h3>{{contact_us.catherine_info.name}}</h3>
 
-                            <p>FAO Nutrition Officer</p>
+                            <p>{{contact_us.catherine_info.job_desc}}</p>
 
-                            <p class="division">FAO Nutrition Division (ESN)</p>
+                            <p class="division">{{contact_us.catherine_info.division}}</p>
                         </div>
                     </div>
 
@@ -93,19 +70,12 @@
                 <br><br>
 
 
-                <p>Viale delle Terme di Caracalla<br>
-                    00153 Rome, Italy</p>
+                <p>{{{find_in.address}}}</p>
 
 
-                <p>Headquarters<br>
-                    Viale delle Terme di Caracalla<br>
-                    00153 Rome, Italy<br>
-                    Tel:(+39) 06 57051<br>
-                    e-mail：FAO-HQ@fao.org</p>
+                <p>{{{find_in.hq_address}}}</p>
 
-                <p>General media inquiries<br>
-                    Tel: (+39) 06 570 53625<br>
-                    e-mail: FAO-Newsroom@fao.org</p>
+                <p>{{{find_in.other_info}}}</p>
 
                 <br>
 

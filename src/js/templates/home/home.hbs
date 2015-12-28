@@ -34,11 +34,11 @@
                 <!-- Controls -->
                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="sr-only">{{slides_prev}}</span>
                 </a>
                 <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
+                    <span class="sr-only">{{slides_next}}</span>
                 </a>
 
 
@@ -114,113 +114,15 @@
                             <div class="slider-holder gift-holders-home">
 
                                 <div class="swiper-header-container">
-                                    <!--<div class="events-info">-->
-                                    <!--<p>10/08/2015</p>-->
-                                    <!--<h2>FAO/WHO Global Individual Foodconsumption</h2>-->
-                                    <!--<span>This is the news</span><br>-->
-                                    <!--<a class="btn btn-default" href="#" role="button">View details »</a>-->
-
-                                    <!--</div>-->
 
                                     <div id='gift-contributors' class="swiper-container">
                                         <div class="swiper-wrapper">
+                                            {{#each contributors}}
                                             <div class="swiper-slide home-event red-slide">
-                                                <h2>FAO Head Quarters ESN</h2>
-
-                                                <p>In the Nutrition Division (ESN), the leading team consists of
-                                                    Catherine Leclercq and Pauline Allemand; Ruth Charrondière provides
-                                                    advice on the link between food consumption and food composition
-                                                    data; Yvette Fautsch and Yenory Hernandez Garbanzo provided advice
-                                                    on the data collection methods for the participatory development of
-                                                    the tool.</p>
-
+                                                <h2>{{title}}</h2>
+                                                <p>{{description}}</p>
                                             </div>
-
-                                            <div class="swiper-slide home-event red-slide">
-                                                <h2>FAO Head Quarters ESS</h2>
-
-                                                <p>In the Statistics Division (ESS), Fabio Grita and his team are in
-                                                    charge of the development of the data management system and of the
-                                                    web-dissemination software; Nathalie Troubat, Ana Moltedo and
-                                                    Filippo Gheri work under the leadership of Piero Conforti and in
-                                                    coordination with ESN on the development of a common pool of
-                                                    nutrition indicators that can be derived from surveys performed at
-                                                    household and individual level.</p>
-                                            </div>
-
-                                            <div class="swiper-slide home-event red-slide">
-                                                <h2>FAO Head Quarters AGDF</h2>
-
-                                                <p>In the Food Safety and Quality Unit (AGDF), Markus Lipp and
-                                                    colleagues are supporting the development of the tool by providing
-                                                    advice and are involved in the selection of indicators in the field
-                                                    of food safety.</p>
-                                            </div>
-
-
-                                            <div class="swiper-slide home-event red-slide">
-                                                <h2>WHO Head Quarters</h2>
-
-                                                <p>In WHO Head Quarters, two departments are involved:
-                                                    Philippe Verger, in the Department of Food Safety and Zoonoses
-                                                    (FOS), collaborates actively to the development of the FAO/WHO GIFT
-                                                    through weekly calls with the ESN leading team.
-                                                    In addition, FAO has regular meetings with Francesco Branca,
-                                                    Director of the Department of Nutrition for Health and Development
-                                                    (NHD), to get feedback and advice on the tool development </p>
-                                            </div>
-
-
-                                            <div class="swiper-slide home-event red-slide">
-                                                <h2>European Food Safety Authority (EFSA)</h2>
-
-                                                <p>The European Food Safety Authority (EFSA) is a key partner within the
-                                                    FAO/WHO GIFT project. The FAO and WHO teams worked with the Evidence
-                                                    Management Unit (DATA), in particular with Francesco Vernazza to
-                                                    scale up the EFSA food categorization and description system named
-                                                    FoodEx2 at the global level; advice is also provided by Davide
-                                                    Arcella and Stefano Cappé in relation to the web-dissemination
-                                                    software.</p>
-                                            </div>
-
-                                            <div class="swiper-slide home-event red-slide">
-                                                <h2>HarvestPlus</h2>
-
-                                                <p>HarvestPlus, through Mourad Moursi, provided the microdata related to
-                                                    datasets of individual food consumption survey from Bangladesh,
-                                                    Burkina Faso, Philippines and Uganda which were used to develop the
-                                                    pilot FAO/WHO GIFT.</p>
-
-                                            </div>
-
-                                            <div class="swiper-slide home-event red-slide">
-                                                <h2>Tufts University – Global Dietary Database - Bill and Melinda Gates
-                                                    Foundation</h2>
-
-                                                <p>The International Dietary Data Expansion (INDDEX) Project (2015-2018)
-                                                    involves activities for the development of FAO/WHO GIFT and is
-                                                    coordinated by Jennifer Coates with funding from Tufts University’s
-                                                    Gerald J. and Dorothy R. Friedman School of Nutrition Science and
-                                                    Policy.
-                                                    The Global Dietary Database (GDD), at Tufts University, is developed
-                                                    by the Global Nutrition and Policy Consortium, led by Dariush
-                                                    Mozaffarian, informing the Global Burden of Diseases Study.
-                                                    Both projects received grants from the Bill & Melinda Gates
-                                                    Foundation.</p>
-                                            </div>
-
-                                            <div class="swiper-slide home-event red-slide">
-                                                <h2>International Agency for Research on Cancer (IARC)</h2>
-
-                                                <p>The Global nutrition surveillance initiative (GloboDiet), using an
-                                                    international computerized software for the collection of 24 h
-                                                    recalls, is developed by Nadia Slimani, Dietary Exposure Assessment
-                                                    Group (DEX), at the International Agency for Research on Cancer
-                                                    (IARC-WHO).</p>
-
-                                            </div>
-
-
+                                            {{/each}}
                                         </div>
                                     </div>
                                     <!-- Add Pagination -->
@@ -239,24 +141,17 @@
                 <div class="col-sm-6">
                     <div class="contacts-people-container">
                         <div class="contacts-people-header">
-                            <h3 class="contacts-people-header title">{{contacts_people_title}}</h3>
+                            <h3 class="contacts-people-header title">{{contact_us.upper_title}}</h3>
                         </div>
                         <div class="contacts-people-holder">
-                            <h3>FAO NUTRITION DIVISION</h3>
+                            <h3>{{contact_us.lower_title}}</h3>
 
-                            <p>Viale delle Terme di Caracalla<br>
-                                00153 Rome, Italy</p>
+                            <p>{{{contact_us.address}}}</p>
 
 
-                            <p>Headquarters<br>
-                                Viale delle Terme di Caracalla<br>
-                                00153 Rome, Italy<br>
-                                Tel:(+39) 06 57051<br>
-                                e-mail：FAO-HQ@fao.org</p>
+                            <p>{{{contact_us.hq_address}}}</p>
 
-                            <p>General media inquiries<br>
-                                Tel: (+39) 06 570 53625<br>
-                                e-mail: FAO-Newsroom@fao.org</p>
+                            <p>{{{contact_us.other_info}}}</p>
 
                         </div>
                         <div class="contacts-people-footer"></div>
