@@ -1,5 +1,42 @@
 <div class="container-fluid">
     <div class="row">
+        <div class="gift-header population-age-range-header">
+            <div class="gift-label population-age-range-header-label">Refined Age Range</div>
+        </div>
+        <div class="col-xs-12"> <!-- Age range -->
+            <div class="gift-container population-age-range-container">
+
+                <div class="gift-content population-age-range-content">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="radio">
+                                <input id="population-age-range-year" type="radio" name="popAgeRangeRadio"
+                                       value="YEARS" checked><label for="population-age-range-year">By Years</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="radio">
+                                <input id="population-age-range-month" type="radio" name="popAgeRangeRadio"
+                                       value="MONTHS"><label for="population-age-range-month">By Months</label></input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 timerange-box">
+                            <br>
+
+                            <div id="population-ageRange"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row">
         <div class="gift-header population-gender-header">
             <div class="gift-label population-gender-header-label">Gender</div>
         </div>
@@ -10,7 +47,7 @@
                     <div class="row">
                         <div class="col-xs-1 only-label">
 
-                           Contains:
+                            Contains:
 
                         </div>
 
@@ -38,80 +75,47 @@
         </div>
 
 
+        <div class="population-additional-characteristics">
+            <div class="gift-header population-characteristics-header">
+                <div class="gift-label population-characteristics-header-label">Population Characteristics</div>
+            </div>
+            <div class="col-xs-12"><!-- Gender -->
+                <div class="gift-container population-gender-container">
 
+                    <div class="gift-content population-gender-content">
+                        <div class="row">
+                            <div class="col-xs-1 only-label">
 
-        <div class="gift-header population-characteristics-header">
-            <div class="gift-label population-characteristics-header-label">Population Characteristics</div>
-        </div>
-        <div class="col-xs-12"><!-- Gender -->
-            <div class="gift-container population-gender-container">
+                                Contains:
 
-                <div class="gift-content population-gender-content">
-                    <div class="row">
-                        <div class="col-xs-1 only-label">
-
-                            Contains:
-
-                        </div>
-
-                        <div class="col-xs-4 label-first">
-                            <div class="radio">
-                                <input id="population-characteristics-pregnant" type="checkbox" name="popCharsRadio"
-                                       value="2" disabled><label for="population-characteristics-pregnant">Pregnant</label>
                             </div>
-                        </div>
-                        <div class="col-xs-4 label-divide">
-                            <div class="radio">
-                                <input id="population-characteristics-lactating" type="checkbox" name="popCharsRadio"
-                                       value="3" disabled><label for="population-characteristics-lactating">Lactating</label>
+
+                            <div class="col-xs-4 label-first">
+                                <div class="radio">
+                                    <input id="population-characteristics-pregnant" type="checkbox" name="popCharsRadio"
+                                           value="2" disabled><label
+                                        for="population-characteristics-pregnant">Pregnant</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xs-3 label-last">
-                            <div class="radio">
-                                <input id="population-characteristics-nolactating-nopregnant" type="checkbox"
-                                       name="popCharsRadio" value="none" checked disabled><label
-                                    for="population-characteristics-nolactating-nopregnant">None</label>
+                            <div class="col-xs-4 label-divide">
+                                <div class="radio">
+                                    <input id="population-characteristics-lactating" type="checkbox"
+                                           name="popCharsRadio"
+                                           value="3" disabled><label for="population-characteristics-lactating">Lactating</label>
+                                </div>
+                            </div>
+                            <div class="col-xs-3 label-last">
+                                <div class="radio">
+                                    <input id="population-characteristics-nolactating-nopregnant" type="checkbox"
+                                           name="popCharsRadio" value="none" checked disabled><label
+                                        for="population-characteristics-nolactating-nopregnant">None</label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
-    <div class="row">
-        <div class="gift-header population-age-range-header">
-            <div class="gift-label population-age-range-header-label">Refined Age Range</div>
-        </div>
-        <div class="col-xs-12"> <!-- Age range -->
-            <div class="gift-container population-age-range-container">
-
-                <div class="gift-content population-age-range-content">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="radio">
-                                <input id="population-age-range-year" type="radio" name="popAgeRangeRadio"
-                                       value="YEARS" checked><label for="population-age-range-year">By Years</label>
-                            </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="radio">
-                                <input id="population-age-range-month" type="radio" name="popAgeRangeRadio"
-                                       value="MONTHS"><label for="population-age-range-month">By Months</label></input>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12 timerange-box">
-                            <br>
-                            <div id="population-ageRange"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
 </div>

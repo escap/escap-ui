@@ -49,24 +49,12 @@
           "attrs":{
             "id":"microdata"
           },
-          "target":"./index.html/#statistics/microdata",
+          "target":"./index.html/#statistics",
           "a_attrs" : {
             "rel" : "external"
           },
           "label":{
             "EN":"Download microdata"
-          }
-        },
-        {
-          "attrs":{
-            "id":"analysis"
-          },
-          "target":"./index.html/#statistics/analysis",
-          "a_attrs" : {
-            "rel" : "external"
-          },
-          "label":{
-            "EN":"Customised statistics"
           }
         }
       ]

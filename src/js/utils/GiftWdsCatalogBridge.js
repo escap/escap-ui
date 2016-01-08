@@ -2,7 +2,7 @@
 /*global define*/
 define([
     'jquery',
-    'config/Config',
+    'config/config',
     'fx-cat-br/config/events',
     'fx-common/WDSClient',
     'q',

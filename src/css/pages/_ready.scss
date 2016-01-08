@@ -57,3 +57,11 @@
 .dl-horizontal dd{
   margin-left: 120px;
 }
+
+.disabled-link {
+  pointer-events: none;
+  cursor: default;
+  span {
+    color: $fenix-light-gray;
+  }
+}

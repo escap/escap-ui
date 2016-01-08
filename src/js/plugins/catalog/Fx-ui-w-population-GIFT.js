@@ -4,7 +4,7 @@ define([
     "fx-filter/config/config",
     "fx-filter/config/config-default",
     "fx-filter/config/events",
-    'config/submodules/fx-catalog/Config_Template',
+    'config/config',
     "jQAllRangeSliders",
     "amplify"
 ], function ($, C, DC, E, CT) {
@@ -60,6 +60,10 @@ define([
         if (this.options === undefined) {
             this.options = {};
         }
+
+        this.$CT = CT.CATALOG_TEMPLATE;
+        console.log(this.$CT)
+
         $.extend(true, this.options, o, optionsDefault);
     };
 
@@ -67,23 +71,23 @@ define([
     FX_ui_population_component.prototype._initialize = function (e) {
 
         // gender
-        this.$populationGenderName = CT.FILTER_CONFIG.POPULATION.GENDERS_RADIO_NAME;
+        console.log(this.$CT)
+        this.$populationGenderName = this.$CT.FILTER_CONFIG.POPULATION.GENDERS_RADIO_NAME;
         this.$populationGenderSelector = $('input[name="' + this.$populationGenderName + '"]:radio');
 
 
         // agerange Type
-        this.$populationAgeRangeTypeName = CT.FILTER_CONFIG.POPULATION.AGERANGE_TYPE_RADIO_NAME;
+        this.$populationAgeRangeTypeName = this.$CT.FILTER_CONFIG.POPULATION.AGERANGE_TYPE_RADIO_NAME;
         this.$populationAgeRangeTypeSelector = $('input[name="' + this.$populationAgeRangeTypeName + '"]:radio');
 
 
         // agerange
-        this.$populationAgerange = $(CT.FILTER_CONFIG.POPULATION.AGERANGE)
+        this.$populationAgerange = $(this.$CT.FILTER_CONFIG.POPULATION.AGERANGE)
 
         // characteristics
-        this.$populationCharsName = CT.FILTER_CONFIG.POPULATION.CHARACTERISTICS_RADIO_NAME;
+        this.$populationCharsName = this.$CT.FILTER_CONFIG.POPULATION.CHARACTERISTICS_RADIO_NAME;
         this.$populationCharsSelector = $('input[name="' + this.$populationCharsName + '"]:checkbox');
         this.$popCharseElements = document.getElementsByName("popCharsRadio");
-
 
         // initialization data timerange
         this.$dataTimeRange = {
@@ -300,7 +304,7 @@ define([
 
         var self = this;
 
-        var ageRangeSelected = $( CT.FILTER_CONFIG.POPULATION.AGERANGE).rangeSlider('values');
+        var ageRangeSelected = $( this.$CT.FILTER_CONFIG.POPULATION.AGERANGE).rangeSlider('values');
 
 
         var ageRange = {
@@ -312,11 +316,11 @@ define([
         var result= {};
 
 
-       $('input[name="' + CT.FILTER_CONFIG.POPULATION.AGERANGE_TYPE_RADIO_NAME + '"]:radio:checked').val() ==='YEARS'?
+       $('input[name="' + this.$CT.FILTER_CONFIG.POPULATION.AGERANGE_TYPE_RADIO_NAME + '"]:radio:checked').val() ==='YEARS'?
            result['age_year'] = ageRange:  result['age_month'] = ageRange;
 
-        result['gender'] = $('input[name="' + CT.FILTER_CONFIG.POPULATION.GENDERS_RADIO_NAME + '"]:radio:checked').val();
-        result['characteristics'] = $('input[name="' + CT.FILTER_CONFIG.POPULATION.CHARACTERISTICS_RADIO_NAME + '"]:checkbox:checked').val();
+        result['gender'] = $('input[name="' + this.$CT.FILTER_CONFIG.POPULATION.GENDERS_RADIO_NAME + '"]:radio:checked').val();
+        result['characteristics'] = $('input[name="' + this.$CT.FILTER_CONFIG.POPULATION.CHARACTERISTICS_RADIO_NAME + '"]:checkbox:checked').val();
 
         return result;
     };

@@ -32,7 +32,7 @@
       "attrs":{
         "id":"microdata"
       },
-      "target":"#statistics/microdata",
+      "target":"#statistics",
 
 
       "label":{

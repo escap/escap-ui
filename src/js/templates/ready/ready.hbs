@@ -4,8 +4,14 @@
     <div class="col-xs-3">
         <ul class="ready-to-use-list list-unstyled">
             {{#each views}}
-            <li>
-                <a href="{{ isI18n link }}"><span> {{ isI18n title }}</span></a>
+                {{#if disabled }}
+                <li>
+                    <a class="disabled-link" href="{{ isI18n link }}" ><span> {{ isI18n title }}</span></a>
+                    {{else}}
+                <li>
+                    <a href="{{ isI18n link }}"><span> {{ isI18n title }}</span></a>
+                {{/if}}
+
             {{/each}}
         </li>
         </ul>

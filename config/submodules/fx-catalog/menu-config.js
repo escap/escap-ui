@@ -98,7 +98,7 @@ define(function () {
                         "icon": "fa fa-globe fa-lg fa-fw"
                     }
                 ]
-            },
+            }
         ]
     };
 

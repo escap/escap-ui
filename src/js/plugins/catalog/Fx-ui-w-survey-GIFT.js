@@ -1,7 +1,7 @@
 /*global define, amplify, alert*/
 define([
     "jquery",
-    'config/submodules/fx-catalog/Config_Template',
+    'config/config',
     "fx-filter/config/config",
     "fx-filter/config/config-default",
     "fx-filter/config/events",
@@ -55,6 +55,8 @@ define([
         if (this.options === undefined) {
             this.options = {};
         }
+        this.$CT = CT.CATALOG_TEMPLATE;
+
 
         $.extend(true, this.options, o, optionsDefault);
     };
@@ -62,11 +64,11 @@ define([
 
     Fx_ui_survey_component.prototype._initialize = function(e) {
 
-        this.$surveyTimerange = $(CT.FILTER_CONFIG.SURVEY.YEARS);
+        this.$surveyTimerange = $(this.$CT.FILTER_CONFIG.SURVEY.YEARS);
 
-        this.$surveyaddCharsNational = CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_NATIONAL;
+        this.$surveyaddCharsNational = this.$CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_NATIONAL;
 
-        this.$surveyaddCharsUrban = CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_URBAN;
+        this.$surveyaddCharsUrban = this.$CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_URBAN;
 
         this.$surveyAddCharsSelectorNational = $('input[name="' + this.$surveyaddCharsNational + '"]:radio');
 
@@ -214,7 +216,7 @@ define([
 
     Fx_ui_survey_component.prototype.getValue = function (e) {
 
-        var timeData = $(CT.FILTER_CONFIG.SURVEY.YEARS).rangeSlider('values');
+        var timeData = $(this.$CT.FILTER_CONFIG.SURVEY.YEARS).rangeSlider('values');
 
         return {
             years: {
@@ -223,8 +225,8 @@ define([
                     to: timeData.max
                 }
             },
-            addCharsNational: $('input[name="' + CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_NATIONAL+ '"]:radio').val(),
-            addCharsUrban: $('input[name="' + CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_URBAN + '"]:radio').val()
+            addCharsNational: $('input[name="' + this.$CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_NATIONAL+ '"]:radio').val(),
+            addCharsUrban: $('input[name="' + this.$CT.FILTER_CONFIG.SURVEY.ADD_CHARS_RADIO_URBAN + '"]:radio').val()
         };
     };
 

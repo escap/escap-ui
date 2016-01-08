@@ -4,14 +4,14 @@ define([
     'underscore',
     'config/events',
     'controllers/base/controller',
-    'views/statistics/microdata-view',
+    'views/statistics-view',
     'globals/AuthManager',
     'rsvp'
 ], function (Chaplin, _, E, Controller, View, AuthManager, RSVP) {
 
     'use strict';
 
-    var StatisticsMicrodataController = Controller.extend({
+    var StatisticsController = Controller.extend({
 
         beforeAction: function () {
             Controller.prototype.beforeAction.call(this, arguments);
@@ -50,5 +50,5 @@ define([
 
     });
 
-    return StatisticsMicrodataController;
+    return StatisticsController;
 });

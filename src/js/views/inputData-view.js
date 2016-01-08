@@ -3,7 +3,7 @@ define([
     'views/base/view',
     'text!templates/inputData/inputData.hbs',
     'i18n!nls/inputData',
-    'config/Events',
+    'config/events',
     'amplify'
 ], function (View, template, i18nLabels, E) {
 

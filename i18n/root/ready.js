@@ -5,7 +5,7 @@ define({
         {link: "#ready/consumption", title: "Food Consumption"},
         {link: "#ready/safety", title: "Food Safety"},
         {link: "#ready/nutrition", title: "Nutrition"},
-        {link: "#ready/environment", title: "Environment"}
+        {link: "#ready/environment", title: "Environment", disabled: true}
     ],
 
     indicators: {

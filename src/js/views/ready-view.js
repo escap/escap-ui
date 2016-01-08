@@ -9,7 +9,7 @@ define([
     'text!templates/ready/generic_indicator.hbs',
     'text!json/indicators/indicators.json',
     'i18n!nls/ready',
-    'config/Events',
+    'config/events',
     'handlebars',
     'amplify',
     'jstree','jqwidgets', 'highcharts'
@@ -89,7 +89,6 @@ define([
         },
 
         _onCompileTemplate : function (templateSelected) {
-            console.log('here!')
             var templateToAdd = Handlebars.compile(templateSelected);
             var $compiled = templateToAdd( this.$topic.model);
 

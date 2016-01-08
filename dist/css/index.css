@@ -8117,6 +8117,12 @@ ul[role="group"] {
 .dl-horizontal dd {
   margin-left: 120px; }
 
+.disabled-link {
+  pointer-events: none;
+  cursor: default; }
+  .disabled-link span {
+    color: #dddddd; }
+
 /* Download Section */
 .leaflet-container {
   font-family: Roboto; }

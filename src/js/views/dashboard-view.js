@@ -8,10 +8,10 @@ define([
     'text!templates/dashboard/bases.hbs',
     'text!templates/dashboard/resume.hbs',
     'i18n!nls/dashboard',
-    'config/Events',
+    'config/events',
     'text!config/dashboard/lateral_menu.json',
     'text!json/dashboard/resume_filter.json',
-    'config/dashboard/Config',
+    'config/dashboard/config',
     'handlebars',
     'fx-filter/Fx-filter-configuration-creator',
     'fx-ds/bridges/d3p',
@@ -40,8 +40,6 @@ define([
     var DashboardView = View.extend({
 
         initialize: function (params) {
-
-            console.log('INITIALIZE');
 
             log.trace('initialize params ' + JSON.stringify(params));
 
@@ -95,8 +93,6 @@ define([
             var self = this;
 
             this.$filterBtn.on('click', function (e, data) {
-
-                debugger;
 
                 var values = [self.filter.getValues()];
 
@@ -410,6 +406,21 @@ define([
                 self.$el.find(s.RESUME_CONTAINER).html(html);
 
             });
+        },
+
+        _unbindEventListeners : function() {
+
+            this.$filterBtn.off();
+
+            this.$exportBtn.off();
+
+        },
+
+        dispose: function () {
+
+            this._unbindEventListeners();
+
+            View.prototype.dispose.call(this, arguments);
         }
     });
 

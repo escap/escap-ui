@@ -9,8 +9,7 @@ define(function () {
         match('home', 'home#show');
         match('inputData', 'inputData#show');
         match('about', 'about#show');
-        match('statistics/microdata', 'statistics-microdata#show');
-        match('statistics/analysis', 'statistics-analysis#show');
+        match('statistics', 'statistics#show');
         match('dashboard/:uid', 'dashboard#show');
         match('ready', 'ready#show');
         match('ready/:id', 'ready#show');

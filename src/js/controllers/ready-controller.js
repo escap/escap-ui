@@ -3,7 +3,7 @@ define([
     'jquery',
     'backbone',
     'chaplin',
-    'config/Config',
+    'config/config',
     'controllers/base/controller',
     'views/ready-view',
     'q',

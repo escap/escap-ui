@@ -2,7 +2,7 @@
 define([
     'chaplin',
     'underscore',
-    'config/Events',
+    'config/events',
     'controllers/base/controller',
     'views/statistics/analysis-view',
     'globals/AuthManager',

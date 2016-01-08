@@ -126,16 +126,16 @@ require([
                     // Authentication
                     'fx-common/config/auth_users' : '../../config/auth_users.json',
 
-                    'fx-ds/config/config': '../../config/submodules/fx-dashboard/Config',
+                    'fx-ds/config/config': '../../config/submodules/fx-dashboard/config',
 
                     // Catalog
-                    'fx-cat-br/config/config': '../../config/submodules/fx-catalog/Config',
+                    'fx-cat-br/config/config': '../../config/submodules/fx-catalog/config',
                     "fx-cat-br/config/fx-catalog-blank-filter": '../../config/submodules/fx-catalog/blankfilter',
-                    "fx-cat-br/config/fx-catalog-filter-mapping" :  '../../config/submodules/fx-catalog/fx-catalog-filter-mapping',
+                    "fx-cat-br/config/fx-catalog-filter-mapping" :  '../../config/submodules/fx-catalog/filter-mapping',
 
                     'fx-cat-br/widgets/bridge/Fx-catalog-bridge' : "./utils/GiftWdsCatalogBridge",
-                    'fx-cat-br/config/fx-catalog-collapsible-menu-config' : '../../config/submodules/fx-catalog/Panel_Config',
-                    'fx-cat-br/config/fx-catalog-modular-form-config' : '../../config/submodules/fx-catalog/Panel_Config_Description',
+                    'fx-cat-br/config/fx-catalog-collapsible-menu-config' : '../../config/submodules/fx-catalog/menu-config',
+                    'fx-cat-br/config/fx-catalog-modular-form-config' : '../../config/submodules/fx-catalog/form-config',
 
                     // Analysis
                     'fx-ana/config/services' : '../../config/submodules/fx-analysis/Config',
@@ -188,7 +188,7 @@ require([
         'loglevel',
         'application',
         'routes',
-        'config/Config',
+        'config/config',
         'domReady!'
     ], function (log,Application, routes, C) {
 /*

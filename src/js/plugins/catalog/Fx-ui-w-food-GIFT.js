@@ -5,7 +5,7 @@ define([
     "fx-cat-br/config/config",
     "fx-cat-br/config/config-default",
     "fx-cat-br/config/events",
-    'config/submodules/fx-catalog/Config_Template',
+    'config/config',
     "q",
     "jstree",
     "amplify",
@@ -36,6 +36,8 @@ define([
         if (this.options === undefined) {
             this.options = {};
         }
+
+        this.$CT = CT.CATALOG_TEMPLATE;
 
         $.extend(true, this.options, o, optionsDefault);
     }
@@ -124,7 +126,7 @@ define([
 
     Fx_ui_w_foodComponent.prototype._initialize = function (e) {
         this.$componentStructure = e.template.overallStructure;
-        this.$foodConfiguration = CT.FILTER_CONFIG.FOOD
+        this.$foodConfiguration = this.$CT.FILTER_CONFIG.FOOD
 
 
         this.$treeContainer = $('<div class="jstree-holder"></div>');

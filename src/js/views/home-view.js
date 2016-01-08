@@ -1,9 +1,9 @@
 /*global define, _:false, $, console, amplify, FM*/
 define([
     'views/base/view',
-    'config/Config',
+    'config/config',
     'config/Queries',
-    'config/Events',
+    'config/events',
     'i18n!nls/home',
     'text!templates/home/home.hbs',
     'text!templates/home/database_update_item.hbs',

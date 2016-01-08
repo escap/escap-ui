@@ -2,8 +2,8 @@
 define([
     'jquery',
     'chaplin',
-    'config/Config',
-    'config/Events',
+    'config/config',
+    'config/events',
     'amplify'
 ], function ($, Chaplin, C, E) {
 

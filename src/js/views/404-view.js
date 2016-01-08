@@ -2,7 +2,7 @@
 define([
     'views/base/view',
     'text!templates/404.hbs',
-    'config/Events',
+    'config/events',
     'amplify'
 ], function (View, template, E) {
 
