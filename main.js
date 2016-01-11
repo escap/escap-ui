@@ -112,9 +112,9 @@ require([
                     'jQAllRangeSliders': '{FENIX_CDN}/js/jquery.rangeslider/5.7.0/jQRangeSlider-min',
 
                     // map libraries
-                    leaflet:          "{FENIX_CDN}/js/leaflet/0.7.3/leaflet",
+                    leaflet:          "{FENIX_CDN}/js/leaflet/0.7.5/leaflet",
                     test_geo_json :"../../tests/resources/geo_json",
-                    geojson_selector: "{FENIX_CDN}/js/leaflet/plugins/leaflet-geojson-selector/0.2.2/dist/leaflet-geojson-selector.min",
+                    geojson_selector: "{FENIX_CDN}/js/leaflet/plugins/leaflet-geojson-selector/0.2.2-fixed-event/dist/leaflet-geojson-selector.src",
 
                     // conf path
                     nls: "../../i18n",

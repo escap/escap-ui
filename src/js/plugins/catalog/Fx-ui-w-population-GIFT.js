@@ -70,6 +70,10 @@ define([
 
     FX_ui_population_component.prototype._initialize = function (e) {
 
+        this.$nodisplay_class = this.$CT.FILTER_CONFIG.POPULATION.NODISPLAY_CLASS;
+
+        console.log( this.$CT.FILTER_CONFIG.POPULATION)
+
         // gender
         console.log(this.$CT)
         this.$populationGenderName = this.$CT.FILTER_CONFIG.POPULATION.GENDERS_RADIO_NAME;
@@ -82,9 +86,11 @@ define([
 
 
         // agerange
-        this.$populationAgerange = $(this.$CT.FILTER_CONFIG.POPULATION.AGERANGE)
+        this.$populationAgerange = $(this.$CT.FILTER_CONFIG.POPULATION.AGERANGE);
 
         // characteristics
+
+        this.$addchars_container = $(this.$CT.FILTER_CONFIG.POPULATION.ADD_CHARS_CONTAINER);
         this.$populationCharsName = this.$CT.FILTER_CONFIG.POPULATION.CHARACTERISTICS_RADIO_NAME;
         this.$populationCharsSelector = $('input[name="' + this.$populationCharsName + '"]:checkbox');
         this.$popCharseElements = document.getElementsByName("popCharsRadio");
@@ -204,9 +210,19 @@ define([
     FX_ui_population_component.prototype._checkAndSetPopCharacteristics = function () {
 
         if (this._areThereConditionForLactating()) {
+            debugger;
+
+            $('.displayNone').each(function(index){
+                var el = $(this)
+               console.log($(this).removeClass( "displayNone").addClass('display'))})
+            this.$addchars_container.removeClass(this.$nodisplay_class);
             for (var i = 0, length = this.$popCharseElements.length; i < length; i++)
                 this.$popCharseElements[i].disabled = false;
         } else {
+            $('.display').each(function(index){
+                var el = $(this)
+                console.log($(this).removeClass( "display").addClass('displayNone'))})
+            this.$addchars_container.addClass(this.$nodisplay_class);
             for (var i = 0, length = this.$popCharseElements.length; i < length; i++) {
                 this.$popCharseElements[i].disabled = true;
                 this.$popCharseElements[i].checked = (i === length - 1);

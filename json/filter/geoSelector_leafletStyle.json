@@ -12,5 +12,7 @@
     "weight": 0.2,
     "opacity": 1,
     "fillOpacity":0.4
-  }
+  },
+  "activeEventLayer": "click",
+  "activeEventLayerOff": null
 }

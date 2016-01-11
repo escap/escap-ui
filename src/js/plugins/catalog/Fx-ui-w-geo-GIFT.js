@@ -75,6 +75,10 @@ define([
 
             this.$container = $(this.options.container);
 
+            console.log(e.template)
+
+            this.$geojson_def_opts = e.template.geo_opts;
+
         };
 
         FX_ui_geographic_component.prototype.render = function (e, container) {
@@ -93,7 +97,7 @@ define([
 
             // initialize map
 
-            this._renderMap(e.template.style);
+            this._renderMap( this.$geojson_def_opts);
 
             this.bindEventListeners();
 
@@ -206,9 +210,31 @@ define([
 
 
             this.$geoList.on('item-active', function (e) {
+                console.log('item-active',this)
+                var that = this;
+
+                that._layer.setStyle(self.$geojson_def_opts.style);
+
+                that._layer.eachLayer(function(layer) {
+                    L.DomUtil.removeClass(layer.itemList, that.options.activeClass);
+                });
+
+                L.DomUtil.addClass(e.layers[0].itemList, that.options.activeClass);
+
+
                 amplify.store(self.options.selectedCountry_key, e.layers[0].feature.id);
+
+                var container  = $(self.$geoList._container);
+                console.log(container)
+                var scrollTo = $(e.layers[0].itemList)
+
+                container.animate({
+                    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+                });
+
                 $('#' + self.$geoConfiguration.MAP_ID).prev('label').text(e.layers[0].feature.properties.name)
             });
+
 
             this.$leafletMap.whenReady(function (e) {
                 // insert filter input search

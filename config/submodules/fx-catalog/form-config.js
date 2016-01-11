@@ -6,7 +6,7 @@ define([
     'text!templates/statistics/pluginTemplates/populationComponent.hbs',
     'text!templates/statistics/pluginTemplates/foodComponent.hbs',
     'text!json/filter/geoSelector_leafletStyle.json'
-], function (SurveyTemplate, GeoTemplate, PopulationTemplate, FoodTemplate, GEOJSONStyle) {
+], function (SurveyTemplate, GeoTemplate, PopulationTemplate, FoodTemplate, GEO_OPTS) {
 
     'use strict';
 
@@ -67,7 +67,7 @@ define([
             },
             "template": {
                 "overallStructure": GeoTemplate,
-                "style": JSON.parse(GEOJSONStyle)
+                "geo_opts": JSON.parse(GEO_OPTS)
             }
         },
 

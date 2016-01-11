@@ -60,7 +60,9 @@ define(function () {
                     GENDERS_RADIO_NAME: "popGendersRadio",
                     AGERANGE_TYPE_RADIO_NAME: "popAgeRangeRadio",
                     AGERANGE: "#population-ageRange",
-                    CHARACTERISTICS_RADIO_NAME: "popCharsRadio"
+                    CHARACTERISTICS_RADIO_NAME: "popCharsRadio",
+                    NODISPLAY_CLASS : 'nodisplay',
+                    ADD_CHARS_CONTAINER : '.population-additional-characteristics'
                 },
 
                 GEO: {
@@ -98,7 +100,9 @@ define(function () {
                     GENDERS_RADIO_NAME: "popGendersRadio",
                     AGERANGE_TYPE_RADIO_NAME: "popAgeRangeRadio",
                     AGERANGE: "#population-ageRange",
-                    CHARACTERISTICS_RADIO_NAME: "popCharsRadio"
+                    CHARACTERISTICS_RADIO_NAME: "popCharsRadio",
+                    NODISPLAY_CLASS : 'nodisplay',
+                    ADD_CHARS_CONTAINER : 'population-additional-characteristics'
                 },
 
                 GEO: {

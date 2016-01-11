@@ -8184,6 +8184,9 @@ input[type="checkbox"] + label:before {
   padding-bottom: 5px;
   padding-top: 10px; }
 
+.displayNone {
+  display: none; }
+
 /* DASHBOARD PAGE */
 .fx-filter-form-module {
   width: 25%;
