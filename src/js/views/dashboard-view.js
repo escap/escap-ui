@@ -63,6 +63,8 @@ define([
 
         attach: function () {
 
+            log.trace('attach dashboard');
+
             View.prototype.attach.call(this, arguments);
 
             //update State
@@ -410,6 +412,9 @@ define([
 
         _unbindEventListeners : function() {
 
+            log.trace('dahsboard unbind eVent listeners');
+
+
             this.$filterBtn.off();
 
             this.$exportBtn.off();
@@ -418,7 +423,17 @@ define([
 
         dispose: function () {
 
+            log.trace('dashboard dispose');
+
+/*
+            alert()
+            debugger;
+
+            this.dashboard.destroy();*/
+
+/*
             this._unbindEventListeners();
+*/
 
             View.prototype.dispose.call(this, arguments);
         }

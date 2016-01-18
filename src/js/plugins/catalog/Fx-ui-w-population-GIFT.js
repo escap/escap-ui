@@ -30,7 +30,9 @@ define([
             CLOSE_BTN: "fx-catalog-modular-form-close-btn",
             MODULE: 'fx-catalog-form-module',
             RESIZE: ".fx-catalog-modular-form-resize-btn",
-            LABEL: "fx-catalog-modular-form-label"
+            LABEL: "fx-catalog-modular-form-label",
+            HIDE_CLASS :'.displayNone',
+            SHOW_CLASS : '.display'
         },
 
         sourceType: {
@@ -210,8 +212,6 @@ define([
     FX_ui_population_component.prototype._checkAndSetPopCharacteristics = function () {
 
         if (this._areThereConditionForLactating()) {
-            debugger;
-
             $('.displayNone').each(function(index){
                 var el = $(this)
                console.log($(this).removeClass( "displayNone").addClass('display'))})
@@ -270,6 +270,7 @@ define([
         this.$populationAgeRangeTypeSelector.on('change', function (e, data) {
             e.preventDefault();
             var kindOfAgeRange = $(e.target).val();
+            self._isYearSelected = kindOfAgeRange === 'YEARS';
             self._checkAndSetPopCharacteristics();
             // change in months
             if (self.$isYearTypeSelected === true && kindOfAgeRange === 'MONTHS') {

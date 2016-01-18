@@ -3,7 +3,7 @@ define([
     'views/base/view',
     'text!templates/statistics/analysis.hbs',
     'i18n!nls/statistics-analysis',
-    'config/Events',
+    'config/events',
     'amplify'
 ], function (View, template, i18nLabels, E) {
 

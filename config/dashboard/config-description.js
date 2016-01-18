@@ -402,7 +402,6 @@ define(function () {
                         }]
                     });
 
-
                 }
 
             }

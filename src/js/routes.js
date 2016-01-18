@@ -11,6 +11,7 @@ define(function () {
         match('about', 'about#show');
         match('statistics', 'statistics#show');
         match('dashboard/:uid', 'dashboard#show');
+        match('dashboard', 'dashboard#show');
         match('ready', 'ready#show');
         match('ready/:id', 'ready#show');
         match('*anything', '404#show');

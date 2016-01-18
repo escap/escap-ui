@@ -4,12 +4,14 @@ define([
     'backbone',
     'chaplin',
     'config/config',
+    'config/events',
     'controllers/base/controller',
     'views/dashboard-view',
+    'globals/AuthManager',
     'q',
     'loglevel',
     'amplify'
-], function ($, Backbone, Chaplin, C, Controller, View, Q, log) {
+], function ($, Backbone, Chaplin, C, E, Controller, View, AuthManager, Q, log) {
 
     'use strict';
 
@@ -17,23 +19,26 @@ define([
 
         beforeAction: function (params) {
 
-            console.log("befor")
+            log.trace('dashboard controller: before action')
 
             Controller.prototype.beforeAction.call(this, arguments);
 
-            return this.performAccessControlChecks(params)
+            return this.performAccessControlChecks(params).then(undefined, _.bind(this.denyAccessControl, this))
         },
 
         performAccessControlChecks: function (params) {
 
-            console.log("performAccessControlChecks")
+            log.trace('dashboard controller:performAccessControlChecks')
 
-            var self= this;
+            var self = this;
 
             return new Q.Promise(function (fulfilled, rejected) {
 
+                if (!AuthManager.isLogged()) {
+                    rejected();
+                    return;
+                }
 
-                console.log("promi")
 
                 self.validUid = params.hasOwnProperty('uid');
 
@@ -45,18 +50,20 @@ define([
 
         show: function (params) {
 
+            log.trace('dashboard controller show')
+
             var conf = {
                 region: 'main'
             };
 
-            log.debug('Is a valid uid? ' + this.validUid );
+            log.debug('Is a valid uid? ' + this.validUid);
 
             //Pass the valid id to view if valid
-            if (this.validUid === true) {
+            if (this.validUid === true && this.authorized !== false) {
 
                 conf.id = params.uid;
 
-                log.debug('Dataset uid: ' + conf.id );
+                log.debug('Dataset uid: ' + conf.id);
 
                 this.view = new View(conf);
 
@@ -64,12 +71,16 @@ define([
 
                 log.debug('redirect user to #home/');
 
-                Backbone.history.navigate('#home/' , {trigger: false});
+                Chaplin.mediator.publish(E.NOT_AUTHORIZED);
+
+                return;
             }
 
 
+        },
+        denyAccessControl: function () {
+            this.authorized = false;
         }
-
     });
 
     return DashboardController;

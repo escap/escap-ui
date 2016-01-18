@@ -17,8 +17,12 @@ define([
     'fx-report',
     'config/config',
     'config/events',
+    'loglevel',
     'highcharts'
-], function ($, _, Backbone,Chaplin,Handlebars,View, descriptionConfig,template,templateDesc,dataTableDesc, i18nLabels, Catalog, Analysis, MetadataViewer, Report, /*CF,*/ C, E) {
+], function ($, _, Backbone,Chaplin,Handlebars,View,
+             descriptionConfig,template,templateDesc,dataTableDesc, i18nLabels,
+             Catalog, Analysis, MetadataViewer, Report,
+             C, E, log) {
 
     'use strict';
 
@@ -152,6 +156,8 @@ define([
             //TODO: for now
             model.uid = 'gift_avg_000042BUR201001';
 
+
+            log.trace('on analysis click!')
             Backbone.history.navigate('#dashboard/' + model.uid ,  {'trigger': true});
 
         },
@@ -255,6 +261,8 @@ define([
         },
 
         dispose: function () {
+
+            log.trace('dispose statistics page!')
 
             this.catalog.destroy();
 
