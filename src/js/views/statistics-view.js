@@ -13,7 +13,7 @@ define([
     'i18n!nls/statistics-microdata',
     'fx-cat-br/start',
     'fx-ana/start',
-    'FENIX_UI_METADATA_VIEWER',
+    'fx-mdv/start',
     'fx-report',
     'config/config',
     'config/events',
@@ -216,28 +216,37 @@ define([
         },
 
         _listenToExportMetadata: function (model) {
-
             var fileName = model.title['EN'].replace(/[^a-z0-9]/gi, '_').toLowerCase();
 
             var self = this;
-            $(s.BTN_EXPORT_METADATA).on('click', function () {
+
+            $(s.BTN_EXPORT_METADATA).on('click', function(){
+
+                debugger;
+
+                var template = model.filter && model.filter["dsd.contextSystem"] && model.filter["dsd.contextSystem"].enumeration && [0] && model.filter["dsd.contextSystem"].enumeration[0] === 'uneca'?
+                    'uneca' : 'fao';
 
                 var payload = {
-                    input: {
-                        config: {
-                            uid: model.uid
-                        }
+                    resource: {
+                        metadata : {
+                            uid : model.uid
+                        },
+                        data : []
+                    },
+                    input:{
                     },
                     output: {
-                        config: {
-                            lang: 'en'.toUpperCase(),
-                            fileName: fileName + '.pdf'
+                        config:{
+                            template : template,
+                            lang : 'en'.toUpperCase(),
+                            fileName: fileName+'.pdf'
                         }
                     }
                 };
 
                 self.$report.init('metadataExport');
-                self.$report.exportData(payload, C.MD_EXPORT_URL);
+                self.$report.exportData(payload,C.SERVICE_BASE_ADDRESS);
             });
         },
 

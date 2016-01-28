@@ -81,6 +81,8 @@ define([
         denyAccessControl: function () {
             this.authorized = false;
         }
+
+
     });
 
     return DashboardController;

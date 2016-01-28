@@ -6,9 +6,11 @@ define([
 
     'use strict';
 
+    debugger;
     var HomeController = Controller.extend({
 
         show: function (params) {
+            debugger;
 
             this.view = new View({
                 region: 'main'
