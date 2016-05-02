@@ -39,27 +39,29 @@
     },
     {
       "attrs":{
+        "id":"consumption"
+      },
+      "target": "./index.html#consumption",
+      "a_attrs" : {
+        "rel" : "external"
+      },
+
+      "label":{
+        "EN":"Individual quantitative food consumption data worldwide"
+      }
+    },
+    {
+      "attrs":{
         "id":"statistics"
       },
-      "type": "dropdown",
+      "target":"./index.html#statistics",
+      "a_attrs" : {
+        "rel" : "external"
+      },
 
       "label":{
         "EN":"Statistics"
-      } ,
-      "children" : [
-        {
-          "attrs":{
-            "id":"microdata"
-          },
-          "target":"./index.html#statistics",
-          "a_attrs" : {
-            "rel" : "external"
-          },
-          "label":{
-            "EN":"Download microdata"
-          }
-        }
-      ]
+      }
     },
 
     {

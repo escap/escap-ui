@@ -122,8 +122,6 @@ DataMngCommons) {
         var authMAnager = new AuthManager();
         if(authMAnager.isLogged()) {
 
-            debugger;
-
 
             var app = new Application({
                 routes: routes,
