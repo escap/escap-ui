@@ -39,13 +39,15 @@
         "EN":"Statistics"
       }
     },
-
     {
       "attrs": {
         "id": "inputData"
       },
 
-      "target": "#inputData",
+      "target": "./datamng.html",
+      "a_attrs" : {
+        "rel" : "external"
+      },
       "label": {
         "EN": "Input Data"
       }

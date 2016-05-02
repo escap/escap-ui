@@ -115,7 +115,7 @@ require([
                     /* Override: */
                     // Authentication
                     'fx-common/config/auth_users' : '../../config/auth_users.json',
-
+                    'packery': '{FENIX_CDN}/js/packery/1.4.3/dist/packery.pkgd.min',
                     'fx-ds/config/config': '../../config/submodules/fx-dashboard/config',
 
                     // Catalog

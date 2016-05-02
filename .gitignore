@@ -3,6 +3,7 @@ npm.log
 npm-debug.log
 *.iml
 .idea
+*.css.map
 Web.config
 **/.DS_Store
 .DS_Store

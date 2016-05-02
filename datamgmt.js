@@ -9,8 +9,10 @@ require([
     './submodules/fenix-ui-metadata-editor/js/paths',
     './submodules/fenix-ui-catalog/js/paths',
     './submodules/fenix-ui-menu/js/paths',
-    './submodules/fenix-ui-data-management/src/js/paths'
-], function (Compiler, Commons, DataEditor, DataUpload, DSDEditor, MetadataEditor, Catalog, Menu, DataMng) {
+    './submodules/fenix-ui-data-management/src/js/paths',
+    './submodules/fenix-ui-datamanagement-commons/js/paths'
+], function (Compiler, Commons, DataEditor, DataUpload, DSDEditor, MetadataEditor, Catalog, Menu, DataMng,
+DataMngCommons) {
 
     'use strict';
 
@@ -38,7 +40,11 @@ require([
     var dataMngConfig = DataMng;
     dataMngConfig.baseUrl = './submodules/fenix-ui-data-management/src/js';
 
-    Compiler.resolve([commonsConfig, dataEditorConfig, dataUploadConfig, dsdEditorConfig, metadataEditorConfig, catalogConfig, menuConfig, dataMngConfig],
+    var dataMngCommons = DataMngCommons;
+    dataMngCommons.baseUrl = './submodules/fenix-ui-datamanagement-commons/js';
+
+    Compiler.resolve([commonsConfig, dataEditorConfig, dataUploadConfig, dsdEditorConfig, metadataEditorConfig, catalogConfig, menuConfig, dataMngConfig,
+    dataMngCommons],
         {
             placeholders: {"FENIX_CDN": "//fenixrepo.fao.org/cdn"},
             config: {
@@ -47,6 +53,8 @@ require([
 
                 // Specify the paths of vendor libraries
                 paths: {
+
+
                     underscore: "{FENIX_CDN}/js/underscore/1.7.0/underscore.min",
                     backbone: "{FENIX_CDN}/js/backbone/1.1.2/backbone.min",
                     handlebars: "{FENIX_CDN}/js/handlebars/2.0.0/handlebars",
@@ -55,20 +63,25 @@ require([
                     rsvp: '{FENIX_CDN}/js/rsvp/3.0.17/rsvp',
                     pnotify: '{FENIX_CDN}/js/pnotify/2.0.1/pnotify.custom.min',
                     datetimepicker: 'FENIX_CDN}/js/bootstrap-datetimepicker/4.14.30/src/js/bootstrap-datetimepicker',
+                    packery: '{FENIX_CDN}/js/packery/1.4.3/dist/packery.pkgd.min',
+                    i18n: "{FENIX_CDN}/js/requirejs/plugins/i18n/2.0.4/i18n",
 
 
-                    'fx-d-m/templates/site' : "./src/js/templates/site.hbs",
-                    'fx-d-m/config/config' : "./config/submodules/fx-data-mng/Config",
-                    'fx-d-m/i18n/nls/site' : "./i18n/site",
+                    'fx-d-m/templates/site'     : "./src/js/templates/site.hbs",
+                    'fx-d-m/config/config'      : "./config/submodules/fx-data-mng/Config",
+
+                    'fx-d-m/i18n/nls/site'      : "./i18n/site",
+
+                    "fx-d-m/routes"             : "./submodules/fenix-ui-data-management/src/js/routes/metadata" ,
+                    'fx-d-m/templates/landing'  : "./submodules/fenix-ui-data-management/src/js/templates/landing/metadata.hbs",
+                    'fx-d-m/templates/resume'   : "./submodules/fenix-ui-data-management/src/js/templates/resume_metadata_only",
+
+
                     'fx-cat-br/config/config': './config/submodules/fx-catalog/config_data_mgmt',
 
-                    "fx-d-m/routes":"./submodules/fenix-ui-data-management/src/js/routes/routes_metadataOnly" ,
-                    'fx-d-m/templates/landing' : "./submodules/fenix-ui-data-management/src/js/templates/landing_metadataOnly.hbs",
-                    'fx-d-m/templates/resume' :"./submodules/fenix-ui-data-management/src/js/templates/resume_metadata_only",
 
 
-
-                    //'fx-menu/config/config': './config/submodules/fx-catalog/config',
+                   // 'fx-menu/config/config': './config/submodules/fx-catalog/config',
 
                     'fx-submodules/config/baseConfig': './config/submodules/config_base'
 
@@ -102,15 +115,25 @@ require([
     require([
         'fx-d-m/start',
         'fx-d-m/routes',
-        'domReady!'
-    ], function (Application, routes) {
+        'fx-common/AuthManager'
+    ], function (Application, routes, AuthManager) {
 
-        var app = new Application({
-            routes: routes,
-            controllerSuffix: '-controller',
-            controllerPath: './submodules/fenix-ui-data-management/src/js/controllers/',
-            root: '/gift/',
-            pushState: false
-        });
+
+        var authMAnager = new AuthManager();
+        if(authMAnager.isLogged()) {
+
+            debugger;
+
+
+            var app = new Application({
+                routes: routes,
+                controllerSuffix: '-controller',
+                controllerPath: './submodules/fenix-ui-data-management/src/js/controllers/',
+                root: '/gift/',
+                pushState: false
+            });
+        }else{
+            window.location.replace("./index.html");
+        }
     });
 });

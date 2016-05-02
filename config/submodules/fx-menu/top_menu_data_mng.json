@@ -5,7 +5,7 @@
         "id": "home",
         "class":"home-menu-item"
       },
-      "target": "./index.html/#home",
+      "target": "./index.html#home",
       "a_attrs" : {
         "rel" : "external"
       },
@@ -17,8 +17,7 @@
       "attrs": {
         "id": "about"
       },
-
-      "target": "./index.html/#about",
+      "target": "./index.html#about",
       "a_attrs" : {
         "rel" : "external"
       },
@@ -30,7 +29,10 @@
       "attrs": {
         "id": "ready"
       },
-      "target": "#ready",
+      "target": "./index.html#ready",
+      "a_attrs" : {
+        "rel" : "external"
+      },
       "label": {
         "EN": "Ready to use"
       }
@@ -49,7 +51,7 @@
           "attrs":{
             "id":"microdata"
           },
-          "target":"./index.html/#statistics",
+          "target":"./index.html#statistics",
           "a_attrs" : {
             "rel" : "external"
           },
