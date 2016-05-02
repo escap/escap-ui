@@ -10,6 +10,8 @@ define(function () {
         match('inputData', 'inputData#show');
         match('about', 'about#show');
         match('statistics', 'statistics#show');
+        match('consumption', 'consumption#show');
+
         match('dashboard/:uid', 'dashboard#show');
         match('dashboard', 'dashboard#show');
         match('ready', 'ready#show');
