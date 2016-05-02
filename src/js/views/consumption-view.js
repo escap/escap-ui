@@ -3,31 +3,26 @@ define([
     'require',
     'jquery',
     'underscore',
+    'handlebars',    
     'views/base/view',
     'text!templates/consumption/consumption.hbs',
     'i18n!nls/consumption',
     'config/events',
-    'handlebars',
-    'amplify',
-    'jstree','jqwidgets', 'highcharts'
 
-], function (require,$, _,View, template,   i18nLabels, E, Handlebars) {
+    'fenix-ui-map',
+    'fenix-ui-map-config',
+
+    'amplify'
+], function (require,$, _, Handlebars, View, template,   i18nLabels, E,
+
+    FenixMap, FenixConfig) {
 
     'use strict';
 
     var s = {
         READY_CONTAINER: "#ready-container",
-        OPTIONS: {
-            NUTRITION: 'nutrition',
-            SAFETY: 'safety',
-            ENVIRONMENT: 'environment',
-            CONSUMPTION: 'consumption'
-        },
-        CONTAINERS: [
-
-        ]
+        MAP_CONTAINER: "#consumption_map"
     };
-
     var ConsumptionView = View.extend({
 
 
@@ -52,6 +47,12 @@ define([
             return i18nLabels;
         },
 
+        initVariables: function () {
+
+            this.$map = this.$el.find(s.MAP_CONTAINER);
+
+        },
+
         attach: function () {
 
             View.prototype.attach.call(this, arguments);
@@ -61,11 +62,8 @@ define([
             this.initVariables();
             this._configurePage();
 
-        },
-
-        initVariables: function () {
-
-
+            this.fenixMap = new FM.Map(this.$map);
+            this.fenixMap.createMap();
         },
 
         _configurePage: function () {
