@@ -4,26 +4,22 @@ require([
     './submodules/fenix-ui-common/js/Compiler',
     './submodules/fenix-ui-common/js/paths',
     './submodules/fenix-ui-DataEditor/js/paths',
-    './submodules/fenix-ui-dataUpload/js/paths',
     './submodules/fenix-ui-DSDEditor/js/paths',
     './submodules/fenix-ui-metadata-editor/js/paths',
     './submodules/fenix-ui-catalog/js/paths',
     './submodules/fenix-ui-menu/js/paths',
     './submodules/fenix-ui-data-management/src/js/paths',
     './submodules/fenix-ui-datamanagement-commons/js/paths'
-], function (Compiler, Commons, DataEditor, DataUpload, DSDEditor, MetadataEditor, Catalog, Menu, DataMng,
+], function (Compiler, Commons, DataEditor, DSDEditor, MetadataEditor, Catalog, Menu, DataMng,
 DataMngCommons) {
 
     'use strict';
 
-    var commonsConfig = Commons;
-    commonsConfig.baseUrl = './submodules/fenix-ui-common/js';
-
     var dataEditorConfig = DataEditor;
     dataEditorConfig.baseUrl = './submodules/fenix-ui-DataEditor/js';
 
-    var dataUploadConfig = DataUpload;
-    dataUploadConfig.baseUrl = './submodules/fenix-ui-dataUpload/js/';
+    var dataMngCommons = DataMngCommons;
+    dataMngCommons.baseUrl = './submodules/fenix-ui-datamanagement-commons/js';
 
     var dsdEditorConfig = DSDEditor;
     dsdEditorConfig.baseUrl = './submodules/fenix-ui-DSDEditor/js';
@@ -34,17 +30,17 @@ DataMngCommons) {
     var catalogConfig = Catalog;
     catalogConfig.baseUrl = './submodules/fenix-ui-catalog/js/';
 
+    var commonsConfig = Commons;
+    commonsConfig.baseUrl = './submodules/fenix-ui-common/js';
+
     var menuConfig = Menu;
     menuConfig.baseUrl = './submodules/fenix-ui-menu/js';
 
     var dataMngConfig = DataMng;
     dataMngConfig.baseUrl = './submodules/fenix-ui-data-management/src/js';
 
-    var dataMngCommons = DataMngCommons;
-    dataMngCommons.baseUrl = './submodules/fenix-ui-datamanagement-commons/js';
-
-    Compiler.resolve([commonsConfig, dataEditorConfig, dataUploadConfig, dsdEditorConfig, metadataEditorConfig, catalogConfig, menuConfig, dataMngConfig,
-    dataMngCommons],
+    Compiler.resolve([dataEditorConfig,dataMngCommons,  dsdEditorConfig, metadataEditorConfig, catalogConfig, menuConfig, dataMngConfig,
+            commonsConfig],
         {
             placeholders: {"FENIX_CDN": "//fenixrepo.fao.org/cdn"},
             config: {
@@ -57,12 +53,12 @@ DataMngCommons) {
 
                     underscore: "{FENIX_CDN}/js/underscore/1.7.0/underscore.min",
                     backbone: "{FENIX_CDN}/js/backbone/1.1.2/backbone.min",
-                    handlebars: "{FENIX_CDN}/js/handlebars/2.0.0/handlebars",
+                    handlebars: "{FENIX_CDN}/js/handlebars/3.0.2/handlebars.min",
                     chaplin: "{FENIX_CDN}/js/chaplin/1.0.1/chaplin.min",
                     amplify: '{FENIX_CDN}/js/amplify/1.1.2/amplify.min',
                     rsvp: '{FENIX_CDN}/js/rsvp/3.0.17/rsvp',
                     pnotify: '{FENIX_CDN}/js/pnotify/2.0.1/pnotify.custom.min',
-                    datetimepicker: 'FENIX_CDN}/js/bootstrap-datetimepicker/4.14.30/src/js/bootstrap-datetimepicker',
+                    datetimepicker: '{FENIX_CDN}/js/bootstrap-datetimepicker/4.14.30/src/js/bootstrap-datetimepicker',
                     packery: '{FENIX_CDN}/js/packery/1.4.3/dist/packery.pkgd.min',
                     i18n: "{FENIX_CDN}/js/requirejs/plugins/i18n/2.0.4/i18n",
 
@@ -72,11 +68,10 @@ DataMngCommons) {
 
                     'fx-d-m/i18n/nls/site'      : "./i18n/site",
 
-                    "fx-d-m/routes"             : "./submodules/fenix-ui-data-management/src/js/routes/metadata" ,
-                    'fx-d-m/templates/landing'  : "./submodules/fenix-ui-data-management/src/js/templates/landing/metadata.hbs",
+                 /*   'fx-d-m/templates/landing'  : "./submodules/fenix-ui-data-management/src/js/templates/landing/metadata.hbs",
                     'fx-d-m/templates/resume'   : "./submodules/fenix-ui-data-management/src/js/templates/resume_metadata_only",
 
-
+*/
                     'fx-cat-br/config/config': './config/submodules/fx-catalog/config_data_mgmt',
 
 
