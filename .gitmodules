@@ -52,3 +52,6 @@
 [submodule "submodules/fenix-ui-datamanagement-commons"]
 	path = submodules/fenix-ui-datamanagement-commons
 	url = https://github.com/FENIX-Platform/fenix-ui-datamanagement-commons.git
+[submodule "submodules/fenix-ui-map"]
+	path = submodules/fenix-ui-map
+	url = https://github.com/FENIX-Platform/fenix-ui-map.git

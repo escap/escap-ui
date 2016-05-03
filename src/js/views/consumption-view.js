@@ -3,30 +3,60 @@ define([
     'require',
     'jquery',
     'underscore',
+    'handlebars',    
     'views/base/view',
     'text!templates/consumption/consumption.hbs',
     'i18n!nls/consumption',
     'config/events',
-    'handlebars',
-    'amplify',
-    'jstree','jqwidgets', 'highcharts'
 
-], function (require,$, _,View, template,   i18nLabels, E, Handlebars) {
+    'leaflet_markecluster',
+    'fenix-ui-map',
+    'fenix-ui-map-config',
 
-    'use strict';
+    'text!../../../tests/consuption_data/test_Free.json',
+    'text!../../../tests/consuption_data/test_Confidential.json',
+    'text!../../../tests/consuption_data/test_NotForPublication.json',
+    'text!../../../tests/consuption_data/test_SecondaryConfidentiality.json',
+
+    'amplify'
+], function (require,$, _, Handlebars, View, template,   i18nLabels, E,
+
+    LeafletMarkecluster,
+    FenixMap,
+    FenixConfig,
+
+    dataFree,
+    dataConfidential,
+    dataNotForPublication,
+    dataSecondaryConfidentiality
+
+    ) {
+
+    var testData = {
+        Free: JSON.parse(dataFree),        
+        Confidential: JSON.parse(dataConfidential),
+        NotForPublication: JSON.parse(dataNotForPublication),
+        SecondaryConfidentiality: JSON.parse(dataSecondaryConfidentiality)
+    };
 
     var s = {
-        READY_CONTAINER: "#ready-container",
-        OPTIONS: {
-            NUTRITION: 'nutrition',
-            SAFETY: 'safety',
-            ENVIRONMENT: 'environment',
-            CONSUMPTION: 'consumption'
+            READY_CONTAINER: "#ready-container",
+            MAP_CONTAINER: "#consumption_map"
         },
-        CONTAINERS: [
-
-        ]
-    };
+        mapOpts = {
+            plugins: {
+                disclaimerfao: true,
+                geosearch: true,
+                mouseposition: false,
+                controlloading : true,
+                zoomcontrol: 'bottomright'
+            },
+            guiController: {
+                overlay: false,
+                baselayer: false,
+                wmsLoader: false
+            }
+        };
 
     var ConsumptionView = View.extend({
 
@@ -52,6 +82,18 @@ define([
             return i18nLabels;
         },
 
+        initVariables: function () {
+
+            this.$map = this.$el.find(s.MAP_CONTAINER);
+
+            this._dataByCountry = testData;
+            /*_.union(_.filter(testData,function(country) {
+
+            }) );*/
+
+            console.log(this._dataByCountry)
+        },
+
         attach: function () {
 
             View.prototype.attach.call(this, arguments);
@@ -61,11 +103,8 @@ define([
             this.initVariables();
             this._configurePage();
 
-        },
-
-        initVariables: function () {
-
-
+            this.fenixMap = new FM.Map(this.$map, mapOpts);
+            this.fenixMap.createMap();
         },
 
         _configurePage: function () {

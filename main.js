@@ -104,6 +104,7 @@ require([
                     // map libraries
                     leaflet:          "{FENIX_CDN}/js/leaflet/0.7.5/leaflet",
                     test_geo_json :"../../tests/resources/geo_json",
+                    leaflet_markecluster: "{FENIX_CDN}/js/leaflet/plugins/leaflet.markecluster/1.0/leaflet.markercluster",
                     geojson_selector: "{FENIX_CDN}/js/leaflet/plugins/leaflet-geojson-selector/0.2.2-fixed-event/dist/leaflet-geojson-selector.src",
 
                     // conf path
@@ -141,6 +142,10 @@ require([
 
                     'fx-ds/start': './plugins/dashboard/dashboard_start',
 
+                    //'fenix-ui-map': '{FENIX_CDN}/fenix/fenix-ui-map/0.2.0/dist/fenix-ui-map.src',
+                    //'fenix-ui-map-config': '{FENIX_CDN}/fenix/fenix-ui-map/0.2.0/dist/fenix-ui-map-config'
+                    'fenix-ui-map': '../../submodules/fenix-ui-map/dist/fenix-ui-map.src',
+                    'fenix-ui-map-config': '../../submodules/fenix-ui-map/dist/fenix-ui-map-config'                    
                 },
 
                 // Underscore and Backbone are not AMD-capable per default,
@@ -160,12 +165,10 @@ require([
                         exports: 'Handlebars'
                     },
 
-                    jQAllRangeSliders: {
-                        deps: ['jquery', 'jqueryui']
-                    },
+                    jQAllRangeSliders: ['jquery', 'jqueryui'],
 
-                    'geojson_selector': ['leaflet']
-
+                    geojson_selector: ['leaflet'],
+                    leaflet_markecluster: ['leaflet']
                 }
                 // For easier development, disable browser caching
                 // Of course, this should be removed in a production environment
