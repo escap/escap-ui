@@ -9,15 +9,35 @@ define([
     'i18n!nls/consumption',
     'config/events',
 
+    'leaflet_markecluster',
     'fenix-ui-map',
     'fenix-ui-map-config',
+
+    'text!../../../tests/consuption_data/test_Free.json',
+    'text!../../../tests/consuption_data/test_Confidential.json',
+    'text!../../../tests/consuption_data/test_NotForPublication.json',
+    'text!../../../tests/consuption_data/test_SecondaryConfidentiality.json',
 
     'amplify'
 ], function (require,$, _, Handlebars, View, template,   i18nLabels, E,
 
-    FenixMap, FenixConfig) {
+    LeafletMarkecluster,
+    FenixMap,
+    FenixConfig,
 
-    'use strict';
+    dataFree,
+    dataConfidential,
+    dataNotForPublication,
+    dataSecondaryConfidentiality
+
+    ) {
+
+    var testData = {
+        Free: JSON.parse(dataFree),        
+        Confidential: JSON.parse(dataConfidential),
+        NotForPublication: JSON.parse(dataNotForPublication),
+        SecondaryConfidentiality: JSON.parse(dataSecondaryConfidentiality)
+    };
 
     var s = {
             READY_CONTAINER: "#ready-container",
@@ -66,6 +86,12 @@ define([
 
             this.$map = this.$el.find(s.MAP_CONTAINER);
 
+            this._dataByCountry = testData;
+            /*_.union(_.filter(testData,function(country) {
+
+            }) );*/
+
+            console.log(this._dataByCountry)
         },
 
         attach: function () {
