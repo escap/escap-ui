@@ -61,10 +61,12 @@ DataMngCommons) {
                     datetimepicker: '{FENIX_CDN}/js/bootstrap-datetimepicker/4.14.30/src/js/bootstrap-datetimepicker',
                     packery: '{FENIX_CDN}/js/packery/1.4.3/dist/packery.pkgd.min',
                     i18n: "{FENIX_CDN}/js/requirejs/plugins/i18n/2.0.4/i18n",
+                    'fx-MetaEditor2/codelists/ClCodelist': "./config/submodules/fx-md-editor/CL_CONF_STATUS",
 
 
                     'fx-d-m/templates/site'     : "./src/js/templates/site.hbs",
                     'fx-d-m/config/config'      : "./config/submodules/fx-data-mng/Config",
+                    'fx-d-m/templates/resume'   : "./submodules/fenix-ui-data-management/src/js/templates/resume_metadata_only",
 
                     'fx-d-m/i18n/nls/site'      : "./i18n/site",
 
