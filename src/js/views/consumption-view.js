@@ -20,9 +20,24 @@ define([
     'use strict';
 
     var s = {
-        READY_CONTAINER: "#ready-container",
-        MAP_CONTAINER: "#consumption_map"
-    };
+            READY_CONTAINER: "#ready-container",
+            MAP_CONTAINER: "#consumption_map"
+        },
+        mapOpts = {
+            plugins: {
+                disclaimerfao: true,
+                geosearch: true,
+                mouseposition: false,
+                controlloading : true,
+                zoomcontrol: 'bottomright'
+            },
+            guiController: {
+                overlay: false,
+                baselayer: false,
+                wmsLoader: false
+            }
+        };
+
     var ConsumptionView = View.extend({
 
 
@@ -62,7 +77,7 @@ define([
             this.initVariables();
             this._configurePage();
 
-            this.fenixMap = new FM.Map(this.$map);
+            this.fenixMap = new FM.Map(this.$map, mapOpts);
             this.fenixMap.createMap();
         },
 
