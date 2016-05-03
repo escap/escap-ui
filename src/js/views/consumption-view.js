@@ -3,6 +3,7 @@ define([
     'require',
     'jquery',
     'underscore',
+    'lodash',
     'handlebars',    
     'views/base/view',
     'text!templates/consumption/consumption.hbs',
@@ -19,7 +20,7 @@ define([
     'text!../../../tests/consuption_data/test_SecondaryConfidentiality.json',
 
     'amplify'
-], function (require,$, _, Handlebars, View, template,   i18nLabels, E,
+], function (require,$, _,__, Handlebars, View, template,   i18nLabels, E,
 
     LeafletMarkecluster,
     FenixMap,
@@ -87,11 +88,18 @@ define([
             this.$map = this.$el.find(s.MAP_CONTAINER);
 
             this._dataByCountry = testData;
-            /*_.union(_.filter(testData,function(country) {
+            var codes = _.union(_.map(testData, function(meta) {
+                
+                return {
+                    confid: meta.meAccessibility.seConfidentiality.confidentialityStatus.codes[0].code,
+                    codes: meta.meContent.seCoverage.coverageGeographic.codes
+                }
 
-            }) );*/
+            }) );
 
-            console.log(this._dataByCountry)
+            codes = _.groupBy(codes,'confid');
+
+            console.log(JSON.stringify(codes,null, "\t"))
         },
 
         attach: function () {

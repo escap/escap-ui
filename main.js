@@ -88,6 +88,7 @@ require([
                     // utility libraries
                     'bootstrap': '{FENIX_CDN}/js/bootstrap/3.2/js/bootstrap.min',
                     underscore: "{FENIX_CDN}/js/underscore/1.7.0/underscore.min",
+                    lodash: "{FENIX_CDN}/js/lodash/4.11.2/lodash.core",
                     backbone: "{FENIX_CDN}/js/backbone/1.1.2/backbone.min",
                     handlebars: "{FENIX_CDN}/js/handlebars/2.0.0/handlebars",
                     chaplin: "{FENIX_CDN}/js/chaplin/1.0.1/chaplin.min",
@@ -156,6 +157,9 @@ require([
                     },
                     underscore: {
                         exports: '_'
+                    },
+                    lodash: {
+                        exports: '__'
                     },
                     backbone: {
                         deps: ['underscore', 'jquery'],
