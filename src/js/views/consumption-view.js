@@ -43,8 +43,6 @@ define([
         SecondaryConfidentiality: JSON.parse(dataSecondaryConfidentiality)
     };
 
-//    var centroidQuery = "http://fenix.fao.org/geo/fenix/spatialquery/db/spatial/query/SELECT%20ST_AsGeoJSON(geom),%20adm0_code,,%20FROM%20spatial.gaul0_faostat_afo_4326%20WHERE%20adm0_code%20IN%20(%208,29,35,42,43,45,47,49,50,58,59,68,66,70,40765,76,77,79,89,90,94,106,105,133,142,144,145,150,152,155,159,160,169,170,172,181,182,206,205,214,217,220,221,226,227,630,235,257,243,248,253,270,271,40764,4%20)%20
-
     var s = {
             READY_CONTAINER: "#ready-container",
             MAP_CONTAINER: "#consumption_map"
@@ -156,10 +154,10 @@ define([
                 }
             }
 
-            console.log(//this.mapCodesGroup,
+/*            console.log(//this.mapCodesGroup,
                 //JSON.stringify(this.mapCodesByConfid, null, 2),
                 //JSON.stringify(codesByCountry, null, 2)
-            );
+            );*/
 
             var lGroup = L.markerClusterGroup();
 
@@ -190,7 +188,7 @@ define([
 
             var loc = this.mapLocsByAdm0Code[ code ];
 
-            // return loc;
+            return loc;
 
             // //DEBUG
             // function randomLatLng(bb) {
