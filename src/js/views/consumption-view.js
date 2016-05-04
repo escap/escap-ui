@@ -175,7 +175,11 @@ define([
         _getMarker: function(item) {
 
             var loc = this._getLocByCode(item.countryCode),
-                icon = this.iconMarkerFunc({getChildCount: function(){ return 1; } }),
+                icon = this.iconMarkerFunc({
+                    getChildCount: function() {
+                        return item.confids.length;
+                    }
+                }),
                 m = L.marker(loc, {icon: icon });
 
             var list = _.map(item.confids, function(item) {
