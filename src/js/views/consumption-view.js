@@ -143,14 +143,17 @@ define([
                 JSON.stringify(codesByCountry, null, 2)
             );
 
-            //var lGroup = L.markerClusterGroup().addTo(this.fenixMap.map);
-            var lGroup = L.layerGroup().addTo(this.fenixMap.map);
+            var lGroup = L.markerClusterGroup();
+
+            //var lGroup = L.layerGroup().addTo(this.fenixMap.map);
 
             _.each(codesByCountry, function(item, countryCode) {
 
                 self._getMarker(item).addTo( lGroup );
 
             }); //*/
+            
+            lGroup.addTo(this.fenixMap.map);
         },
 
         _getMarker: function(item) {
