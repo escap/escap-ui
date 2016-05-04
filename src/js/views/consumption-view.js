@@ -161,6 +161,8 @@ define([
 
             var lGroup = L.markerClusterGroup();
 
+            this.iconMarkerFunc = lGroup._defaultIconCreateFunction;
+
             _.each(codesByCountry, function(item, countryCode) {
 
                 self._getMarker(item).addTo( lGroup );
@@ -173,13 +175,14 @@ define([
         _getMarker: function(item) {
 
             var loc = this._getLocByCode(item.countryCode),
-                m = L.marker(loc);
+                icon = this.iconMarkerFunc({getChildCount: function(){ return 1; } }),
+                m = L.marker(loc, {icon: icon });
 
             var list = _.map(item.confids, function(item) {
-                    return item;
-                }).join('<br />');
+                    return '<li>'+item+'</li>';
+                }).join('');
 
-            m.bindPopup( '<b>'+item.countryName+'</b><br>'+ list );//*/
+            m.bindPopup( '<b>'+item.countryName+'</b><br><ul style="padding:0">'+ list +'</ul>');//*/
 
             return m;
         },

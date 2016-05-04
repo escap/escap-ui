@@ -32,6 +32,12 @@
             "label": {
               "EN": "Burkina Faso"
             }
+          },
+          {
+            "code": "59",
+            "label": {
+              "EN": "Congo"
+            }
           }
         ],
         "idCodeList": "GAUL0"
