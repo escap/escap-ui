@@ -86,27 +86,27 @@ require([
                 // Specify the paths of vendor libraries
                 paths: {
                     // utility libraries
-                    'bootstrap': '{FENIX_CDN}/js/bootstrap/3.2/js/bootstrap.min',
+                    bootstrap:  "{FENIX_CDN}/js/bootstrap/3.2/js/bootstrap.min",
                     underscore: "{FENIX_CDN}/js/underscore/1.7.0/underscore.min",
-                    lodash: "{FENIX_CDN}/js/lodash/4.11.2/lodash.core",
-                    backbone: "{FENIX_CDN}/js/backbone/1.1.2/backbone.min",
+                    lodash:     "{FENIX_CDN}/js/lodash/4.11.2/lodash.core",
+                    backbone:   "{FENIX_CDN}/js/backbone/1.1.2/backbone.min",
                     handlebars: "{FENIX_CDN}/js/handlebars/2.0.0/handlebars",
-                    chaplin: "{FENIX_CDN}/js/chaplin/1.0.1/chaplin.min",
-                    domReady: "{FENIX_CDN}/js/requirejs/plugins/domready/2.0.1/domReady",
-                    i18n: "{FENIX_CDN}/js/requirejs/plugins/i18n/2.0.4/i18n",
-                    amplify: '{FENIX_CDN}/js/amplify/1.1.2/amplify.min',
-                    text: '{FENIX_CDN}/js/requirejs/plugins/text/2.0.12/text',
-                    rsvp: '{FENIX_CDN}/js/rsvp/3.0.17/rsvp',
-                    swiper: "{FENIX_CDN}/js/swiper/3.0.7/dist/js/swiper.min",
-                    jstree: "{FENIX_CDN}/js/jstree/3.0.8/dist/jstree",
-                    loglevel: "{FENIX_CDN}/js/loglevel/1.4.0/loglevel",
-                    'jQAllRangeSliders': '{FENIX_CDN}/js/jquery.rangeslider/5.7.0/jQRangeSlider-min',
+                    chaplin:    "{FENIX_CDN}/js/chaplin/1.0.1/chaplin.min",
+                    domReady:   "{FENIX_CDN}/js/requirejs/plugins/domready/2.0.1/domReady",
+                    i18n:       "{FENIX_CDN}/js/requirejs/plugins/i18n/2.0.4/i18n",
+                    amplify:    "{FENIX_CDN}/js/amplify/1.1.2/amplify.min",
+                    text:       "{FENIX_CDN}/js/requirejs/plugins/text/2.0.12/text",
+                    rsvp:       "{FENIX_CDN}/js/rsvp/3.0.17/rsvp",
+                    swiper:     "{FENIX_CDN}/js/swiper/3.0.7/dist/js/swiper.min",
+                    jstree:     "{FENIX_CDN}/js/jstree/3.0.8/dist/jstree",
+                    loglevel:   "{FENIX_CDN}/js/loglevel/1.4.0/loglevel",
+                    jQAllRangeSliders: "{FENIX_CDN}/js/jquery.rangeslider/5.7.0/jQRangeSlider-min",
 
                     // map libraries
-                    leaflet:          "{FENIX_CDN}/js/leaflet/0.7.5/leaflet",
-                    test_geo_json :"../../tests/resources/geo_json",
+                    leaflet:              "{FENIX_CDN}/js/leaflet/0.7.5/leaflet",
                     leaflet_markecluster: "{FENIX_CDN}/js/leaflet/plugins/leaflet.markecluster/1.0/leaflet.markercluster",
-                    geojson_selector: "{FENIX_CDN}/js/leaflet/plugins/leaflet-geojson-selector/0.2.2-fixed-event/dist/leaflet-geojson-selector.src",
+                    geojson_selector:     "{FENIX_CDN}/js/leaflet/plugins/leaflet-geojson-selector/0.2.2-fixed-event/dist/leaflet-geojson-selector.src",
+                    test_geo_json:        "../../tests/resources/geo_json",
 
                     // conf path
                     nls: "../../i18n",

@@ -7,14 +7,15 @@ define([
         "fx-filter/config/config-default",
         "fx-filter/config/events",
         "text!test_geo_json/world-countries.json",
-        "leaflet",  "amplify"],
+        "leaflet",
+        "amplify"],
     function ($, GeoSelector,CT, C, DC, E, GEOJSON, L) {
 
         'use strict';
 
         var URL = {
-            africa_countries: "http://fenix.fao.org/geo/fenix/spatialquery/db/spatial/query/SELECT%20ST_AsGeoJSON(geom),%20adm0_code,%20areanamee,%20iso3,%20FROM%20spatial.gaul0_faostat_afo_4326%20WHERE%20adm0_code%20IN%20(%208,29,35,42,43,45,47,49,50,58,59,68,66,70,40765,76,77,79,89,90,94,106,105,133,142,144,145,150,152,155,159,160,169,170,172,181,182,206,205,214,217,220,221,226,227,630,235,257,243,248,253,270,271,40764,4%20)%20",
-            world_countries: "http://fenixrepo.fao.org/cdn/js/leaflet/plugins/leaflet-geojson-selector/0.2.0/examples/world-countries.json"
+                africa_countries: "http://fenix.fao.org/geo/fenix/spatialquery/db/spatial/query/SELECT%20ST_AsGeoJSON(geom),%20adm0_code,%20areanamee,%20iso3,%20FROM%20spatial.gaul0_faostat_afo_4326%20WHERE%20adm0_code%20IN%20(%208,29,35,42,43,45,47,49,50,58,59,68,66,70,40765,76,77,79,89,90,94,106,105,133,142,144,145,150,152,155,159,160,169,170,172,181,182,206,205,214,217,220,221,226,227,630,235,257,243,248,253,270,271,40764,4%20)%20",
+                world_countries: "http://fenixrepo.fao.org/cdn/js/leaflet/plugins/leaflet-geojson-selector/0.2.0/examples/world-countries.json"
             },
             o = {
             lang: 'EN',

@@ -3,7 +3,6 @@ define([
     'require',
     'jquery',
     'underscore',
-    'lodash',
     'handlebars',    
     'views/base/view',
     'text!templates/consumption/consumption.hbs',
@@ -20,7 +19,7 @@ define([
     'text!../../../tests/consuption_data/test_SecondaryConfidentiality.json',
 
     'amplify'
-], function (require,$, _,__, Handlebars, View, template,   i18nLabels, E,
+], function (require,$, _, Handlebars, View, template,   i18nLabels, E,
 
     LeafletMarkecluster,
     FenixMap,
@@ -85,10 +84,12 @@ define([
 
         initVariables: function () {
 
+            var self = this;
+
             this.$map = this.$el.find(s.MAP_CONTAINER);
 
             this._dataByCountry = testData;
-            var codes = _.union(_.map(testData, function(meta) {
+            this.mapCodesGroup = _.union(_.map(testData, function(meta) {
                 
                 return {
                     confid: meta.meAccessibility.seConfidentiality.confidentialityStatus.codes[0].code,
@@ -97,12 +98,12 @@ define([
 
             }) );
 
-            codes = _.groupBy(codes,'confid');
-
-            console.log(JSON.stringify(codes,null, "\t"))
+            this.mapCodesByConfid = _.groupBy(this.mapCodesGroup,'confid');
         },
 
         attach: function () {
+
+            var self = this;
 
             View.prototype.attach.call(this, arguments);
 
@@ -113,6 +114,74 @@ define([
 
             this.fenixMap = new FM.Map(this.$map, mapOpts);
             this.fenixMap.createMap();
+
+
+            var codesByCountry = {};
+            for(var i in this.mapCodesGroup) {
+                var group = this.mapCodesGroup[i];
+
+                if(group.codes) {
+                    for(var n in group.codes) {
+                        var country = group.codes[n],
+                            countryCode = country.code,
+                            countryName = country.label.EN;
+
+                        if(!codesByCountry[countryCode])
+                            codesByCountry[countryCode] = {
+                                countryCode: countryCode,
+                                countryName: countryName,
+                                confids: []
+                            };
+
+                        codesByCountry[countryCode].confids.push(group.confid)
+                    }
+                }
+            }
+
+            console.log(//this.mapCodesGroup,
+                //JSON.stringify(this.mapCodesByConfid, null, 2),
+                JSON.stringify(codesByCountry, null, 2)
+            );
+
+            //var lGroup = L.markerClusterGroup().addTo(this.fenixMap.map);
+            var lGroup = L.layerGroup().addTo(this.fenixMap.map);
+
+            _.each(codesByCountry, function(item, countryCode) {
+
+                self._getMarker(item).addTo( lGroup );
+
+            }); //*/
+        },
+
+        _getMarker: function(item) {
+
+            var loc = this._getLocByCode(item.countryCode),
+                m = L.marker(loc);
+
+            var list = _.map(item.confids, function(item) {
+                    return item;
+                }).join('<br />');
+
+            m.bindPopup( '<b>'+item.countryName+'</b><br>'+ list );//*/
+
+            return m;
+        },
+
+        _getLocByCode: function(code) {
+
+            //DEBUG
+            function randomLatLng(bb) {
+                var sw = bb.getSouthWest(),
+                    ne = bb.getNorthEast(),
+                    lngs = ne.lng - sw.lng,
+                    lats = ne.lat - sw.lat;
+
+                return new L.LatLng(
+                        sw.lat + lats * Math.random(),
+                        sw.lng + lngs * Math.random());
+            }
+
+            return randomLatLng( this.fenixMap.map.getBounds() );
         },
 
         _configurePage: function () {
