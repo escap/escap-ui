@@ -102,16 +102,16 @@ require([
                     loglevel:   "{FENIX_CDN}/js/loglevel/1.4.0/loglevel",
                     jQAllRangeSliders: "{FENIX_CDN}/js/jquery.rangeslider/5.7.0/jQRangeSlider-min",
 
-                    // map libraries
-                    leaflet:              "{FENIX_CDN}/js/leaflet/0.7.5/leaflet",
-                    leaflet_markecluster: "{FENIX_CDN}/js/leaflet/plugins/leaflet.markecluster/branch-leaflet-0.7/leaflet.markercluster",
-                    geojson_selector:     "{FENIX_CDN}/js/leaflet/plugins/leaflet-geojson-selector/0.2.2-fixed-event/dist/leaflet-geojson-selector.src",
-                    test_geo_json:        "../../tests/resources/geo_json",
-
                     // conf path
                     nls: "../../i18n",
                     config: "../../config",
                     json: "../../json",
+
+                    // map libraries
+                    leaflet:              "{FENIX_CDN}/js/leaflet/0.7.5/leaflet",
+                    leaflet_markecluster: "{FENIX_CDN}/js/leaflet/plugins/leaflet.markecluster/branch-leaflet-0.7/leaflet.markercluster",
+                    geojson_selector:     "{FENIX_CDN}/js/leaflet/plugins/leaflet-geojson-selector/0.2.2-fixed-event/dist/leaflet-geojson-selector.src",
+                    worldCountries:        "../../json/statistics/world-countries.json",
 
                     // ===============================
                     /* Override: */

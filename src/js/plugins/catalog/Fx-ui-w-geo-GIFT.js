@@ -6,53 +6,50 @@ define([
         "fx-filter/config/config",
         "fx-filter/config/config-default",
         "fx-filter/config/events",
-        "text!test_geo_json/world-countries.json",
+        "text!worldCountries",
         "leaflet",
         "amplify"],
     function ($, GeoSelector,CT, C, DC, E, GEOJSON, L) {
 
         'use strict';
 
-        var URL = {
-                africa_countries: "http://fenix.fao.org/geo/fenix/spatialquery/db/spatial/query/SELECT%20ST_AsGeoJSON(geom),%20adm0_code,%20areanamee,%20iso3,%20FROM%20spatial.gaul0_faostat_afo_4326%20WHERE%20adm0_code%20IN%20(%208,29,35,42,43,45,47,49,50,58,59,68,66,70,40765,76,77,79,89,90,94,106,105,133,142,144,145,150,152,155,159,160,169,170,172,181,182,206,205,214,217,220,221,226,227,630,235,257,243,248,253,270,271,40764,4%20)%20",
-                world_countries: "http://fenixrepo.fao.org/cdn/js/leaflet/plugins/leaflet-geojson-selector/0.2.0/examples/world-countries.json"
-            },
+        var worldCountries = JSON.parse(GEOJSON),
             o = {
-            lang: 'EN',
-            //For filter logic .... start
-            componentType: '',
-            componentid: '',
-            name: '',
-            title: '',
-            grid: '',
-            source: '',
-            defaultsource: '',
-            adapter: null,
-            css_classes: {
-                HOLDER: "fx-catalog-modular-form-holder",
-                HEADER: "fx-catalog-modular-form-header",
-                HANDLER: "fx-catalog-modular-form-handler",
-                CONTENT: "fx-catalog-modular-form-content",
-                CLOSE_BTN: "fx-catalog-modular-form-close-btn",
-                MODULE: 'fx-catalog-form-module',
-                RESIZE: ".fx-catalog-modular-form-resize-btn",
-                LABEL: "fx-catalog-modular-form-label"
-            },
+                lang: 'EN',
+                //For filter logic .... start
+                componentType: '',
+                componentid: '',
+                name: '',
+                title: '',
+                grid: '',
+                source: '',
+                defaultsource: '',
+                adapter: null,
+                css_classes: {
+                    HOLDER: "fx-catalog-modular-form-holder",
+                    HEADER: "fx-catalog-modular-form-header",
+                    HANDLER: "fx-catalog-modular-form-handler",
+                    CONTENT: "fx-catalog-modular-form-content",
+                    CLOSE_BTN: "fx-catalog-modular-form-close-btn",
+                    MODULE: 'fx-catalog-form-module',
+                    RESIZE: ".fx-catalog-modular-form-resize-btn",
+                    LABEL: "fx-catalog-modular-form-label"
+                },
 
-            sourceType: {
-                timelist: 'timeList',
-                period: 'period'
-            },
+                sourceType: {
+                    timelist: 'timeList',
+                    period: 'period'
+                },
 
-            selectedCountry_key : 'id-selected',
+                selectedCountry_key : 'id-selected',
 
-            events: {
-                REMOVE_MODULE: "fx.filter.module.remove",
-                READY: "fx.filter.component.ready",
-                DESELECT: 'fx.filter.module.deselect.'
-            }
-            //For filter logic .... end
-        };
+                events: {
+                    REMOVE_MODULE: "fx.filter.module.remove",
+                    READY: "fx.filter.component.ready",
+                    DESELECT: 'fx.filter.module.deselect.'
+                }
+                //For filter logic .... end
+            };
 
 
         function FX_ui_geographic_component(optionsDefault) {
@@ -125,7 +122,7 @@ define([
 
             this.$leafletMap.addControl(L.control.zoom({position: 'topright'}));
 
-            var geoLayer = L.geoJson(JSON.parse(GEOJSON)).addTo(this.$leafletMap);
+            var geoLayer = L.geoJson(worldCountries).addTo(this.$leafletMap);
 
             // zoom on every country to select
             this.$leafletMap.fitBounds(geoLayer.getBounds())
