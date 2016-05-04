@@ -13,6 +13,8 @@ define([
     'fenix-ui-map',
     'fenix-ui-map-config',
 
+    'text!gaul0Centroids',
+
     'text!../../../tests/consuption_data/test_Free.json',
     'text!../../../tests/consuption_data/test_Confidential.json',
     'text!../../../tests/consuption_data/test_NotForPublication.json',
@@ -24,6 +26,8 @@ define([
     LeafletMarkecluster,
     FenixMap,
     FenixConfig,
+
+    gaul0Centroids,
 
     dataFree,
     dataConfidential,
@@ -101,6 +105,18 @@ define([
             }) );
 
             this.mapCodesByConfid = _.groupBy(this.mapCodesGroup,'confid');
+
+            this.gaul0Centroids = JSON.parse(gaul0Centroids);
+
+            this.gaul0Centroids_adm0_code = _.groupBy(this.gaul0Centroids.features, function(feature) {
+                return feature.properties.adm0_code;
+            });
+
+            this.mapLocsByAdm0Code = {};
+
+            _.each(this.gaul0Centroids_adm0_code, function(feature, code) {
+                self.mapLocsByAdm0Code[ code ] = feature[0].geometry.coordinates.reverse();
+            });
         },
 
         attach: function () {
@@ -142,12 +158,10 @@ define([
 
             console.log(//this.mapCodesGroup,
                 //JSON.stringify(this.mapCodesByConfid, null, 2),
-                JSON.stringify(codesByCountry, null, 2)
+                //JSON.stringify(codesByCountry, null, 2)
             );
 
             var lGroup = L.markerClusterGroup();
-
-            //var lGroup = L.layerGroup().addTo(this.fenixMap.map);
 
             _.each(codesByCountry, function(item, countryCode) {
 
@@ -173,6 +187,10 @@ define([
         },
 
         _getLocByCode: function(code) {
+
+            var loc = this.mapLocsByAdm0Code[ code ];
+console.log(code, loc)
+            return loc;
 
             //DEBUG
             function randomLatLng(bb) {
