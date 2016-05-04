@@ -189,22 +189,22 @@ define([
         _getLocByCode: function(code) {
 
             var loc = this.mapLocsByAdm0Code[ code ];
-console.log(code, loc)
-            return loc;
 
-            //DEBUG
-            function randomLatLng(bb) {
-                var sw = bb.getSouthWest(),
-                    ne = bb.getNorthEast(),
-                    lngs = ne.lng - sw.lng,
-                    lats = ne.lat - sw.lat;
+            // return loc;
 
-                return new L.LatLng(
-                        sw.lat + lats * Math.random(),
-                        sw.lng + lngs * Math.random());
-            }
+            // //DEBUG
+            // function randomLatLng(bb) {
+            //     var sw = bb.getSouthWest(),
+            //         ne = bb.getNorthEast(),
+            //         lngs = ne.lng - sw.lng,
+            //         lats = ne.lat - sw.lat;
 
-            return randomLatLng( this.fenixMap.map.getBounds() );
+            //     return new L.LatLng(
+            //             sw.lat + lats * Math.random(),
+            //             sw.lng + lngs * Math.random());
+            // }
+
+            // return randomLatLng( this.fenixMap.map.getBounds() );
         },
 
         _configurePage: function () {
