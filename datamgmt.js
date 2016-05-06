@@ -61,7 +61,10 @@ DataMngCommons) {
                     datetimepicker: '{FENIX_CDN}/js/bootstrap-datetimepicker/4.14.30/src/js/bootstrap-datetimepicker',
                     packery: '{FENIX_CDN}/js/packery/1.4.3/dist/packery.pkgd.min',
                     i18n: "{FENIX_CDN}/js/requirejs/plugins/i18n/2.0.4/i18n",
+
+                    // override of default configuration of metadata editor
                     'fx-MetaEditor2/codelists/ClCodelist': "./config/submodules/fx-md-editor/CL_CONF_STATUS",
+                    'fx-MetaEditor2/md-codelists' : './config/submodules/fx-md-editor/codelists',
 
 
                     'fx-d-m/templates/site'     : "./src/js/templates/site.hbs",
