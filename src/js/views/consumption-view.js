@@ -8,6 +8,7 @@ define([
     'text!templates/consumption/consumption.hbs',
     'i18n!nls/consumption',
     'config/events',
+    'config/config',
 
     'leaflet_markecluster',
     'fenix-ui-map',
@@ -21,7 +22,7 @@ define([
     'text!../../../tests/consuption_data/test_SecondaryConfidentiality.json',
 
     'amplify'
-], function (require,$, _, Handlebars, View, template,   i18nLabels, E,
+], function (require,$, _, Handlebars, View, template,   i18nLabels, E, C,
 
     LeafletMarkecluster,
     FenixMap,
@@ -43,10 +44,12 @@ define([
         SecondaryConfidentiality: JSON.parse(dataSecondaryConfidentiality)
     };
 
-    var s = {
+    var LANG = requirejs.s.contexts._.config.i18n.locale.toUpperCase(),
+        s = {
             READY_CONTAINER: "#ready-container",
             MAP_CONTAINER: "#consumption_map"
         },
+        confidentialityCodelistUrl = C.SERVICE_BASE_ADDRESS+'/msd/resources/uid/GIFT_STATUS',
         mapOpts = {
             plugins: {
                 disclaimerfao: true,
@@ -60,6 +63,15 @@ define([
                 baselayer: false,
                 wmsLoader: false
             }
+        };
+
+    var confidentialityCodelistStyles = {
+        //MAP CODES with Boostrap themes
+            'C': "primary",
+            'D': "success",
+            'F': "info",
+            'N': "warning"
+            //'X': "bg-danger"
         };
 
     var ConsumptionView = View.extend({
@@ -101,6 +113,26 @@ define([
                 }
 
             }) );
+
+            this.confidentialityCodelist = {};
+
+            $.ajax({
+                async: false,                
+                dataType: 'json',
+                url: confidentialityCodelistUrl,
+                success: function(res) {
+                
+                    var titles = _.groupBy(res.data, function(d) {
+                        return d.code;
+                    });
+
+                    _.each(titles, function(obj, code) {
+                        self.confidentialityCodelist[ code ]= obj[0].title[ LANG ];
+                    });
+
+                    console.log(self.confidentialityCodelist)
+                }
+            });
 
             this.mapCodesByConfid = _.groupBy(this.mapCodesGroup,'confid');
 
@@ -154,11 +186,6 @@ define([
                 }
             }
 
-/*            console.log(//this.mapCodesGroup,
-                //JSON.stringify(this.mapCodesByConfid, null, 2),
-                //JSON.stringify(codesByCountry, null, 2)
-            );*/
-
             var lGroup = L.markerClusterGroup();
 
             this.iconMarkerFunc = lGroup._defaultIconCreateFunction;
@@ -167,12 +194,14 @@ define([
 
                 self._getMarker(item).addTo( lGroup );
 
-            }); //*/
+            });
 
             lGroup.addTo(this.fenixMap.map);
         },
 
         _getMarker: function(item) {
+
+            var self = this;
 
             var loc = this._getLocByCode(item.countryCode),
                 icon = this.iconMarkerFunc({
@@ -182,11 +211,25 @@ define([
                 }),
                 m = L.marker(loc, {icon: icon });
 
-            var list = _.map(item.confids, function(item) {
-                    return '<li>'+item+'</li>';
-                }).join('');
+            var list = '';
 
-            m.bindPopup( '<b>'+item.countryName+'</b><br><ul style="padding:0">'+ list +'</ul>');//*/
+            _.map(item.confids, function(code) {
+                list +='<li class="list-group-item">'+
+                    '<i class="label label-'+confidentialityCodelistStyles[ code ]+'">'+code+'</i>'+
+                    '&nbsp;&nbsp;'+
+                    self.confidentialityCodelist[ code ]+
+                '</li>';
+            });
+
+            console.log(list)
+
+            m.bindPopup(
+                '<label>'+item.countryName+'</label>'+
+                '<ul class="list-group">'+
+                    list +
+                '</ul>',{
+                    closeButton:false
+                });
 
             return m;
         },
