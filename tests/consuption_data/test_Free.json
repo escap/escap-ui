@@ -80,7 +80,10 @@
         "version": "1.0",
         "codes": [
           {
-            "code": "F"
+            "code": "F",
+            "title":{
+              "EN": "Available on GIFT"
+            }
           }
         ],
         "idCodeList": "CL_CONF_STATUS"

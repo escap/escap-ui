@@ -15,11 +15,16 @@ define(['jquery',
             container: "#top-menu-container"
         };
 
-        cfg.SECONDARY_MENU = {
+       /* cfg.SECONDARY_MENU = {
             url: './config/submodules/fx-data-mng/secondary_menu.json',
             template: 'fx-menu/templates/blank-fluid.html',
             disable: ['delete', 'close', 'data', 'dsd']
-        };
+        };*/
+
+        cfg.SECONDARY_MENU = {
+            url: './submodules/fenix-ui-data-management/config/secondary_menu.json',
+            disable: ['delete', 'close', 'data', 'dsd']
+        }
 
 
         cfg.SITE_TEMPLATE = 'topmenu';
