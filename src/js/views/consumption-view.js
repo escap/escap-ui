@@ -79,10 +79,38 @@ define([
 
         initialize: function (params) {
 
+            var self = this;
+
             View.prototype.initialize.call(this, arguments);
 
             $.extend(true, this, params);
 
+            self.confidentialityCodelist = {};
+            self.legend_items = [];
+
+            $.ajax({
+                async: false,                
+                dataType: 'json',
+                url: confidentialityCodelistUrl,
+                success: function(res) {
+                
+                    var titles = _.groupBy(res.data, function(d) {
+                        return d.code;
+                    });
+
+                    _.each(titles, function(obj, code) {
+                        
+                        self.confidentialityCodelist[ code ]= obj[0].title[ LANG ];
+
+                        self.legend_items.push({
+                            code: code,
+                            title: obj[0].title[ LANG ],
+                            className: confidentialityCodelistStyles[ code ]
+                        });
+                    });
+
+                }
+            });
         },
         // Automatically render after initialize
         autoRender: true,
@@ -95,7 +123,10 @@ define([
         template: template,
 
         getTemplateData: function () {
-            return i18nLabels;
+            return {
+                title: i18nLabels.title,
+                legend_items: this.legend_items
+             };
         },
 
         initVariables: function () {
@@ -113,26 +144,6 @@ define([
                 }
 
             }) );
-
-            this.confidentialityCodelist = {};
-
-            $.ajax({
-                async: false,                
-                dataType: 'json',
-                url: confidentialityCodelistUrl,
-                success: function(res) {
-                
-                    var titles = _.groupBy(res.data, function(d) {
-                        return d.code;
-                    });
-
-                    _.each(titles, function(obj, code) {
-                        self.confidentialityCodelist[ code ]= obj[0].title[ LANG ];
-                    });
-
-                    console.log(self.confidentialityCodelist)
-                }
-            });
 
             this.mapCodesByConfid = _.groupBy(this.mapCodesGroup,'confid');
 
@@ -162,7 +173,6 @@ define([
 
             this.fenixMap = new FM.Map(this.$map, mapOpts);
             this.fenixMap.createMap();
-
 
             var codesByCountry = {};
             for(var i in this.mapCodesGroup) {

@@ -1,8 +1,20 @@
 <h1>{{title}}</h1>
 
 
-<div id="consumption_map" style="border:1px solid blue;height:400px;">
-
+<div id="consumption_map_wrap">
+	<div id="consumption_map" style="border:1px solid blue;height:400px;">
+	</div>
+	<br />
+	<label>Legend:</label><br />
+	<ul id="consumption_map_legend" class="list-group">
+		{{#each legend_items}}
+			<li class="list-group-item">
+			<i class="label label-{{className}}">{{code}}</i>
+				{{title}}
+			</li>
+		{{/each}}
+	</ul>
 </div>
+
 
 <br /><br />
