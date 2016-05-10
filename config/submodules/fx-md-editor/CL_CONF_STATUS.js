@@ -3,10 +3,8 @@ define([], function () {
     "use strict"
 
     return {
-        "C": "Already available on another web platform",
-        "D": "Existing but restricted",
-        "F": "Available on GIFT",
-        "N": "Coming soon on GIFT"
-
+        "D": "Existing data potentially suitable to be inserted in FAO/WHO GIFT",
+        "F": "Data Available in FAO/WHO GIFT for analysis",
+        "N": "Data soon to be inserted in FAO/WHO GIFT"
     }
 });
