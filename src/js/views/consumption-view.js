@@ -15,6 +15,7 @@ define([
     'fenix-ui-map-config',
 
     'text!gaul0Centroids',
+    '../globals/GaulLevels',
 
     'text!../../../tests/consuption_data/test_Free.json',
     'text!../../../tests/consuption_data/test_Confidential.json',
@@ -29,6 +30,7 @@ define([
     FenixConfig,
 
     gaul0Centroids,
+    GaulLevels,
 
     dataFree,
     dataConfidential,
@@ -36,6 +38,32 @@ define([
     dataSecondaryConfidentiality
 
     ) {
+
+    GaulLevels.getLevel0(function(data) {
+        
+/*        var ids = _.map(data, function(code){
+            return code.id;
+        });
+*/
+        console.log('getLevel0',data)
+
+        var ids = _.map(data, function(code){
+            return code.id;
+        });
+
+        ids = _.first(_.shuffle(ids), 10);
+        
+
+        console.log('getLevel0',ids)
+
+        GaulLevels.getLevel1(ids, function(data) {
+            console.log('getLevel1',data)
+        });
+
+    });
+
+
+    return;
 
     var testData = {
         Free: JSON.parse(dataFree),        

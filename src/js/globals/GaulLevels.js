@@ -1,72 +1,71 @@
 /*global define*/
 define(['jquery','underscore',
-    'config/Config',
-    'fx-cat-br/config/config-default',
-    ], function($,_, C, DC) {
+    '../../../config/config'
+    ], function($,_, C) {
 
     'use strict';
 
+    function processData(data) {
+
+        //console.log('processData',data);
+
+        var r = [];
+        data.sort(function(a,b){
+            return (a.title.EN).toString().localeCompare( (b.title.EN).toString() )
+        });
+        for (var i = 0, length = data.length; i < length; i++) {
+            r.push({"text": data[i].title.EN, "id": data[i].code, "children": true});
+        }
+        return r;
+    }
+
     return {
-        getFirstCall: function ( cb) {
+        getLevel0: function (cb) {
 
             var self = this;
-            var payload = {};
-                payload = {
-                    uid: self.options.module.component.source.uid,
-                    level: 2,
+            var payload = {
+                    uid: 'GAUL',
+                    version: '2014',
+                    level: 1,
                     levels: 1
                 };
 
-            if (self.options.module.component.source.version) {
-                payload.version = self.options.module.component.source.version;
-            }
-
             $.ajax({
+                url: C.SERVICE_BASE_ADDRESS+"/msd/codes/filter",                
                 type: "POST",
                 contentType: "application/json",
-                url: (C.SERVICE_BASE_ADDRESS || DC.SERVICE_BASE_ADDRESS) + "/codes/filter",
                 data: JSON.stringify(payload),
                 dataType: "json",
                 success: function (data) {
                     if (data) {
-                        cb(self.processData(data, true));
+                        cb(processData(data));
                     }
-                },
-                error: function () {
-                    console.warn("Fx_ui_w_foodComponent error: impossible to load codelist");
                 }
             });
         },
-        getChildren: function ( node, cb) {
+        getLevel1: function (ids, cb) {
 
             var self = this;
-            var payload = {};
-            payload = {
-                uid: self.options.module.component.source.uid,
-                level: node.parents.length+1,
-                levels: 2,
-                codes: [node.id]
-            };
-
-            if (self.options.module.component.source.version) {
-                payload.version = self.options.module.component.source.version;
-            }
-
+            var payload = {
+                    uid: 'GAUL',
+                    version: '2014',
+                    level: 1,   //start level
+                    levels: 2,  //depth                    
+                    codes: ids
+                };
 
             $.ajax({
-                url: (C.SERVICE_BASE_ADDRESS || DC.SERVICE_BASE_ADDRESS) + "/codes/filter",
+                url: C.SERVICE_BASE_ADDRESS+"/msd/codes/filter",
                 type: 'POST',
                 contentType: "application/json",
                 dataType: 'json',
                 data: JSON.stringify(payload)
             }).success(function (data) {
                 if (data) {
-                    cb(self.processData(data[0].children || []));
+                    cb(processData(data[0].children || []));
                 } else {
                     cb([]);
                 }
-            }).error(function () {
-                console.warn("Fx_ui_tree error error: impossible to load codelist");
             });
         }
     };
