@@ -62,9 +62,6 @@ define([
 
     });
 
-
-    return;
-
     var testData = {
         Free: JSON.parse(dataFree),        
         Confidential: JSON.parse(dataConfidential),
