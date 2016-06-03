@@ -26,7 +26,7 @@ require([
     var submodules_path = '../../submodules/';
 
     var commonConfig = Common;
-    commonConfig.baseUrl = submodules_path + 'fenix-ui-common/js';
+    commonConfig.baseUrl = submodules_path + '/fenix-ui-common/js';
 
     var menuConfig = Menu;
     menuConfig.baseUrl = submodules_path + '/fenix-ui-menu/js';
@@ -140,7 +140,8 @@ require([
                     'fx-mdv/config/config': '../../config/submodules/fx-md-viewer/config',
 
                     'fx-filter/config/config':'../../config/submodules/fx-filter/config',
-
+                    
+                    'fx-bridge': '../../submodules/fenix-ui-common/js/bridge',
 
                     'fx-ds/start': './plugins/dashboard/dashboard_start',
 

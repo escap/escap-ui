@@ -17,11 +17,6 @@ define([
     'text!gaul0Centroids',
     '../globals/GaulLevels',
 
-    'text!../../../tests/consuption_data/test_Free.json',
-    'text!../../../tests/consuption_data/test_Confidential.json',
-    'text!../../../tests/consuption_data/test_NotForPublication.json',
-    'text!../../../tests/consuption_data/test_SecondaryConfidentiality.json',
-
     'amplify'
 ], function (require,$, _, Handlebars, View, template,   i18nLabels, E, C,
 
@@ -30,22 +25,17 @@ define([
     FenixConfig,
 
     gaul0Centroids,
-    GaulLevels,
-
-    dataFree,
-    dataConfidential,
-    dataNotForPublication,
-    dataSecondaryConfidentiality
+    GaulLevels
 
     ) {
 
     GaulLevels.getLevel0(function(data) {
         
-/*        var ids = _.map(data, function(code){
-            return code.id;
-        });
-*/
-        console.log('getLevel0',data)
+        /*        var ids = _.map(data, function(code){
+                    return code.id;
+                });
+        */
+        //console.log('getLevel0',data)
 
         var ids = _.map(data, function(code){
             return code.id;
@@ -54,20 +44,12 @@ define([
         ids = _.first(_.shuffle(ids), 10);
         
 
-        console.log('getLevel0',ids)
+        //console.log('getLevel0',ids)
 
-        GaulLevels.getLevel1(ids, function(data) {
+        /*GaulLevels.getLevel1(ids, function(data) {
             console.log('getLevel1',data)
-        });
-
+        });//*/
     });
-
-    var testData = {
-        Free: JSON.parse(dataFree),        
-        Confidential: JSON.parse(dataConfidential),
-        NotForPublication: JSON.parse(dataNotForPublication),
-        SecondaryConfidentiality: JSON.parse(dataSecondaryConfidentiality)
-    };
 
     var LANG = requirejs.s.contexts._.config.i18n.locale.toUpperCase(),
         s = {
@@ -75,6 +57,15 @@ define([
             MAP_CONTAINER: "#consumption_map"
         },
         confidentialityCodelistUrl = C.SERVICE_BASE_ADDRESS+'/msd/resources/uid/GIFT_STATUS',
+        confidentialityDataUrl = C.SERVICE_BASE_ADDRESS+'/msd/resources/find?full=true',
+        confidentialityDataPayload = {
+            "dsd.contextSystem": {
+                "enumeration": ["gift"]
+            },
+            "meContent.resourceRepresentationType": {
+                "enumeration": ["dataset"]
+            }
+        },
         mapOpts = {
             plugins: {
                 disclaimerfao: true,
@@ -92,11 +83,10 @@ define([
 
     var confidentialityCodelistStyles = {
         //MAP CODES with Boostrap themes
-            'C': "primary",
+            'A': "primary",
             'D': "success",
             'F': "info",
             'N': "warning"
-            //'X': "bg-danger"
         };
 
     var ConsumptionView = View.extend({
@@ -112,31 +102,59 @@ define([
 
             self.confidentialityCodelist = {};
             self.legend_items = [];
-
+            
             $.ajax({
                 async: false,                
                 dataType: 'json',
                 url: confidentialityCodelistUrl,
+                contentType: "application/json; charset=utf-8",
                 success: function(res) {
-                
-                    var titles = _.groupBy(res.data, function(d) {
-                        return d.code;
-                    });
+                    confidentialityCodelist = res.data;
 
-                    _.each(titles, function(obj, code) {
-                        
-                        self.confidentialityCodelist[ code ]= obj[0].title[ LANG ];
 
+                    self.confidentialityCodelist = _.groupBy(confidentialityCodelist, function(obj) {
+                        return obj.code;
+                    })
+
+//console.log('CONSUMPTION codes', self.confidentialityCodelist);
+
+                    _.each(confidentialityCodelist, function(obj) {
                         self.legend_items.push({
-                            code: code,
-                            title: obj[0].title[ LANG ],
-                            className: confidentialityCodelistStyles[ code ]
+                            code: obj.code,
+                            title: obj.title[ LANG ],
+                            className: confidentialityCodelistStyles[ obj.code ]
                         });
                     });
-
                 }
             });
+
+            //console.log('confidentialityCodelist', confidentialityCodelist)
+
+            $.ajax({
+                async: false,                
+                dataType: 'json',
+                url: confidentialityDataUrl,
+                method: 'POST',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(C.CONSUMPTION.body),
+                success: function(res) {
+
+//console.log('CONSUMPTION AJAX',res);
+                    var res = _.filter(res, function(d) {
+                        return _.has(d,'meAccessibility');
+                    });
+
+                    self._dataByCountry = _.groupBy(res, function(d) {
+                        return d.meContent.seCoverage.coverageGeographic.codes[0].code;
+                    });
+
+//console.log('CONSUMPTION self._dataByCountry', self._dataByCountry);
+
+                }
+            });//*/
+
         },
+
         // Automatically render after initialize
         autoRender: true,
 
@@ -160,17 +178,19 @@ define([
 
             this.$map = this.$el.find(s.MAP_CONTAINER);
 
-            this._dataByCountry = testData;
-            this.mapCodesGroup = _.union(_.map(testData, function(meta) {
+//console.log('self._dataByCountry',self._dataByCountry)
+
+            this.mapCodesGroup = _.map(self._dataByCountry, function(meta) {
                 
+                //console.log('mapCodesGroup',meta);
+
                 return {
-                    confid: meta.meAccessibility.seConfidentiality.confidentialityStatus.codes[0].code,
-                    codes: meta.meContent.seCoverage.coverageGeographic.codes
+                    confid: meta[0].meAccessibility.seConfidentiality.confidentialityStatus.codes[0].code,
+                    title: meta[0].title[ LANG ],
+                    codes: meta[0].meContent.seCoverage.coverageGeographic.codes
                 }
 
-            }) );
-
-            this.mapCodesByConfid = _.groupBy(this.mapCodesGroup,'confid');
+            });
 
             this.gaul0Centroids = JSON.parse(gaul0Centroids);
 
@@ -213,7 +233,8 @@ define([
                             codesByCountry[countryCode] = {
                                 countryCode: countryCode,
                                 countryName: countryName,
-                                confids: []
+                                confids: [],
+                                title: this.mapCodesGroup[i]
                             };
 
                         codesByCountry[countryCode].confids.push(group.confid)
@@ -226,7 +247,7 @@ define([
             this.iconMarkerFunc = lGroup._defaultIconCreateFunction;
 
             _.each(codesByCountry, function(item, countryCode) {
-
+                
                 self._getMarker(item).addTo( lGroup );
 
             });
@@ -246,25 +267,22 @@ define([
                 }),
                 m = L.marker(loc, {icon: icon });
 
-            var list = '';
-
-            _.map(item.confids, function(code) {
-                list +='<li class="list-group-item">'+
-                    '<i class="label label-'+confidentialityCodelistStyles[ code ]+'">'+code+'</i>'+
-                    '&nbsp;&nbsp;'+
-                    self.confidentialityCodelist[ code ]+
-                '</li>';
-            });
-
-            console.log(list)
-
+            //TODO MAKE TEMPLATE
             m.bindPopup(
-                '<label>'+item.countryName+'</label>'+
+                '<label class="text-primary">'+item.countryName+'</label>'+
                 '<ul class="list-group">'+
-                    list +
-                '</ul>',{
-                    closeButton:false
-                });
+                    _.map(item.confids, function(code, k) {
+                        
+                        //console.log('POPUP',item, self.confidentialityCodelist[k] )
+
+                        return '<li class="list-group-item">'+
+                            '<i class="label label-'+confidentialityCodelistStyles[ code ]+'">'+code+'</i>'+
+                            '&nbsp;&nbsp;'+
+                            item.title.title+
+                        '</li>';//*/
+                    }).join('') +
+
+                '</ul>', { closeButton:false });
 
             return m;
         },

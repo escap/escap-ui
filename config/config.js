@@ -6,6 +6,7 @@ define(function () {
     return {
 
         SERVICE_BASE_ADDRESS: "http://fenix.fao.org/d3s",
+        ENVIRONMENT: 'production',
 
         //Chaplin JS configuration
         CHAPLINJS_CONTROLLER_SUFFIX: '-controller',
@@ -41,6 +42,17 @@ define(function () {
 
         DOWNLOAD_SOURCES: {
             "gift_000042BUR201001": "files/burkina_faso.zip"
+        },
+
+        CONSUMPTION: {
+            body: {
+                "dsd.contextSystem": {
+                    "enumeration": ["gift"]
+                },
+                "meContent.resourceRepresentationType": {
+                    "enumeration": ["dataset"]
+                }
+            }
         },
 
         CATALOG_TEMPLATE: {
