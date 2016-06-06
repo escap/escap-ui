@@ -140,9 +140,9 @@ define([
                 success: function(res) {
 
 //console.log('CONSUMPTION AJAX',res);
-                    var res = _.filter(res, function(d) {
-                        return _.has(d,'meAccessibility');
-                    });
+                    //var res = _.filter(res, function(d) {
+                    //    return _.has(d,'meAccessibility');
+                    //});
 
                     self._dataByCountry = _.groupBy(res, function(d) {
                         return d.meContent.seCoverage.coverageGeographic.codes[0].code;
@@ -180,23 +180,30 @@ define([
 
 //console.log('self._dataByCountry',self._dataByCountry)
 
-            this.mapCodesGroup = _.map(self._dataByCountry, function(meta) {
-                
-                //console.log('mapCodesGroup',meta);
+            this.mapCodesGroup = [];
 
-                return {
-                    confid: meta[0].meAccessibility.seConfidentiality.confidentialityStatus.codes[0].code,
-                    title: meta[0].title[ LANG ],
-                    codes: meta[0].meContent.seCoverage.coverageGeographic.codes
-                }
+            _.each(self._dataByCountry, function(meta) {
 
+                _.each(meta, function(m) {
+
+                    self.mapCodesGroup.push({
+                        confid: m.meAccessibility.seConfidentiality.confidentialityStatus.codes[0].code,
+                        title: m.title[ LANG ],
+                        codes: m.meContent.seCoverage.coverageGeographic.codes
+                    });
+
+                });               
             });
+
+//            console.log('this.mapCodesGroup',this.mapCodesGroup);
 
             this.gaul0Centroids = JSON.parse(gaul0Centroids);
 
             this.gaul0Centroids_adm0_code = _.groupBy(this.gaul0Centroids.features, function(feature) {
                 return feature.properties.adm0_code;
             });
+
+
 
             this.mapLocsByAdm0Code = {};
 
@@ -220,6 +227,7 @@ define([
             this.fenixMap.createMap();
 
             var codesByCountry = {};
+
             for(var i in this.mapCodesGroup) {
                 var group = this.mapCodesGroup[i];
 
@@ -230,14 +238,14 @@ define([
                             countryName = country.label.EN;
 
                         if(!codesByCountry[countryCode])
-                            codesByCountry[countryCode] = {
-                                countryCode: countryCode,
-                                countryName: countryName,
-                                confids: [],
-                                title: this.mapCodesGroup[i]
-                            };
+                            codesByCountry[countryCode] = [];
 
-                        codesByCountry[countryCode].confids.push(group.confid)
+                        codesByCountry[countryCode].push({
+                            countryCode: countryCode,
+                            countryName: countryName,
+                            confids: [ group.confid ],
+                            title: this.mapCodesGroup[i]
+                        });
                     }
                 }
             }
@@ -247,42 +255,44 @@ define([
             this.iconMarkerFunc = lGroup._defaultIconCreateFunction;
 
             _.each(codesByCountry, function(item, countryCode) {
-                
-                self._getMarker(item).addTo( lGroup );
 
+                self._getMarker(item).addTo( lGroup );
             });
 
             lGroup.addTo(this.fenixMap.map);
         },
 
-        _getMarker: function(item) {
+        _getMarker: function(items) {
+            
+            //items is an ARRAY!!
 
             var self = this;
 
-            var loc = this._getLocByCode(item.countryCode),
+            var loc = this._getLocByCode(items[0].countryCode),
                 icon = this.iconMarkerFunc({
                     getChildCount: function() {
-                        return item.confids.length;
+                        return items.length;
                     }
                 }),
                 m = L.marker(loc, {icon: icon });
 
-            //TODO MAKE TEMPLATE
-            m.bindPopup(
-                '<label class="text-primary">'+item.countryName+'</label>'+
-                '<ul class="list-group">'+
-                    _.map(item.confids, function(code, k) {
-                        
-                        //console.log('POPUP',item, self.confidentialityCodelist[k] )
+            var popupHTML = '<label class="text-primary">'+items[0].countryName+'</label>'+
+            '<ul class="list-group">';
 
-                        return '<li class="list-group-item">'+
-                            '<i class="label label-'+confidentialityCodelistStyles[ code ]+'">'+code+'</i>'+
-                            '&nbsp;&nbsp;'+
-                            item.title.title+
-                        '</li>';//*/
-                    }).join('') +
+            _.each(items, function(item) {
+                //TODO MAKE TEMPLATE
+                popupHTML += _.map(item.confids, function(code, k) {
+                    return '<li class="list-group-item">'+
+                        '<i class="label label-'+confidentialityCodelistStyles[ code ]+'">'+code+'</i>'+
+                        '&nbsp;&nbsp;'+
+                        item.title.title+
+                    '</li>';//*/
+                }).join('');
+            });
+            
+            popupHTML +='</ul>';
 
-                '</ul>', { closeButton:false });
+            m.bindPopup(popupHTML, { closeButton:false });
 
             return m;
         },
