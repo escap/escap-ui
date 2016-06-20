@@ -109,7 +109,7 @@ require([
 
                     // map libraries
                     leaflet:              "{FENIX_CDN}/js/leaflet/0.7.5/leaflet",
-                    leaflet_markecluster: "{FENIX_CDN}/js/leaflet/plugins/leaflet.markecluster/branch-leaflet-0.7/leaflet.markercluster",
+                    leaflet_markecluster: "{FENIX_CDN}/js/leaflet/plugins/leaflet.markecluster/branch-leaflet-0.7/leaflet.markercluster-src",
                     geojson_selector:     "{FENIX_CDN}/js/leaflet/plugins/leaflet-geojson-selector/0.2.2-fixed-event/dist/leaflet-geojson-selector.src",
                     worldCountries:        "../../json/statistics/world-countries.json",
                     gaul0Centroids:        "../../json/statistics/gaul0_centroids.geojson",

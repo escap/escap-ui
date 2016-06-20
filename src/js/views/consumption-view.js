@@ -14,8 +14,8 @@ define([
     'fenix-ui-map',
     'fenix-ui-map-config',
 
+    //'../globals/GaulLevels',
     'text!gaul0Centroids',
-    '../globals/GaulLevels',
 
     'amplify'
 ], function (require,$, _, Handlebars, View, template,   i18nLabels, E, C,
@@ -24,32 +24,18 @@ define([
     FenixMap,
     FenixConfig,
 
-    gaul0Centroids,
-    GaulLevels
-
+    //GaulLevels,
+    gaul0Centroids
     ) {
 
-    GaulLevels.getLevel0(function(data) {
-        
-        /*        var ids = _.map(data, function(code){
-                    return code.id;
-                });
-        */
-        //console.log('getLevel0',data)
+/*    GaulLevels.getLevel0(function(data) {
 
-        var ids = _.map(data, function(code){
+        var ids = _.map(data, function(code) {
             return code.id;
         });
 
         ids = _.first(_.shuffle(ids), 10);
-        
-
-        //console.log('getLevel0',ids)
-
-        /*GaulLevels.getLevel1(ids, function(data) {
-            console.log('getLevel1',data)
-        });//*/
-    });
+    });*/
 
     var LANG = requirejs.s.contexts._.config.i18n.locale.toUpperCase(),
         s = {
@@ -83,10 +69,10 @@ define([
 
     var confidentialityCodelistStyles = {
         //MAP CODES with Boostrap themes
-            'A': "primary",
-            'D': "success",
-            'F': "info",
-            'N': "warning"
+            'F': { className:"info",    order: 1},
+            'N': { className:"warning", order: 2},
+            'D': { className:"success", order: 3},
+            'A': { className:"primary", order: 4}
         };
 
     var ConsumptionView = View.extend({
@@ -122,9 +108,12 @@ define([
                         self.legend_items.push({
                             code: obj.code,
                             title: obj.title[ LANG ],
-                            className: confidentialityCodelistStyles[ obj.code ]
+                            className: confidentialityCodelistStyles[ obj.code ].className,
+                            order: confidentialityCodelistStyles[ obj.code ].order
                         });
                     });
+                    
+                    self.legend_items = _.sortBy(self.legend_items,'order');
                 }
             });
 
@@ -249,17 +238,33 @@ define([
                     }
                 }
             }
+            var layerGroup = L.markerClusterGroup({
+                showCoverageOnHover: false,
+                iconCreateFunction: L.MarkerClusterGroup.prototype._defaultIconCreateFunction,
+                /*iconCreateFunction: function(cluster) {
 
-            var lGroup = L.markerClusterGroup();
+                    return L.MarkerClusterGroup.prototype._defaultIconCreateFunction({
+                        getChildCount: function() {
 
-            this.iconMarkerFunc = lGroup._defaultIconCreateFunction;
+                            var count = 0;
+                            _.each(cluster._markers, function(m) {
+                                count += m.items.length;
+                            });
+
+                            return cluster.getChildCount() + count;
+                        }
+                    });
+                }*/
+            });
+
+            this.iconMarkerFunc = layerGroup._defaultIconCreateFunction;
 
             _.each(codesByCountry, function(item, countryCode) {
 
-                self._getMarker(item).addTo( lGroup );
+                self._getMarker(item).addTo( layerGroup );
             });
 
-            lGroup.addTo(this.fenixMap.map);
+            layerGroup.addTo(this.fenixMap.map);
         },
 
         _getMarker: function(items) {
@@ -269,12 +274,19 @@ define([
             var self = this;
 
             var loc = this._getLocByCode(items[0].countryCode),
-                icon = this.iconMarkerFunc({
+                /*icon = this.iconMarkerFunc({
+                    getChildCount: function() {
+                        return items.length;
+                    }
+                }),*/
+                icon = L.MarkerClusterGroup.prototype._defaultIconCreateFunction({
                     getChildCount: function() {
                         return items.length;
                     }
                 }),
-                m = L.marker(loc, {icon: icon });
+                m = L.marker(loc, { icon: icon });
+
+            m.items = items;
 
             var popupHTML = '<label class="text-primary">'+items[0].countryName+'</label>'+
             '<ul class="list-group">';
@@ -283,7 +295,7 @@ define([
                 //TODO MAKE TEMPLATE
                 popupHTML += _.map(item.confids, function(code, k) {
                     return '<li class="list-group-item">'+
-                        '<i class="label label-'+confidentialityCodelistStyles[ code ]+'">'+code+'</i>'+
+                        '<i class="label label-'+confidentialityCodelistStyles[ code ].className+'">'+code+'</i>'+
                         '&nbsp;&nbsp;'+
                         item.title.title+
                     '</li>';//*/
