@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-md-12">
+    <br>
+    <div class="col-md-1"><img src="src/images/escap/sdg1.png"  class="thumbnail" alt="demographics"  width="100" height="100"/></div>
+    <div class="col-md-11"><h1 style="font-weight: bold; text-transform: none;">&emsp;{{title}}</h1></div>
+  </div>
+</div>
+<div class="col-md-3">
+  <h2 style="font-weight: bold; text-transform: none;">Targets</h2>
+
+<div class="panel-group" id="accordion">
+ <div class="panel panel-default">
+   <div class="panel-heading">
+     <h4 class="panel-title">
+       <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="text-transform: none;">
+       Extreme Poverty <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i></a>
+     </h4>
+   </div>
+   <div id="collapse1" class="panel-collapse collapse in">
+      <ul class="list-group">
+        <li class="list-group-item">Below International Poverty Line</li>
+      </ul>
+    </div>
+ </div>
+ <div class="panel panel-default">
+   <div class="panel-heading">
+     <h4 class="panel-title" >
+       <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" style="text-transform: none;">
+       Poverty<i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i></a>
+     </h4>
+   </div>
+   <div id="collapse2" class="panel-collapse collapse">
+      <ul class="list-group">
+        <li class="list-group-item">Below National Poverty Line</li>
+        <li class="list-group-item">People  Living in Poverty </li>
+      </ul>
+    </div>
+ </div>
+ <div class="panel panel-default">
+   <div class="panel-heading">
+     <h4 class="panel-title">
+       <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" style="text-transform: none;">
+       National Social Protection Systems <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i></a>
+     </h4>
+   </div>
+   <div id="collapse3" class="panel-collapse collapse">
+      <ul class="list-group">
+        <li class="list-group-item">Social Protection Floors/Systems</li>
+      </ul>
+    </div>
+ </div>
+ <div class="panel panel-default">
+   <div class="panel-heading">
+     <h4 class="panel-title" >
+       <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" style="text-transform: none;">
+       Equal Rights, Access, Ownership and Control<i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i></a>
+     </h4>
+   </div>
+   <div id="collapse4" class="panel-collapse collapse">
+      <ul class="list-group">
+        <li class="list-group-item">Access to Basic Services</li>
+        <li class="list-group-item">Secure Tenure Rights</li>
+      </ul>
+    </div>
+ </div>
+ <div class="panel panel-default">
+   <div class="panel-heading">
+     <h4 class="panel-title">
+       <a data-toggle="collapse" data-parent="#accordion" href="#collapse5" style="text-transform: none;">
+       Resilience of Poor and <br>Vulnerable <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i></a>
+     </h4>
+   </div>
+   <div id="collapse5" class="panel-collapse collapse">
+      <ul class="list-group">
+        <li class="list-group-item">Persons Affected by Disaster</li>
+        <li class="list-group-item">Direct Disaster Economic Loss</li>
+        <li class="list-group-item">Countries with Risk Reduction Strategies</li>
+      </ul>
+    </div>
+ </div>
+ <div class="panel panel-default">
+   <div class="panel-heading">
+     <h4 class="panel-title">
+       <a data-toggle="collapse" data-parent="#accordion" href="#collapse6" style="text-transform: none;">
+       Resources Mobilization<i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i></a>
+     </h4>
+   </div>
+   <div id="collapse6" class="panel-collapse collapse">
+      <ul class="list-group">
+        <li class="list-group-item">Direct Government Allocations</li>
+        <li class="list-group-item">Government Spending on Essential Services</li>
+      </ul>
+    </div>
+ </div>
+ <div class="panel panel-default">
+   <div class="panel-heading">
+     <h4 class="panel-title">
+       <a data-toggle="collapse" data-parent="#accordion" href="#collapse7" style="text-transform: none;">
+       Policy Frameworks  <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+     </h4></a>
+   </div>
+   <div id="collapse7" class="panel-collapse collapse">
+      <ul class="list-group">
+        <li class="list-group-item">Government Recurrent and Capital Spending</li>
+      </ul>
+    </div>
+ </div>
+</div>
+<br><br><br><br>
+</div>
+
+<div class="col-md-9">
+  <h2 style="font-weight: bold; text-transform: none;">Extensive Information </h2>
+  <div class="container-fluid">
+    <h3 style="font-weight: bold; text-transform: none;">Goal1: {{title_longName}}</h3>
+    <table class="table table-stripped">
+      <thead>
+        <tr>
+          <th class="col-md-1">Target ID</th>
+          <th class="col-md-7">Descriptive Target Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each targets.target_list}}
+        <tr>
+          <td>{{ID}}</td>
+          <td>{{Name}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

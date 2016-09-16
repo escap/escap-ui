@@ -1,0 +1,47 @@
+{
+	"items": [{
+		"attrs": {
+			"id": "home"
+		},
+		"target": "#home",
+		"label": {
+			"EN": "Home"
+		}
+	}, {
+		"attrs": {
+			"id": "Data"
+		},
+		"target": "#domains",
+		"label": {
+			"EN": "Data"
+		}
+	},{
+		"attrs": {
+			"id": "sdg"
+		},
+		"target": "#sdg",
+
+		"label": {
+			"EN": "SDG"
+		}
+	},{
+		"attrs": {
+			"id": "compareData"
+		},
+		"target": "#",
+
+		"label": {
+			"EN": "Compare Data"
+		}
+	},{
+		"attrs": {
+			"id": "countryProfiles"
+		},
+		"target": "#",
+
+		"label": {
+			"EN": "Country Profiles"
+		}
+	}],
+	"type": "static-top"
+}

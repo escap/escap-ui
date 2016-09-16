@@ -1,0 +1,230 @@
+<div class="row">
+<div class="col-md-12">
+<br>
+<div class="col-md-1"><img src="{{image}}"  class="thumbnail" alt="demographics"  width="100" height="100"/></div>
+<div class="col-md-5"><h1>&emsp;{{title}}</h1></div>
+<div class="col-md-6">
+  {{#each im}}
+    <a href="{{ref}}">
+      <img src="{{im}}"  class="thumbnail" width="40" height="40" style="display: inline-block;"/>
+    </a>
+  {{/each}}
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+<div class="card-text">
+<h2 class="card-title">Sub Domains</h2>
+<div class="panel-group" id="accordion" aria-multiselectable="true">
+  {{#each subDomainItems}}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title" style="font-weight: bold;">
+        <a class="element" data-toggle="collapse" data-parent="#accordion" href="#collapse{{@index}}" style="text-transform: none;">
+          {{[0].title.[EN]}}<i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i></a>
+        </h4>
+      </div>
+      {{#if @first}}
+      <div id="collapse{{@index}}" class="panel-collapse collapse in">
+        <ul class="list-group">
+          {{#each [0].children}}
+          <a class="indicator"><li id="elements{{@index}}" value="{{@../index}}" class="list-group-item">{{title.[EN]}}</li></a>
+          {{/each}}
+        </ul>
+      </div>
+      {{else}}
+      <div id="collapse{{@index}}" class="panel-collapse collapse">
+        <ul class="list-group">
+          {{#each [0].children}}
+          <a class="indicator"><li id="elements{{@index}}" value="{{@../index}}" class="list-group-item">{{title.[EN]}}</li></a>
+          {{/each}}
+        </ul>
+      </div>
+      {{/if}}
+    </div>
+    {{/each}}
+  </div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-text">
+  <h2 class="card-title">My Selections</h2>
+  <div class="container-fluid">
+    <div class="selected-indicators"></div>
+  </div>
+</div>
+</div>
+<br></br>
+</div>
+
+<div class="col-md-8">
+<div class="card">
+<div class="card-text">
+  <h2 class="card-title">Data Selectors</h2>
+  <div id="indicator_name"></div>
+  <div class="container-fluid">
+    <div id="data">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Select a Country</h5>
+          <div class="panel-group" id="accordion2" aria-multiselectable="true">
+            {{#each countries}}
+            <div class="panel panel-info">
+              <div class="panel-heading-info">
+                <h4 class="panel-title">
+                  {{#if title.[EN]}}
+                  <div class="checkbox-inline">
+                    <input type="checkbox" id="{{code}}" name = "country" value="{{title.[EN]}}"/>
+                    <a id="country_element" data-toggle="collapse" data-parent="#accordion2" href="#collapse_countries{{@index}}" style="text-transform: none;">
+                      <label>{{title.[EN]}}</label>
+                    </a>
+                  </div>
+                  {{else}}
+                  <div class="checkbox-inline">
+                    <input type="checkbox"  id="{{[0].code}}" name = "country" value="{{[0].title.[EN]}}"/>
+                    <a id="country_element" data-toggle="collapse" data-parent="#accordion2" href="#collapse_countries{{@index}}" style="text-transform: none;">
+                      <label>{{[0].title.[EN]}}</label>
+                    </a>
+                  </div>
+                  {{/if}}
+                </h4>
+              </div>
+              <div id="collapse_countries{{@index}}" class="panel-collapse collapse">
+                <ul class="list-group-info">
+                  {{#if children}}
+                  {{#each children}}
+                  <li class="list-group-item-info">
+                    <div class="checkbox-inline">
+                      <label>
+                        <input type="checkbox"  id="{{code}}" name = "country" value="{{title.[EN]}}"/>
+                        {{title.[EN]}}
+                      </label>
+                    </div>
+                  </li>
+                  {{/each}}
+                  {{else}}
+                  {{#each [0].children}}
+                  <li class="list-group-item-info">
+                    {{#if title.[EN]}}
+                    <div class="checkbox-inline">
+                      <label>
+                        <input type="checkbox"   id="{{code}}" name = "country" value="{{title.[EN]}}"/>
+                        {{title.[EN]}}
+                      </label>
+                    </div>
+                    {{else}}
+                    <div class="checkbox-inline">
+                      <label>
+                        <input type="checkbox"   id="{{[0].code}}" name = "country" value="{{[0].title.[EN]}}"/>
+                        {{[0].title.[EN]}}
+                      </label>
+                    </div>
+                    {{/if}}
+                  </li>
+                  {{/each}}
+                  {{/if}}
+                </ul>
+              </div>
+            </div>
+            {{/each}}
+            <div class="panel-footer">
+              <a id ="select_All" class="btn btn-primary btn-block">
+                <span class="glyphicon glyphicon-ok-circle"></span> &nbsp;Select All</a>
+                <a id ="clear_All" class="btn btn-danger btn-block">
+                  <span class="glyphicon glyphicon-remove-circle"></span> &nbsp; Clear All</a>
+                </div>
+              </div>
+              <br></br>
+            </div>
+            <div class="col-md-3">
+              <h5>Select Year</h5>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  {{#each years}}
+                  <div class="checkbox">
+                    <label>
+                      <input id="{{Year}}" type="checkbox" name="year" value="{{Year}}"/>
+                      {{Year}}
+                    </label>
+                  </div>
+                  {{/each}}
+                </div>
+                <div class="panel-footer">
+                  <a id ="selectAll" class="btn btn-primary btn-block">
+                    <span class="glyphicon glyphicon-ok-circle"></span> &nbsp;Select All</a>
+                    <a id ="clearAll" class="btn btn-danger btn-block">
+                      <span class="glyphicon glyphicon-remove-circle"></span> &nbsp; Clear All</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="elements_selector">
+                    <h5>Select a Series</h5>
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+                        <div class="data_elements"></div>
+                      </div>
+                      <div class="panel-footer">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-text">
+        <h2 class="card-title">Selected Data Options</h2>
+        <div class="container-fluid">
+          <table>
+            <tr>
+              <td><h3 class="card-subtitle">Indicator</h3></td>
+              <td><div id="indicator"></div></td>
+            </tr>
+            <tr>
+              <td><h3 class="card-subtitle"> Countries</h3></td>
+              <td><div class="countryItems"></div></td>
+            </tr>
+            <tr>
+              <td><h3 class="card-subtitle">Years :</h3></td>
+              <td><div class="yearItems"></div></td>
+            </tr>
+            <tr>
+              <td><h3 class="card-subtitle">Element :</h3></td>
+              <td><div class="elementItems"></div></td>
+            </tr>
+          </table>
+          <div class="col-md-4 pull-right">
+            <a id ="getData" class="btn btn-info btn-block">
+              Get Data
+            </a>
+          </div>
+          <br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-text">
+        <h2 class="card-title">Data Table</h2>
+        <div class="container-fluid">
+          <div class="dataDesc">
+          </div>
+          <table id="dataContainer" class="table table-striped">
+
+          </table>
+        </div>
+      </div>
+    </div>
+    <br></br>
+  </div>
+</div>
