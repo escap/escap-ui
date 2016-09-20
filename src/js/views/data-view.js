@@ -6,9 +6,9 @@ define([
     'i18n!nls/data',
     'config/events',
     'config/config',
-    'config/submodules/fx-table/start',
+    'fx-table/start',
     'amplify'
-], function ($,View, template, i18nLabels, E,C,OlapCreator) {
+], function ($,View, template, i18nLabels, E,C, Table) {
 
     'use strict';
 
@@ -61,6 +61,8 @@ define([
         },
 
         attach: function () {
+
+            console.log(Table);
 
             View.prototype.attach.call(this, arguments);
 
