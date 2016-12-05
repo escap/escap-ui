@@ -1,0 +1,132 @@
+<div class="col-md-12">
+<div class="row">
+  <div class="col-md-9"><h1>Regions,Countries and Aggregates</h1></div>
+</div>
+<div class="row">
+  <div class="card-columns">
+    <div class="col-md-4">
+      <div class="card">
+        <a href="#countryProfiles/{{ENEA.title.[EN]}}_{{ENEA.code}}">
+          <img src="src/images/escap/cou_{{ENEA.code}}.png" alt="country" class="card-img-top"  width ="350" height="150"/>
+        </a>
+        <div class="card-block">
+          <br>
+          <h4 class="card-title" style="font-size: 20px;text-align: left;">{{ENEA.title.[EN]}}</h4>
+          <table class="table table-striped">
+            {{#each ENEA.children}}
+              <tr>
+                <td><a href="#countryProfiles/{{title.[EN]}}_{{code}}">{{title.[EN]}}</a></td>
+              </tr>
+            {{/each}}
+         </table>
+        </div>
+      </div>
+      <div class="card">
+        <a href="#countryProfiles/{{NCA.title.[EN]}}_{{NCA.code}}">
+          <img src="src/images/escap/cou_{{NCA.code}}.png" alt="country" class="card-img-top"  width ="350" height="150"/>
+        </a>
+        <div class="card-block">
+          <br>
+          <h4 class="card-title" style="font-size: 20px;text-align: left;">{{NCA.title.[EN]}}</h4>
+          <table class="table table-striped">
+            {{#each NCA.children}}
+              <tr>
+                <td><a href="#countryProfiles/{{title.[EN]}}_{{code}}">{{title.[EN]}}</a></td>
+              </tr>
+            {{/each}}
+         </table>
+        </div>
+      </div>
+      <div class="card">
+        <a href="#countryProfiles/{{WORLD.title.[EN]}}_{{WORLD.code}}">
+          <img src="src/images/escap/cou_{{WORLD.code}}.png" alt="country" class="card-img-top"  width ="350" height="150"/>
+        </a>
+        <div class="card-block">
+          <br>
+          <h4 class="card-title" style="font-size: 20px;text-align: left;">{{WORLD.title.[EN]}}</h4>
+
+          <table class="table table-striped">
+            {{#each WORLD.children}}
+              <tr>
+                <td><a href="#countryProfiles/{{title.[EN]}}_{{code}}">{{title.[EN]}}</a></td>
+              </tr>
+            {{/each}}
+         </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <a href="#countryProfiles/{{SEA.title.[EN]}}_{{SEA.code}}">
+          <img src="src/images/escap/cou_{{SEA.code}}.png" alt="country" class="card-img-top"  width ="350" height="150"/>
+        </a>
+        <div class="card-block">
+          <br>
+          <h4 class="card-title" style="font-size: 20px;text-align: left;">{{SEA.title.[EN]}}</h4>
+
+          <table class="table table-striped">
+            {{#each SEA.children}}
+              <tr>
+                <td><a href="#countryProfiles/{{title.[EN]}}_{{code}}">{{title.[EN]}}</a></td>
+              </tr>
+            {{/each}}
+         </table>
+        </div>
+      </div>
+      <div class="card">
+        <a href="#countryProfiles/{{PACIFIC.title.[EN]}}_{{PACIFIC.code}}">
+          <img src="src/images/escap/cou_{{PACIFIC.code}}.png" alt="country" class="card-img-top"  width ="350" height="150"/>
+        </a>
+        <div class="card-block">
+          <br>
+          <h4 class="card-title" style="font-size: 20px;text-align: left;">{{PACIFIC.title.[EN]}}</h4>
+
+          <table class="table table-striped">
+            {{#each PACIFIC.children}}
+              <tr>
+                <td><a href="#countryProfiles/{{title.[EN]}}_{{code}}">{{title.[EN]}}</a></td>
+              </tr>
+            {{/each}}
+         </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <a href="#countryProfiles/{{SSWA.title.[EN]}}_{{SSWA.code}}">
+          <img src="src/images/escap/cou_{{SSWA.code}}.png" alt="country" class="card-img-top"  width ="350" height="150"/>
+        </a>
+        <div class="card-block">
+          <br>
+          <h4 class="card-title" style="font-size: 20px;text-align: left;">{{SSWA.title.[EN]}}</h4>
+
+          <table class="table table-striped">
+            {{#each SSWA.children}}
+              <tr>
+                <td><a href="#countryProfiles/{{title.[EN]}}_{{code}}">{{title.[EN]}}</a></td>
+              </tr>
+            {{/each}}
+         </table>
+        </div>
+      </div>
+      <div class="card">
+        <a href="#countryProfiles/{{ESCAP.title.[EN]}}_{{ESCAP.code}}">
+          <img src="src/images/escap/cou_{{ESCAP.code}}.png" alt="country" class="card-img-top"  width ="350" height="150"/>
+        </a>
+        <div class="card-block">
+          <br>
+          <h4 class="card-title" style="font-size: 20px;text-align: left;">{{ESCAP.title.[EN]}}</h4>
+          
+          <table class="table table-striped">
+            {{#each ESCAP.children}}
+              <tr>
+                <td><a href="#countryProfiles/{{title.[EN]}}_{{code}}">{{title.[EN]}}</a></td>
+              </tr>
+            {{/each}}
+         </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
